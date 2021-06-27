@@ -6,19 +6,16 @@ const jwt = require('jsonwebtoken');
 const secret = require('../config').secret;
 // const id = mongoose.Types.ObjectId();
 
+//hashes password for security before it gets to the database
 UserSchema.methods.setPassword = function(password){
       this.salt = crypto.randomBytes(16).toString('hex');
       this.password = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex');
     };
 
 const UserSchema = new Schema({
+    //generates a session token for authentication
+  token: this.generateJWT(),
 
-  id: {
-      type: Number,
-      unique: true,
-      required: true
-  },
-  
   name: {
       type: String, 
       lowercase: true, 
@@ -33,7 +30,8 @@ const UserSchema = new Schema({
     index: true},
 
   password: {
-    type: string
+    type: string,
+    validate: [({ length }) => length > 8, "Description string should be at least 8 characters."]
   },
 
   dateCreated: {
@@ -45,6 +43,7 @@ const UserSchema = new Schema({
 
   UserSchema.plugin(uniqueValidator, {message: 'is already taken.'});
 
+  //create token to use as session
   UserSchema.methods.generateJWT = function() {
       var today = new Date();
       var exp = new Date(today);
