@@ -1,10 +1,18 @@
-import React from 'react'
+import React, {useContext} from 'react';
 import Header from '../components/Header'
+import { UserContext } from '../utils/UserContext';
+import { Link } from "react-router-dom";
 
 const Home = () => {
+  const { value, setValue } = useContext(UserContext);
     return (
         <div>
-          <Header />  
+          <Header />
+          <h2>{value}</h2>
+          <button onClick={() => setValue("I'm an Admin")}>Set to Admin</button>
+          <button onClick={() => setValue("I'm a User.")}>Set to User</button>
+          <br></br>
+          <Link to="/about">Go to About</Link>
         </div>
     )
 }
