@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Menu from "./components/Menu"
 import About from "./Pages/About";
@@ -12,19 +12,17 @@ import Operator from "./Pages/Operator";
 import Terms from "./Pages/Terms";
 import Tour from "./Pages/Tour";
 import Touradmin from "./Pages/Touradmin";
-
-// import { StoreProvider } from "./utils/GlobalState";  IF YOU NEED GLOBAL STUFF
-// import Nav from "./components/Nav";
-
+import { UserContext } from "./utils/UserContext";
 import './App.css';
-// import Header from './components/Header'
 
 function App() {
+  const [value, setValue] = useState('Stateful User Context Value');
   return (
     <Router>
         <div className="App">
         <Menu />
         <Switch>
+          <UserContext.Provider value={{value, setValue}}>
             <Route exact path="/" component={Home} />
             <Route exact path="/about" component={About} />
             <Route exact path="/admin" component={Admin} />
@@ -37,6 +35,7 @@ function App() {
             <Route exact path="/terms" component={Terms} />
             <Route exact path="/tour" component={Tour} />
             <Route exact path="/touradmin" component={Touradmin} />
+          </UserContext.Provider>
         </Switch>
         </div>
     </Router>

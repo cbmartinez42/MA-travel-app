@@ -15,8 +15,15 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
+import HomeIcon from '@material-ui/icons/Home';
+import BrowseIcon from '@material-ui/icons/FindInPage';
+import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
+import BuildIcon from '@material-ui/icons/Build';
+import DynamicFeedIcon from '@material-ui/icons/DynamicFeed';
 import MailIcon from '@material-ui/icons/Mail';
+import { Redirect, Link } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
+
 
 const drawerWidth = 240;
 
@@ -90,6 +97,61 @@ export default function PersistentDrawerRight() {
     setOpen(false);
   };
 
+  const getIcon = (page) => {
+    // switch if page === work return icon
+    switch (page) {
+    case 'Home Page':
+        return <HomeIcon/>
+        // break;
+    case 'About':
+        return <MailIcon/>
+        // break;
+    case 'Admin Tasks':
+        return <BuildIcon/>
+        // break;
+    case 'Book':
+        return <MailIcon/>
+        // break;
+    case 'Browse Tours':
+        return <BrowseIcon/>
+        // break;
+    case 'Login':
+        return <MailIcon/>
+        // break;
+    case 'My Stuff':
+        return <EmojiPeopleIcon/>
+        // break;
+    case 'Operator':
+        return <MailIcon/>
+        // break;
+    case 'Terms':
+        return <MailIcon/>
+        // break;
+    case 'Tour':
+        return <MailIcon/>
+        // break;
+    case 'All Tours':
+        return <DynamicFeedIcon/>
+        // break;
+      default: 
+        return <MailIcon/>
+    }
+  }
+
+  const history = useHistory();
+
+  const setPage = (page) => {
+      console.log("I'm in setPage",page);
+      history.push("/about");
+      history.push(`/${page}`);
+      return
+  }
+
+  const userPages = [{'text':'Home Page','menuPath':'home'},{'text':'Browse Tours','menuPath':'browse'},{'text':'My Stuff','menuPath':'mystuff'}];
+  
+  const adminPages = [{'text':'Home Page','menuPath':'home'},{'text':'Browse Tours','menuPath':'browse'}, {'text':'Admin Tasks','menuPath':'admin'}, {'text':'All Tours','menuPath':'touradmin'}, {'text':'Operator Admin','menuPath':'operator'}, {'text':'Tour Page TEMP','menuPath':'tour'}];
+  
+
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -138,19 +200,30 @@ export default function PersistentDrawerRight() {
         </div>
         <Divider />
         <List>
-          {['Home', 'My Stuff', 'Browse', 'Logout', 'About'].map((text, index) => (
+          {userPages.map(({text, menuPath}, index) => (
             <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemIcon>{getIcon(text)}</ListItemIcon>
+              <ListItemText primary={text}
+              onClick={() => {
+                setPage(menuPath);
+            }
+            } />
             </ListItem>
           ))}
         </List>
         <Divider />
         <List>
-          {['Admin Tasks', 'All Tours'].map((text, index) => (
+          {adminPages.map(({text, menuPath}, index) => (
             <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemIcon>{getIcon(text)}</ListItemIcon>
+              <ListItemText 
+                primary={text} 
+                onClick={() => {
+                    setPage(menuPath);
+                }
+                }
+                />
+                {/* <ListItemText primary={text} /> */}
             </ListItem>
           ))}
         </List>
@@ -158,3 +231,4 @@ export default function PersistentDrawerRight() {
     </div>
   );
 }
+
