@@ -2,6 +2,7 @@ import React, {useContext, useEffect } from 'react';
 import { UserContext } from '../utils/UserContext';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
+import '../../src/App.css';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -89,14 +90,14 @@ export default function PersistentDrawerRight() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-  const { value, setValue } = useContext(UserContext);
+  const { userInfo, setUserInfo } = useContext(UserContext);
   useEffect(() => {
-      console.log('Value: ', value)
-  }, [value])
+      console.log('Value: ', userInfo)
+  }, [userInfo])
 
   const handleDrawerOpen = () => {
     setOpen(true);
-    console.log('User State:',value);
+    console.log('UserInfo: ',userInfo);
   };
 
   const handleDrawerClose = () => {
@@ -108,9 +109,6 @@ export default function PersistentDrawerRight() {
     switch (page) {
     case 'Home Page':
         return <HomeIcon/>
-        // break;
-    case 'About':
-        return <MailIcon/>
         // break;
     case 'Admin Tasks':
         return <BuildIcon/>
@@ -128,9 +126,6 @@ export default function PersistentDrawerRight() {
         return <EmojiPeopleIcon/>
         // break;
     case 'Operator':
-        return <MailIcon/>
-        // break;
-    case 'Terms':
         return <MailIcon/>
         // break;
     case 'Tour':
@@ -158,7 +153,7 @@ export default function PersistentDrawerRight() {
   
   const adminPages = [{'text':'Home Page','menuPath':'home'},{'text':'Browse Tours','menuPath':'browse'}, {'text':'Admin Tasks','menuPath':'admin'}, {'text':'All Tours','menuPath':'touradmin'}, {'text':'Operator Admin','menuPath':'operator'}, {'text':'Tour Page TEMP','menuPath':'tour'}];
   
-  if(value === "I'm an Admin") {
+  if(userInfo === "ADMIN") {
       var Pages = adminPages
   } else {
       var Pages = userPages
