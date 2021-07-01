@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useContext, useEffect } from 'react';
+import { UserContext } from '../utils/UserContext';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -88,9 +89,14 @@ export default function PersistentDrawerRight() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const { value, setValue } = useContext(UserContext);
+  useEffect(() => {
+      console.log('Value: ', value)
+  }, [value])
 
   const handleDrawerOpen = () => {
     setOpen(true);
+    console.log('User State:',value);
   };
 
   const handleDrawerClose = () => {
@@ -138,11 +144,12 @@ export default function PersistentDrawerRight() {
     }
   }
 
+  
   const history = useHistory();
 
   const setPage = (page) => {
       console.log("I'm in setPage",page);
-      history.push("/about");
+    //   history.push("/about");
       history.push(`/${page}`);
       return
   }
@@ -151,6 +158,11 @@ export default function PersistentDrawerRight() {
   
   const adminPages = [{'text':'Home Page','menuPath':'home'},{'text':'Browse Tours','menuPath':'browse'}, {'text':'Admin Tasks','menuPath':'admin'}, {'text':'All Tours','menuPath':'touradmin'}, {'text':'Operator Admin','menuPath':'operator'}, {'text':'Tour Page TEMP','menuPath':'tour'}];
   
+  if(value === "I'm an Admin") {
+      var Pages = adminPages
+  } else {
+      var Pages = userPages
+  };
 
   return (
     <div className={classes.root}>
@@ -186,7 +198,7 @@ export default function PersistentDrawerRight() {
       </main>
       <Drawer
         className={classes.drawer}
-        variant="persistent"
+        variant="temporary"
         anchor="right"
         open={open}
         classes={{
@@ -200,7 +212,7 @@ export default function PersistentDrawerRight() {
         </div>
         <Divider />
         <List>
-          {userPages.map(({text, menuPath}, index) => (
+          {Pages.map(({text, menuPath}, index) => (
             <ListItem button key={text}>
               <ListItemIcon>{getIcon(text)}</ListItemIcon>
               <ListItemText primary={text}
@@ -212,7 +224,7 @@ export default function PersistentDrawerRight() {
           ))}
         </List>
         <Divider />
-        <List>
+        {/* <List>
           {adminPages.map(({text, menuPath}, index) => (
             <ListItem button key={text}>
               <ListItemIcon>{getIcon(text)}</ListItemIcon>
@@ -223,10 +235,9 @@ export default function PersistentDrawerRight() {
                 }
                 }
                 />
-                {/* <ListItemText primary={text} /> */}
             </ListItem>
           ))}
-        </List>
+        </List> */}
       </Drawer>
     </div>
   );

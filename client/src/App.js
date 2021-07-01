@@ -14,15 +14,16 @@ import Tour from "./Pages/Tour";
 import Touradmin from "./Pages/Touradmin";
 import { UserContext } from "./utils/UserContext";
 import './App.css';
+import Footer from './components/Footer';
 
 function App() {
   const [value, setValue] = useState('Stateful User Context Value');
   return (
     <Router>
+      <UserContext.Provider value={{value, setValue}}>
         <div className="App">
         <Menu />
         <Switch>
-          <UserContext.Provider value={{value, setValue}}>
             <Route exact path="/" component={Home} />
             <Route exact path="/about" component={About} />
             <Route exact path="/admin" component={Admin} />
@@ -35,9 +36,10 @@ function App() {
             <Route exact path="/terms" component={Terms} />
             <Route exact path="/tour" component={Tour} />
             <Route exact path="/touradmin" component={Touradmin} />
-          </UserContext.Provider>
         </Switch>
+        <Footer />
         </div>
+      </UserContext.Provider>
     </Router>
     
   );
