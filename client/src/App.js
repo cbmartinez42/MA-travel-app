@@ -17,10 +17,10 @@ import './App.css';
 import Footer from './components/Footer';
 
 function App() {
-  const [value, setValue] = useState('Stateful User Context Value');
+  const [userInfo, setUserInfo] = useState('Stateful User Context Value');
   return (
     <Router>
-      <UserContext.Provider value={{value, setValue}}>
+      <UserContext.Provider value={{userInfo, setUserInfo}}>
         <div className="App">
         <Menu />
         <Switch>
