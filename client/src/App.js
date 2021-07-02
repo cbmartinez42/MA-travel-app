@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Menu from "./components/Menu"
+import Menu from "./Components/Menu"
 import About from "./Pages/About";
 import Admin from "./Pages/Admin";
 import Book from "./Pages/Book";
@@ -14,7 +14,7 @@ import Tour from "./Pages/Tour";
 import Touradmin from "./Pages/Touradmin";
 import { UserContext } from "./utils/UserContext";
 import './App.css';
-import Footer from './components/Footer';
+import Footer from './Components/Footer';
 
 function App() {
   const [userInfo, setUserInfo] = useState('Stateful User Context Value');

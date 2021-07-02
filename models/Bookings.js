@@ -17,6 +17,19 @@ const BookingsSchema = new Schema({
         }
       ],
 
+    address: {
+      street: String,
+      street2: String,
+      city: String,
+      state: {
+          type: String,
+          uppercase: true,
+          required: true,
+          // enum: statesArray
+      },
+      zip: Number
+    },
+
       activity: [{
         //populate all info needed from the Tour for the activity chosen
         type: Schema.Types.ObjectId,

@@ -2,26 +2,45 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const uniqueValidator = require('mongoose-unique-validator');
 const crypto = require('crypto');
-const jwt = require('jsonwebtoken');
-const secret = require('../config').secret;
+// const jwt = require('jsonwebtoken');
+// const secret = require('../config').secret;
 // const id = mongoose.Types.ObjectId();
 
-//hashes password for security before it gets to the database
-UserSchema.methods.setPassword = function(password){
-      this.salt = crypto.randomBytes(16).toString('hex');
-      this.password = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex');
-    };
+
 
 const UserSchema = new Schema({
     //generates a session token for authentication
-  token: this.generateJWT(),
+  // token: this.generateJWT(),
 
   name: {
       type: String, 
       lowercase: true, 
       required: [true, "can't be blank"], 
       match: [/^[a-zA-Z0-9]$/, 'is invalid'], 
-      index: true},
+      index: true
+  },
+
+  address: {
+    street: String,
+    street2: String,
+    city: String,
+    state: {
+        type: String,
+        uppercase: true,
+        required: true,
+        // enum: statesArray
+    },
+    zip: Number
+  },
+
+  role: {type: String, 
+    lowercase: true, 
+    required: [true, "USER"],
+    enum: {
+      values: ['ADMIN', 'USER'],
+      message: '{VALUE} is not supported'
+    } 
+  },
 
   email: {type: String, 
     lowercase: true, 
@@ -30,7 +49,7 @@ const UserSchema = new Schema({
     index: true},
 
   password: {
-    type: string,
+    type: String,
     validate: [({ length }) => length > 8, "Description string should be at least 8 characters."]
   },
 
@@ -55,6 +74,12 @@ const UserSchema = new Schema({
         exp: parseInt(exp.getTime() / 1000),
       }, secret);
     };
+
+    //hashes password for security before it gets to the database
+UserSchema.methods.setPassword = function(password){
+  this.salt = crypto.randomBytes(16).toString('hex');
+  this.password = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex');
+};
 
 const User = mongoose.model("User", UserSchema);
 

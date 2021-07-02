@@ -1,16 +1,16 @@
 const router = require("express").Router();
-const toursController = require("../../controllers/toursController");
+const tourController = require("../../controllers/tourController");
 
 // Matches with "/api/tours"
 router.route("/")
-  .get(toursController.findAll)
-  .post(toursController.create);
+  .get(tourController.findAll)
+  .post(tourController.create);
 
 // Matches with "/api/tours/:id"
 router
   .route("/:id")
-  .get(toursController.findById)
-  .put(toursController.update)
-  .delete(toursController.remove);
+  .get(tourController.findById)
+  .put(tourController.update)
+  .delete(tourController.remove);
 
 module.exports = router;

@@ -1,4 +1,4 @@
-function Welcome(props) {
+function Header(props) {
     return (
       <div className="header">
         <h1>Welcome to Do This!</h1>
@@ -7,4 +7,4 @@ function Welcome(props) {
     );
   }
   
-  export default Welcome;
+  export default Header;

@@ -25,7 +25,12 @@ app.post('/photos/upload', upload.array('photos', 12), function (req, res, next)
 
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/dothisdb");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/dothisdb", { 
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false
+});
 
 // Start the API server
 app.listen(PORT, function() {
