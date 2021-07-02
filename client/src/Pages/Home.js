@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import Header from '../components/Header';
+import Header from '../Components/Header';
 import { UserContext } from '../utils/UserContext';
 import { Link } from "react-router-dom";
 
