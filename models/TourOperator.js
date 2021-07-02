@@ -18,7 +18,7 @@ const OperatorSchema = new Schema({
       type: String,
       uppercase: true,
       required: true,
-      enum: statesArray,
+      // enum: statesArray,
     },
     zip: Number,
   },
