@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d0d9a9da.chunk.css",
+    "main.js": "/static/js/main.3498b2f2.chunk.js",
+    "main.js.map": "/static/js/main.3498b2f2.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.a85d913a.js",
+    "runtime-main.js.map": "/static/js/runtime-main.a85d913a.js.map",
+    "static/js/2.94faf16b.chunk.js": "/static/js/2.94faf16b.chunk.js",
+    "static/js/2.94faf16b.chunk.js.map": "/static/js/2.94faf16b.chunk.js.map",
+    "static/js/3.c4fe349c.chunk.js": "/static/js/3.c4fe349c.chunk.js",
+    "static/js/3.c4fe349c.chunk.js.map": "/static/js/3.c4fe349c.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.d0d9a9da.chunk.css.map": "/static/css/main.d0d9a9da.chunk.css.map",
+    "static/js/2.94faf16b.chunk.js.LICENSE.txt": "/static/js/2.94faf16b.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/static/media/poolpano2.4720efec.jpeg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a85d913a.js",
+    "static/js/2.94faf16b.chunk.js",
+    "static/css/main.d0d9a9da.chunk.css",
+    "static/js/main.3498b2f2.chunk.js"
+  ]
+}
