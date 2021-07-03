@@ -1,10 +1,11 @@
 const express = require("express");
-var multer  = require('multer')
-var upload = multer({ dest: 'uploads/' })
+require("dotenv").config();
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
+
 const PORT = process.env.PORT || 3001;
+
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -15,13 +16,6 @@ if (process.env.NODE_ENV === "production") {
 }
 // Add routes, both API and view
 app.use(routes);
-
-// Multer stuff
-app.post('/photos/upload', upload.array('photos', 12), function (req, res, next) {
-  // req.files is array of `photos` files
-  // req.body will contain the text fields, if there were any
-})
-
 
 
 // Connect to the Mongo DB
