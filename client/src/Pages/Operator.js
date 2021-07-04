@@ -1,6 +1,6 @@
 import React from 'react'
 import {useRef, useState} from 'react';
-import {Input, FormGroup,FormControlLabel, FormHelperText, FormControl, InputLabel, FormLabel, Button, TextField} from '@material-ui/core';
+import {Input, Grid, FormGroup,FormControlLabel, FormHelperText, FormControl, InputLabel, FormLabel, Button, TextField} from '@material-ui/core';
 
 
 const Operator = () => {
@@ -23,11 +23,22 @@ const Operator = () => {
         }
     }
     return (
-      <div>
-        <h1>CRUD screen for Operators</h1>
-        <FormControl>
+      // <div className={classes.root}>
+      // <Grid container spacing={1}>
+      //   <Grid container item xs={12} spacing={3}>
+      //     <FormRow />
+      //   </Grid>
+      // </div>
 
-          {/* <InputLabel htmlFor="my-input">Tour Company Name</InputLabel>
+
+      <div>
+        <h3 className="admin-header">Tour Operator Admin Page</h3>
+
+        <Grid container direction="column" justify="space-evenly" alignItems="flex-start">
+        
+        <FormControl className="tour-input-form">
+
+          <InputLabel htmlFor="my-input">Tour Company Name</InputLabel>
           <Input id="my-input" aria-describedby="my-helper-text" />
 
           <InputLabel htmlFor="my-input">Email address</InputLabel>
@@ -35,7 +46,7 @@ const Operator = () => {
           <FormHelperText id="my-helper-text">We'll never share your email.</FormHelperText>
 
           <InputLabel htmlFor="my-input">Activity Name</InputLabel>
-          <Input id="my-input" aria-describedby="my-helper-text" /> */}
+          <Input id="my-input" aria-describedby="my-helper-text" />
 
           {/* <InputLabel htmlFor="file-input">
                 Select a file to upload here
@@ -55,6 +66,7 @@ const Operator = () => {
             Upload
           </Button>
         </FormControl>
+        </Grid>
       </div>
     );
 }
