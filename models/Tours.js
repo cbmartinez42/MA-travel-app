@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const ToursSchema = new Schema({
-  name: {
+  tourName: {
     type: String,
     trim: true,
     required: "String is Required"
@@ -16,7 +16,7 @@ const ToursSchema = new Schema({
         }
       ],
 
-      address: {
+      departureLocation: {
         street: String,
         street2: String,
         city: String,
@@ -42,6 +42,10 @@ const ToursSchema = new Schema({
     validate: [({ length }) => length >= 6, "Description string should be more than 6 characters."]
   },
 
+  tourLocation: {
+    type: String,
+  },
+
   cancellationPolicy: {
       type: String,
       validate: [({ length }) => length >= 6, "Description string should be more than 6 characters."]
@@ -51,7 +55,7 @@ const ToursSchema = new Schema({
     type: Array,
   },
 
-  length: {
+  duration: {
   type: Number,
   },
 
@@ -59,8 +63,16 @@ const ToursSchema = new Schema({
     type: Number,
     required: "A price is Required",
     },
+  additionalFees: {
+    type: Number
+    },
 
-    maxNumber: Number,
+    maxCapacity: Number,
+    minCapacity: Number,
+
+    keywords: {
+      type: String,
+    }
 
 },
 {timestamps: true});
