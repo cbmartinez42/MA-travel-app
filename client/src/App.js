@@ -18,6 +18,8 @@ import Footer from './components/Footer';
 
 function App() {
   const [userInfo, setUserInfo] = useState('Stateful User Context Value');
+  const [searchData, setSearchData] = useState([]);
+
   return (
     <Router>
       <UserContext.Provider value={{userInfo, setUserInfo}}>
@@ -28,7 +30,13 @@ function App() {
             <Route exact path="/about" component={About} />
             <Route exact path="/admin" component={Admin} />
             <Route exact path="/book" component={Book} />
-            <Route exact path="/browse" component={Browse} />
+            <Route exact path="/browse">
+              <Browse 
+                searchData={searchData}
+                setSearchData={setSearchData}
+                />
+            </Route>
+          
             <Route exact path="/home" component={Home} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/mystuff" component={Mystuff} />
