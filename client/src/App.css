@@ -27,7 +27,7 @@
 
 .header::before {    
   content: "";
-  background-image: url("./assetts/poolpano2.jpeg");
+  background-image: url("./assets/poolpano2.jpeg");
   background-size: cover;
   position: absolute;
   top: 0px;
