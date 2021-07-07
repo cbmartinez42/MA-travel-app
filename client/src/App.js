@@ -17,7 +17,7 @@ import './App.css';
 import Footer from './components/Footer';
 
 function App() {
-  const [userInfo, setUserInfo] = useState('Stateful User Context Value');
+  const [userInfo, setUserInfo] = useState('NLI');
   const [searchData, setSearchData] = useState([]);
 
   return (

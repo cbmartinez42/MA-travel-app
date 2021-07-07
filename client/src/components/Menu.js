@@ -23,6 +23,8 @@ import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
 import BuildIcon from '@material-ui/icons/Build';
 import DynamicFeedIcon from '@material-ui/icons/DynamicFeed';
 import MailIcon from '@material-ui/icons/Mail';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import HowToRegIcon from '@material-ui/icons/HowToReg';
 import { Redirect, Link } from 'react-router-dom';
 import { useHistory } from "react-router-dom";
 
@@ -134,7 +136,13 @@ export default function PersistentDrawerRight() {
     case 'All Tours':
         return <DynamicFeedIcon/>
         // break;
-      default: 
+    case 'Log In / Sign Up':
+        return <HowToRegIcon/>
+        // break;
+    case 'Log Out':
+        return <ExitToAppIcon/>
+        // break;
+    default: 
         return <MailIcon/>
     }
   }
@@ -149,15 +157,17 @@ export default function PersistentDrawerRight() {
       return
   }
 
-  const userPages = [{'text':'Home Page','menuPath':'home'},{'text':'Browse Tours','menuPath':'browse'},{'text':'My Stuff','menuPath':'mystuff'}];
+  const nliPages = [{'text':'Home Page','menuPath':'home'},{'text':'Browse Tours','menuPath':'browse'},{'text':'Log In / Sign Up','menuPath':'login'}];
+
+  const userPages = [{'text':'Home Page','menuPath':'home'},{'text':'Browse Tours','menuPath':'browse'},{'text':'My Stuff','menuPath':'mystuff'},{'text':'Log Out','menuPath':'login'}];
   
-  const adminPages = [{'text':'Home Page','menuPath':'home'},{'text':'Browse Tours','menuPath':'browse'}, {'text':'Admin Tasks','menuPath':'admin'}, {'text':'All Tours','menuPath':'touradmin'}, {'text':'Operator Admin','menuPath':'operator'}, {'text':'Tour Page TEMP','menuPath':'tour'}];
+  const adminPages = [{'text':'Home Page','menuPath':'home'},{'text':'Browse Tours','menuPath':'browse'}, {'text':'Admin Tasks','menuPath':'admin'}, {'text':'All Tours','menuPath':'touradmin'}, {'text':'Operator Admin','menuPath':'operator'}, {'text':'Tour Page TEMP','menuPath':'tour'},{'text':'Log Out','menuPath':'login'}];
   
   if(userInfo === "ADMIN") {
       var Pages = adminPages
-  } else {
-      var Pages = userPages
-  };
+  } else if(userInfo === "USER") {
+      Pages = userPages
+  } else Pages = nliPages;
 
   return (
     <div className={classes.root}>
