@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Results from "../components/Results";
 import { InlineWidget } from "react-calendly";
 
 const Book = ({ searchData, setSearchData }) => {
@@ -34,9 +33,7 @@ let style = {
       ) : (
         <h5 style={{ color: "blue" }}> Select tour type to see details</h5>
       )}
-
-      <Results searchData={searchData} setSearchData={setSearchData} />
-        </div>
+      </div>
     )
 }
 
