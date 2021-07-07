@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&family=Yomogi&family=Yatra+One&display=swap');
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -15,4 +17,18 @@ code {
 
 .terms-container {
 text-align:left !important;
+}
+
+.tour-abstract {
+  border: 1px solid black;
+  margin: 1rem;
+}
+
+.abstract-header {
+  background-color: #099e7e;
+  color: white;
+  padding: 1rem;
+
+  font-family: 'Yatra One', cursive;
+
 }

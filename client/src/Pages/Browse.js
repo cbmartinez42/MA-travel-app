@@ -8,7 +8,7 @@ const Browse = ({searchData, setSearchData}) => {
     return (
         <Container maxWidth="lg">
         <div>
-            <h1>This page will show search results from home screen as well as allow user to search by category of enter new search and show results.</h1>
+            <h3>Results:</h3>
         </div>
         
         <Results 

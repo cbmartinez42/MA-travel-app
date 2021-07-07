@@ -15,6 +15,7 @@ import Touradmin from "./pages/Touradmin";
 import { UserContext } from "./utils/UserContext";
 import './App.css';
 import Footer from './components/Footer';
+import './index.css';
 
 function App() {
   const [userInfo, setUserInfo] = useState('NLI');

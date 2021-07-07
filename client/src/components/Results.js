@@ -1,6 +1,6 @@
 import react, {useState, useEffect} from 'react';
 import API from '../utils/API'
-import {Container} from '@material-ui/core/';
+import {Box, Container} from '@material-ui/core/';
 
 const Results = ({searchData, setSearchData}) => {
 
@@ -16,19 +16,19 @@ const Results = ({searchData, setSearchData}) => {
 
     return (
         <>
-        <Container>
+        <Container maxWidth="md">
             {searchData.map(search => (
                 
-                <>
-
-                <h5>{search.tourName}</h5>
-                
-                <p>{search.description}</p>
+                <Box key={search.tourName} className="tour-abstract">
+                    <Box className="abstract-header">
+                        <h6>{search.tourName}</h6>
+                    </Box>
+                {/* <p>{search.description}</p> */}
                 <p>{search.tourLocation}</p>
                 <p>${search.cost}</p>
                 <p>{search.tourOperator}</p>
 
-                </>
+                </Box>
             )) }
         </Container>
         </>
