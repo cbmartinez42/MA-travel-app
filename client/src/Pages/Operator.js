@@ -44,7 +44,7 @@ const Operator = () => {
 
         {/* <Grid container direction="column" justify="space-evenly" alignItems="flex-start"> */}
         
-        <FormControl className="tour-input-form" enctype="multipart/form-data">
+        <FormControl className="tour-input-form" encType="multipart/form-data">
 
           {/* <InputLabel htmlFor="company-name">Tour Company Name</InputLabel> */}
           <TextField id="company-name" type='text' aria-describedby="Tour Company Name" label="Tour Company Name"></TextField>
