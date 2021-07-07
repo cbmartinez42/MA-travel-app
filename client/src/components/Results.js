@@ -9,25 +9,29 @@ const Results = ({searchData, setSearchData}) => {
         API.browseAllActivities()
         // .then(res => res.json())
         .then((response) => {
-            console.log('searchData 1', searchData)
-            console.log('results >> ', response)
-          setSearchData(response.results || [])
-        
+          setSearchData(response.data || [])
         });
       }, [])
 
 
     return (
-        <Container maxWidth="lg">
-            <h4>sample search results</h4>
-            {searchData.map(results => (
-                <>
-                <h5>{results.tourName}</h5>
+        <>
+        <Container>
+            {searchData.map(search => (
                 
-                <h6> here's a sample name </h6>
+                <>
+
+                <h5>{search.tourName}</h5>
+                
+                <p>{search.description}</p>
+                <p>{search.tourLocation}</p>
+                <p>${search.cost}</p>
+                <p>{search.tourOperator}</p>
+
                 </>
             )) }
         </Container>
+        </>
     )
 
 }
