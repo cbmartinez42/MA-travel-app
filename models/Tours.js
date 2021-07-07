@@ -71,7 +71,11 @@ const ToursSchema = new Schema({
     minCapacity: Number,
 
     keywords: {
-      type: String,
+      type: Array,
+    },
+
+    category: {
+      type: Array,
     }
 
 },

@@ -5,6 +5,7 @@ import {Input, Grid, FormGroup,FormControlLabel, FormHelperText, FormControl, In
 
 const Operator = () => {
     const [fileInput, setUploadedFile] = useState(null);
+    const [imageUploaded, setImageUploaded] = useState(null);
     const handleInput = async () =>{
         console.log("uploading file", fileInput)
         //we need to append the form to a multipart formdata to send it over to multer
@@ -18,6 +19,12 @@ const Operator = () => {
         })
         if(response.ok){
             console.log("FILE SENT")
+            //set the response image to image uploaded
+            //we're showing the image here
+            const res = await response.json();
+            
+            setImageUploaded(res.imageUrl);
+            
         }else{
             console.log("mas problemo")
         }
@@ -36,7 +43,7 @@ const Operator = () => {
 
         <Grid container direction="column" justify="space-evenly" alignItems="flex-start">
         
-        <FormControl className="tour-input-form">
+        <FormControl className="tour-input-form" enctype="multipart/form-data">
 
           <InputLabel htmlFor="my-input">Tour Company Name</InputLabel>
           <Input id="my-input" aria-describedby="my-helper-text" />
@@ -67,6 +74,8 @@ const Operator = () => {
           </Button>
         </FormControl>
         </Grid>
+        {imageUploaded ? 
+        <img className="AWSimage" alt="Uploaded Pic" src={imageUploaded}></img> : <></> }
       </div>
     );
 }
