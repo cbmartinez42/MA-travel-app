@@ -1,12 +1,24 @@
-import React from 'react'
+import React, {useState} from "react";
+import Button from '../components/Button'
+import Signup from "../components/Signup";
+
+
 
 const Login = () => {
+
+    const [showSignUp, setShowSignUp] = useState(false);
+
+    const onClick = (e) => {
+        e.preventDefault();
+        // setShowSignUp = !showSignUp;
+        console.log("Click! ",showSignUp);
+    }
+
     return (
             <div>
-                <h1>This is the login page</h1>
-                <p>Unfortunbately for you it's not done yet.</p>
+                {/* Log in container */}
                 <div className="container">
-                    <div className="row">
+                    {/* <div className="row">
                         <div className="row custom-row">
                             <div className="col s6 center-align">
                                 <h5 className="fredoka" >Log in here!</h5>
@@ -15,18 +27,25 @@ const Login = () => {
                                 <h5 className="fredoka">Sign Up for an Account</h5>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
 
                     <div className="row">
-                        <form className="col s6 center-align login-form">
+                        <div className="row">
+                            <div className="row custom-row">
+                                <div className="col s12 center-align">
+                                    <h5 className="fredoka" >Log in here!</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <form className="col s12 center-align login-form">
                             <div className="row">
-                                <div className="input-field col s11">
+                                <div className="input-field col s12">
                                     <i className="material-icons prefix">email</i>
                                     <input id="login-email" type="email" className="validate"></input>
                                     <label for="email">Email</label>
                                 </div>
                             </div>
-                                    <div className="input-field col s11">
+                                    <div className="input-field col s12">
                                         <i className="material-icons prefix">security</i>
                                         <input id="login-password" type="password" className="validate"></input>
                                         <label for="password">Password</label>
@@ -34,56 +53,15 @@ const Login = () => {
                                     <button id="login-btn" className="btn waves-effect waves-light" type="submit" name="action">Login
                                     <i className="material-icons right">send</i>
                                     </button>
+                                    <Button text='Create Account' onClick={(e)=> {
+                                        e.preventDefault();
+                                        setShowSignUp(!showSignUp);
+                                    }} />
                         </form>
-
-                        <form className="col s6 center-align signup-form">
-                            <div className="row">
-                                <div className="input-field col s12">
-                                    <i className="material-icons prefix">person_add</i>
-                                    <input id="signup-first-name" type="text" className="validate"></input>
-                                        <label for="signup-first-name">First Name</label>
-                                </div>
-                                <div className="input-field col s12">
-                                    <i className="material-icons prefix">person_add</i>
-                                    <input id="signup-last-name" type="text" className="validate"></input>
-                                    <label for="signup-last-name">Last Name</label>
-                                </div>
-                                <div className="row">
-                                    <div className="input-field col s12">
-                                        <i className="material-icons prefix">email</i>
-                                        <input id="signup-email" type="email" className="validate"></input>
-                                        <label for="signup-email">Email</label>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="input-field col s12">
-                                        <i className="material-icons prefix">phone</i>
-                                        <input id="signup-phone" type="tel" className="validate"></input>
-                                        <label for="icon_telephone">Telephone </label>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="input-field col s12">
-                                        <i className="material-icons prefix">security</i>
-                                        <input id="signup-password" type="password" className="validate"></input>
-                                        <label for="signup-password">Password</label>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <label for="signup-request-admin">
-                                    <input id="signup-request-admin" type="checkbox"></input>
-                                    <span>Request Administrative Priveledges?</span>
-                                    </label>
-                                </div>
-
-                                <button id="signup-btn" className="btn waves-effect waves-light center-align" type="submit" name="action">Submit
-                                    <i className="material-icons right">send</i>
-                                </button>
-                            </div>
-                        </form>
-                    </div>
                 </div>
             </div>
+            {showSignUp && <Signup  />}
+        </div>
     )
 }
 
