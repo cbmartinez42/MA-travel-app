@@ -13,11 +13,11 @@ const Browse = ({ searchData, setSearchData }) => {
 
 */
 
-  const [url, setUrl] = useState();
+//   const [url, setUrl] = useState();
 
-  let style = {
-    btn: { padding: 15, margin: 10 }
-  };
+//   let style = {
+//     btn: { padding: 15, margin: 10 }
+//   };
 
   return (
     <Container maxWidth="lg">
@@ -28,7 +28,7 @@ const Browse = ({ searchData, setSearchData }) => {
         </h4>
       </div>
 
-      <button style={style.btn} onClick={() => setUrl("https://calendly.com/kaimanimarine/30min")}>
+      {/* <button style={style.btn} onClick={() => setUrl("https://calendly.com/kaimanimarine/30min")}>
         {" "}
         Tour 1{" "}
       </button>
@@ -45,7 +45,7 @@ const Browse = ({ searchData, setSearchData }) => {
         <InlineWidget url={url} />
       ) : (
         <h5 style={{ color: "blue" }}> Select tour type to see details</h5>
-      )}
+      )} */}
 
       <Results searchData={searchData} setSearchData={setSearchData} />
     </Container>
