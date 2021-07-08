@@ -1,62 +1,88 @@
 import React, {useState} from "react";
-import Button from '../components/Button'
+// import Button from '../components/Button'
 import Signup from "../components/Signup";
-
-
+import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
 
 const Login = () => {
 
     const [showSignUp, setShowSignUp] = useState(false);
 
-    const onClick = (e) => {
-        e.preventDefault();
-        // setShowSignUp = !showSignUp;
-        console.log("Click! ",showSignUp);
+    const[signin, setSignin] = useState({})
+
+    const handleChange = (e) => {
+        console.log(e);
+        setSignin({...signin,[e.name]: e.value});
     }
 
     return (
             <div>
                 {/* Log in container */}
                 <div className="container">
-                    {/* <div className="row">
-                        <div className="row custom-row">
-                            <div className="col s6 center-align">
-                                <h5 className="fredoka" >Log in here!</h5>
-                            </div>
-                            <div className="col s6 center-align">
-                                <h5 className="fredoka">Sign Up for an Account</h5>
-                            </div>
-                        </div>
-                    </div> */}
-
+                <h2 className="fredoka" >Log in here!</h2>
                     <div className="row">
-                        <div className="row">
-                            <div className="row custom-row">
-                                <div className="col s12 center-align">
-                                    <h5 className="fredoka" >Log in here!</h5>
-                                </div>
+                        <Grid container direction="column" justifyContent="center" alignItems="center" >
+                            <div className="input">
+                                <Grid container spacing={1} alignItems="flex-end">
+                                    <Grid item>
+                                        <i className="material-icons prefix">email</i>
+                                    </Grid>
+                                    <Grid item>
+                                        <TextField
+                                            required
+                                            className="Button"
+                                            id="signin-email"
+                                            label="Email"
+                                            name="email"
+                                            variant="outlined"
+                                            onChange={(e) => handleChange(e.target)}
+                                            />
+                                    </Grid>
+                                </Grid>
                             </div>
-                        </div>
-                        <form className="col s12 center-align login-form">
-                            <div className="row">
-                                <div className="input-field col s12">
-                                    <i className="material-icons prefix">email</i>
-                                    <input id="login-email" type="email" className="validate"></input>
-                                    <label for="email">Email</label>
-                                </div>
-                            </div>
-                                    <div className="input-field col s12">
+                            <div className="input">
+                                <Grid container spacing={1} alignItems="flex-end">
+                                    <Grid item>
                                         <i className="material-icons prefix">security</i>
-                                        <input id="login-password" type="password" className="validate"></input>
-                                        <label for="password">Password</label>
-                                    </div>
-                                    <button id="login-btn" className="btn waves-effect waves-light" type="submit" name="action">Login
-                                    <i className="material-icons right">send</i>
-                                    </button>
-                                    <Button text='Create Account' onClick={(e)=> {
-                                        e.preventDefault();
-                                        setShowSignUp(!showSignUp);
-                                    }} />
+                                    </Grid>
+                                    <Grid item>
+                                        <TextField
+                                            required
+                                            id="signin-password"
+                                            label="Password"
+                                            name="password"
+                                            variant="outlined"
+                                            onChange={(e) => handleChange(e.target)}
+                                            />
+                                    </Grid>
+                                </Grid>
+                            </div>
+                        </Grid>
+                        <form>
+                            <Button
+                                variant="contained"
+                                style={{ margin: "2%" }}
+                                color="primary"
+                                id="login-btn"
+                                classes="btn"
+                                name="action"
+                                // onClick={(e)=> {
+                                // e.preventDefault();
+                                // setShowSignUp(!showSignUp);
+                                // }}
+                            >Log In
+                            </Button>
+                            <div>or</div>
+                            <Button
+                                variant="contained"
+                                style={{ margin: "2%" }}
+                                color="primary"
+                                onClick={(e)=> {
+                                e.preventDefault();
+                                setShowSignUp(!showSignUp);
+                            }} >Create Account
+                            </Button>
                         </form>
                 </div>
             </div>

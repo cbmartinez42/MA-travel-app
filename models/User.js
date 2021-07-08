@@ -13,11 +13,18 @@ const UserSchema = new Schema({
   // token: this.generateJWT(),
 
   name: {
-      type: String, 
-      lowercase: true, 
-      required: [true, "can't be blank"], 
-      match: [/^[a-zA-Z0-9]$/, 'is invalid'], 
-      index: true
+      first: {
+        type: String, 
+        lowercase: true, 
+        required: [true, "can't be blank"], 
+        match: [/^[a-zA-Z0-9]$/, 'is invalid'], 
+        index: true},
+      last: {
+        type: String, 
+        lowercase: true, 
+        required: [true, "can't be blank"], 
+        match: [/^[a-zA-Z0-9]$/, 'is invalid'], 
+        index: true},
   },
 
   address: {
@@ -59,6 +66,10 @@ const UserSchema = new Schema({
   },
 },
 {timestamps: true});
+
+  UserSchema.virtual('fullName').get(function() {
+    return this.name.first + ' ' + this.name.last;
+  });
 
   UserSchema.plugin(uniqueValidator, {message: 'is already taken.'});
 
