@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 
 
 const Terms = () => {
@@ -196,7 +198,10 @@ const Terms = () => {
         Do This® without regards to its conflict of law provisions.
       </p>
     </div>
+    <Link to="/home">Go Home!</Link>
     </div>
+
+
   );
 };
 
