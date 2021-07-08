@@ -195,7 +195,7 @@ const Signup = () => {
                                             <TextField
                                                 required
                                                 id="signup-security"
-                                                label="Security"
+                                                label="Password"
                                                 name="security"
                                                 variant="outlined"
                                                 onChange={(e) => handleChange(e.target)}

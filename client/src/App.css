@@ -56,7 +56,8 @@
   background-color: #61CD42;
   max-height: 20vh;
   margin-top: 3%;
-  padding: 0% 5%;
+  padding: 1% 5%;
+  /* padding: 1rem; */
   /* display: flex; */
   /* flex-direction: column; */
   /* align-items: center; */

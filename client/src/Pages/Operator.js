@@ -30,30 +30,31 @@ const Operator = () => {
         }
     }
     return (
-      // <div className={classes.root}>
+      <>
+      {/* // <div className={classes.root}>
       // <Grid container spacing={1}>
       //   <Grid container item xs={12} spacing={3}>
-      //     <FormRow />
-      //   </Grid>
-      // </div>
+      //     <FormRow /> */}
+      {/* //   </Grid> */}
+      {/* // </div> */}
 
 
-      <div>
+      {/* // <div> */}
         <h3 className="admin-header">Tour Operator Admin Page</h3>
 
-        <Grid container direction="column" justify="space-evenly" alignItems="flex-start">
+        {/* <Grid container direction="column" justify="space-evenly" alignItems="flex-start"> */}
         
-        <FormControl className="tour-input-form" enctype="multipart/form-data">
+        <FormControl className="tour-input-form" encType="multipart/form-data">
 
-          <InputLabel htmlFor="my-input">Tour Company Name</InputLabel>
-          <Input id="my-input" aria-describedby="my-helper-text" />
+          {/* <InputLabel htmlFor="company-name">Tour Company Name</InputLabel> */}
+          <TextField id="company-name" type='text' aria-describedby="Tour Company Name" label="Tour Company Name"></TextField>
 
-          <InputLabel htmlFor="my-input">Email address</InputLabel>
-          <Input id="my-input" aria-describedby="my-helper-text" />
-          <FormHelperText id="my-helper-text">We'll never share your email.</FormHelperText>
+          {/* <InputLabel htmlFor="email">Email address</InputLabel> */}
+          <TextField id="email" type="email" aria-describedby="Email address" label="Email Address"></TextField>
+          <FormHelperText id="email-helper">We'll never share your email.</FormHelperText>
 
-          <InputLabel htmlFor="my-input">Activity Name</InputLabel>
-          <Input id="my-input" aria-describedby="my-helper-text" />
+          {/* <InputLabel htmlFor="activity-name">Activity Name</InputLabel> */}
+          <TextField id="activity-name" type='text' aria-describedby="Activity Name" label="Activity Name"></TextField>
 
           {/* <InputLabel htmlFor="file-input">
                 Select a file to upload here
@@ -73,10 +74,11 @@ const Operator = () => {
             Upload
           </Button>
         </FormControl>
-        </Grid>
+        {/* </Grid> */}
         {imageUploaded ? 
         <img className="AWSimage" alt="Uploaded Pic" src={imageUploaded}></img> : <></> }
-      </div>
+      {/* // </div> */}
+      </>
     );
 }
 

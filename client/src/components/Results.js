@@ -1,6 +1,6 @@
 import react, {useState, useEffect} from 'react';
 import API from '../utils/API'
-import {Container} from '@material-ui/core/';
+import {Box, Container} from '@material-ui/core/';
 
 const Results = ({searchData, setSearchData}) => {
 
@@ -9,25 +9,29 @@ const Results = ({searchData, setSearchData}) => {
         API.browseAllActivities()
         // .then(res => res.json())
         .then((response) => {
-            console.log('searchData 1', searchData)
-            console.log('results >> ', response)
-          setSearchData(response.results || [])
-        
+          setSearchData(response.data || [])
         });
       }, [])
 
 
     return (
-        <Container maxWidth="lg">
-            <h4>sample search results</h4>
-            {searchData.map(results => (
-                <>
-                <h5>{results.tourName}</h5>
+        <>
+        <Container maxWidth="md">
+            {searchData.map(search => (
                 
-                <h6> here's a sample name </h6>
-                </>
+                <Box key={search.tourName} className="tour-abstract">
+                    <Box className="abstract-header">
+                        <h6>{search.tourName}</h6>
+                    </Box>
+                {/* <p>{search.description}</p> */}
+                <p>{search.tourLocation}</p>
+                <p>${search.cost}</p>
+                <p>{search.tourOperator}</p>
+
+                </Box>
             )) }
         </Container>
+        </>
     )
 
 }
