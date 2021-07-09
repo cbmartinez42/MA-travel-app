@@ -17,13 +17,13 @@ const UserSchema = new Schema({
         type: String, 
         lowercase: true, 
         required: [true, "can't be blank"], 
-        match: [/^[a-zA-Z0-9]$/, 'is invalid'], 
+        // match: [/^[a-zA-Z0-9]$/, 'is invalid'], 
         index: true},
       last: {
         type: String, 
         lowercase: true, 
         required: [true, "can't be blank"], 
-        match: [/^[a-zA-Z0-9]$/, 'is invalid'], 
+        // match: [/^[a-zA-Z0-9]$/, 'is invalid'], 
         index: true},
   },
 
@@ -40,9 +40,12 @@ const UserSchema = new Schema({
     zip: Number
   },
 
-  role: {type: String, 
-    lowercase: true, 
-    required: [true, "USER"],
+  phone: {type: String},
+
+  role: {
+    type: String, 
+    default: "USER",
+    // required: [true, "USER"],
     enum: {
       values: ['ADMIN', 'USER'],
       message: '{VALUE} is not supported'
@@ -52,12 +55,12 @@ const UserSchema = new Schema({
   email: {type: String, 
     lowercase: true, 
     required: [true, "can't be blank"], 
-    match: [/\S@\S\.\S/, 'is invalid'], 
+    // match: [/\S@\S\.\S/, 'is invalid'], 
     index: true},
 
   password: {
     type: String,
-    validate: [({ length }) => length > 8, "Description string should be at least 8 characters."]
+    validate: [({ length }) => length > 7, "Description string should be at least 8 characters."]
   },
 
   dateCreated: {

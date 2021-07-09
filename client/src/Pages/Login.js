@@ -22,7 +22,7 @@ const Login = () => {
                 <div className="container">
                 <h2 className="fredoka" >Log in here!</h2>
                     <div className="row">
-                        <Grid container direction="column" justifyContent="center" alignItems="center" >
+                        <Grid container direction="column" alignItems="center" >
                             <div className="input">
                                 <Grid container spacing={1} alignItems="flex-end">
                                     <Grid item>
@@ -65,7 +65,6 @@ const Login = () => {
                                 style={{ margin: "2%" }}
                                 color="primary"
                                 id="login-btn"
-                                classes="btn"
                                 name="action"
                                 // onClick={(e)=> {
                                 // e.preventDefault();
