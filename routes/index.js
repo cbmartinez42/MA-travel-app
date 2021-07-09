@@ -7,13 +7,14 @@ router.use("/api", apiRoutes);
 router.get("/test", function(req, res){
   console.log("Test")
 })
-router.post('/photos/upload', upload.single("image_file"), function (req, res, next) {
+router.post('/photos/upload', upload.array("image_file"), function (req, res, next) {
   // req.files is array of `photos` files
   // req.body will contain the text fields, if there were any
 
-  console.log('Image sent to S3', req.file)
+  console.log('Image sent to S3', req)
   //the address to the url stored on amazon s3 
-  res.json({imageUrl: req.file.location})
+  // res.json({imageUrl: req.file.location})
+  console.log(req.files)
 })
 // If no API routes are hit, send the React app
 router.use(function(req, res) {
