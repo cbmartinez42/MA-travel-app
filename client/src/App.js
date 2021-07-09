@@ -46,7 +46,7 @@ function App() {
             <Route exact path="/mystuff" component={Mystuff} />
             <Route exact path="/operator" component={Operator} />
             <Route exact path="/terms" component={Terms} />
-            <Route exact path="/tour" component={Tour} />
+            <Route path="/tour/:id" component={Tour} />
             <Route exact path="/touradmin" component={Touradmin} />
         </Switch>
         
