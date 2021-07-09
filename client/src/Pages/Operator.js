@@ -61,9 +61,8 @@ const Operator = () => {
                 </InputLabel> */}
 
           <Input
-            id="file-input"
-            type="file"
-            onChange={(e) => setUploadedFile(e.target.files[0])}
+            type="file" id="file" name="file" inputProps={{ multiple: true }}
+            onChange={(e) => setUploadedFile(e.target.files)}
           ></Input>
           <Button
             variant="contained"
