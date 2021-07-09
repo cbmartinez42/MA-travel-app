@@ -181,6 +181,7 @@ export default function PersistentDrawerRight() {
         <Toolbar>
           <Typography variant="h6" noWrap className={classes.title}>
             {/* I am text in teh blue bar at the top. */}
+            Buy now! Big sale for the summer! 
           </Typography>
           <IconButton
             color="inherit"
