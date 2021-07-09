@@ -4,6 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
+import API from '../utils/API';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,8 +23,19 @@ const Signup = () => {
     const[signup, setSignup] = useState({})
 
     const handleChange = (e) => {
-        console.log(e);
         setSignup({...signup,[e.name]: e.value});
+    }
+
+    const handleSignup = (e) => {
+        // e.preventDefault();
+        // console.log('signup = ',signup);
+        API.signUpUser(signup)
+        .then(result => {
+            console.log('SignUpUser Result: USER CREATED!!!', result)
+        })
+        .catch(err => {
+            console.log('Oh my... there was an error: ',err.response)
+        })
     }
 
     return (
@@ -32,7 +44,7 @@ const Signup = () => {
            <div className="container">
            <h2 className="fredoka">Sign Up for an Account</h2>
                         <form className={classes.root} noValidate autoComplete="off" >
-                        <Grid container direction="column" justifyContent="center" alignItems="center" > 
+                        <Grid container direction="column" alignItems="center" > 
                             <div className="row">
                                 <div className="input-field col s12">
                                     <Grid container spacing={1} alignItems="flex-end">
@@ -44,7 +56,7 @@ const Signup = () => {
                                                 required
                                                 id="signup-first-name"
                                                 label="First Name"
-                                                name="firstname"
+                                                name="name.first"
                                                 variant="outlined"
                                                 onChange={(e) => handleChange(e.target)}
                                                 />
@@ -61,7 +73,7 @@ const Signup = () => {
                                                 required
                                                 id="signup-last-name"
                                                 label="Last Name"
-                                                name="lastname"
+                                                name="name.last"
                                                 variant="outlined"
                                                 onChange={(e) => handleChange(e.target)}
                                                 />
@@ -112,7 +124,7 @@ const Signup = () => {
                                                 required
                                                 id="signup-address1"
                                                 label="Address 1"
-                                                name="address1"
+                                                name="address.street"
                                                 variant="outlined"
                                                 onChange={(e) => handleChange(e.target)}
                                                 />
@@ -128,7 +140,7 @@ const Signup = () => {
                                             <TextField
                                                 id="signup-address2"
                                                 label="Address 2"
-                                                name="address2"
+                                                name="address.street2"
                                                 variant="outlined"
                                                 onChange={(e) => handleChange(e.target)}
                                                 />
@@ -145,7 +157,7 @@ const Signup = () => {
                                                 required
                                                 id="signup-city"
                                                 label="City"
-                                                name="city"
+                                                name="address.city"
                                                 variant="outlined"
                                                 onChange={(e) => handleChange(e.target)}
                                                 />
@@ -162,7 +174,7 @@ const Signup = () => {
                                                 required
                                                 id="signup-state"
                                                 label="State"
-                                                name="state"
+                                                name="address.state"
                                                 variant="outlined"
                                                 onChange={(e) => handleChange(e.target)}
                                                 />
@@ -179,7 +191,7 @@ const Signup = () => {
                                                 required
                                                 id="signup-zip"
                                                 label="Zip"
-                                                name="zip"
+                                                name="address.zip"
                                                 variant="outlined"
                                                 onChange={(e) => handleChange(e.target)}
                                                 />
@@ -196,7 +208,7 @@ const Signup = () => {
                                                 required
                                                 id="signup-security"
                                                 label="Password"
-                                                name="security"
+                                                name="password"
                                                 variant="outlined"
                                                 onChange={(e) => handleChange(e.target)}
                                                 />
@@ -204,13 +216,13 @@ const Signup = () => {
                                     </Grid>
                                 </div>
                                 <Button
-                                    classes="btn"
                                     variant="contained"
                                     style={{ margin: "2%" }}
                                     color="primary"
                                     id="signup-btn"
                                     type="submit"
                                     name="action"
+                                    onClick={handleSignup}
                                     >
                                     SUBMIT
                                 </Button>
