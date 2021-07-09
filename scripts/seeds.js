@@ -36,8 +36,8 @@ const toursSeed = [
       "additionalFees": "5 per person park fee to be paid at the ranger station",
       "maxCapacity": "36",
       "minCapacity": "4",
-      "keywords": "snorkel, BBQ, sustainable tours, Creole, coconuts, organic farm, beach, birding",
-      "image": "https://scontent-ort2-1.xx.fbcdn.net/v/t1.6435-9/71953075_985119908493884_4204831742231576576_n.jpg?_nc_cat=110&ccb=1-3&_nc_sid=8bfeb9&_nc_ohc=KGfodiTT4QQAX-wcjzk&_nc_ht=scontent-ort2-1.xx&oh=30225a7f20d08b37c91fee3c91aeeb00&oe=60E65009"
+      "keywords": ["snorkel", "BBQ", "sustainable tours", "Creole", "coconuts", "organic farm", "beach", "birding"],
+      "image": "https://www.touropia.com/gfx/d/best-beaches-in-belize/hopkins_village_beach.jpg?v=1"
   },
   {
       // "_objectid": 2,
@@ -60,8 +60,8 @@ const toursSeed = [
       "additionalFees": "$10 per person park fee to be paid at the ranger station",
       "maxCapacity": "4",
       "minCapacity": "1",
-      "keywords": "deep-sea fishing, fishing, sustainable tours",
-      "image": "https://scontent-ort2-1.xx.fbcdn.net/v/t1.6435-9/62254076_901954876810388_8070366496917815296_n.jpg?_nc_cat=107&ccb=1-3&_nc_sid=8bfeb9&_nc_ohc=1CLue8kUjWEAX9n_rqr&_nc_ht=scontent-ort2-1.xx&oh=a35dee0c3399f5d4880f8f6fc9afaf32&oe=60E6D1B5"
+      "keywords": ["deep-sea fishing", "fishing", "sustainable tours"],
+      "image": "https://www.touropia.com/gfx/d/best-beaches-in-belize/the_split_caye_caulker.jpg?v=1980b180cfa3799eabe92a233ddc546a"
   },
   {
       // "_objectid": 3,
@@ -84,8 +84,8 @@ const toursSeed = [
       "additionalFees": "none",
       "maxCapacity": "22",
       "minCapacity": "2",
-      "keywords": "cultural immersion, sustainable tours, Creole, Belize culture, drumming, cooking",
-      "image": "https://scontent-ort2-1.xx.fbcdn.net/v/t1.6435-9/36628780_673610536311491_7302831845140332544_n.jpg?_nc_cat=107&ccb=1-3&_nc_sid=cdbe9c&_nc_ohc=vdQJ0BriPCcAX9Lm7fP&_nc_ht=scontent-ort2-1.xx&oh=3eaaa5d724734d441c30aafd0617da6c&oe=60E70B96"
+      "keywords": ["cultural immersion", "sustainable tours", "Creole", "Belize culture", "drumming", "cooking"],
+      "image": "https://www.touropia.com/gfx/d/best-beaches-in-belize/goffs_caye_beach.jpg?v=1adfd6e5ddbae978554a8e75b696c092"
   },
   {
       // "_objectid": 4,
@@ -108,8 +108,8 @@ const toursSeed = [
       "additionalFees": "none",
       "maxCapacity": "16",
       "minCapacity": "1",
-      "keywords": "cultural immersion, Mayan, cooking, Belizean culture, traditional tours, sustainable tours",
-      "image": "https://scontent-ort2-1.xx.fbcdn.net/v/t1.6435-9/82871999_2702838859803568_5675642811710439424_n.jpg?_nc_cat=100&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=0RSz6Ow4qBYAX_GDQU6&_nc_oc=AQlxrXzBKQiGtI7dPIntSC4r44c6AoLyptHh-Yj6X4Cti8HNJkAswtenPP1W1LrzdlE&tn=k2ioV7zW_2Z7XexV&_nc_ht=scontent-ort2-1.xx&oh=5b3912abe20f31658c6022a3faf64d3d&oe=60E68FC4"
+      "keywords": ["cultural immersion", "Mayan", "cooking", "Belizean culture", "traditional tours", "sustainable tours"],
+      "image": "https://www.touropia.com/gfx/d/best-beaches-in-belize/south_water_caye_beach.jpg?v=b1fd1c71da33a0a91cdb768b6c938c8f"
   }
   ]
   

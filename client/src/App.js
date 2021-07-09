@@ -16,12 +16,15 @@ import { UserContext } from "./utils/UserContext";
 import './App.css';
 import Footer from './components/Footer';
 import './index.css';
+import Header from './components/Header'
 
 function App() {
   const [userInfo, setUserInfo] = useState('NLI');
   const [searchData, setSearchData] = useState([]);
 
   return (
+    <>
+    <Header />
     <Router>
       <UserContext.Provider value={{userInfo, setUserInfo}}>
         <div className="App">
@@ -37,20 +40,21 @@ function App() {
                 setSearchData={setSearchData}
                 />
             </Route>
-          
+            
             <Route exact path="/home" component={Home} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/mystuff" component={Mystuff} />
             <Route exact path="/operator" component={Operator} />
             <Route exact path="/terms" component={Terms} />
-            <Route exact path="/tour" component={Tour} />
+            <Route path="/tour/:id" component={Tour} />
             <Route exact path="/touradmin" component={Touradmin} />
         </Switch>
+        
         <Footer />
         </div>
       </UserContext.Provider>
     </Router>
-    
+    </>
   );
 }
 

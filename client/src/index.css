@@ -14,6 +14,30 @@ code {
     monospace;
 }
 
+/* TEST */
+.header {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 4rem;
+  height: 200px;
+  align-items: center;
+}
+
+.header::before {    
+  content: "";
+  background-image: url("./assets/poolpano2.jpeg");
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.45;
+}
+
 
 .terms-container {
 text-align:left !important;
@@ -22,13 +46,19 @@ text-align:left !important;
 .tour-abstract {
   border: 1px solid black;
   margin: 1rem;
+  padding-bottom: 1rem;
 }
 
 .abstract-header {
-  background-color: #099e7e;
+  background-image: linear-gradient(to bottom right, #055342, #18ddb2);
+  opacity: 0.75;
   color: white;
-  padding: 1rem;
-
+  padding: .25rem;
+  margin-bottom: 1.5rem;
   font-family: 'Yatra One', cursive;
 
+}
+
+.tour-thumbnail {
+  max-height: 10rem;
 }

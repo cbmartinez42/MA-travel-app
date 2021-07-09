@@ -76,6 +76,10 @@ const ToursSchema = new Schema({
 
     category: {
       type: Array,
+    },
+    
+    image: {
+      type: String
     }
 
 },

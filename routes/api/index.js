@@ -7,7 +7,7 @@ const userRoutes = require('./user')
 //  routes
 router.use("/booking", bookingRoutes);
 router.use("/operator", operatorRoutes);
-router.use("/tours", tourRoutes);
+router.use("/tour", tourRoutes);
 router.use("/user", userRoutes);
 
 module.exports = router;
