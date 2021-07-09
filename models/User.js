@@ -2,11 +2,11 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const uniqueValidator = require('mongoose-unique-validator');
 // const crypto = require('crypto');
-// const jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 // const secret = require('../config').secret;
 // const id = mongoose.Types.ObjectId();
 const bcrypt = require('bcrypt')
-
+const SALT_WORK_FACTOR = 10;
 
 const UserSchema = new Schema({
     //generates a session token for authentication
@@ -40,12 +40,10 @@ const UserSchema = new Schema({
     zip: Number
   },
 
-  phone: {type: String},
-
-  role: {
-    type: String, 
-    default: "USER",
+  role: {type: String, 
+    // lowercase: true, 
     // required: [true, "USER"],
+    default: 'USER',
     enum: {
       values: ['ADMIN', 'USER'],
       message: '{VALUE} is not supported'
@@ -60,7 +58,7 @@ const UserSchema = new Schema({
 
   password: {
     type: String,
-    validate: [({ length }) => length > 7, "Description string should be at least 8 characters."]
+    validate: [({ length }) => length >= 8, "Description string should be at least 8 characters."]
   },
 
   dateCreated: {
@@ -68,13 +66,24 @@ const UserSchema = new Schema({
     default: Date.now
   },
 },
-{timestamps: true});
+{timestamps: true, virtuals: true});
 
   UserSchema.virtual('fullName').get(function() {
     return this.name.first + ' ' + this.name.last;
   });
 
   UserSchema.plugin(uniqueValidator, {message: 'is already taken.'});
+
+  UserSchema.pre('save', async function (next) {
+    if (this.isNew || this.isModified('password')) {
+      this.password = await bcrypt.hash(this.password, SALT_WORK_FACTOR)
+    }
+    next()
+  })
+
+  UserSchema.methods.checkPassword = async (password) => {
+    return await bcrypt.compare(password, this.password)
+  }
 
   //create token to use as session
   UserSchema.methods.generateJWT = function() {
@@ -90,10 +99,10 @@ const UserSchema = new Schema({
     };
 
     //hashes password for security before it gets to the database
-UserSchema.methods.setPassword = function(password){
-  this.salt = crypto.randomBytes(16).toString('hex');
-  this.password = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex');
-};
+// UserSchema.methods.setPassword = function(password){
+//   this.salt = crypto.randomBytes(16).toString('hex');
+//   this.password = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex');
+// };
 
 const User = mongoose.model("User", UserSchema);
 
