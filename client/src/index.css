@@ -22,6 +22,7 @@ text-align:left !important;
 .tour-abstract {
   border: 1px solid black;
   margin: 1rem;
+  padding-bottom: 1rem;
 }
 
 .abstract-header {

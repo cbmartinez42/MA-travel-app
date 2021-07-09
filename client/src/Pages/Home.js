@@ -7,7 +7,7 @@ const Home = () => {
   const { userInfo, setUserInfo } = useContext(UserContext);
     return (
         <div>
-          <Header />
+          {/* <Header /> */}
           <h2>{userInfo}</h2>
           <button onClick={() => setUserInfo("ADMIN")}>Set to Admin</button>
           <button onClick={() => setUserInfo("USER")}>Set to User</button>

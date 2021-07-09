@@ -1,7 +1,7 @@
 import react, {useState, useEffect} from 'react';
 import API from '../utils/API'
 import {Box, Container} from '@material-ui/core/';
-
+import Button from "../components/Button"
 const Results = ({searchData, setSearchData}) => {
 
     useEffect(() => {
@@ -13,13 +13,17 @@ const Results = ({searchData, setSearchData}) => {
         });
       }, [])
 
+    const renderDetail = (data) => {
+        console.log('data >> ', data)
+    }
+
 
     return (
         <>
         <Container maxWidth="md">
             {searchData.map(search => (
                 
-                <Box key={search.tourName} className="tour-abstract">
+                <Box key={search._id} className="tour-abstract">
                     <Box className="abstract-header">
                         <h6>{search.tourName}</h6>
                     </Box>
@@ -27,7 +31,10 @@ const Results = ({searchData, setSearchData}) => {
                 <p>{search.tourLocation}</p>
                 <p>${search.cost}</p>
                 <p>{search.tourOperator}</p>
-
+                <Button 
+                    onClick={() => renderDetail(search._id)}
+                    text='Learn More!'
+                    />
                 </Box>
             )) }
         </Container>

@@ -15,6 +15,10 @@ export default {
     searchAllActivities: function(){
         const infoUrl = '/api/tours';
         return fetch(infoUrl)
+    },
+    findOneActivity: function(id){
+        // const infoUrl = '/api/tours/:id';
+        return axios.get('/api/tours/:id')
 
     }
 };
