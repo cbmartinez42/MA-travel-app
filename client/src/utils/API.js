@@ -1,4 +1,8 @@
 const axios = require('axios')
+const path = require('path')
+require('dotenv').config();
+
+const openWeatherKey=process.env.WEATHER_KEY
 
 export default {
     browseAllActivities: function(){
@@ -25,8 +29,12 @@ export default {
         console.log('signUpUser was called from utils/API.js w/this payload:',newUserInfo);
         return axios.post('/api/user', newUserInfo);
     },
-    login: function(info){
+    login: function(info) {
         return axios.post('/api/user/login', info)
-    }
+    },
+    openWeather: function(cityName){
+        console.log('API call was made to open weather for this city name',cityName);
 
+        return axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${openWeatherKey}`);
+    }
 };
