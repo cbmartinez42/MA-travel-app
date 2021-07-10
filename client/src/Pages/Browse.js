@@ -3,7 +3,8 @@ import Results from "../components/Results";
 import { Container } from "@material-ui/core/";
 import API from "../utils/API";
 import Button from "../components/Button";
-import { InlineWidget } from "react-calendly";
+import Categories from '../components/Categories'
+import Grid from '@material-ui/core/Grid'
 
 const Browse = ({ searchData, setSearchData }) => {
 
@@ -16,6 +17,8 @@ const Browse = ({ searchData, setSearchData }) => {
 
 
   return (
+    <>
+    <Categories />
     <Container maxWidth="lg">
       <div>
         <h4>
@@ -27,6 +30,7 @@ const Browse = ({ searchData, setSearchData }) => {
 
       <Results searchData={searchData} setSearchData={setSearchData} />
     </Container>
+    </>
   );
 };
 
