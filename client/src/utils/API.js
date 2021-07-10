@@ -45,6 +45,9 @@ export default {
         return axios.post('/api/operator', newTourOperatorInfo);
 
     },
+    getTourOperators: function() {
+        return axios.get('/api/operator')
+    },
     openWeather: function(cityName){
         console.log('API call was made to open weather for this city name',cityName);
 
