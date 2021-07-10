@@ -24,5 +24,8 @@ export default {
     signUpUser: function(newUserInfo){
         console.log('signUpUser was called from utils/API.js w/this payload:',newUserInfo);
         return axios.post('/api/user', newUserInfo);
+    },
+    browseAllUsers: function(){
+        return axios.get('/api/user');
     }
 };
