@@ -31,6 +31,14 @@ const OperatorSchema = new Schema({
     index: true,
   },
 
+  phone: {
+    type: String
+  },
+
+  license: {
+    type: String
+  },
+
   tours: [
     //populate all info needed from the User
     {
