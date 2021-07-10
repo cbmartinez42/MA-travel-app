@@ -1,84 +1,407 @@
-import React from 'react'
-import {useRef, useState} from 'react';
-import {Input, Grid, FormGroup,FormControlLabel, FormHelperText, FormControl, InputLabel, FormLabel, Button, TextField} from '@material-ui/core';
+import React from "react";
+import { useState } from "react";
+import { Grid, makeStyles, Button, TextField} from "@material-ui/core";
+import API from '../utils/API';
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& .MuiTextField-root': {
+      margin: theme.spacing(1),
+      width: '35ch',
+    },
+  },
+}));
 
-const Operator = () => {
-    const [fileInput, setUploadedFile] = useState(null);
-    const [imageUploaded, setImageUploaded] = useState(null);
-    const handleInput = async () =>{
-        console.log("uploading file", fileInput)
-        //we need to append the form to a multipart formdata to send it over to multer
-        const form = new FormData();
-        form.append("image_file", fileInput);
-        
-        /**here would be the api call to multer */
-        const response = await fetch("/photos/upload/", {
-            method: "POST",
-            body: form
-        })
-        if(response.ok){
-            console.log("FILE SENT")
-            //set the response image to image uploaded
-            //we're showing the image here
-            const res = await response.json();
-            
-            setImageUploaded(res.imageUrl);
-            
-        }else{
-            console.log("mas problemo")
-        }
+const CreateTour = () => {
+  const classes = useStyles();  
+  const[createTour, setCreateTour] = useState({})
+  
+  const handleChange = (e) => {
+    setCreateTour({...createTour,[e.name]: e.value});
+  }
+  const handleCreateTour = (e) => {
+    console.log('createTour = ',createTour);
+    e.preventDefault();
+
+      API.createNewTour(createTour)
+      .then(result => {
+          console.log('createNewTour Result: TOUR CREATED!!!', result)
+      })
+      .catch(err => {
+          console.log('Oh my... there was an error: ',err.response)
+      })
     }
-    return (
-      <>
-      {/* // <div className={classes.root}>
-      // <Grid container spacing={1}>
-      //   <Grid container item xs={12} spacing={3}>
-      //     <FormRow /> */}
-      {/* //   </Grid> */}
-      {/* // </div> */}
 
+  return (
+    <div>
+      <h3 className="admin-header">Tour Operator Admin Page</h3>
+      <div>
+           {/* Create New Tour Container */}
+           <div className="container">
+           <h2 className="fredoka">Create A New Tour</h2>
+                        <form className={classes.root} noValidate autoComplete="off" >
+                        <Grid container direction="column" alignItems="center" > 
+                            <div className="row">
+                                <div className="input-field col s12">
+                                    <Grid container spacing={1} alignItems="flex-end">
+                                        <Grid item>
+                                            <i className="material-icons prefix">person_add</i>
+                                        </Grid>
+                                        <Grid item>
+                                            <TextField
+                                                required
+                                                id="new-tour-name"
+                                                label="Tour Name"
+                                                name="tourName"
+                                                variant="outlined"
+                                                onChange={(e) => handleChange(e.target)}
+                                                />
+                                        </Grid>
+                                    </Grid>
+                                </div>
+                                {/* <div className="input-field col s12">
+                                    <Grid container spacing={1} alignItems="flex-end">
+                                        <Grid item>
+                                            <i className="material-icons prefix">person_add</i>
+                                        </Grid>
+                                        <Grid item>
+                                            <TextField
+                                                required
+                                                id="tour-operator-name"
+                                                label="Tour Operator"
+                                                name="tourOperator"
+                                                variant="outlined"
+                                                onChange={(e) => handleChange(e.target)}
+                                                />
+                                        </Grid>
+                                    </Grid>
+                                </div> */}
+                                <div className="input-field col s12">
+                                    <Grid container spacing={1} alignItems="flex-end">
+                                        <Grid item>
+                                            <i className="material-icons prefix">email</i>
+                                        </Grid>
+                                        <Grid item>
+                                            <TextField
+                                                required
+                                                id="departure-location-street"
+                                                label="Departure Location Street"
+                                                name="departureLocation.street"
+                                                variant="outlined"
+                                                onChange={(e) => handleChange(e.target)}
+                                                />
+                                        </Grid>
+                                    </Grid>
+                                </div>
+                                <div className="input-field col s12">
+                                    <Grid container spacing={1} alignItems="flex-end">
+                                        <Grid item>
+                                            <i className="material-icons prefix">phone</i>
+                                        </Grid>
+                                        <Grid item>
+                                            <TextField
+                                                required
+                                                id="departure-location-street2"
+                                                label="Departure Location Street2"
+                                                name="departureLocation.street2"
+                                                variant="outlined"
+                                                onChange={(e) => handleChange(e.target)}
+                                                />
+                                        </Grid>
+                                    </Grid>
+                                </div>
+                                <div className="input-field col s12">
+                                    <Grid container spacing={1} alignItems="flex-end">
+                                        <Grid item>
+                                            <i className="material-icons prefix">location_city</i>
+                                        </Grid>
+                                        <Grid item>
+                                            <TextField
+                                                required
+                                                id="departure-location-city"
+                                                label="Departure Location City"
+                                                name="departureLocation.city"
+                                                variant="outlined"
+                                                onChange={(e) => handleChange(e.target)}
+                                                />
+                                        </Grid>
+                                    </Grid>
+                                </div>
+                                <div className="input-field col s12">
+                                    <Grid container spacing={1} alignItems="flex-end">
+                                        <Grid item>
+                                            <i className="material-icons prefix">location_city</i>
+                                        </Grid>
+                                        <Grid item>
+                                            <TextField
+                                                id="departure-location-state"
+                                                label="Departure Location State"
+                                                name="departureLocation.state"
+                                                variant="outlined"
+                                                onChange={(e) => handleChange(e.target)}
+                                                />
+                                        </Grid>
+                                    </Grid>
+                                </div>
+                                <div className="input-field col s12">
+                                    <Grid container spacing={1} alignItems="flex-end">
+                                        <Grid item>
+                                            <i className="material-icons prefix">location_city</i>
+                                        </Grid>
+                                        <Grid item>
+                                            <TextField
+                                                required
+                                                id="departure-location-zip"
+                                                label="Departure Location Zip Code"
+                                                name="departureLocation.zip"
+                                                variant="outlined"
+                                                onChange={(e) => handleChange(e.target)}
+                                                />
+                                        </Grid>
+                                    </Grid>
+                                </div>
+                                <div className="input-field col s12">
+                                    <Grid container spacing={1} alignItems="flex-end">
+                                        <Grid item>
+                                            <i className="material-icons prefix">location_city</i>
+                                        </Grid>
+                                        <Grid item>
+                                            <TextField
+                                                required
+                                                id="new-tour-email"
+                                                label="Email"
+                                                name="email"
+                                                variant="outlined"
+                                                onChange={(e) => handleChange(e.target)}
+                                                />
+                                        </Grid>
+                                    </Grid>
+                                </div>
+                                <div className="input-field col s12">
+                                    <Grid container spacing={1} alignItems="flex-end">
+                                        <Grid item>
+                                            <i className="material-icons prefix">location_city</i>
+                                        </Grid>
+                                        <Grid item>
+                                            <TextField
+                                                required
+                                                id="new-tour-description"
+                                                label="Tour Description"
+                                                name="description"
+                                                variant="outlined"
+                                                onChange={(e) => handleChange(e.target)}
+                                                />
+                                        </Grid>
+                                    </Grid>
+                                </div>
+                                <div className="input-field col s12">
+                                    <Grid container spacing={1} alignItems="flex-end">
+                                        <Grid item>
+                                            <i className="material-icons prefix">security</i>
+                                        </Grid>
+                                        <Grid item>
+                                            <TextField
+                                                required
+                                                id="tour-location"
+                                                label="Location of Tour"
+                                                name="tourLocation"
+                                                variant="outlined"
+                                                onChange={(e) => handleChange(e.target)}
+                                                />
+                                        </Grid>
+                                    </Grid>
+                                </div>
+                                <div className="input-field col s12">
+                                    <Grid container spacing={1} alignItems="flex-end">
+                                        <Grid item>
+                                            <i className="material-icons prefix">location_city</i>
+                                        </Grid>
+                                        <Grid item>
+                                            <TextField
+                                                required
+                                                id="cancellation-policy"
+                                                label="Cancellation Policy"
+                                                name="cancellationPolicy"
+                                                variant="outlined"
+                                                onChange={(e) => handleChange(e.target)}
+                                                />
+                                        </Grid>
+                                    </Grid>
+                                </div>
+                                <div className="input-field col s12">
+                                    <Grid container spacing={1} alignItems="flex-end">
+                                        <Grid item>
+                                            <i className="material-icons prefix">location_city</i>
+                                        </Grid>
+                                        <Grid item>
+                                            <TextField
+                                                required
+                                                id="start-times"
+                                                label="Start Times"
+                                                name="startTimes"
+                                                variant="outlined"
+                                                onChange={(e) => handleChange(e.target)}
+                                                />
+                                        </Grid>
+                                    </Grid>
+                                </div>
+                                <div className="input-field col s12">
+                                    <Grid container spacing={1} alignItems="flex-end">
+                                        <Grid item>
+                                            <i className="material-icons prefix">location_city</i>
+                                        </Grid>
+                                        <Grid item>
+                                            <TextField
+                                                required
+                                                id="duration"
+                                                label="Tour Duration"
+                                                name="duration"
+                                                variant="outlined"
+                                                onChange={(e) => handleChange(e.target)}
+                                                />
+                                        </Grid>
+                                    </Grid>
+                                </div>
+                                <div className="input-field col s12">
+                                    <Grid container spacing={1} alignItems="flex-end">
+                                        <Grid item>
+                                            <i className="material-icons prefix">location_city</i>
+                                        </Grid>
+                                        <Grid item>
+                                            <TextField
+                                                required
+                                                id="tour-cost"
+                                                label="Cost"
+                                                name="cost"
+                                                variant="outlined"
+                                                onChange={(e) => handleChange(e.target)}
+                                                />
+                                        </Grid>
+                                    </Grid>
+                                </div>
+                                <div className="input-field col s12">
+                                    <Grid container spacing={1} alignItems="flex-end">
+                                        <Grid item>
+                                            <i className="material-icons prefix">location_city</i>
+                                        </Grid>
+                                        <Grid item>
+                                            <TextField
+                                                required
+                                                id="additional-fees"
+                                                label="Additional Fees"
+                                                name="additionalFees"
+                                                variant="outlined"
+                                                onChange={(e) => handleChange(e.target)}
+                                                />
+                                        </Grid>
+                                    </Grid>
+                                </div>
+                                <div className="input-field col s12">
+                                    <Grid container spacing={1} alignItems="flex-end">
+                                        <Grid item>
+                                            <i className="material-icons prefix">location_city</i>
+                                        </Grid>
+                                        <Grid item>
+                                            <TextField
+                                                required
+                                                id="max-capacity"
+                                                label="Max Capacity"
+                                                name="maxCapacity"
+                                                variant="outlined"
+                                                onChange={(e) => handleChange(e.target)}
+                                                />
+                                        </Grid>
+                                    </Grid>
+                                </div>
+                                <div className="input-field col s12">
+                                    <Grid container spacing={1} alignItems="flex-end">
+                                        <Grid item>
+                                            <i className="material-icons prefix">location_city</i>
+                                        </Grid>
+                                        <Grid item>
+                                            <TextField
+                                                required
+                                                id="min-capacity"
+                                                label="Minimum Capacity"
+                                                name="minCapacity"
+                                                variant="outlined"
+                                                onChange={(e) => handleChange(e.target)}
+                                                />
+                                        </Grid>
+                                    </Grid>
+                                </div>
+                                <div className="input-field col s12">
+                                    <Grid container spacing={1} alignItems="flex-end">
+                                        <Grid item>
+                                            <i className="material-icons prefix">location_city</i>
+                                        </Grid>
+                                        <Grid item>
+                                            <TextField
+                                                required
+                                                id="keywords"
+                                                label="Keywords"
+                                                name="keywords"
+                                                variant="outlined"
+                                                onChange={(e) => handleChange(e.target)}
+                                                />
+                                        </Grid>
+                                    </Grid>
+                                </div>
+                                <div className="input-field col s12">
+                                    <Grid container spacing={1} alignItems="flex-end">
+                                        <Grid item>
+                                            <i className="material-icons prefix">location_city</i>
+                                        </Grid>
+                                        <Grid item>
+                                            <TextField
+                                                required
+                                                id="category"
+                                                label="Category"
+                                                name="category"
+                                                variant="outlined"
+                                                onChange={(e) => handleChange(e.target)}
+                                                />
+                                        </Grid>
+                                    </Grid>
+                                </div>
+                                <div className="input-field col s12">
+                                    <Grid container spacing={1} alignItems="flex-end">
+                                        <Grid item>
+                                            <i className="material-icons prefix">location_city</i>
+                                        </Grid>
+                                        <Grid item>
+                                            <TextField
+                                                required
+                                                id="image"
+                                                label="Image"
+                                                name="image"
+                                                variant="outlined"
+                                                onChange={(e) => handleChange(e.target)}
+                                                />
+                                        </Grid>
+                                    </Grid>
+                                </div>
+                              
+                              
 
-      {/* // <div> */}
-        <h3 className="admin-header">Tour Operator Admin Page</h3>
+                                <Button
+                                    variant="contained"
+                                    style={{ margin: "2%" }}
+                                    color="primary"
+                                    id="signup-btn"
+                                    type="submit"
+                                    name="action"
+                                    onClick={handleCreateTour}
+                                    >
+                                    SUBMIT
+                                </Button>
+                            </div>
+                            </Grid>
+                        </form>
+                    </div>
+                </div> 
+            </div>
+    )
+};
 
-        {/* <Grid container direction="column" justify="space-evenly" alignItems="flex-start"> */}
-        
-        <FormControl className="tour-input-form" encType="multipart/form-data">
-
-          {/* <InputLabel htmlFor="company-name">Tour Company Name</InputLabel> */}
-          <TextField id="company-name" type='text' aria-describedby="Tour Company Name" label="Tour Company Name"></TextField>
-
-          {/* <InputLabel htmlFor="email">Email address</InputLabel> */}
-          <TextField id="email" type="email" aria-describedby="Email address" label="Email Address"></TextField>
-          <FormHelperText id="email-helper">We'll never share your email.</FormHelperText>
-
-          {/* <InputLabel htmlFor="activity-name">Activity Name</InputLabel> */}
-          <TextField id="activity-name" type='text' aria-describedby="Activity Name" label="Activity Name"></TextField>
-
-          {/* <InputLabel htmlFor="file-input">
-                Select a file to upload here
-                </InputLabel> */}
-
-          <Input
-            type="file" id="file" name="file" inputProps={{ multiple: true }}
-            onChange={(e) => setUploadedFile(e.target.files)}
-          ></Input>
-          <Button
-            variant="contained"
-            onClick={() => {
-              handleInput();
-            }}
-          >
-            Upload
-          </Button>
-        </FormControl>
-        {/* </Grid> */}
-        {imageUploaded ? 
-        <img className="AWSimage" alt="Uploaded Pic" src={imageUploaded}></img> : <></> }
-      {/* // </div> */}
-      </>
-    );
-}
-
-export default Operator
+export default CreateTour;
