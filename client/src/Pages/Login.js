@@ -4,6 +4,7 @@ import Signup from "../components/Signup";
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
+import API from '../utils/API'
 
 const Login = () => {
 
@@ -12,8 +13,17 @@ const Login = () => {
     const[signin, setSignin] = useState({})
 
     const handleChange = (e) => {
-        console.log(e);
         setSignin({...signin,[e.name]: e.value});
+    }
+
+    const handleLogin = (e) => {
+        e.preventDefault()
+        API.login(signin)
+        .then((response) => {
+            console.log('response >>', response)
+            // setSearchData(response.data || [])
+          })
+        .catch(error => console.log(error))
     }
 
     return (
@@ -66,6 +76,7 @@ const Login = () => {
                                 color="primary"
                                 id="login-btn"
                                 name="action"
+                                onClick={handleLogin}
                                 // onClick={(e)=> {
                                 // e.preventDefault();
                                 // setShowSignUp(!showSignUp);
