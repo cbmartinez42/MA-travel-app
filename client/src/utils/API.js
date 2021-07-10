@@ -25,23 +25,17 @@ export default {
         console.log('signUpUser was called from utils/API.js w/this payload:',newUserInfo);
         return axios.post('/api/user', newUserInfo);
     },
-<<<<<<< HEAD
-    login: function(info){
-=======
    login: function(info){
->>>>>>> b6afa9662e6063d2912034c9752f9b9b61656474
         return axios.post('/api/user/login', info)
     },
     createNewTour: function(newTourInfo){
         console.log('createNewTour was called from utils/API.js w/this payload:',newTourInfo);
         return axios.post('/api/tour', newTourInfo);
-<<<<<<< HEAD
+
     },
     createNewTourOperator: function(newTourOperatorInfo){
         console.log('createNewTour was called from utils/API.js w/this payload:',newTourOperatorInfo);
         return axios.post('/api/operator', newTourOperatorInfo);
     }
 };
-=======
-}
->>>>>>> b6afa9662e6063d2912034c9752f9b9b61656474
+
