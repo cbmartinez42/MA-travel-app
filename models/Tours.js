@@ -61,7 +61,8 @@ const ToursSchema = new Schema({
 
   cost: {
     type: Number,
-    required: "A price is Required",
+    // TODO: check all validations
+    // required: "A price is Required",
     },
   additionalFees: {
     type: Number
@@ -77,7 +78,8 @@ const ToursSchema = new Schema({
     category: {
       type: Array,
     },
-    
+  
+    // TODO: correctly setup for an image file
     image: {
       type: String
     }
