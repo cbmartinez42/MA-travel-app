@@ -28,8 +28,13 @@ const CreateTour = () => {
   const handleChange = (e) => {
     setCreateTour({...createTour,[e.name]: e.value});
   }
+
+  const handleOperatorChange = (e) => {
+    // console.log(e.target.value)
+    setCreateTour({...createTour, tourOperator: e.target.value})
+  }
+
   const handleCreateTour = (e) => {
-    console.log('createTour = ',createTour);
     e.preventDefault();
 
       API.createNewTour(createTour)
@@ -71,15 +76,16 @@ const CreateTour = () => {
                                 <Select
                                     // labelId="demo-simple-select-label"
                                     // id="demo-simple-select"
-                                    value={{tourOperators}}
-                                    // onChange={handleChange}
+                                    value={createTour.tourOperator || ''}
+                                    name='operator'
+                                    onChange={handleOperatorChange}
                                     // displayEmpty
-                                    className='Operator Dropdown'
+                                    className='operator-dropdown'
                                     inputProps={{ 'aria-label': 'Without label' }}
                                 >
-                                {tourOperators.map(operator => (
-                                    <MenuItem value={operator._id}>{operator.name}</MenuItem>
-                                ))}
+                                {tourOperators.map(operator => {
+                                    return <MenuItem key={operator._id} value={operator._id}>{operator.name}</MenuItem>
+                                })}
                                 
                                 </Select>
                                 {/* <div className="input-field col s12">

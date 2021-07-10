@@ -9,12 +9,10 @@ const ToursSchema = new Schema({
   },
 
     //how to use a reference ID in mongoose
-    tourOperator: [
-        {
-          type: Schema.Types.ObjectId,
-          ref: "TourOperator"
-        }
-      ],
+    tourOperator: {
+      type: Schema.Types.ObjectId,
+      ref: "TourOperator"
+    },
 
       departureLocation: {
         street: String,
