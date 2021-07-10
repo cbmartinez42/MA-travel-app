@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Menu from "./components/Menu"
-
+import Menu2 from "./components/Menu2"
 import About from "./pages/About";
 import Admin from "./pages/Admin";
 import Book from "./pages/Book";
@@ -26,11 +25,11 @@ function App() {
 
   return (
     <>
+    <Menu2 />
     <Header />
     <Router>
       <UserContext.Provider value={{userInfo, setUserInfo}}>
         <div className="App">
-        <Menu />
         <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/about" component={About} />
