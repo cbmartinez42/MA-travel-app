@@ -1,17 +1,17 @@
 import React, {useState} from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Menu from "./components/Menu"
-import About from "./pages/About";
-import Admin from "./pages/Admin";
-import Book from "./pages/Book";
-import Browse from "./pages/Browse";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Mystuff from "./pages/Mystuff";
-import Operator from "./pages/Operator";
-import Terms from "./pages/Terms";
-import Tour from "./pages/Tour";
-import Touradmin from "./pages/Touradmin";
+import About from "./Pages/About";
+import Admin from "./Pages/Admin";
+import Book from "./Pages/Book";
+import Browse from "./Pages/Browse";
+import Home from "./Pages/Home";
+import Login from "./Pages/Login";
+import Mystuff from "./Pages/Mystuff";
+import Operator from "./Pages/Operator";
+import Terms from "./Pages/Terms";
+import Tour from "./Pages/Tour";
+import Touradmin from "./Pages/Touradmin";
 import { UserContext } from "./utils/UserContext";
 import './App.css';
 import Footer from './components/Footer';
