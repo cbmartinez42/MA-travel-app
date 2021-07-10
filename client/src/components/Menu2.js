@@ -20,6 +20,7 @@ import DynamicFeedIcon from '@material-ui/icons/DynamicFeed';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import HowToRegIcon from '@material-ui/icons/HowToReg';
 import MenuIcon from '@material-ui/icons/Menu';
+import { Redirect, Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
   list: {
@@ -39,6 +40,9 @@ export default function TemporaryDrawer() {
         bottom: false,
         right: false,
     });
+    useEffect(() => {
+        console.log('Value: ', userInfo)
+    }, [userInfo])
 
 //ADD STUFF
 const getIcon = (page) => {
@@ -86,6 +90,7 @@ const history = useHistory();
 
   const setPage = (page) => {
       console.log("I'm in setPage",page);
+      console.log('userinfo: ',userInfo)
     //   history.push("/about");
       history.push(`/${page}`);
       return
