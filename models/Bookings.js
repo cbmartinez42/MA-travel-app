@@ -2,7 +2,8 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const BookingsSchema = new Schema({
-    travellerName: {
+  
+  travellerName: {
     type: String,
     trim: true,
     required: "Please try again, a string is Required"
@@ -24,7 +25,6 @@ const BookingsSchema = new Schema({
       state: {
           type: String,
           uppercase: true,
-          required: true,
           // enum: statesArray
       },
       zip: Number
