@@ -16,10 +16,11 @@ const Tour = () => {
         });
       }, [])
 
+
     return (
         <div>
             <h1>This page will show details of an individual tour.</h1>
-            <Button 
+            <Button
               text="Book this!"
             />
             <p>{tourData.tourName}</p>

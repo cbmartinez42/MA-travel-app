@@ -1,9 +1,6 @@
-import React from 'react';
-import { useState } from 'react';
-import TextField from '@material-ui/core/TextField';
-import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
+import React from "react";
+import { useState } from "react";
+import { Grid, makeStyles, Button, TextField} from "@material-ui/core";
 import API from '../utils/API';
 
 const useStyles = makeStyles((theme) => ({
@@ -15,34 +12,35 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const CreateTourOperator = () => {
+  const classes = useStyles();  
+  const[CreateTourOperator, setCreateTourOperator] = useState({})
+  
+  const handleChange = (e) => {
+    setCreateTourOperator({...CreateTourOperator,[e.name]: e.value});
+  }
+  const handleCreateTourOperator = (e) => {
+    console.log('CreateTourOperator = ',CreateTourOperator);
+    // console logged...made it this far
+    e.preventDefault();
 
-const Signup = () => {
-    const classes = useStyles();
-    // const[firstName, setFirstName] = useState('')
-
-    const[signup, setSignup] = useState({})
-
-    const handleChange = (e) => {
-        setSignup({...signup,[e.name]: e.value});
+      API.createNewTourOperator(CreateTourOperator)
+      .then(result => {
+          console.log('createNewTourOperator Result: Operator added!!!', result)
+      })
+      .catch(err => {
+        // error thrown here when calling creatNewTourOperator post request
+        // error 422 (Unprocessable Entity)
+        // it is validating against the tours model
+          console.log('Oh my... there was an error: ',err.response)
+      })
     }
 
-    const handleSignup = (e) => {
-        e.preventDefault();
-        // console.log('signup = ',signup);
-        API.signUpUser(signup)
-        .then(result => {
-            console.log('SignUpUser Result: USER CREATED!!!', result)
-        })
-        .catch(err => {
-            console.log('Oh my... there was an error: ',err.response)
-        })
-    }
-
-    return (
-        <div>
-           {/* Sign Up Container */}
+  return (
+      <div>
+           {/* Create New Tour Container */}
            <div className="container">
-           <h2 className="fredoka">Sign Up for an Account</h2>
+           <h2 className="fredoka">New Tour Operator Form</h2>
                         <form className={classes.root} noValidate autoComplete="off" >
                         <Grid container direction="column" alignItems="center" > 
                             <div className="row">
@@ -54,26 +52,9 @@ const Signup = () => {
                                         <Grid item>
                                             <TextField
                                                 required
-                                                id="signup-first-name"
-                                                label="First Name"
-                                                name="name.first"
-                                                variant="outlined"
-                                                onChange={(e) => handleChange(e.target)}
-                                                />
-                                        </Grid>
-                                    </Grid>
-                                </div>
-                                <div className="input-field col s12">
-                                    <Grid container spacing={1} alignItems="flex-end">
-                                        <Grid item>
-                                            <i className="material-icons prefix">person_add</i>
-                                        </Grid>
-                                        <Grid item>
-                                            <TextField
-                                                required
-                                                id="signup-last-name"
-                                                label="Last Name"
-                                                name="name.last"
+                                                id="tour-operator-name"
+                                                label="Tour Operator Name"
+                                                name="name"
                                                 variant="outlined"
                                                 onChange={(e) => handleChange(e.target)}
                                                 />
@@ -88,9 +69,9 @@ const Signup = () => {
                                         <Grid item>
                                             <TextField
                                                 required
-                                                id="signup-email"
-                                                label="Email"
-                                                name="email"
+                                                id="address-street"
+                                                label="Street Address"
+                                                name="address.street"
                                                 variant="outlined"
                                                 onChange={(e) => handleChange(e.target)}
                                                 />
@@ -105,41 +86,8 @@ const Signup = () => {
                                         <Grid item>
                                             <TextField
                                                 required
-                                                id="signup-phone"
-                                                label="Phone Number"
-                                                name="phone"
-                                                variant="outlined"
-                                                onChange={(e) => handleChange(e.target)}
-                                                />
-                                        </Grid>
-                                    </Grid>
-                                </div>
-                                <div className="input-field col s12">
-                                    <Grid container spacing={1} alignItems="flex-end">
-                                        <Grid item>
-                                            <i className="material-icons prefix">location_city</i>
-                                        </Grid>
-                                        <Grid item>
-                                            <TextField
-                                                required
-                                                id="signup-address1"
-                                                label="Address 1"
-                                                name="address.street"
-                                                variant="outlined"
-                                                onChange={(e) => handleChange(e.target)}
-                                                />
-                                        </Grid>
-                                    </Grid>
-                                </div>
-                                <div className="input-field col s12">
-                                    <Grid container spacing={1} alignItems="flex-end">
-                                        <Grid item>
-                                            <i className="material-icons prefix">location_city</i>
-                                        </Grid>
-                                        <Grid item>
-                                            <TextField
-                                                id="signup-address2"
-                                                label="Address 2"
+                                                id="address-street2"
+                                                label="Street Address 2"
                                                 name="address.street2"
                                                 variant="outlined"
                                                 onChange={(e) => handleChange(e.target)}
@@ -155,7 +103,7 @@ const Signup = () => {
                                         <Grid item>
                                             <TextField
                                                 required
-                                                id="signup-city"
+                                                id="city"
                                                 label="City"
                                                 name="address.city"
                                                 variant="outlined"
@@ -171,8 +119,7 @@ const Signup = () => {
                                         </Grid>
                                         <Grid item>
                                             <TextField
-                                                required
-                                                id="signup-state"
+                                                id="state"
                                                 label="State"
                                                 name="address.state"
                                                 variant="outlined"
@@ -189,8 +136,8 @@ const Signup = () => {
                                         <Grid item>
                                             <TextField
                                                 required
-                                                id="signup-zip"
-                                                label="Zip"
+                                                id="zip"
+                                                label="Zip Code"
                                                 name="address.zip"
                                                 variant="outlined"
                                                 onChange={(e) => handleChange(e.target)}
@@ -201,21 +148,112 @@ const Signup = () => {
                                 <div className="input-field col s12">
                                     <Grid container spacing={1} alignItems="flex-end">
                                         <Grid item>
-                                            <i className="material-icons prefix">security</i>
+                                            <i className="material-icons prefix">location_city</i>
                                         </Grid>
                                         <Grid item>
                                             <TextField
                                                 required
-                                                id="signup-security"
-                                                label="Password"
-                                                name="password"
+                                                id="new-tour-email"
+                                                label="Email"
+                                                name="email"
                                                 variant="outlined"
-                                                type="password"
                                                 onChange={(e) => handleChange(e.target)}
                                                 />
                                         </Grid>
                                     </Grid>
                                 </div>
+                                <div className="input-field col s12">
+                                    <Grid container spacing={1} alignItems="flex-end">
+                                        <Grid item>
+                                            <i className="material-icons prefix">location_city</i>
+                                        </Grid>
+                                        <Grid item>
+                                            <TextField
+                                                required
+                                                id="new-tour-phone"
+                                                label="Phone"
+                                                name="phone"
+                                                variant="outlined"
+                                                onChange={(e) => handleChange(e.target)}
+                                                />
+                                        </Grid>
+                                    </Grid>
+                                </div>
+                                <div className="input-field col s12">
+                                    <Grid container spacing={1} alignItems="flex-end">
+                                        <Grid item>
+                                            <i className="material-icons prefix">location_city</i>
+                                        </Grid>
+                                        <Grid item>
+                                            <TextField
+                                                required
+                                                id="new-tour-license"
+                                                label="Tour Operator License"
+                                                name="license"
+                                                variant="outlined"
+                                                onChange={(e) => handleChange(e.target)}
+                                                />
+                                        </Grid>
+                                    </Grid>
+                                </div>
+
+                                {/* TODO: Correctly link the objectID here */}                                
+                                {/* <div className="input-field col s12">
+                                    <Grid container spacing={1} alignItems="flex-end">
+                                        <Grid item>
+                                            <i className="material-icons prefix">location_city</i>
+                                        </Grid>
+                                        <Grid item>
+                                            <TextField
+                                                required
+                                                id="tours-offered"
+                                                label="Tours Offered"
+                                                name="tours"
+                                                variant="outlined"
+                                                onChange={(e) => handleChange(e.target)}
+                                                />
+                                        </Grid>
+                                    </Grid>
+                                </div> */}
+                                <div className="input-field col s12">
+                                    <Grid container spacing={1} alignItems="flex-end">
+                                        <Grid item>
+                                            <i className="material-icons prefix">location_city</i>
+                                        </Grid>
+                                        <Grid item>
+                                            <TextField
+                                                required
+                                                id="logo"
+                                                label="Upload Logo"
+                                                name="logo"
+                                                variant="outlined"
+                                                // TODO: link with image upload here
+                                                onChange={(e) => handleChange(e.target)}
+                                                />
+                                        </Grid>
+                                    </Grid>
+                                </div>
+                                <div className="input-field col s12">
+                                    <Grid container spacing={1} alignItems="flex-end">
+                                        <Grid item>
+                                            <i className="material-icons prefix">location_city</i>
+                                        </Grid>
+                                        <Grid item>
+                                            <TextField
+                                                required
+                                                id="profile-picture"
+                                                label="Upload Profile Picture"
+                                                name="profilePicture"
+                                                variant="outlined"
+                                                // TODO: link with image upload here 
+                                                onChange={(e) => handleChange(e.target)}
+                                                />
+                                        </Grid>
+                                    </Grid>
+                                </div>
+                              
+                              
+
                                 <Button
                                     variant="contained"
                                     style={{ margin: "2%" }}
@@ -223,7 +261,7 @@ const Signup = () => {
                                     id="signup-btn"
                                     type="submit"
                                     name="action"
-                                    onClick={handleSignup}
+                                    onClick={handleCreateTourOperator}
                                     >
                                     SUBMIT
                                 </Button>
@@ -233,6 +271,6 @@ const Signup = () => {
                     </div>
                 </div> 
     )
-}
+};
 
-export default Signup
+export default CreateTourOperator;

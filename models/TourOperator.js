@@ -46,6 +46,17 @@ const OperatorSchema = new Schema({
       ref: "Tours"
     }
   ],
+
+  logo: {
+    // TODO: check correct setup for an image file
+    type: String
+  },
+
+  profilePicture: {
+        // TODO: check correct setup for an image file
+    type: String
+  }
+  
 });
 
 const Operator = mongoose.model("Operator", OperatorSchema);
