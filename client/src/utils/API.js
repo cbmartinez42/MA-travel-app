@@ -25,8 +25,15 @@ export default {
         console.log('signUpUser was called from utils/API.js w/this payload:',newUserInfo);
         return axios.post('/api/user', newUserInfo);
     },
+    login: function(info){
+        return axios.post('/api/user/login', info)
+    },
     createNewTour: function(newTourInfo){
         console.log('createNewTour was called from utils/API.js w/this payload:',newTourInfo);
         return axios.post('/api/tour', newTourInfo);
+    },
+    createNewTourOperator: function(newTourOperatorInfo){
+        console.log('createNewTour was called from utils/API.js w/this payload:',newTourOperatorInfo);
+        return axios.post('/api/operator', newTourOperatorInfo);
     }
 };

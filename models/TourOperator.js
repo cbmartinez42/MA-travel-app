@@ -6,7 +6,7 @@ const OperatorSchema = new Schema({
     type: String,
     lowercase: true,
     required: [true, "can't be blank"],
-    match: [/^[a-zA-Z0-9]$/, "is invalid"],
+    // match: [/^[a-zA-Z0-9]$/, "is invalid"],
     index: true,
   },
 
@@ -27,11 +27,9 @@ const OperatorSchema = new Schema({
     type: String,
     lowercase: true,
     required: [true, "can't be blank"],
-    match: [/\S@\S\.\S/, "is invalid"],
+    // match: [/\S@\S\.\S/, "is invalid"],
     index: true,
   },
-
-  maxNumber: Number,
 
   tours: [
     //populate all info needed from the User
@@ -40,6 +38,17 @@ const OperatorSchema = new Schema({
       ref: "Tours"
     }
   ],
+
+  logo: {
+    // TODO: check correct setup for an image file
+    type: String
+  },
+
+  profilePicture: {
+        // TODO: check correct setup for an image file
+    type: String
+  }
+  
 });
 
 const Operator = mongoose.model("Operator", OperatorSchema);
