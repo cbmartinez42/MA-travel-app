@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Menu from "./components/Menu"
+
 import About from "./pages/About";
 import Admin from "./pages/Admin";
 import Book from "./pages/Book";
@@ -12,6 +13,7 @@ import Operatoradmin from "./pages/Operatoradmin";
 import Terms from "./pages/Terms";
 import Tour from "./pages/Tour";
 import Touradmin from "./pages/Touradmin";
+
 import { UserContext } from "./utils/UserContext";
 import './App.css';
 import Footer from './components/Footer';
