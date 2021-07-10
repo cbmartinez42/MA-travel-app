@@ -27,7 +27,7 @@ const Signup = () => {
     }
 
     const handleSignup = (e) => {
-        // e.preventDefault();
+        e.preventDefault();
         // console.log('signup = ',signup);
         API.signUpUser(signup)
         .then(result => {
@@ -210,6 +210,7 @@ const Signup = () => {
                                                 label="Password"
                                                 name="password"
                                                 variant="outlined"
+                                                type="password"
                                                 onChange={(e) => handleChange(e.target)}
                                                 />
                                         </Grid>
