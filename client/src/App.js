@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Menu from "./components/Menu"
+
 import About from "./pages/About";
 import Admin from "./pages/Admin";
 import Book from "./pages/Book";
@@ -8,10 +9,11 @@ import Browse from "./pages/Browse";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Mystuff from "./pages/Mystuff";
-import Operator from "./pages/Operator";
+import Operatoradmin from "./pages/Operatoradmin";
 import Terms from "./pages/Terms";
 import Tour from "./pages/Tour";
 import Touradmin from "./pages/Touradmin";
+
 import { UserContext } from "./utils/UserContext";
 import './App.css';
 import Footer from './components/Footer';
@@ -44,7 +46,7 @@ function App() {
             <Route exact path="/home" component={Home} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/mystuff" component={Mystuff} />
-            <Route exact path="/operator" component={Operator} />
+            <Route exact path="/Operatoradmin" component={Operatoradmin} />
             <Route exact path="/terms" component={Terms} />
             <Route path="/tour/:id" component={Tour} />
             <Route exact path="/touradmin" component={Touradmin} />
