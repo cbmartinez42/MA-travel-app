@@ -43,11 +43,17 @@ export default {
         return axios.post('/api/operator', newTourOperatorInfo);
 
     },
+    //TODO: need to add this external API to our back end before the Browse->Results data is pushed back to the front end
+    //maybe implement a loading feature on browse in case it takes more than one or two seconds to finish all the calls
+    //we may also need to handle what happens if we reach maximum number of calls, though i don't remember the maximum calls for the free version of OpenWeatherAPI
     openWeather: function(cityName){
         console.log('API call was made to open weather for this city name',cityName);
-
         return axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${openWeatherKey}`);
+    },
 
+    createNewBooking: function(newBookingInfo){
+        console.log('a new booking was creating with this info ->',newBookingInfo)
+        return axios.get('/api/booking')
     }
 };
 
