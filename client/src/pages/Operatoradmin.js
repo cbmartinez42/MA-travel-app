@@ -162,6 +162,41 @@ const CreateTourOperator = () => {
                                         </Grid>
                                     </Grid>
                                 </div>
+                                <div className="input-field col s12">
+                                    <Grid container spacing={1} alignItems="flex-end">
+                                        <Grid item>
+                                            <i className="material-icons prefix">location_city</i>
+                                        </Grid>
+                                        <Grid item>
+                                            <TextField
+                                                required
+                                                id="new-tour-phone"
+                                                label="Phone"
+                                                name="phone"
+                                                variant="outlined"
+                                                onChange={(e) => handleChange(e.target)}
+                                                />
+                                        </Grid>
+                                    </Grid>
+                                </div>
+                                <div className="input-field col s12">
+                                    <Grid container spacing={1} alignItems="flex-end">
+                                        <Grid item>
+                                            <i className="material-icons prefix">location_city</i>
+                                        </Grid>
+                                        <Grid item>
+                                            <TextField
+                                                required
+                                                id="new-tour-license"
+                                                label="Tour Operator License"
+                                                name="license"
+                                                variant="outlined"
+                                                onChange={(e) => handleChange(e.target)}
+                                                />
+                                        </Grid>
+                                    </Grid>
+                                </div>
+
                                 {/* TODO: Correctly link the objectID here */}                                
                                 {/* <div className="input-field col s12">
                                     <Grid container spacing={1} alignItems="flex-end">
