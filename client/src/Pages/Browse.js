@@ -18,18 +18,27 @@ const Browse = ({ searchData, setSearchData }) => {
 
   return (
     <>
-    <Categories />
-    <Container maxWidth="lg">
-      <div>
-        <h4>
-          This page will show search results from home screen as well as allow
-          user to search by category of enter new search and show results.
-        </h4>
-        <Button onClick={() => openWeatherTest("Topeka")} text="Test OpenWeather in your Console!" />
-      </div>
+    <Grid container spacing={1}>
+      <Grid item xs>
+        <Categories />
+      </Grid>
+      <Grid item lg>
+        {/* <Container maxWidth="lg"> */}
+          <div>
+            <h4>
+              This page will show search results from home screen as well as allow
+              user to search by category of enter new search and show results.
+            </h4>
+            <Button onClick={() => openWeatherTest("Topeka")} text="Test OpenWeather in your Console!" />
+          </div>
 
-      <Results searchData={searchData} setSearchData={setSearchData} />
-    </Container>
+          <Results searchData={searchData} setSearchData={setSearchData} />
+        {/* </Container> */}
+      </Grid>
+      <Grid item xs>
+        <div>Additional content </div>
+      </Grid>
+    </Grid>
     </>
   );
 };

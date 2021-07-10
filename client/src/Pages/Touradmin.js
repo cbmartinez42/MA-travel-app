@@ -1,7 +1,8 @@
 import React from "react";
-import { useState } from "react";
-import { Grid, makeStyles, Button, TextField} from "@material-ui/core";
+import { useState, useEffect } from "react";
+import { Grid, makeStyles, Button, TextField, MenuItem} from "@material-ui/core";
 import API from '../utils/API';
+import Select from '@material-ui/core/Select';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,6 +16,14 @@ const useStyles = makeStyles((theme) => ({
 const CreateTour = () => {
   const classes = useStyles();  
   const[createTour, setCreateTour] = useState({})
+  const [tourOperators, setTourOperators] = useState([])
+
+  useEffect(() => {
+    API.getTourOperators()
+    .then((response) => {
+      setTourOperators(response.data || [])
+    });
+  }, [])
   
   const handleChange = (e) => {
     setCreateTour({...createTour,[e.name]: e.value});
@@ -58,6 +67,21 @@ const CreateTour = () => {
                                     </Grid>
                                 </div>
                                 {/* TODO: Correctly link the objectID here */}
+
+                                <Select
+                                    // labelId="demo-simple-select-label"
+                                    // id="demo-simple-select"
+                                    value={{tourOperators}}
+                                    // onChange={handleChange}
+                                    // displayEmpty
+                                    className='Operator Dropdown'
+                                    inputProps={{ 'aria-label': 'Without label' }}
+                                >
+                                {tourOperators.map(operator => (
+                                    <MenuItem value={operator._id}>{operator.name}</MenuItem>
+                                ))}
+                                
+                                </Select>
                                 {/* <div className="input-field col s12">
                                     <Grid container spacing={1} alignItems="flex-end">
                                         <Grid item>
