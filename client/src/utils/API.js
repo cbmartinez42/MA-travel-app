@@ -1,5 +1,5 @@
 const axios = require('axios')
-const path = require('path')
+// const path = require('path')
 require('dotenv').config();
 
 const openWeatherKey=process.env.WEATHER_KEY

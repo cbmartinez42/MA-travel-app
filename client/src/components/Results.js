@@ -1,4 +1,4 @@
-import react, {useState, useEffect} from 'react';
+import {useState, useEffect} from 'react';
 import API from '../utils/API'
 import {Box, Container} from '@material-ui/core/';
 import Button from "../components/Button"
