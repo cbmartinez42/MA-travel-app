@@ -39,21 +39,19 @@ const OperatorSchema = new Schema({
     type: String
   },
 
-  tours: [
-    //populate all info needed from the User
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Tours"
-    }
-  ],
+  // tours: [
+  //   //populate all info needed from the User
+  //   {
+  //     type: Schema.Types.ObjectId,
+  //     ref: "Tours"
+  //   }
+  // ],
 
   logo: {
-    // TODO: check correct setup for an image file
     type: String
   },
 
   profilePicture: {
-        // TODO: check correct setup for an image file
     type: String
   }
   

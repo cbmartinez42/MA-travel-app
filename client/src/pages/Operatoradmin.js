@@ -29,9 +29,6 @@ const CreateTourOperator = () => {
           console.log('createNewTourOperator Result: Operator added!!!', result)
       })
       .catch(err => {
-        // error thrown here when calling creatNewTourOperator post request
-        // error 422 (Unprocessable Entity)
-        // it is validating against the tours model
           console.log('Oh my... there was an error: ',err.response)
       })
     }
@@ -196,29 +193,10 @@ const CreateTourOperator = () => {
                                         </Grid>
                                     </Grid>
                                 </div>
-
-                                {/* TODO: Correctly link the objectID here */}                                
-                                {/* <div className="input-field col s12">
-                                    <Grid container spacing={1} alignItems="flex-end">
-                                        <Grid item>
-                                            <i className="material-icons prefix">location_city</i>
-                                        </Grid>
-                                        <Grid item>
-                                            <TextField
-                                                required
-                                                id="tours-offered"
-                                                label="Tours Offered"
-                                                name="tours"
-                                                variant="outlined"
-                                                onChange={(e) => handleChange(e.target)}
-                                                />
-                                        </Grid>
-                                    </Grid>
-                                </div> */}
                                 <div className="input-field col s12">
                                     <Grid container spacing={1} alignItems="flex-end">
                                         <Grid item>
-                                            <i className="material-icons prefix">location_city</i>
+                                            <i className="material-icons prefix">photo_library</i>
                                         </Grid>
                                         <Grid item>
                                             <TextField
@@ -236,7 +214,7 @@ const CreateTourOperator = () => {
                                 <div className="input-field col s12">
                                     <Grid container spacing={1} alignItems="flex-end">
                                         <Grid item>
-                                            <i className="material-icons prefix">location_city</i>
+                                            <i className="material-icons prefix">photo_library</i>
                                         </Grid>
                                         <Grid item>
                                             <TextField
@@ -252,8 +230,6 @@ const CreateTourOperator = () => {
                                     </Grid>
                                 </div>
                               
-                              
-
                                 <Button
                                     variant="contained"
                                     style={{ margin: "2%" }}
