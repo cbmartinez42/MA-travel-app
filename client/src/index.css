@@ -21,7 +21,7 @@ code {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: 4rem;
+  margin-bottom: 2rem;
   height: 200px;
   align-items: center;
 }
@@ -56,15 +56,50 @@ text-align:left !important;
   padding: .25rem;
   margin-bottom: 1.5rem;
   font-family: 'Yatra One', cursive;
+}
 
+.tour-header {
+  /* background-image: linear-gradient(to bottom right, #055342, #18ddb2);
+  opacity: 0.75;
+  color: white; */
+  padding: .25rem;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  font-family: 'Yatra One', cursive;
 }
 
 .tour-thumbnail {
   max-height: 10rem;
 }
 
+.tour-image-full {
+  max-height: 20rem!important;
+  width: auto!important;
+  padding: none!important;
+}
+
+.tour-details {
+  background-color: rgb(193, 214, 255);
+  border: 1px solid black;
+  margin: 2rem!important;
+}
+
 .categories {
   background-color: rgba(201, 198, 198, 0.534);
   height: 100%;
   padding: 3rem;
+}
+
+.abstract-link {
+  text-decoration: none;
+}
+
+.abstract-link:hover {
+  text-decoration: none;
+
+}
+
+.tour-abstract:hover {
+  transition: 0.25s ease-in-out;
+  box-shadow: 5px 5px 5px rgb(176, 176, 247)
 }
