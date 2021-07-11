@@ -8,6 +8,7 @@ import Grid from '@material-ui/core/Grid'
 
 const Results = ({searchData, setSearchData}) => {
 
+
     useEffect(() => {
         API.browseAllActivities()
         .then((response) => {

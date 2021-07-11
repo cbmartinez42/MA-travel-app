@@ -62,3 +62,9 @@ text-align:left !important;
 .tour-thumbnail {
   max-height: 10rem;
 }
+
+.categories {
+  background-color: rgba(201, 198, 198, 0.534);
+  height: 100%;
+  padding: 3rem;
+}
