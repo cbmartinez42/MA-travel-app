@@ -37,7 +37,7 @@ const ToursSchema = new Schema({
 //   array: Array,
   description: {
     type: String,
-    validate: [({ length }) => length >= 6, "Description string should be more than 6 characters."]
+    // validate: [({ length }) => length >= 6, "Description string should be more than 6 characters."]
   },
 
   tourLocation: {
@@ -46,7 +46,7 @@ const ToursSchema = new Schema({
 
   cancellationPolicy: {
       type: String,
-      validate: [({ length }) => length >= 6, "Description string should be more than 6 characters."]
+      // validate: [({ length }) => length >= 6, "Description string should be more than 6 characters."]
   },
 
   startTimes: {
@@ -78,9 +78,9 @@ const ToursSchema = new Schema({
     },
   
     // TODO: correctly setup for an image file
-    image: {
+    image: [{
       type: String
-    }
+    }]
 
 },
 {timestamps: true});

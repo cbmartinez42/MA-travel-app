@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Results from "../components/Results";
 // import { Container } from "@material-ui/core/";
 // import API from "../utils/API";

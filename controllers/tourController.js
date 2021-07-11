@@ -16,7 +16,9 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
+    //remember req.file should return something if it was working
     db.Tours
+    // need spread operator to req.body.location
       .create(req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
