@@ -1,27 +1,49 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { InlineWidget } from "react-calendly";
 import Signup from "../components/Signup";
-import TextField from "@material-ui/core/TextField";
-import Grid from "@material-ui/core/Grid";
-import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
-import { Container } from "@material-ui/core";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
-import Payment from "./../components/Payment"
-
+import { TextField, Grid, Button, Paper, TableRow, TableHead, TableContainer, TableCell, TableBody, Table, Box, Container } from "@material-ui/core";
+import { useParams, useLocation } from "react-router-dom";
 import API from "../utils/API";
+import Payment from "./../components/Payment";
 
-const Book = ({ searchData, setSearchData }) => {
+// let tourData={cancellationPolicy: "72 hours full refund, under 72 hours 50% refund"
+// category: []
+// cost: 75
+// departureLocation: {street: "74 Front Street", street2: "", city: "Punta Gorda", state: "Toledo", zip: 0}
+// description: "Visit three pristine snorkel sites and then enjoy a Creole-seafood BBQ on a private beach.  In the afternoon; you can either be a beach bum, snorkel from shore, do some birding, or visit our active coconut farm where we are crazy for coconuts!"
+// email: "kaimanimarine@gmail.com"
+// image: "https://www.touropia.com/gfx/d/best-beaches-in-belize/hopkins_village_beach.jpg?v=1"
+// keywords: (8) ["snorkel", "BBQ", "sustainable tours", "Creole", "coconuts", "organic farm", "beach", "birding"]
+// maxCapacity: 36
+// minCapacity: 4
+// startTimes: ["8:00 am"]
+// tourLocation: "Snake Cayes"
+// tourName: "Snorkeling and Beach BBQ"
+// tourOperator: "Kaimani Marine Tours"
+// _id: "60e8ac0a3d9c8426bcc98373"}
+
+const Book = () => {
   /*
  Company =>  tours  (3) Same Calendar Different times
  1) Company A (1) Calendar  3 events A,B,C
 */
+
+  const [tourData, setTourData] = useState({});
+
+  const params = useLocation();
+  const tourId = params.search.substring(1);
+  console.log(tourId);
+
+  useEffect(() => {
+    // fetch(infoUrl)
+    API.findOneActivity(tourId)
+      // .then(res => res.json())
+      .then((response) => {
+        setTourData(response.data || {});
+        console.log("tourData >>>", tourData);
+      });
+  }, []);
 
   //STATES
   //State to show pricing after submit button clicked
@@ -31,10 +53,9 @@ const Book = ({ searchData, setSearchData }) => {
 
   const [participants, setParticipants] = useState(1);
 
-  const addParticipants = (e)=>{
-    setParticipants(e.value)
-  }
-  
+  const addParticipants = (e) => {
+    setParticipants(e.value);
+  };
 
   //current URL
   const [url, setUrl] = useState();
@@ -100,11 +121,12 @@ const Book = ({ searchData, setSearchData }) => {
     return items.map(({ price }) => price).reduce((sum, i) => sum + i, 0);
   }
 
-  const rows = [
-    createRow("Activity Name", participants, 128342),
-    createRow("Paper (Case)", 10, 45.99),
-    createRow("Waste Basket", 2, 17.99),
-  ];
+  let rows=[]
+
+  tourData.additionalFees ? (rows = [
+    createRow(tourData.tourName, participants, tourData.cost),
+    createRow("Additional Fees", 1, tourData.additionalFees),
+  ]) : rows=[createRow(tourData.tourName, participants, tourData.cost)]
 
   //creating variables to get the final prices and subtotals based on previous variables
   const invoiceSubtotal = subtotal(rows);
@@ -115,51 +137,79 @@ const Book = ({ searchData, setSearchData }) => {
     <>
       <div>
         <div>
-          <h3>
-            Show Tour Details HERE! (Name, Image, Location, price, description)
-          </h3>
-          <h3>
-            These buttons open a calendar to the correct tour, but we should
-            populate this calendar based on the info passed from the previous
-            page
-          </h3>
-          <div>
-            <button
-              style={style.btn}
-              onClick={() => setUrl("https://calendly.com/kaimanimarine/30min")}
-            >
-              {" "}
-              Tour 1{" "}
-            </button>
-            <button
-              style={style.btn}
-              onClick={() => setUrl("https://calendly.com/kaimanimarine/60min")}
-            >
-              {" "}
-              Tour 2{" "}
-            </button>
-            <button
-              style={style.btn}
-              onClick={() =>
-                setUrl(
-                  "https://calendly.com/kaimanimarine/snorkel-and-beach-bbq"
-                )
-              }
-            >
-              {" "}
-              Snorkel and BBQ{" "}
-            </button>
-
-            {url ? (
-              <InlineWidget url={url} />
-            ) : (
-              <h5 style={{ color: "blue" }}>
+          <Container maxWidth="md">
+            {" "}
+            <div>
+            <h3 onClick={() => console.log("tourData>>>>>", tourData)}>
+              Show Tour Details HERE! (Name, Image, Location, price,
+              description)
+            </h3>
+            <Container>
+                <Box key={tourData._id} className="tour-abstract">
+                    <Box className="abstract-header">
+                        <h2>{tourData.tourName}</h2>
+                    </Box>
+                    <Grid container spacing={3}>
+                        <Grid item xs>
+                            <img alt="Tour" className="tour-thumbnail" src={tourData.image}></img>
+                        </Grid>
+                        <Grid item md>
+                            <p>Location: {tourData.tourLocation}</p>
+                            <p>Cost: ${tourData.cost}</p>
+                            <p>Operated by: {tourData.tourOperator}</p>
+                        </Grid>
+                    </Grid>
+                </Box>
+        </Container>
+            </div>
+            <h3>
+              These buttons open a calendar to the correct tour, but we should
+              populate this calendar based on the info passed from the previous
+              page
+            </h3>
+            <div>
+              <button
+                style={style.btn}
+                onClick={() =>
+                  setUrl("https://calendly.com/kaimanimarine/30min")
+                }
+              >
                 {" "}
-                Select tour type to see details
-              </h5>
-            )}
-          </div>
+                Tour 1{" "}
+              </button>
+              <button
+                style={style.btn}
+                onClick={() =>
+                  setUrl("https://calendly.com/kaimanimarine/60min")
+                }
+              >
+                {" "}
+                Tour 2{" "}
+              </button>
+              <button
+                style={style.btn}
+                onClick={() =>
+                  setUrl(
+                    "https://calendly.com/kaimanimarine/snorkel-and-beach-bbq"
+                  )
+                }
+              >
+                {" "}
+                Snorkel and BBQ{" "}
+              </button>
+
+              {url ? (
+                <InlineWidget url={url} />
+              ) : (
+                <h5 style={{ color: "blue" }}>
+                  {" "}
+                  Select tour type to see details
+                </h5>
+              )}
+            </div>{" "}
+          </Container>
         </div>
+
         {/* Sign Up Container */}
         <div className="container">
           <Button
@@ -173,8 +223,8 @@ const Book = ({ searchData, setSearchData }) => {
           >
             Click to Enter Your Booking Information!
           </Button>
-                  {/*If showForm STATE is false then display NULL*/}
-                  {/*the state is switched every time the button is clicked*/}
+          {/*If showForm STATE is false then display NULL*/}
+          {/*the state is switched every time the button is clicked*/}
           {!showForm ? null : (
             <form>
               <Grid container direction="column" alignItems="center">
@@ -350,7 +400,8 @@ const Book = ({ searchData, setSearchData }) => {
                           label="Participants? Ex: 2"
                           name="participants"
                           variant="outlined"
-                          onChange={(e) => handleChange(e.target)}
+                          onChange={(e) => {handleChange(e.target);
+                            addParticipants(e.target)}}
                         />
                       </Grid>
                     </Grid>
@@ -372,9 +423,9 @@ const Book = ({ searchData, setSearchData }) => {
             </form>
           )}
         </div>
-           {/* Pricing Container */}
+        {/* Pricing Container */}
         <div>
-             {/*If showPricing STATE is false then display NULL*/}
+          {/*If showPricing STATE is false then display NULL*/}
           {showPricing ? null : (
             <div>
               <h2 style={{ textDecoration: "underline" }}>
@@ -393,7 +444,7 @@ const Book = ({ searchData, setSearchData }) => {
 
                       <TableRow>
                         <TableCell>Desc</TableCell>
-                        <TableCell align="right">Qty.</TableCell>
+                        <TableCell align="right">Participants</TableCell>
                         <TableCell align="right">Sum</TableCell>
                       </TableRow>
                     </TableHead>
@@ -411,7 +462,9 @@ const Book = ({ searchData, setSearchData }) => {
 
                       <TableRow>
                         <TableCell rowSpan={1} />
-                        <TableCell colSpan={1} align="left">Subtotal</TableCell>
+                        <TableCell colSpan={1} align="left">
+                          Subtotal
+                        </TableCell>
                         <TableCell align="right">
                           {ccyFormat(invoiceSubtotal)}
                         </TableCell>
