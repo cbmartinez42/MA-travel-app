@@ -3,23 +3,36 @@ import API from '../utils/API'
 import {Box, Container} from '@material-ui/core/';
 // import Button from "../components/Button"
 // import Tour from "../pages/Tour";
-import {Link} from 'react-router-dom'
+import {Link, useLocation} from 'react-router-dom'
 import Grid from '@material-ui/core/Grid'
 
 const Results = ({searchData, setSearchData}) => {
 
+    const params = useLocation();
+    const paramsArray = params.pathname.split('/')
+    const category = paramsArray[paramsArray.length -1]
+    // const category = params.search.substring(1);
+    console.log('category', category);
+    
 
     useEffect(() => {
-        API.browseAllActivities()
-        .then((response) => {
-          setSearchData(response.data || [])
-        });
-      }, [])
+        // if (!category) {
+            API.browseAllActivities()
+            .then((response) => {
+            setSearchData(response.data || [])
+            });
+    //     } else {
+    //         API.browseCategory(category)
+    //         .then((response) => {
+    //             setSearchData(response.data || [])
+    //         })
+    // }
+    }, [])
 
-    const renderDetail = (data) => {
+    // const renderDetail = (data) => {
 
-        console.log('data >> ', data)
-    }
+    //     console.log('data >> ', data)
+    // }
 
     return (
         <>

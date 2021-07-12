@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Results from "../components/Results";
+import Search from '../components/Search'
 // import { Container } from "@material-ui/core/";
 // import API from "../utils/API";
 // import Button from "../components/Button";
@@ -8,8 +9,8 @@ import Grid from '@material-ui/core/Grid'
 import {useParams} from 'react-router-dom'
 
 const Browse = ({ searchData, setSearchData }) => {
-  const {category} = useParams();
-  console.log(category)
+  // const {category} = useParams();
+  // console.log(category)
 
   return (
     <>
@@ -24,7 +25,7 @@ const Browse = ({ searchData, setSearchData }) => {
               user to search by category of enter new search and show results.
             </h4>
           </div> */}
-
+          <Search />
           <Results searchData={searchData} setSearchData={setSearchData} />
       </Grid>
       <Grid item xs={12} md={2}>

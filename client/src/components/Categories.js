@@ -16,28 +16,28 @@ const Categories = () => {
                     </Link>
                 </ListItem>
                 <ListItem>
-                    <Link to="/browse">
+                    <Link to="/browse/cruise">
                         <ListItemText 
                             primary="Cruise"
                         />
                     </Link>
                 </ListItem>
                 <ListItem>
-                    <Link to="/browse">
+                    <Link to="/browse/food">
                         <ListItemText 
                             primary="Cooking/Food"
                         />
                     </Link>
                 </ListItem>
                 <ListItem>
-                    <Link to="/browse">
+                    <Link to="/browse/sustainable">
                         <ListItemText 
                             primary="Sustainable Tours"
                         />
                     </Link>
                 </ListItem>
                 <ListItem>
-                    <Link to="/browse">
+                    <Link to="/browse/fishing">
                         <ListItemText 
                             primary="Fishing"
                         />

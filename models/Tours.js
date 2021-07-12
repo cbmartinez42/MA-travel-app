@@ -78,9 +78,9 @@ const ToursSchema = new Schema({
     },
   
     // TODO: correctly setup for an image file
-    image: [{
-      type: String
-    }]
+    image: {
+      type: Array
+    }
 
 },
 {timestamps: true});
