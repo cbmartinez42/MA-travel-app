@@ -1,7 +1,7 @@
 import React, {useState} from "react";
-import { useParams, BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Menu2 from "./components/Menu2";
-import Menu from "./components/Menu";
+// import Menu from "./components/Menu";
 import About from "./pages/About";
 import Admin from "./pages/Admin";
 import Book from "./pages/Book";

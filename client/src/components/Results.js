@@ -16,17 +16,17 @@ const Results = ({searchData, setSearchData}) => {
     
 
     useEffect(() => {
-        if (!category) {
+        // if (!category) {
             API.browseAllActivities()
             .then((response) => {
             setSearchData(response.data || [])
             });
-        } else {
-            API.browseCategory(category)
-            .then((response) => {
-                setSearchData(response.data || [])
-            })
-    }
+    //     } else {
+    //         API.browseCategory(category)
+    //         .then((response) => {
+    //             setSearchData(response.data || [])
+    //         })
+    // }
     }, [])
 
     // const renderDetail = (data) => {
