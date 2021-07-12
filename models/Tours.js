@@ -54,7 +54,7 @@ const ToursSchema = new Schema({
   },
 
   duration: {
-  type: Number,
+  type: String,
   },
 
   cost: {
