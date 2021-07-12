@@ -5,23 +5,27 @@ import Button from "../components/Button";
 import { Link } from "react-router-dom";
 import {Grid, Container} from '@material-ui/core'
 import Image from 'material-ui-image'
+// import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+// import { Carousel } from 'react-responsive-carousel';
 
 const Tour = () => {
   const [tourData, setTourData] = useState({});
   const { id } = useParams();
   useEffect(() => {
     // fetch(infoUrl)
+    // const getData = async () => {
     API.findOneActivity(id)
       // .then(res => res.json())
       .then((response) => {
         setTourData(response.data || {});
+        // console.log('response data >>>', response.data)
         console.log("tourData >>>", tourData);
       });
   }, []);
 
-  const consoleTourData = (data) => {
-    console.log("tourData >> ", tourData);
-  };
+  // const consoleTourData = (data) => {
+  //   console.log("tourData >> ", tourData);
+  // };
 
   const renderDetail = (data) => {
     console.log("data >> ", data);
@@ -35,6 +39,14 @@ const Tour = () => {
       <Grid container spacing={1}>
         <Grid container spacing={1}>
           <Grid item xs={12}>
+            {/* <Carousel classname="tour-image-full">
+              {tourData.image.map(image => (
+                <Container>
+                  <img alt="Tour details" src={image} />
+                </Container>
+              ))}
+            </Carousel> */}
+
               <Image 
                 alt="Tour" 
                 imageStyle={{

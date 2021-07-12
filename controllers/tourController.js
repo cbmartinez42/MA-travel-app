@@ -15,6 +15,12 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  findByCategory: function(req, res) {
+    db.Tours
+      .find(req.params.category)  // hmmmm
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
   create: function(req, res) {
     //remember req.file should return something if it was working
     db.Tours

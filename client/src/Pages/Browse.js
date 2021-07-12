@@ -8,8 +8,8 @@ import Grid from '@material-ui/core/Grid'
 import {useParams} from 'react-router-dom'
 
 const Browse = ({ searchData, setSearchData }) => {
-  const {category} = useParams();
-  console.log(category)
+  // const {category} = useParams();
+  // console.log(category)
 
   return (
     <>

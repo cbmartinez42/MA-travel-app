@@ -13,4 +13,8 @@ router
   .put(tourController.update)
   .delete(tourController.remove);
 
+router
+  .route("/:category")
+  .get(tourController.findByCategory)
+
 module.exports = router;
