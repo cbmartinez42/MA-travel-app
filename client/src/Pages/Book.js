@@ -2,7 +2,20 @@ import React, { useState, useEffect } from "react";
 import { InlineWidget } from "react-calendly";
 import Signup from "../components/Signup";
 import { makeStyles } from "@material-ui/core/styles";
-import { TextField, Grid, Button, Paper, TableRow, TableHead, TableContainer, TableCell, TableBody, Table, Box, Container } from "@material-ui/core";
+import {
+  TextField,
+  Grid,
+  Button,
+  Paper,
+  TableRow,
+  TableHead,
+  TableContainer,
+  TableCell,
+  TableBody,
+  Table,
+  Box,
+  Container,
+} from "@material-ui/core";
 import { useParams, useLocation } from "react-router-dom";
 import API from "../utils/API";
 import Payment from "./../components/Payment";
@@ -52,6 +65,8 @@ const Book = () => {
   const [showForm, setShowForm] = useState(false);
 
   const [participants, setParticipants] = useState(1);
+
+  const [checkout, setCheckout] = useState(false);
 
   const addParticipants = (e) => {
     setParticipants(e.value);
@@ -121,12 +136,14 @@ const Book = () => {
     return items.map(({ price }) => price).reduce((sum, i) => sum + i, 0);
   }
 
-  let rows=[]
+  let rows = [];
 
-  tourData.additionalFees ? (rows = [
-    createRow(tourData.tourName, participants, tourData.cost),
-    createRow("Additional Fees", 1, tourData.additionalFees),
-  ]) : rows=[createRow(tourData.tourName, participants, tourData.cost)]
+  tourData.additionalFees
+    ? (rows = [
+        createRow(tourData.tourName, participants, tourData.cost),
+        createRow("Additional Fees", 1, tourData.additionalFees),
+      ])
+    : (rows = [createRow(tourData.tourName, participants, tourData.cost)]);
 
   //creating variables to get the final prices and subtotals based on previous variables
   const invoiceSubtotal = subtotal(rows);
@@ -140,27 +157,31 @@ const Book = () => {
           <Container maxWidth="md">
             {" "}
             <div>
-            <h3 onClick={() => console.log("tourData>>>>>", tourData)}>
-              Show Tour Details HERE! (Name, Image, Location, price,
-              description)
-            </h3>
-            <Container>
+              <h3 onClick={() => console.log("tourData>>>>>", tourData)}>
+                Show Tour Details HERE! (Name, Image, Location, price,
+                description)
+              </h3>
+              <Container>
                 <Box key={tourData._id} className="tour-abstract">
-                    <Box className="abstract-header">
-                        <h2>{tourData.tourName}</h2>
-                    </Box>
-                    <Grid container spacing={3}>
-                        <Grid item xs>
-                            <img alt="Tour" className="tour-thumbnail" src={tourData.image}></img>
-                        </Grid>
-                        <Grid item md>
-                            <p>Location: {tourData.tourLocation}</p>
-                            <p>Cost: ${tourData.cost}</p>
-                            <p>Operated by: {tourData.tourOperator}</p>
-                        </Grid>
+                  <Box className="abstract-header">
+                    <h2>{tourData.tourName}</h2>
+                  </Box>
+                  <Grid container spacing={3}>
+                    <Grid item xs>
+                      <img
+                        alt="Tour"
+                        className="tour-thumbnail"
+                        src={tourData.image}
+                      ></img>
                     </Grid>
+                    <Grid item md>
+                      <p>Location: {tourData.tourLocation}</p>
+                      <p>Cost: ${tourData.cost}</p>
+                      <p>Operated by: {tourData.tourOperator}</p>
+                    </Grid>
+                  </Grid>
                 </Box>
-        </Container>
+              </Container>
             </div>
             <h3>
               These buttons open a calendar to the correct tour, but we should
@@ -400,8 +421,10 @@ const Book = () => {
                           label="Participants? Ex: 2"
                           name="participants"
                           variant="outlined"
-                          onChange={(e) => {handleChange(e.target);
-                            addParticipants(e.target)}}
+                          onChange={(e) => {
+                            handleChange(e.target);
+                            addParticipants(e.target);
+                          }}
                         />
                       </Grid>
                     </Grid>
@@ -428,68 +451,86 @@ const Book = () => {
           {/*If showPricing STATE is false then display NULL*/}
           {showPricing ? null : (
             <div>
-              <h2 style={{ textDecoration: "underline" }}>
-                Payment information
-              </h2>
-              <Container maxWidth="md">
-                <TableContainer component={Paper}>
-                  <Table className={classes.table} aria-label="spanning table">
-                    <TableHead>
-                      <TableRow>
-                        <TableCell align="center" colSpan={2}>
-                          Details
-                        </TableCell>
-                        <TableCell align="right">Price</TableCell>
-                      </TableRow>
+              <div>
+                <h2 style={{ textDecoration: "underline" }}>
+                  Payment information
+                </h2>
+                <Container maxWidth="md">
+                  <TableContainer component={Paper}>
+                    <Table
+                      className={classes.table}
+                      aria-label="spanning table"
+                    >
+                      <TableHead>
+                        <TableRow>
+                          <TableCell align="center" colSpan={2}>
+                            Details
+                          </TableCell>
+                          <TableCell align="right">Price</TableCell>
+                        </TableRow>
 
-                      <TableRow>
-                        <TableCell>Desc</TableCell>
-                        <TableCell align="right">Participants</TableCell>
-                        <TableCell align="right">Sum</TableCell>
-                      </TableRow>
-                    </TableHead>
+                        <TableRow>
+                          <TableCell>Desc</TableCell>
+                          <TableCell align="right">Participants</TableCell>
+                          <TableCell align="right">Sum</TableCell>
+                        </TableRow>
+                      </TableHead>
 
-                    <TableBody>
-                      {rows.map((row) => (
-                        <TableRow key={row.desc}>
-                          <TableCell>{`${row.desc}`}</TableCell>
-                          <TableCell align="right">{`${row.qty}`}</TableCell>
+                      <TableBody>
+                        {rows.map((row) => (
+                          <TableRow key={row.desc}>
+                            <TableCell>{`${row.desc}`}</TableCell>
+                            <TableCell align="right">{`${row.qty}`}</TableCell>
+                            <TableCell align="right">
+                              {ccyFormat(row.price)}
+                            </TableCell>
+                          </TableRow>
+                        ))}
+
+                        <TableRow>
+                          <TableCell rowSpan={1} />
+                          <TableCell colSpan={1} align="left">
+                            Subtotal
+                          </TableCell>
                           <TableCell align="right">
-                            {ccyFormat(row.price)}
+                            {ccyFormat(invoiceSubtotal)}
                           </TableCell>
                         </TableRow>
-                      ))}
 
-                      <TableRow>
-                        <TableCell rowSpan={1} />
-                        <TableCell colSpan={1} align="left">
-                          Subtotal
-                        </TableCell>
-                        <TableCell align="right">
-                          {ccyFormat(invoiceSubtotal)}
-                        </TableCell>
-                      </TableRow>
+                        <TableRow>
+                          <TableCell>Tax</TableCell>
+                          <TableCell align="right">{`${(TAX_RATE * 100).toFixed(
+                            0
+                          )} %`}</TableCell>
+                          <TableCell align="right">
+                            {ccyFormat(invoiceTaxes)}
+                          </TableCell>
+                        </TableRow>
 
-                      <TableRow>
-                        <TableCell>Tax</TableCell>
-                        <TableCell align="right">{`${(TAX_RATE * 100).toFixed(
-                          0
-                        )} %`}</TableCell>
-                        <TableCell align="right">
-                          {ccyFormat(invoiceTaxes)}
-                        </TableCell>
-                      </TableRow>
-
-                      <TableRow>
-                        <TableCell colSpan={1}>Total</TableCell>
-                        <TableCell align="right">
-                          {ccyFormat(invoiceTotal)}
-                        </TableCell>
-                      </TableRow>
-                    </TableBody>
-                  </Table>
-                </TableContainer>
-              </Container>
+                        <TableRow>
+                          <TableCell colSpan={1}>Total</TableCell>
+                          <TableCell align="right">
+                            {ccyFormat(invoiceTotal)}
+                          </TableCell>
+                        </TableRow>
+                      </TableBody>
+                    </Table>
+                  </TableContainer>
+                </Container>
+              </div>
+              <div>
+                {checkout ? (
+                  <Payment tourObject= {tourData} name={tourData.tourName} price={invoiceTotal}/>
+                ) : (
+                  <button
+                    onClick={() => {
+                      setCheckout(true);
+                    }}
+                  >
+                    checkout
+                  </button>
+                )}
+              </div>
             </div>
           )}
         </div>

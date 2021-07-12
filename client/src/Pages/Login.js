@@ -21,7 +21,11 @@ const Login = () => {
         API.login(signin)
         .then((response) => {
             console.log('response >>', response)
-            // setSearchData(response.data || [])
+            // setSearchData(response.data || []) ???????
+            //this is where you would set the global state
+            //using your state provider
+            //this is going to store the token
+            //you send back the token 
           })
         .catch(error => console.log(error))
     }

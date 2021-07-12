@@ -1,4 +1,6 @@
-import React from "react";
+import React, { createContext, useReducer } from "react";
+
+//LOL
 
 const StateContext = React.createContext({
   state1: "",
