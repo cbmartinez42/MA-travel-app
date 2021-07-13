@@ -54,7 +54,7 @@ const ToursSchema = new Schema({
   },
 
   duration: {
-  type: Number,
+  type: String,
   },
 
   cost: {
@@ -78,9 +78,9 @@ const ToursSchema = new Schema({
     },
   
     // TODO: correctly setup for an image file
-    image: [{
-      type: String
-    }]
+    image: {
+      type: Array
+    }
 
 },
 {timestamps: true});

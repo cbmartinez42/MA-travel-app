@@ -102,9 +102,9 @@ const history = useHistory();
   
   const adminPages = [{'text':'Home Page','menuPath':'home'},{'text':'Browse Tours','menuPath':'browse'}, {'text':'Admin Tasks','menuPath':'admin'}, {'text':'All Tours','menuPath':'touradmin'}, {'text':'Operator Admin','menuPath':'operator'}, {'text':'Tour Page TEMP','menuPath':'tour'},{'text':'Log Out','menuPath':'login'}];
   
-  if(userInfo === "ADMIN") {
+  if(userInfo.role === "ADMIN") {
       var Pages = adminPages
-  } else if(userInfo === "USER") {
+  } else if(userInfo.role === "USER") {
       Pages = userPages
   } else Pages = nliPages;
 
@@ -146,11 +146,14 @@ const history = useHistory();
       {['left'].map((anchor) => (
         <React.Fragment key={anchor}>
           <Button onClick={toggleDrawer(anchor, true)}><MenuIcon /></Button>
+          
           <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
             {list(anchor)}
           </Drawer>
+          
         </React.Fragment>
       ))}
+      <span className='announcement'>Buy now! Big sale for the summer!</span>
     </div>
   );
 }

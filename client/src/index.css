@@ -7,11 +7,19 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #d8e2f1;
+  height: 100%;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.announcement {
+  font-family: 'Yomogi', cursive;
+  font-weight: 900;
+  text-align: center;
 }
 
 /* TEST */
@@ -21,7 +29,7 @@ code {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: 4rem;
+  /* margin-bottom: 2rem; */
   height: 200px;
   align-items: center;
 }
@@ -38,6 +46,45 @@ code {
   opacity: 0.45;
 }
 
+#search {
+  width: 25rem;
+}
+
+.search-field {
+  margin: 1rem!important;
+}
+
+.btn {
+  margin: 0% 1%;
+}
+
+.search-button {
+  margin: 1rem!important;
+}
+
+.carousel-header {
+  font-family: 'Yatra One', cursive;
+}
+
+.App-footer {
+  background-color: #61CD42;
+  max-height: 20vh;
+  margin-top: 50px;
+  padding: 1% 5%;
+  bottom: 0;
+  /* padding: 1rem; */
+  display: block;
+  /* flex-direction: column; */
+  /* align-items: center; */
+  /* justify-content: center; */
+  color: white;
+}
+
+.flexboxHorizontal {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 3%;
+}
 
 .terms-container {
 text-align:left !important;
@@ -55,10 +102,67 @@ text-align:left !important;
   color: white;
   padding: .25rem;
   margin-bottom: 1.5rem;
-  font-family: 'Yatra One', cursive;
+  font-family: 'Yomogi', cursive;
+}
 
+.tour-header {
+  /* background-image: linear-gradient(to bottom right, #055342, #18ddb2);
+  opacity: 0.75;
+  color: white; */
+  padding: .25rem;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  font-family: 'Yatra One', cursive;
 }
 
 .tour-thumbnail {
   max-height: 10rem;
+}
+
+.carousel {
+  /* max-height: 20rem!important; */
+  /* width: 40rem!important; */
+  padding: none!important;
+
+}
+
+.carousel-container {
+  align-content: center;
+
+}
+
+.carousel-root {
+  align-content: center;
+  max-width: 40rem;
+  margin: auto;
+}
+
+.tour-name{
+  margin: none;
+}
+
+.tour-details {
+  background-color: rgb(193, 214, 255);
+  border: 1px solid black;
+  margin: 2rem!important;
+}
+
+.categories {
+  background-color: #c3d8f7;
+  height: 100%;
+  padding: 3rem;
+}
+
+.abstract-link {
+  text-decoration: none;
+}
+
+.abstract-link:hover {
+  text-decoration: none;
+
+}
+
+.tour-abstract:hover {
+  transition: 0.25s ease-in-out;
+  box-shadow: 5px 5px 5px rgb(176, 176, 247)
 }

@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Menu2 from "./components/Menu2";
-import Menu from "./components/Menu";
+// import Menu from "./components/Menu";
 import About from "./pages/About";
 import Admin from "./pages/Admin";
 import Book from "./pages/Book";
@@ -23,6 +23,7 @@ import Header from './components/Header'
 
 function App() {
   const [userInfo, setUserInfo] = useState('NLI');
+  const [userId, setUserId] = useState('');
   const [searchData, setSearchData] = useState([]);
 
   return (
@@ -39,6 +40,7 @@ function App() {
             <Route exact path="/book" component={Book} />
             <Route exact path="/thankyou" component={Thankyou} />
             <Route exact path="/browse">
+
               <Browse 
                 searchData={searchData}
                 setSearchData={setSearchData}

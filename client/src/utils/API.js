@@ -11,9 +11,10 @@ let API = {
         return axios.get('/api/tour');
 
     },
-    browseCategory: function(){
-        const infoUrl = '/api/tour';
-        return fetch(infoUrl);
+    browseCategory: function(category){
+        // const infoUrl = '/api/tour/:category';
+        // return fetch(infoUrl);
+        return axios.get('/api/tour/:category')
 
     },
     searchAllActivities: function(){
