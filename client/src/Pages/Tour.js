@@ -4,28 +4,27 @@ import API from "../utils/API";
 import Button from "../components/Button";
 import { Link } from "react-router-dom";
 import {Grid, Container} from '@material-ui/core'
-import Image from 'material-ui-image'
+import ImgCarousel from '../components/ImgCarousel'
+// import Image from 'material-ui-image'
 // import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 // import { Carousel } from 'react-responsive-carousel';
 
 const Tour = () => {
   const [tourData, setTourData] = useState({});
   const { id } = useParams();
+
   useEffect(() => {
-    // fetch(infoUrl)
-    // const getData = async () => {
     API.findOneActivity(id)
-      // .then(res => res.json())
       .then((response) => {
         setTourData(response.data || {});
-        // console.log('response data >>>', response.data)
         console.log("tourData >>>", tourData);
-      });
+      })
+      .catch(err => console.log('this sucks >>> ', err)) 
   }, []);
 
-  // const consoleTourData = (data) => {
-  //   console.log("tourData >> ", tourData);
-  // };
+  useEffect(() => {
+    console.log('tourdata part deux ', tourData)
+  }, [tourData])
 
   const renderDetail = (data) => {
     console.log("data >> ", data);
@@ -37,32 +36,18 @@ const Tour = () => {
     <Container maxWidth="lg">
       {/* <h1 onClick={()=>consoleTourData}>This page will show details of an individual tour.</h1> */}
       <Grid container spacing={1}>
-        <Grid container spacing={1}>
-          <Grid item xs={12}>
-            {/* <Carousel classname="tour-image-full">
-              {tourData.image.map(image => (
-                <Container>
-                  <img alt="Tour details" src={image} />
-                </Container>
-              ))}
-            </Carousel> */}
-
-              <Image 
-                alt="Tour" 
-                imageStyle={{
-                  width: 'auto',
-                  height: '20rem',
-                  padding: 'none'
-                }}
-                className="tour-image-full" 
-                src={tourData.image}
-                aspectRatio={(1.82)}
-                />
-          </Grid>
+      
+        <Grid item xs={12}>
+        <p className='tour-header tour-name'>{tourData.tourName}</p>
+          {/* <Grid item xs={12} className='carousel-container'> */}
+            <ImgCarousel 
+              tourData={tourData}
+            />
+          {/* </Grid> */}
         </Grid>
         <Grid item xs={12}>
 
-          <p className="tour-header">{tourData.tourName}</p>
+          
           <p>{tourData.tourLocation}</p>
           <p>{tourData.description}</p>
           <Grid className="tour-details" container spacing={1}>

@@ -3,6 +3,7 @@ import Search from '../components/Search';
 import Categories from '../components/Categories'
 import { UserContext } from '../utils/UserContext';
 import { Link } from "react-router-dom";
+import ImgCarousel from '../components/ImgCarousel'
 
 import Grid from '@material-ui/core/Grid'
 
@@ -23,7 +24,8 @@ const Home = () => {
             </Grid>
           </Grid>
           <Search />
-          Main body content
+          <h2 className="carousel-header">Do This. Because you've earned it.</h2>
+          <ImgCarousel />
           </Grid>
           <Grid item xs={12} md={2}>
             <div>Additional content </div>

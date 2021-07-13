@@ -16,6 +16,12 @@ code {
     monospace;
 }
 
+.announcement {
+  font-family: 'Yomogi', cursive;
+  font-weight: 900;
+  text-align: center;
+}
+
 /* TEST */
 .header {
   position: relative;
@@ -56,10 +62,14 @@ code {
   margin: 1rem!important;
 }
 
+.carousel-header {
+  font-family: 'Yatra One', cursive;
+}
+
 .App-footer {
   background-color: #61CD42;
   max-height: 20vh;
-  margin-top: -50px;
+  margin-top: 50px;
   padding: 1% 5%;
   bottom: 0;
   /* padding: 1rem; */
@@ -92,7 +102,7 @@ text-align:left !important;
   color: white;
   padding: .25rem;
   margin-bottom: 1.5rem;
-  font-family: 'Yatra One', cursive;
+  font-family: 'Yomogi', cursive;
 }
 
 .tour-header {
@@ -109,13 +119,27 @@ text-align:left !important;
   max-height: 10rem;
 }
 
-.tour-image-full {
-  max-height: 20rem!important;
-  width: auto!important;
+.carousel {
+  /* max-height: 20rem!important; */
+  /* width: 40rem!important; */
   padding: none!important;
+
 }
 
+.carousel-container {
+  align-content: center;
 
+}
+
+.carousel-root {
+  align-content: center;
+  max-width: 40rem;
+  margin: auto;
+}
+
+.tour-name{
+  margin: none;
+}
 
 .tour-details {
   background-color: rgb(193, 214, 255);
