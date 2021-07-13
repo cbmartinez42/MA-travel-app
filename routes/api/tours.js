@@ -2,9 +2,8 @@ const router = require("express").Router();
 const tourController = require("../../controllers/tourController");
 const upload = require("../../utils/multer-s3-util");
 // Matches with "/api/tours"
-router.route("/")
-  .get(tourController.findAll)
-  .post(tourController.create,upload.array("file"));
+router.get("/", tourController.findAll)
+router.post("/",tourController.create);
 
 // Matches with "/api/tour/:id"
 router

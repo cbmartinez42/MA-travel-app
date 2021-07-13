@@ -20,8 +20,8 @@ const ToursSchema = new Schema({
         city: String,
         state: {
             type: String,
-            uppercase: true,
-            required: true,
+            // uppercase: true,
+            // required: true,
             // enum: statesArray
         },
         zip: Number
@@ -29,7 +29,7 @@ const ToursSchema = new Schema({
 
   email: {
     type: String,
-    match: [/.+@.+\..+/, "Please enter a valid e-mail address"]
+    // match: [/.+@.+\..+/, "Please enter a valid e-mail address"]
   },
 
 //   Other possible "types"
