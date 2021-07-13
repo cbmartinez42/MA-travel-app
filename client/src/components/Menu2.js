@@ -5,21 +5,22 @@ import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
+// import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
+// import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import { useHistory } from "react-router-dom";
 import HomeIcon from '@material-ui/icons/Home';
 import BrowseIcon from '@material-ui/icons/FindInPage';
 import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
 import BuildIcon from '@material-ui/icons/Build';
-import DynamicFeedIcon from '@material-ui/icons/DynamicFeed';
+// import DynamicFeedIcon from '@material-ui/icons/DynamicFeed';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import HowToRegIcon from '@material-ui/icons/HowToReg';
 import MenuIcon from '@material-ui/icons/Menu';
+import PostAddIcon from '@material-ui/icons/PostAdd';
 import { Redirect, Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
@@ -72,8 +73,8 @@ const getIcon = (page) => {
     case 'Tour':
         return <MailIcon/>
         // break;
-    case 'All Tours':
-        return <DynamicFeedIcon/>
+    case 'Add Tours':
+        return <PostAddIcon/>
         // break;
     case 'Log In / Sign Up':
         return <HowToRegIcon/>
@@ -100,7 +101,7 @@ const history = useHistory();
 
   const userPages = [{'text':'Home Page','menuPath':'home'},{'text':'Browse Tours','menuPath':'browse'},{'text':'My Stuff','menuPath':'mystuff'},{'text':'Log Out','menuPath':'login'}];
   
-  const adminPages = [{'text':'Home Page','menuPath':'home'},{'text':'Browse Tours','menuPath':'browse'}, {'text':'Admin Tasks','menuPath':'admin'}, {'text':'All Tours','menuPath':'touradmin'}, {'text':'Operator Admin','menuPath':'operator'}, {'text':'Tour Page TEMP','menuPath':'tour'},{'text':'Log Out','menuPath':'login'}];
+  const adminPages = [{'text':'Home Page','menuPath':'home'},{'text':'Browse Tours','menuPath':'browse'}, {'text':'Admin Tasks','menuPath':'admin'}, {'text':'Add Tours','menuPath':'touradmin'}, {'text':'Operator Admin','menuPath':'operator'}, {'text':'Tour Page TEMP','menuPath':'tour'},{'text':'Log Out','menuPath':'login'}];
   
   if(userInfo.role === "ADMIN") {
       var Pages = adminPages

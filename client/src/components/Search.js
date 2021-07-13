@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import Grid from '@material-ui/core/Grid';
-import TextField from '@material-ui/core/TextField';
+import {TextField, Button} from '@material-ui/core';
 // import { makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
-import Button from '../components/Button'
+// import Button from '../components/Button'
 
 // const useStyles = makeStyles((theme) => ({
 //     root: {
@@ -29,10 +29,15 @@ const Search = () => {
                         // onChange={(e) => handleChange(e.target)}
                         />
                     <Button
-                        className="search-button"
-                        text={<SearchIcon />} 
-                        color="#CCDCF5"
-                        >  
+                        // className="search-button"
+                        variant="contained"
+                        color="primary"
+                        id="search-btn"
+                        style={{ margin: ".5%", padding: ".75%" }}
+                        onClick={() => console.log('search-button clicked!')}
+                        // text={<SearchIcon />} 
+                        // color="#CCDCF5"
+                        > <SearchIcon /> 
                     </Button>
                 </Grid>
             </Grid>
