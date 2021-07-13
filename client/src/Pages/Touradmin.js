@@ -1,19 +1,23 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { UserContext } from '../utils/UserContext';
 import { Grid, makeStyles, Button, TextField, MenuItem} from "@material-ui/core";
 import API from '../utils/API';
 import Select from '@material-ui/core/Select';
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiTextField-root': {
       margin: theme.spacing(1),
-      width: '35ch',
+      width: '70ch',
     },
   },
 }));
 
+
+
 const CreateTour = () => {
+  const history = useHistory();   
   const classes = useStyles();  
   const[createTour, setCreateTour] = useState({})
   const [tourOperators, setTourOperators] = useState([])
@@ -58,6 +62,7 @@ const CreateTour = () => {
     if (response.status === 200) {
       console.log("FILE SENT");
       const res = response.data
+      history.push('/home');
 
     } else {
       console.log("mas problemo");
@@ -228,6 +233,8 @@ const CreateTour = () => {
                                                 label="Tour Description"
                                                 name="description"
                                                 variant="outlined"
+                                                multiline
+                                                rows={6}
                                                 onChange={(e) => handleChange(e.target)}
                                                 />
                                         </Grid>
@@ -325,7 +332,6 @@ const CreateTour = () => {
                                         </Grid>
                                         <Grid item>
                                             <TextField
-                                                required
                                                 id="additional-fees"
                                                 label="Additional Fees (number only)"
                                                 name="additionalFees"

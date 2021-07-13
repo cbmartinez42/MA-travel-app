@@ -107,11 +107,17 @@ const { userInfo, setUserInfo } = useContext(UserContext);
 
   const TAX_RATE = 0.07;
 
-  const useStyles = makeStyles({
+  const useStyles = makeStyles((theme) => ({
     table: {
       minWidth: 700,
     },
-  });
+    root: {
+      '& .MuiTextField-root': {
+        margin: theme.spacing(1),
+        width: '55ch',
+      },
+    }
+  }));
 
   const classes = useStyles();
 
@@ -539,13 +545,16 @@ const { userInfo, setUserInfo } = useContext(UserContext);
                 {checkout ? (
                   <Payment bookingDetails={bookingDetails} tourObject= {tourData} name={tourData.tourName} price={invoiceTotal}/>
                 ) : (
-                  <button
+                  <Button
+                  variant="contained"
+                  color="primary"
+                  style={{ margin: "2%" }}
                     onClick={() => {
                       setCheckout(true);
                     }}
                   >
                     checkout
-                  </button>
+                  </Button>
                 )}
               </div>
             </div>

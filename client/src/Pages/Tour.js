@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import API from "../utils/API";
-import Button from "../components/Button";
 import { Link } from "react-router-dom";
-import {Grid, Container} from '@material-ui/core'
+import {Grid, Container, Button} from '@material-ui/core'
 import ImgCarousel from '../components/ImgCarousel'
-// import Image from 'material-ui-image'
-// import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-// import { Carousel } from 'react-responsive-carousel';
 
 const Tour = () => {
   const [tourData, setTourData] = useState({});
@@ -19,7 +15,7 @@ const Tour = () => {
         setTourData(response.data || {});
         console.log("tourData >>>", tourData);
       })
-      .catch(err => console.log('this sucks >>> ', err)) 
+      .catch(err => console.log('Bummer >>> ', err)) 
   }, []);
 
   useEffect(() => {
@@ -34,16 +30,13 @@ const Tour = () => {
 
   return (
     <Container maxWidth="lg">
-      {/* <h1 onClick={()=>consoleTourData}>This page will show details of an individual tour.</h1> */}
       <Grid container spacing={1}>
       
         <Grid item xs={12}>
         <p className='tour-header tour-name'>{tourData.tourName}</p>
-          {/* <Grid item xs={12} className='carousel-container'> */}
             <ImgCarousel 
               tourData={tourData}
             />
-          {/* </Grid> */}
         </Grid>
         <Grid item xs={12}>
 
@@ -71,10 +64,17 @@ const Tour = () => {
         <Grid item xs={12}>
           
         <Link to={"/book?" + tourId}>
+
+
           <Button
-            onClick={() => renderDetail(tourId)}
-            text="Book This!"
-          />
+              variant="contained"
+              style={{ margin: "2%" }}
+              color="primary"
+              id="book-btn"
+              name="action"
+              onClick={() => renderDetail(tourId)}
+          >Book This
+          </Button>
         </Link>
         </Grid>
       </Grid>

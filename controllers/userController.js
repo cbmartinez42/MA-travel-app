@@ -46,7 +46,7 @@ module.exports = {
           const jwtParams = {
             id: results._id,
             email: results.email,
-            exp: 10000,
+            exp: 10800000,
           }
           const token = jwt.sign(jwtParams, secret);
 
