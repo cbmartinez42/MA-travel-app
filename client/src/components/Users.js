@@ -2,20 +2,19 @@ import react, {useState, useEffect} from 'react';
 import API from '../utils/API'
 import {Box, Container} from '@material-ui/core/';
 import Button from "../components/Button"
-// import Tour from "../pages/Tour";
 import {Link} from 'react-router-dom'
 import Grid from '@material-ui/core/Grid'
 
-const Users = ({searchUsers, setSearchUsers}) => {
+const UserData = ({searchUsers, setSearchUsers}) => {
 
-    // setSearchUsers = [{"name.first": "Mark"}]
+    const [users, setUsers] = useState([])
 
     useEffect(() => {
         API.browseAllUsers()
         .then((response) => {
-            console.log('browseallusers response.data: ',response.data)
+            console.log('browseallusers response.data: ',response);
             // setSearchUsers(response.data || [])
-            setSearchUsers(response.data)
+            setUsers(response.data)
         });
       }, [])
 
@@ -27,29 +26,29 @@ const Users = ({searchUsers, setSearchUsers}) => {
     return (
         <>
         <Container maxWidth="md">
-            {/* {searchUsers.map(search => (
+            {users.map(user => (
                 
-                <Box key={search._id} className="tour-abstract">
+                <Box key={user._id} className="tour-abstract">
                     <Box className="abstract-header">
-                        <h2>{search.tourName}</h2>
+                        <h2>{user.name.first} {user.name.last}</h2>
                     </Box>
                     <Grid container spacing={3}>
                         <Grid item md>
-                            <p>Location: {search.name.first}</p>
-                            <Link to={"/tour/" + search._id}>
+                            <p>Location: {user.address.city} {user.address.state}</p>
+                            <Link to={"/tour/" + user._id}>
                                 <Button 
-                                    onClick={() => renderDetail(search._id)}
+                                    onClick={() => renderDetail(user._id)}
                                     text='Learn More!'
                                 />
                             </Link>
                         </Grid>
                     </Grid>
                 </Box>
-            )) } */}
+            )) }
         </Container>
         </>
     )
 
 }
 
-export default Users;
+export default UserData;

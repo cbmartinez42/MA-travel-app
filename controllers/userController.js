@@ -27,14 +27,15 @@ module.exports = {
   login: function (req, res) {
     let currentUser; 
     db.User.findOne({email: req.body.email})
-      .then(dbModel => {
+      .then(async dbModel => {
         currentUser = dbModel
-        if (bcrypt.compare(req.body.password, dbModel.password)) {
+        const isAuthed = await bcrypt.compare(req.body.password, dbModel.password)
+        
+        if (isAuthed) {
           return currentUser
         } else {
           return false
         }
-        
       }) 
       .then(results => {
         if (results ) {

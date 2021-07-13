@@ -1,27 +1,37 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 // import Button from '../components/Button'
+import { UserContext } from '../utils/UserContext';
 import Signup from "../components/Signup";
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import API from '../utils/API'
+import { useHistory } from "react-router-dom";
 
 const Login = () => {
+
+    const { userInfo, setUserInfo } = useContext(UserContext);
 
     const [showSignUp, setShowSignUp] = useState(false);
 
     const[signin, setSignin] = useState({})
 
     const handleChange = (e) => {
+        // setUserInfo({...userInfo,[e.name]: e.value})
         setSignin({...signin,[e.name]: e.value});
     }
+    const history = useHistory();
 
     const handleLogin = (e) => {
         e.preventDefault()
         API.login(signin)
         .then((response) => {
-            console.log('response >>', response)
-            // setSearchData(response.data || [])
+            console.log('response >>', response);
+            console.log('config.data.role: ', response.data.user.role);
+            // setUserInfo(response.data.user.role);
+            setUserInfo({"_id": response.data.user._id, "role": response.data.user.role, "namefirst": response.data.user.name.first, "namelast": response.data.user.name.last});
+            history.push('/home');
+            console.log('userInfo: ', userInfo);
           })
         .catch(error => console.log(error))
     }
@@ -60,6 +70,7 @@ const Login = () => {
                                         <TextField
                                             required
                                             id="signin-password"
+                                            type="password"
                                             label="Password"
                                             name="password"
                                             variant="outlined"

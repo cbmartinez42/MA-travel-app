@@ -22,6 +22,7 @@ import Header from './components/Header'
 
 function App() {
   const [userInfo, setUserInfo] = useState('NLI');
+  const [userId, setUserId] = useState('');
   const [searchData, setSearchData] = useState([]);
 
   return (
