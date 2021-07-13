@@ -17,7 +17,7 @@ const CreateTour = () => {
   const classes = useStyles();  
   const[createTour, setCreateTour] = useState({})
   const [tourOperators, setTourOperators] = useState([])
-
+    const [image, setImage] = useState(null)
   useEffect(() => {
     API.getTourOperators()
     .then((response) => {
@@ -26,8 +26,9 @@ const CreateTour = () => {
   }, [])
   
   const handleChange = (e) => {
-    if(e.name === "file"){
-        setCreateTour({...createTour, [e.name]:e.files}) 
+    if(e.name === "image_file"){
+        // setCreateTour({...createTour, [e.name]:e.files})
+        setImage(e.files)
     }
     else{
     setCreateTour({...createTour,[e.name]: e.value});
@@ -44,15 +45,26 @@ const CreateTour = () => {
 
   const handleCreateTour = async (e) => {
     e.preventDefault();
+    try{
     const response = await API.createNewTour(createTour);
-    if (response.ok) {
+        
+    for(let i = 0; i < image.length; i++){
+        const imgRes = await API.addTourImg( response._id, image[i])
+    }
+   
+
+
+    console.log(response)
+    if (response.status === 200) {
       console.log("FILE SENT");
-      const res = await response.json();
+      const res = response.data
 
     } else {
       console.log("mas problemo");
     }
-
+} catch(err){
+    console.log('and error happened!', err)
+}
     //   API.createNewTour(createTour)
     //   .then(result => {
     //       console.log('createNewTour Result: TOUR CREATED!!!', result)
@@ -67,7 +79,7 @@ const CreateTour = () => {
            {/* Create New Tour Container */}
            <div className="container">
            <h2 className="fredoka">New Tour Form</h2>
-                        <form className={classes.root} noValidate autoComplete="off" >
+                        <form enctype="multipart/form-data" className={classes.root} noValidate autoComplete="off" >
                         <Grid container direction="column" alignItems="center" > 
                             <div className="row">
                                 <div className="input-field col s12">
@@ -113,7 +125,7 @@ const CreateTour = () => {
                                                 required
                                                 id="departure-location-street"
                                                 label="Departure Location Street"
-                                                name="departureLocation.street"
+                                                name="street"
                                                 variant="outlined"
                                                 onChange={(e) => handleChange(e.target)}
                                                 />
@@ -130,7 +142,7 @@ const CreateTour = () => {
                                                 required
                                                 id="departure-location-street2"
                                                 label="Departure Location Street2"
-                                                name="departureLocation.street2"
+                                                name="street2"
                                                 variant="outlined"
                                                 onChange={(e) => handleChange(e.target)}
                                                 />
@@ -147,7 +159,7 @@ const CreateTour = () => {
                                                 required
                                                 id="departure-location-city"
                                                 label="Departure Location City"
-                                                name="departureLocation.city"
+                                                name="city"
                                                 variant="outlined"
                                                 onChange={(e) => handleChange(e.target)}
                                                 />
@@ -163,7 +175,7 @@ const CreateTour = () => {
                                             <TextField
                                                 id="departure-location-state"
                                                 label="Departure Location State / District"
-                                                name="departureLocation.state"
+                                                name="state"
                                                 variant="outlined"
                                                 onChange={(e) => handleChange(e.target)}
                                                 />
@@ -180,7 +192,7 @@ const CreateTour = () => {
                                                 required
                                                 id="departure-location-zip"
                                                 label="Departure Location Zip Code"
-                                                name="departureLocation.zip"
+                                                name="zip"
                                                 variant="outlined"
                                                 onChange={(e) => handleChange(e.target)}
                                                 />
@@ -400,8 +412,8 @@ const CreateTour = () => {
                                             <TextField
                                                 required
                                                 type="file"
-                                                id="upload image"
-                                                name="file"
+                                                id="upload-image"
+                                                name="image_file"
                                                 inputProps={{ multiple: true }}
                                                // onChange={(e) => setUploadedFile(e.target.files)}
                                                 // Connect to ImageUploader here
@@ -427,6 +439,7 @@ const CreateTour = () => {
                             </div>
                             </Grid>
                         </form>
+                       
                     </div>
                 </div> 
     )
