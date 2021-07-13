@@ -39,30 +39,21 @@ let API = {
     createNewTour: function(newTourInfo){
         console.log('createNewTour was called from utils/API.js w/this payload:',newTourInfo);
         const form = new FormData();
-        // form.append("file", newTourInfo.file);
-        // form.append("tourName", newTourInfo.tourName);
-        // form.append("tourOperator", newTourInfo.tourOperator);
-        // form.append("departureLocation.street", newTourInfo.departureLocation.street);
-        // form.append("departureLocation.street2", newTourInfo.departureLocation.street2);
-        // form.append("departureLocation.city", newTourInfo.departureLocation.city);
-        // form.append("departureLocation.state", newTourInfo.departureLocation.state);
-        // form.append("departureLocation.zip", newTourInfo.departureLocation.zip);
-        // form.append("email", newTourInfo.email);
-        // form.append("description", newTourInfo.description);
-        // form.append("tourLocation", newTourInfo.tourLocation);
-        // form.append("cancellationPolicy", newTourInfo.cancellationPolicy);
-        // form.append("startTimes", newTourInfo.startTimes);
-        // form.append("duration", newTourInfo.duration);
-        // form.append("cost", newTourInfo.cost);
-        // form.append("additionalFees", newTourInfo.additionalFees);
-        // form.append("maxCapacity", newTourInfo.maxCapacity);
-        // form.append("minCapacity", newTourInfo.minCapacity);
-        // form.append("keywords", newTourInfo.keywords);
-        // form.append("category", newTourInfo.category);
-        // form.append("image", newTourInfo.image);
 
-        return axios.post('/api/tour', form);
+        let keyNames = Object.keys(newTourInfo);
+       
+        for(let i = 0; i < keyNames.length; i++){
+            form.append(keyNames[i], newTourInfo[keyNames[i]])
+            console.log(newTourInfo[keyNames[i]])
+        }
+        return axios.post('/api/tour', newTourInfo);
 
+    },
+    addTourImg: function(tourId, img){
+        const form = new FormData()
+        console.log(img)
+        form.append("image_file", img)
+        return axios.post('/photos/upload', form)
     },
     createNewTourOperator: function(newTourOperatorInfo){
         console.log('createNewTour was called from utils/API.js w/this payload:',newTourOperatorInfo);
@@ -76,7 +67,7 @@ let API = {
     getTourOperators: function() {
         return axios.get('/api/operator')
     },
-
+    //this logic needs to be handled on the backend
     openWeather: function(cityName){
         console.log('API call was made to open weather for this city name',cityName);
         return axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${openWeatherKey}`);
@@ -84,7 +75,11 @@ let API = {
 
     createNewBooking: function(newBookingInfo){
         console.log('a new booking was creating with this info ->',newBookingInfo)
-        return axios.get('/api/booking')
+        return axios.post('/api/booking',newBookingInfo)
+    },
+    createNeworder: function (newOrderInfo){
+        console.log('a new order was created with this information->>>>>>>',newOrderInfo)
+        return axios.post('/api/order',newOrderInfo)
     }
 };
 

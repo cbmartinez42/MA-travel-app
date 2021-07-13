@@ -20,10 +20,10 @@ const ImgCarousel = ({tourData}) => {
         >
         {tourData?.image?.map(image => (
         // <Container>
-            <img classname="tour-image-full" alt="Tour details" src={image} />
+            <img key={image} className="tour-image-full" alt="Tour details" src={image} />
           // </Container>
         )) || stockImages.map(images => (
-          <img classname="tour-image-full" alt="Tour details" src={images} />
+          <img key={images} className="tour-image-full" alt="Tour details" src={images} />
         ))}
       </Carousel>
     )

@@ -13,6 +13,7 @@ import Operatoradmin from "./pages/Operatoradmin";
 import Terms from "./pages/Terms";
 import Tour from "./pages/Tour";
 import Touradmin from "./pages/Touradmin";
+import Thankyou from "./pages/Thankyou.js";
 
 import { UserContext } from "./utils/UserContext";
 import './App.css';
@@ -37,7 +38,9 @@ function App() {
             <Route exact path="/about" component={About} />
             <Route exact path="/admin" component={Admin} />
             <Route exact path="/book" component={Book} />
-            <Route path="/browse">
+            <Route exact path="/thankyou" component={Thankyou} />
+            <Route exact path="/browse">
+
               <Browse 
                 searchData={searchData}
                 setSearchData={setSearchData}

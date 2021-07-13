@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { InlineWidget } from "react-calendly";
 import Signup from "../components/Signup";
 import { makeStyles } from "@material-ui/core/styles";
@@ -6,6 +6,8 @@ import { TextField, Grid, Button, Paper, TableRow, TableHead, TableContainer, Ta
 import { useParams, useLocation } from "react-router-dom";
 import API from "../utils/API";
 import Payment from "./../components/Payment";
+import { UserContext } from '../utils/UserContext';
+
 
 // let tourData={cancellationPolicy: "72 hours full refund, under 72 hours 50% refund"
 // category: []
@@ -29,11 +31,13 @@ const Book = () => {
  1) Company A (1) Calendar  3 events A,B,C
 */
 
+const { userInfo, setUserInfo } = useContext(UserContext);
+
+
   const [tourData, setTourData] = useState({});
 
   const params = useLocation();
   const tourId = params.search.substring(1);
-  console.log(tourId);
 
   useEffect(() => {
     // fetch(infoUrl)
@@ -51,8 +55,13 @@ const Book = () => {
   //state to show signUp form for new booking
   const [showForm, setShowForm] = useState(false);
 
+  //how many participants did the user input in the form? 
   const [participants, setParticipants] = useState(1);
 
+  // checkout info from paypal
+  const [checkout, setCheckout] = useState(false);
+
+  // setting the particpants state on change to the input form
   const addParticipants = (e) => {
     setParticipants(e.value);
   };
@@ -70,10 +79,17 @@ const Book = () => {
   //whenver something is typed into an input, change the state to reflect that change
   const handleChange = (e) => {
     setBookingDetails({ ...bookingDetails, [e.name]: e.value });
+    console.log(bookingDetails)
   };
 
   //on SUBMIT click, call the API, hide the booking form, reveal the Payment Info
   const handleBooking = (e) => {
+    e.preventDefault();
+    setShowForm(!showForm);
+    setshowPricing(true);
+  };
+
+  const paymentAndBooking = (e) => {
     e.preventDefault();
     API.createNewBooking(bookingDetails)
       .then((response) => {
@@ -81,8 +97,6 @@ const Book = () => {
         // setSearchData(response.data || [])
       })
       .catch((error) => console.log(error));
-    setShowForm(!showForm);
-    setshowPricing(true);
   };
 
   let style = {
@@ -93,11 +107,17 @@ const Book = () => {
 
   const TAX_RATE = 0.07;
 
-  const useStyles = makeStyles({
+  const useStyles = makeStyles((theme) => ({
     table: {
       minWidth: 700,
     },
-  });
+    root: {
+      '& .MuiTextField-root': {
+        margin: theme.spacing(1),
+        width: '55ch',
+      },
+    }
+  }));
 
   const classes = useStyles();
 
@@ -121,12 +141,14 @@ const Book = () => {
     return items.map(({ price }) => price).reduce((sum, i) => sum + i, 0);
   }
 
-  let rows=[]
+  let rows = [];
 
-  tourData.additionalFees ? (rows = [
-    createRow(tourData.tourName, participants, tourData.cost),
-    createRow("Additional Fees", 1, tourData.additionalFees),
-  ]) : rows=[createRow(tourData.tourName, participants, tourData.cost)]
+  tourData.additionalFees
+    ? (rows = [
+        createRow(tourData.tourName, participants, tourData.cost),
+        createRow("Additional Fees", 1, tourData.additionalFees),
+      ])
+    : (rows = [createRow(tourData.tourName, participants, tourData.cost)]);
 
   //creating variables to get the final prices and subtotals based on previous variables
   const invoiceSubtotal = subtotal(rows);
@@ -140,27 +162,31 @@ const Book = () => {
           <Container maxWidth="md">
             {" "}
             <div>
-            <h3 onClick={() => console.log("tourData>>>>>", tourData)}>
-              Show Tour Details HERE! (Name, Image, Location, price,
-              description)
-            </h3>
-            <Container>
+              <h3 onClick={() => console.log("tourData>>>>>", tourData)}>
+                Show Tour Details HERE! (Name, Image, Location, price,
+                description)
+              </h3>
+              <Container>
                 <Box key={tourData._id} className="tour-abstract">
-                    <Box className="abstract-header">
-                        <h2>{tourData.tourName}</h2>
-                    </Box>
-                    <Grid container spacing={3}>
-                        <Grid item xs>
-                            <img alt="Tour" className="tour-thumbnail" src={tourData.image}></img>
-                        </Grid>
-                        <Grid item md>
-                            <p>Location: {tourData.tourLocation}</p>
-                            <p>Cost: ${tourData.cost}</p>
-                            <p>Operated by: {tourData.tourOperator}</p>
-                        </Grid>
+                  <Box className="abstract-header">
+                    <h2>{tourData.tourName}</h2>
+                  </Box>
+                  <Grid container spacing={3}>
+                    <Grid item xs>
+                      <img
+                        alt="Tour"
+                        className="tour-thumbnail"
+                        src={tourData.image}
+                      ></img>
                     </Grid>
+                    <Grid item md>
+                      <p>Location: {tourData.tourLocation}</p>
+                      <p>Cost: ${tourData.cost}</p>
+                      <p>Operated by: {tourData.tourOperator}</p>
+                    </Grid>
+                  </Grid>
                 </Box>
-        </Container>
+              </Container>
             </div>
             <h3>
               These buttons open a calendar to the correct tour, but we should
@@ -238,8 +264,26 @@ const Book = () => {
                         <TextField
                           required
                           id="signup-full-name"
-                          label="Full Name"
-                          name="name.full"
+                          label="First Name"
+                          name="firstName"
+                          variant="outlined"
+                          onChange={(e) => handleChange(e.target)}
+                        />
+                      </Grid>
+                    </Grid>
+                  </div>
+
+                  <div className="input-field col s12">
+                    <Grid container spacing={1} alignItems="flex-end">
+                      <Grid item>
+                        <i className="material-icons prefix">person_add</i>
+                      </Grid>
+                      <Grid item>
+                        <TextField
+                          required
+                          id="signup-full-name"
+                          label="Last Name"
+                          name="lastName"
                           variant="outlined"
                           onChange={(e) => handleChange(e.target)}
                         />
@@ -293,7 +337,7 @@ const Book = () => {
                           required
                           id="signup-address1"
                           label="Address 1"
-                          name="address.street"
+                          name="addressStreet"
                           variant="outlined"
                           onChange={(e) => handleChange(e.target)}
                         />
@@ -310,7 +354,7 @@ const Book = () => {
                         <TextField
                           id="signup-address2"
                           label="Address 2"
-                          name="address.street2"
+                          name="addressStreet2"
                           variant="outlined"
                           onChange={(e) => handleChange(e.target)}
                         />
@@ -327,7 +371,7 @@ const Book = () => {
                           required
                           id="signup-city"
                           label="City"
-                          name="address.city"
+                          name="addressCity"
                           variant="outlined"
                           onChange={(e) => handleChange(e.target)}
                         />
@@ -344,7 +388,7 @@ const Book = () => {
                           required
                           id="signup-state"
                           label="State"
-                          name="address.state"
+                          name="addressState"
                           variant="outlined"
                           onChange={(e) => handleChange(e.target)}
                         />
@@ -362,7 +406,7 @@ const Book = () => {
                           required
                           id="signup-zip"
                           label="Zip"
-                          name="address.zip"
+                          name="addressZip"
                           variant="outlined"
                           onChange={(e) => handleChange(e.target)}
                         />
@@ -400,8 +444,10 @@ const Book = () => {
                           label="Participants? Ex: 2"
                           name="participants"
                           variant="outlined"
-                          onChange={(e) => {handleChange(e.target);
-                            addParticipants(e.target)}}
+                          onChange={(e) => {
+                            handleChange(e.target);
+                            addParticipants(e.target);
+                          }}
                         />
                       </Grid>
                     </Grid>
@@ -426,70 +472,91 @@ const Book = () => {
         {/* Pricing Container */}
         <div>
           {/*If showPricing STATE is false then display NULL*/}
-          {showPricing ? null : (
+          {! showPricing ? null : (
             <div>
-              <h2 style={{ textDecoration: "underline" }}>
-                Payment information
-              </h2>
-              <Container maxWidth="md">
-                <TableContainer component={Paper}>
-                  <Table className={classes.table} aria-label="spanning table">
-                    <TableHead>
-                      <TableRow>
-                        <TableCell align="center" colSpan={2}>
-                          Details
-                        </TableCell>
-                        <TableCell align="right">Price</TableCell>
-                      </TableRow>
+              <div>
+                <h2 style={{ textDecoration: "underline" }}>
+                  Payment information
+                </h2>
+                <Container maxWidth="md">
+                  <TableContainer component={Paper}>
+                    <Table
+                      className={classes.table}
+                      aria-label="spanning table"
+                    >
+                      <TableHead>
+                        <TableRow>
+                          <TableCell align="center" colSpan={2}>
+                            Details
+                          </TableCell>
+                          <TableCell align="right">Price</TableCell>
+                        </TableRow>
 
-                      <TableRow>
-                        <TableCell>Desc</TableCell>
-                        <TableCell align="right">Participants</TableCell>
-                        <TableCell align="right">Sum</TableCell>
-                      </TableRow>
-                    </TableHead>
+                        <TableRow>
+                          <TableCell>Desc</TableCell>
+                          <TableCell align="right">Participants</TableCell>
+                          <TableCell align="right">Sum</TableCell>
+                        </TableRow>
+                      </TableHead>
 
-                    <TableBody>
-                      {rows.map((row) => (
-                        <TableRow key={row.desc}>
-                          <TableCell>{`${row.desc}`}</TableCell>
-                          <TableCell align="right">{`${row.qty}`}</TableCell>
+                      <TableBody>
+                        {rows.map((row) => (
+                          <TableRow key={row.desc}>
+                            <TableCell>{`${row.desc}`}</TableCell>
+                            <TableCell align="right">{`${row.qty}`}</TableCell>
+                            <TableCell align="right">
+                              {ccyFormat(row.price)}
+                            </TableCell>
+                          </TableRow>
+                        ))}
+
+                        <TableRow>
+                          <TableCell rowSpan={1} />
+                          <TableCell colSpan={1} align="left">
+                            Subtotal
+                          </TableCell>
                           <TableCell align="right">
-                            {ccyFormat(row.price)}
+                            {ccyFormat(invoiceSubtotal)}
                           </TableCell>
                         </TableRow>
-                      ))}
 
-                      <TableRow>
-                        <TableCell rowSpan={1} />
-                        <TableCell colSpan={1} align="left">
-                          Subtotal
-                        </TableCell>
-                        <TableCell align="right">
-                          {ccyFormat(invoiceSubtotal)}
-                        </TableCell>
-                      </TableRow>
+                        <TableRow>
+                          <TableCell>Tax</TableCell>
+                          <TableCell align="right">{`${(TAX_RATE * 100).toFixed(
+                            0
+                          )} %`}</TableCell>
+                          <TableCell align="right">
+                            {ccyFormat(invoiceTaxes)}
+                          </TableCell>
+                        </TableRow>
 
-                      <TableRow>
-                        <TableCell>Tax</TableCell>
-                        <TableCell align="right">{`${(TAX_RATE * 100).toFixed(
-                          0
-                        )} %`}</TableCell>
-                        <TableCell align="right">
-                          {ccyFormat(invoiceTaxes)}
-                        </TableCell>
-                      </TableRow>
-
-                      <TableRow>
-                        <TableCell colSpan={1}>Total</TableCell>
-                        <TableCell align="right">
-                          {ccyFormat(invoiceTotal)}
-                        </TableCell>
-                      </TableRow>
-                    </TableBody>
-                  </Table>
-                </TableContainer>
-              </Container>
+                        <TableRow>
+                          <TableCell colSpan={1}>Total</TableCell>
+                          <TableCell align="right">
+                            {ccyFormat(invoiceTotal)}
+                          </TableCell>
+                        </TableRow>
+                      </TableBody>
+                    </Table>
+                  </TableContainer>
+                </Container>
+              </div>
+              <div>
+                {checkout ? (
+                  <Payment bookingDetails={bookingDetails} tourObject= {tourData} name={tourData.tourName} price={invoiceTotal}/>
+                ) : (
+                  <Button
+                  variant="contained"
+                  color="primary"
+                  style={{ margin: "2%" }}
+                    onClick={() => {
+                      setCheckout(true);
+                    }}
+                  >
+                    checkout
+                  </Button>
+                )}
+              </div>
             </div>
           )}
         </div>

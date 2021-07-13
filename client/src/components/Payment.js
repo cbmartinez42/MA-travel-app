@@ -1,63 +1,92 @@
-import React, {useState} from "react";
-// import TextField from "@material-ui/core/TextField";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-// import Grid from "@material-ui/core/Grid";
-// import Button from "@material-ui/core/Button";
-// import API from "../utils/API";
-import ReactDOM from "react-dom"
-import paypal from 'paypal-checkout'
+import API from "../utils/API";
+import { useHistory } from "react-router-dom";
+import ReactDOM from "react-dom";
+import paypal from "paypal-checkout";
+import { UserContext } from '../utils/UserContext';
 
-//import paypal info
-// const PayPalButton = paypal.Buttons.driver("react", { React, ReactDOM });
 
-//styles info
-const useStyles = makeStyles((theme) => ({
-  root: {
-    "& .MuiTextField-root": {
-      margin: theme.spacing(1),
-      width: "35ch",
-    },
-  },
-}));
+// id: "0BJ9970162510971R", intent: "CAPTURE", status: "COMPLETED", purchase_units: Array(1), payer: {…}, …}
+// create_time: "2021-07-11T19:52:17Z"
+// id: "0BJ9970162510971R"
+// intent: "CAPTURE"
+// links: [{…}]
+// payer: {name: {…}, email_address: "jay.yousef-buyer@gmail.com", payer_id: "MAUWEF6NHJ9ZY", address: {…}}
+// purchase_units: [{…}]
+// status: "COMPLETED"
+// update_time: "2021-07-11T19:52:34Z"
+
+// ORDER MODEL:
+// payPalId: String,    
+// dateOfPurchase: String,
+// purchaser: String,
+// tourName: String,
+// participants: Number,
+
 
 //functional component
-function Payment() {
-    //state which sets the paypal button to loading if it's slow
-    const [isLoading, setIsLoading] = useState(false);
+function Payment(props) {
 
 
+  const { userInfo, setUserInfo } = useContext(UserContext);
 
 
-  const createOrder = (data, actions) =>{
-      return actions.order.create({
-        purchase_units: [
-          {
-            amount: {
-              value: "0.01",
-            },
-          },
-        ],
-      });
-    };
-  
-    //onApprove doTHIS!!
-    const onApprove = (data, actions) => {
-        console.log("order approved!")
-      return actions.order.capture();
-    };
+  //testing the funtionality with no user
+  if (userInfo=="NLI") {
+    setUserInfo({"_id": "no user"})
+   }
+
+
+  const history = useHistory();
+
+  const paypal = useRef();
+
+  useEffect(() => {
+    window.paypal
+      .Buttons({
+        createOrder: (data, actions, error) => {
+          return actions.order.create({
+            intent: "CAPTURE",
+            purchase_units: [
+              {
+                description: props.name,
+                amount: {
+                  value: props.price,
+                },
+              },
+            ],
+          });
+        },
+        onApprove: async (data, actions) => {
+          const order = await actions.order.capture();
+          console.log("this is the order>>>>>>>>", order);
+          API.createNewBooking({...order, ...props.bookingDetails, "id":userInfo._id}).then(res=>console.log(res))
+          .catch(error => console.log(error)).then(()=>{
+          // render thank you page
+          history.push("/thankyou?" + props.tourData._id +"?"+order.id);}
+          )},
+        onError: (err) => {
+          console.log(err);
+        },
+  })
+      .render(paypal.current);
+}, [])
+
 
   return (
-      <>
-   {/* <PayPalButton
+    <>
+      <div>
+        <div onClick={()=>console.log(userInfo)}>CLICK THIS BOX</div>
+        <div ref={paypal}></div>
+      </div>
+      {/* <PayPalButton
       createOrder={(data, actions) => createOrder(data, actions)}
       onApprove={(data, actions) => onApprove(data, actions)}
     /> */}
-
-    
-  </>
-
-
-  )
-};
+      <script defer src="https://www.paypal.com/sdk/js?client-id=ATxvRax9Nch26KWHgCSufUYPKEam7chfaqAjSpfpYJujcMLoedFqqQAhZMoM1-pAejEQsYyuKaavAJ2y"></script>
+    </>
+  );
+}
 
 export default Payment;
