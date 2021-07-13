@@ -33,7 +33,9 @@ const UserData = ({searchUsers, setSearchUsers}) => {
     const [role, setRole] = useState('');
 
     const handleChange = (event) => {
-    setRole(event.target.value);
+        console.log(event);
+        setRole(event.target.value);
+        API.updateUser(event.target.name, event.target.value)
     };
 
 
@@ -45,6 +47,10 @@ const UserData = ({searchUsers, setSearchUsers}) => {
             setUsers(response.data)
         });
       }, [])
+
+    useEffect(() => {
+        console.log(role);
+    }, [role]);
 
     const toggleRole = (data) => {
 
@@ -62,17 +68,20 @@ const UserData = ({searchUsers, setSearchUsers}) => {
                     </Box> */}
                     <Grid container spacing={1}>
                         <Grid item md>
-                            <p>{user.name.first} {user.name.last}    Location: {user.address.city} {user.address.state}    Role: {user.role}</p>
+                            <p>{user.name.first} {user.name.last}    Location: {user.address.city} {user.address.state}    Role: {role}</p>
                             <FormControl className={classes.formControl}>
                                 <InputLabel id="user-role">Role</InputLabel>
                                 <Select
                                 labelId="user-role"
                                 className="user-role"
-                                value={user.role}
+                                // value={role}
+                                name={user._id}
                                 onChange={handleChange}
                                 >
-                                <MenuItem value={10}>USER</MenuItem>
-                                <MenuItem value={20}>ADMIN</MenuItem>
+                                <MenuItem value="Hello">
+                                </MenuItem>
+                                <MenuItem value={"USER"}>USER</MenuItem>
+                                <MenuItem value={"ADMIN"}>ADMIN</MenuItem>
                                 </Select>
                             </FormControl>
                         </Grid>

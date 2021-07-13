@@ -61,6 +61,9 @@ let API = {
         return axios.post('/api/operator', newTourOperatorInfo);
 
     },
+    updateUser: function(id, role){
+        return axios.put('/api/user/'+id, {role: role});
+    },
     //TODO: need to add this external API to our back end before the Browse->Results data is pushed back to the front end
     //maybe implement a loading feature on browse in case it takes more than one or two seconds to finish all the calls
     //we may also need to handle what happens if we reach maximum number of calls, though i don't remember the maximum calls for the free version of OpenWeatherAPI
