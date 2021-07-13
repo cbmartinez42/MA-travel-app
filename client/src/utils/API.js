@@ -76,7 +76,7 @@ let API = {
     getTourOperators: function() {
         return axios.get('/api/operator')
     },
-
+    //this logic needs to be handled on the backend
     openWeather: function(cityName){
         console.log('API call was made to open weather for this city name',cityName);
         return axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${openWeatherKey}`);
@@ -84,7 +84,11 @@ let API = {
 
     createNewBooking: function(newBookingInfo){
         console.log('a new booking was creating with this info ->',newBookingInfo)
-        return axios.get('/api/booking')
+        return axios.post('/api/booking',newBookingInfo)
+    },
+    createNeworder: function (newOrderInfo){
+        console.log('a new order was created with this information->>>>>>>',newOrderInfo)
+        return axios.post('/api/order',newOrderInfo)
     }
 };
 
