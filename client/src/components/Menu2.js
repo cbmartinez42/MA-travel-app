@@ -146,11 +146,14 @@ const history = useHistory();
       {['left'].map((anchor) => (
         <React.Fragment key={anchor}>
           <Button onClick={toggleDrawer(anchor, true)}><MenuIcon /></Button>
+          
           <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
             {list(anchor)}
           </Drawer>
+          
         </React.Fragment>
       ))}
+      <span className='announcement'>Buy now! Big sale for the summer!</span>
     </div>
   );
 }
