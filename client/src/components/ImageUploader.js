@@ -2,14 +2,19 @@ import React from "react";
 import { useRef, useState } from "react";
 import { Input, Button } from "@material-ui/core";
 
-const TourImages = () => {
+const TourImages = (props) => {
   const [fileInput, setUploadedFile] = useState(null);
   const [imageUploaded, setImageUploaded] = useState(null);
+  const [formInfo, setFormInfo] = useState(null);
+
+
   const handleInput = async () => {
     console.log("uploading file", fileInput);
     //we need to append the form to a multipart formdata to send it over to multer
     const form = new FormData();
     form.append("image_file", fileInput);
+
+
 
     /**here would be the api call to multer */
     const response = await fetch("/photos/upload/", {

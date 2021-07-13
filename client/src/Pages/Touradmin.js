@@ -26,19 +26,40 @@ const CreateTour = () => {
   }, [])
   
   const handleChange = (e) => {
+    if(e.name === "file"){
+        setCreateTour({...createTour, [e.name]:e.files}) 
+    }
+    else{
     setCreateTour({...createTour,[e.name]: e.value});
+    console.log(e.value);
+    }
   }
-  const handleCreateTour = (e) => {
-    console.log('createTour = ',createTour);
-    e.preventDefault();
 
-      API.createNewTour(createTour)
-      .then(result => {
-          console.log('createNewTour Result: TOUR CREATED!!!', result)
-      })
-      .catch(err => {
-          console.log('Oh my... there was an error: ',err.response)
-      })
+  const handleOperatorChange = (e) => {
+    // console.log(e.target.value)
+    setCreateTour({...createTour, tourOperator: e.target.value}) 
+    
+    
+  }
+
+  const handleCreateTour = async (e) => {
+    e.preventDefault();
+    const response = await API.createNewTour(createTour);
+    if (response.ok) {
+      console.log("FILE SENT");
+      const res = await response.json();
+
+    } else {
+      console.log("mas problemo");
+    }
+
+    //   API.createNewTour(createTour)
+    //   .then(result => {
+    //       console.log('createNewTour Result: TOUR CREATED!!!', result)
+    //   })
+    //   .catch(err => {
+    //       console.log('Oh my... there was an error: ',err.response)
+    //   })
     }
 
   return (
@@ -52,7 +73,7 @@ const CreateTour = () => {
                                 <div className="input-field col s12">
                                     <Grid container spacing={1} alignItems="flex-end">
                                         <Grid item>
-                                            <i className="material-icons prefix">person_add</i>
+                                            <i className="material-icons prefix">local_activity</i>
                                         </Grid>
                                         <Grid item>
                                             <TextField
@@ -66,43 +87,26 @@ const CreateTour = () => {
                                         </Grid>
                                     </Grid>
                                 </div>
-                                {/* TODO: Correctly link the objectID here */}
 
                                 <Select
                                     // labelId="demo-simple-select-label"
                                     // id="demo-simple-select"
-                                    value={{tourOperators}}
-                                    // onChange={handleChange}
+                                    value={createTour.tourOperator || ''}
+                                    name='operator'
+                                    onChange={handleOperatorChange}
                                     // displayEmpty
-                                    className='Operator Dropdown'
+                                    className='operator-dropdown'
                                     inputProps={{ 'aria-label': 'Without label' }}
                                 >
-                                {tourOperators.map(operator => (
-                                    <MenuItem value={operator._id}>{operator.name}</MenuItem>
-                                ))}
+                                {tourOperators.map(operator => {
+                                    return <MenuItem key={operator._id} value={operator._id}>{operator.name}</MenuItem>
+                                })}
                                 
                                 </Select>
-                                {/* <div className="input-field col s12">
-                                    <Grid container spacing={1} alignItems="flex-end">
-                                        <Grid item>
-                                            <i className="material-icons prefix">person_add</i>
-                                        </Grid>
-                                        <Grid item>
-                                            <TextField
-                                                required
-                                                id="tour-operator"
-                                                label="Tour Operator"
-                                                name="tourOperator"
-                                                variant="outlined"
-                                                onChange={(e) => handleChange(e.target)}
-                                                />
-                                        </Grid>
-                                    </Grid>
-                                </div> */}
                                 <div className="input-field col s12">
                                     <Grid container spacing={1} alignItems="flex-end">
                                         <Grid item>
-                                            <i className="material-icons prefix">email</i>
+                                            <i className="material-icons prefix">location_on</i>
                                         </Grid>
                                         <Grid item>
                                             <TextField
@@ -119,7 +123,7 @@ const CreateTour = () => {
                                 <div className="input-field col s12">
                                     <Grid container spacing={1} alignItems="flex-end">
                                         <Grid item>
-                                            <i className="material-icons prefix">phone</i>
+                                            <i className="material-icons prefix">location_on</i>
                                         </Grid>
                                         <Grid item>
                                             <TextField
@@ -153,12 +157,12 @@ const CreateTour = () => {
                                 <div className="input-field col s12">
                                     <Grid container spacing={1} alignItems="flex-end">
                                         <Grid item>
-                                            <i className="material-icons prefix">location_city</i>
+                                            <i className="material-icons prefix">location_searching</i>
                                         </Grid>
                                         <Grid item>
                                             <TextField
                                                 id="departure-location-state"
-                                                label="Departure Location State"
+                                                label="Departure Location State / District"
                                                 name="departureLocation.state"
                                                 variant="outlined"
                                                 onChange={(e) => handleChange(e.target)}
@@ -169,7 +173,7 @@ const CreateTour = () => {
                                 <div className="input-field col s12">
                                     <Grid container spacing={1} alignItems="flex-end">
                                         <Grid item>
-                                            <i className="material-icons prefix">location_city</i>
+                                            <i className="material-icons prefix">location_searching</i>
                                         </Grid>
                                         <Grid item>
                                             <TextField
@@ -186,7 +190,7 @@ const CreateTour = () => {
                                 <div className="input-field col s12">
                                     <Grid container spacing={1} alignItems="flex-end">
                                         <Grid item>
-                                            <i className="material-icons prefix">location_city</i>
+                                            <i className="material-icons prefix">email</i>
                                         </Grid>
                                         <Grid item>
                                             <TextField
@@ -203,7 +207,7 @@ const CreateTour = () => {
                                 <div className="input-field col s12">
                                     <Grid container spacing={1} alignItems="flex-end">
                                         <Grid item>
-                                            <i className="material-icons prefix">location_city</i>
+                                            <i className="material-icons prefix">toc</i>
                                         </Grid>
                                         <Grid item>
                                             <TextField
@@ -220,7 +224,7 @@ const CreateTour = () => {
                                 <div className="input-field col s12">
                                     <Grid container spacing={1} alignItems="flex-end">
                                         <Grid item>
-                                            <i className="material-icons prefix">security</i>
+                                            <i className="material-icons prefix">add_location</i>
                                         </Grid>
                                         <Grid item>
                                             <TextField
@@ -237,7 +241,7 @@ const CreateTour = () => {
                                 <div className="input-field col s12">
                                     <Grid container spacing={1} alignItems="flex-end">
                                         <Grid item>
-                                            <i className="material-icons prefix">location_city</i>
+                                            <i className="material-icons prefix">cancel</i>
                                         </Grid>
                                         <Grid item>
                                             <TextField
@@ -254,13 +258,13 @@ const CreateTour = () => {
                                 <div className="input-field col s12">
                                     <Grid container spacing={1} alignItems="flex-end">
                                         <Grid item>
-                                            <i className="material-icons prefix">location_city</i>
+                                            <i className="material-icons prefix">access_alarms</i>
                                         </Grid>
                                         <Grid item>
                                             <TextField
                                                 required
                                                 id="start-times"
-                                                label="Start Times"
+                                                label="Start Times (ex. 9:00 am)"
                                                 name="startTimes"
                                                 variant="outlined"
                                                 onChange={(e) => handleChange(e.target)}
@@ -271,13 +275,13 @@ const CreateTour = () => {
                                 <div className="input-field col s12">
                                     <Grid container spacing={1} alignItems="flex-end">
                                         <Grid item>
-                                            <i className="material-icons prefix">location_city</i>
+                                            <i className="material-icons prefix">av_timer</i>
                                         </Grid>
                                         <Grid item>
                                             <TextField
                                                 required
                                                 id="duration"
-                                                label="Tour Duration"
+                                                label="Tour Duration (number only)"
                                                 name="duration"
                                                 variant="outlined"
                                                 onChange={(e) => handleChange(e.target)}
@@ -288,13 +292,13 @@ const CreateTour = () => {
                                 <div className="input-field col s12">
                                     <Grid container spacing={1} alignItems="flex-end">
                                         <Grid item>
-                                            <i className="material-icons prefix">location_city</i>
+                                            <i className="material-icons prefix">attach_money</i>
                                         </Grid>
                                         <Grid item>
                                             <TextField
                                                 required
                                                 id="tour-cost"
-                                                label="Cost"
+                                                label="Tour Price (number only)"
                                                 name="cost"
                                                 variant="outlined"
                                                 onChange={(e) => handleChange(e.target)}
@@ -305,13 +309,13 @@ const CreateTour = () => {
                                 <div className="input-field col s12">
                                     <Grid container spacing={1} alignItems="flex-end">
                                         <Grid item>
-                                            <i className="material-icons prefix">location_city</i>
+                                            <i className="material-icons prefix">attach_money</i>
                                         </Grid>
                                         <Grid item>
                                             <TextField
                                                 required
                                                 id="additional-fees"
-                                                label="Additional Fees"
+                                                label="Additional Fees (number only)"
                                                 name="additionalFees"
                                                 variant="outlined"
                                                 onChange={(e) => handleChange(e.target)}
@@ -322,13 +326,13 @@ const CreateTour = () => {
                                 <div className="input-field col s12">
                                     <Grid container spacing={1} alignItems="flex-end">
                                         <Grid item>
-                                            <i className="material-icons prefix">location_city</i>
+                                            <i className="material-icons prefix">person_pin</i>
                                         </Grid>
                                         <Grid item>
                                             <TextField
                                                 required
                                                 id="max-capacity"
-                                                label="Max Capacity"
+                                                label="Maximum Capacity (number only)"
                                                 name="maxCapacity"
                                                 variant="outlined"
                                                 onChange={(e) => handleChange(e.target)}
@@ -339,13 +343,13 @@ const CreateTour = () => {
                                 <div className="input-field col s12">
                                     <Grid container spacing={1} alignItems="flex-end">
                                         <Grid item>
-                                            <i className="material-icons prefix">location_city</i>
+                                            <i className="material-icons prefix">person_pin</i>
                                         </Grid>
                                         <Grid item>
                                             <TextField
                                                 required
                                                 id="min-capacity"
-                                                label="Minimum Capacity"
+                                                label="Minimum Capacity (number only)"
                                                 name="minCapacity"
                                                 variant="outlined"
                                                 onChange={(e) => handleChange(e.target)}
@@ -356,13 +360,13 @@ const CreateTour = () => {
                                 <div className="input-field col s12">
                                     <Grid container spacing={1} alignItems="flex-end">
                                         <Grid item>
-                                            <i className="material-icons prefix">location_city</i>
+                                            <i className="material-icons prefix">vpn_key</i>
                                         </Grid>
                                         <Grid item>
                                             <TextField
                                                 required
                                                 id="keywords"
-                                                label="Keywords"
+                                                label="Tour Keywords"
                                                 name="keywords"
                                                 variant="outlined"
                                                 onChange={(e) => handleChange(e.target)}
@@ -373,13 +377,13 @@ const CreateTour = () => {
                                 <div className="input-field col s12">
                                     <Grid container spacing={1} alignItems="flex-end">
                                         <Grid item>
-                                            <i className="material-icons prefix">location_city</i>
+                                            <i className="material-icons prefix">beach_access</i>
                                         </Grid>
                                         <Grid item>
                                             <TextField
                                                 required
                                                 id="category"
-                                                label="Category"
+                                                label="Tour Category"
                                                 name="category"
                                                 variant="outlined"
                                                 onChange={(e) => handleChange(e.target)}
@@ -390,15 +394,16 @@ const CreateTour = () => {
                                 <div className="input-field col s12">
                                     <Grid container spacing={1} alignItems="flex-end">
                                         <Grid item>
-                                            <i className="material-icons prefix">location_city</i>
+                                            <i className="material-icons prefix">photo_library</i>
                                         </Grid>
                                         <Grid item>
                                             <TextField
                                                 required
-                                                id="image"
-                                                label="Image"
-                                                name="image"
-                                                variant="outlined"
+                                                type="file"
+                                                id="upload image"
+                                                name="file"
+                                                inputProps={{ multiple: true }}
+                                               // onChange={(e) => setUploadedFile(e.target.files)}
                                                 // Connect to ImageUploader here
                                                 onChange={(e) => handleChange(e.target)}
                                                 />

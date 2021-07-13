@@ -9,12 +9,10 @@ const ToursSchema = new Schema({
   },
 
     //how to use a reference ID in mongoose
-    tourOperator: [
-        {
-          type: Schema.Types.ObjectId,
-          ref: "TourOperator"
-        }
-      ],
+    tourOperator: {
+      type: Schema.Types.ObjectId,
+      ref: "TourOperator"
+    },
 
       departureLocation: {
         street: String,
@@ -39,7 +37,7 @@ const ToursSchema = new Schema({
 //   array: Array,
   description: {
     type: String,
-    validate: [({ length }) => length >= 6, "Description string should be more than 6 characters."]
+    // validate: [({ length }) => length >= 6, "Description string should be more than 6 characters."]
   },
 
   tourLocation: {
@@ -48,7 +46,7 @@ const ToursSchema = new Schema({
 
   cancellationPolicy: {
       type: String,
-      validate: [({ length }) => length >= 6, "Description string should be more than 6 characters."]
+      // validate: [({ length }) => length >= 6, "Description string should be more than 6 characters."]
   },
 
   startTimes: {
@@ -56,7 +54,7 @@ const ToursSchema = new Schema({
   },
 
   duration: {
-  type: Number,
+  type: String,
   },
 
   cost: {
@@ -81,7 +79,7 @@ const ToursSchema = new Schema({
   
     // TODO: correctly setup for an image file
     image: {
-      type: String
+      type: Array
     }
 
 },
