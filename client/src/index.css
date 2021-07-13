@@ -166,3 +166,7 @@ text-align:left !important;
   transition: 0.25s ease-in-out;
   box-shadow: 5px 5px 5px rgb(176, 176, 247)
 }
+
+.user-role {
+  width: 20rem;
+}
