@@ -3,6 +3,5 @@ module.exports = {
     TourOperator: require("./TourOperator"),
     Tours: require("./Tours"),
     User: require("./User"),
-    Orders: require("./Orders")
   };
   

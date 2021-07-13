@@ -1,24 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { InlineWidget } from "react-calendly";
 import Signup from "../components/Signup";
 import { makeStyles } from "@material-ui/core/styles";
-import {
-  TextField,
-  Grid,
-  Button,
-  Paper,
-  TableRow,
-  TableHead,
-  TableContainer,
-  TableCell,
-  TableBody,
-  Table,
-  Box,
-  Container,
-} from "@material-ui/core";
+import { TextField, Grid, Button, Paper, TableRow, TableHead, TableContainer, TableCell, TableBody, Table, Box, Container } from "@material-ui/core";
 import { useParams, useLocation } from "react-router-dom";
 import API from "../utils/API";
 import Payment from "./../components/Payment";
+import { UserContext } from '../utils/UserContext';
+
 
 // let tourData={cancellationPolicy: "72 hours full refund, under 72 hours 50% refund"
 // category: []
@@ -42,11 +31,13 @@ const Book = () => {
  1) Company A (1) Calendar  3 events A,B,C
 */
 
+const { userInfo, setUserInfo } = useContext(UserContext);
+
+
   const [tourData, setTourData] = useState({});
 
   const params = useLocation();
   const tourId = params.search.substring(1);
-  console.log(tourId);
 
   useEffect(() => {
     // fetch(infoUrl)
@@ -64,10 +55,13 @@ const Book = () => {
   //state to show signUp form for new booking
   const [showForm, setShowForm] = useState(false);
 
+  //how many participants did the user input in the form? 
   const [participants, setParticipants] = useState(1);
 
+  // checkout info from paypal
   const [checkout, setCheckout] = useState(false);
 
+  // setting the particpants state on change to the input form
   const addParticipants = (e) => {
     setParticipants(e.value);
   };
@@ -85,10 +79,17 @@ const Book = () => {
   //whenver something is typed into an input, change the state to reflect that change
   const handleChange = (e) => {
     setBookingDetails({ ...bookingDetails, [e.name]: e.value });
+    console.log(bookingDetails)
   };
 
   //on SUBMIT click, call the API, hide the booking form, reveal the Payment Info
   const handleBooking = (e) => {
+    e.preventDefault();
+    setShowForm(!showForm);
+    setshowPricing(true);
+  };
+
+  const paymentAndBooking = (e) => {
     e.preventDefault();
     API.createNewBooking(bookingDetails)
       .then((response) => {
@@ -96,8 +97,6 @@ const Book = () => {
         // setSearchData(response.data || [])
       })
       .catch((error) => console.log(error));
-    setShowForm(!showForm);
-    setshowPricing(true);
   };
 
   let style = {
@@ -259,8 +258,26 @@ const Book = () => {
                         <TextField
                           required
                           id="signup-full-name"
-                          label="Full Name"
-                          name="name.full"
+                          label="First Name"
+                          name="firstName"
+                          variant="outlined"
+                          onChange={(e) => handleChange(e.target)}
+                        />
+                      </Grid>
+                    </Grid>
+                  </div>
+
+                  <div className="input-field col s12">
+                    <Grid container spacing={1} alignItems="flex-end">
+                      <Grid item>
+                        <i className="material-icons prefix">person_add</i>
+                      </Grid>
+                      <Grid item>
+                        <TextField
+                          required
+                          id="signup-full-name"
+                          label="Last Name"
+                          name="lastName"
                           variant="outlined"
                           onChange={(e) => handleChange(e.target)}
                         />
@@ -314,7 +331,7 @@ const Book = () => {
                           required
                           id="signup-address1"
                           label="Address 1"
-                          name="address.street"
+                          name="addressStreet"
                           variant="outlined"
                           onChange={(e) => handleChange(e.target)}
                         />
@@ -331,7 +348,7 @@ const Book = () => {
                         <TextField
                           id="signup-address2"
                           label="Address 2"
-                          name="address.street2"
+                          name="addressStreet2"
                           variant="outlined"
                           onChange={(e) => handleChange(e.target)}
                         />
@@ -348,7 +365,7 @@ const Book = () => {
                           required
                           id="signup-city"
                           label="City"
-                          name="address.city"
+                          name="addressCity"
                           variant="outlined"
                           onChange={(e) => handleChange(e.target)}
                         />
@@ -365,7 +382,7 @@ const Book = () => {
                           required
                           id="signup-state"
                           label="State"
-                          name="address.state"
+                          name="addressState"
                           variant="outlined"
                           onChange={(e) => handleChange(e.target)}
                         />
@@ -383,7 +400,7 @@ const Book = () => {
                           required
                           id="signup-zip"
                           label="Zip"
-                          name="address.zip"
+                          name="addressZip"
                           variant="outlined"
                           onChange={(e) => handleChange(e.target)}
                         />
@@ -449,7 +466,7 @@ const Book = () => {
         {/* Pricing Container */}
         <div>
           {/*If showPricing STATE is false then display NULL*/}
-          {showPricing ? null : (
+          {! showPricing ? null : (
             <div>
               <div>
                 <h2 style={{ textDecoration: "underline" }}>
@@ -520,7 +537,7 @@ const Book = () => {
               </div>
               <div>
                 {checkout ? (
-                  <Payment tourObject= {tourData} name={tourData.tourName} price={invoiceTotal}/>
+                  <Payment bookingDetails={bookingDetails} tourObject= {tourData} name={tourData.tourName} price={invoiceTotal}/>
                 ) : (
                   <button
                     onClick={() => {

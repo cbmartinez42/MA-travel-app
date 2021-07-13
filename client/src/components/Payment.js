@@ -1,12 +1,11 @@
-import React, { useState, useRef, useEffect } from "react";
-// import TextField from "@material-ui/core/TextField";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-// import Grid from "@material-ui/core/Grid";
-// import Button from "@material-ui/core/Button";
 import API from "../utils/API";
 import { useHistory } from "react-router-dom";
 import ReactDOM from "react-dom";
 import paypal from "paypal-checkout";
+import { UserContext } from '../utils/UserContext';
+
 
 // id: "0BJ9970162510971R", intent: "CAPTURE", status: "COMPLETED", purchase_units: Array(1), payer: {…}, …}
 // create_time: "2021-07-11T19:52:17Z"
@@ -25,13 +24,19 @@ import paypal from "paypal-checkout";
 // tourName: String,
 // participants: Number,
 
-let token = "placeHolder from UseContext"
 
 //functional component
 function Payment(props) {
-  //state which sets the paypal button to loading if it's slow
-  const [isLoading, setIsLoading] = useState(false);
-  const [orderConfirmation, setOrderConfirmation] = useState=({})
+
+
+  const { userInfo, setUserInfo } = useContext(UserContext);
+
+
+  //testing the funtionality with no user
+  if (userInfo=="NLI") {
+    setUserInfo({"_id": "no user"})
+   }
+
 
   const history = useHistory();
 
@@ -56,10 +61,8 @@ function Payment(props) {
         onApprove: async (data, actions) => {
           const order = await actions.order.capture();
           console.log("this is the order>>>>>>>>", order);
-                 //token comes from stateprovider 
-          API.createNeworder({...order, token}).then(res=>console.log(res))
+          API.createNewBooking({...order, ...props.bookingDetails, "id":userInfo._id}).then(res=>console.log(res))
           .catch(error => console.log(error)).then(()=>{
-          setOrderConfirmation(order);
           // render thank you page
           history.push("/thankyou?" + props.tourData._id +"?"+order.id);}
           )},
@@ -74,6 +77,7 @@ function Payment(props) {
   return (
     <>
       <div>
+        <div onClick={()=>console.log(userInfo)}>CLICK THIS BOX</div>
         <div ref={paypal}></div>
       </div>
       {/* <PayPalButton
