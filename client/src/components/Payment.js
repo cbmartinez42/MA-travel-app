@@ -7,36 +7,10 @@ import paypal from "paypal-checkout";
 import { UserContext } from '../utils/UserContext';
 
 
-// id: "0BJ9970162510971R", intent: "CAPTURE", status: "COMPLETED", purchase_units: Array(1), payer: {…}, …}
-// create_time: "2021-07-11T19:52:17Z"
-// id: "0BJ9970162510971R"
-// intent: "CAPTURE"
-// links: [{…}]
-// payer: {name: {…}, email_address: "jay.yousef-buyer@gmail.com", payer_id: "MAUWEF6NHJ9ZY", address: {…}}
-// purchase_units: [{…}]
-// status: "COMPLETED"
-// update_time: "2021-07-11T19:52:34Z"
-
-// ORDER MODEL:
-// payPalId: String,    
-// dateOfPurchase: String,
-// purchaser: String,
-// tourName: String,
-// participants: Number,
-
-
 //functional component
 function Payment(props) {
 
-
   const { userInfo, setUserInfo } = useContext(UserContext);
-
-
-  //testing the funtionality with no user
-  if (userInfo=="NLI") {
-    setUserInfo({"_id": "no user"})
-   }
-
 
   const history = useHistory();
 
@@ -52,7 +26,7 @@ function Payment(props) {
               {
                 description: props.name,
                 amount: {
-                  value: props.price,
+                  value: props.total,
                 },
               },
             ],
@@ -60,11 +34,13 @@ function Payment(props) {
         },
         onApprove: async (data, actions) => {
           const order = await actions.order.capture();
+          console.log(userInfo)
+          if (userInfo=="NLI" || !userInfo || userInfo==undefined ) setUserInfo({"_id":"ERR: No user"});
           console.log("this is the order>>>>>>>>", order);
-          API.createNewBooking({...order, ...props.bookingDetails, "id":userInfo._id}).then(res=>console.log(res))
+          API.createNewBooking({...props.tourObject, ...order, ...props.bookingDetails, "id":userInfo._id, "initialCost": props.initialCost, "total":props.total, "taxes":props.taxes}).then(res=>console.log("this is the response from the post request>>>>>",res))
           .catch(error => console.log(error)).then(()=>{
           // render thank you page
-          history.push("/thankyou?" + props.tourData._id +"?"+order.id);}
+          history.push("/thankyou?" + props.tourObject._id +"?"+ props.bookingDetails.id);}
           )},
         onError: (err) => {
           console.log(err);
@@ -77,7 +53,6 @@ function Payment(props) {
   return (
     <>
       <div>
-        <div onClick={()=>console.log(userInfo)}>CLICK THIS BOX</div>
         <div ref={paypal}></div>
       </div>
       {/* <PayPalButton
