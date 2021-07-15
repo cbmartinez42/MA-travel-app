@@ -53,7 +53,7 @@ let API = {
         const form = new FormData()
         console.log(img)
         form.append("image_file", img)
-        return axios.post('/photos/upload', form)
+        return axios.put('/image/'+tourId, form)
     },
     createNewTourOperator: function(newTourOperatorInfo){
         console.log('createNewTour was called from utils/API.js w/this payload:',newTourOperatorInfo);
