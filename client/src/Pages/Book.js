@@ -164,6 +164,14 @@ const Book = () => {
   const invoiceTaxes = TAX_RATE * invoiceSubtotal;
   const invoiceTotal = invoiceTaxes + invoiceSubtotal;
 
+  // const populateBookingDetails = (e)=>{
+  //   e.preventDefault();
+  //   setBookingDetails{
+
+  //   }
+  // }
+
+
   return (
     <>
       <div>
@@ -260,14 +268,14 @@ const Book = () => {
             <form>
               <Grid container direction="column" alignItems="center">
                 <div className="row">
-                  <Button 
+                  {/* <Button 
                     onClick={(e)=>autoPopulateForm(e)}
                     variant="contained"
                     style={{ margin: "3%" }}
                     color="primary"
                   >
                     Autopopulate?
-                  </Button>
+                  </Button> */}
                   
                   { !populateForm ? (
                     //THIS BLANK FORM RENDERS IF AUTOPOPULATE BUTTON IS NOT PRESSED
@@ -280,6 +288,7 @@ const Book = () => {
                       <Grid item>
                         <TextField
                           required
+                          // value={!bookingDetails ? "" : userInfo.nameFirst}
                           id="signup-full-name"
                           label="First Name"
                           name="firstName"
@@ -767,7 +776,9 @@ const Book = () => {
                     bookingDetails={bookingDetails}
                     tourObject={tourData}
                     name={tourData.tourName}
-                    price={invoiceTotal}
+                    total={invoiceTotal}
+                    taxes={invoiceTaxes}
+                    initalCost={invoiceSubtotal}
                   />
                 ) : (
                   <Button
