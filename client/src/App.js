@@ -50,6 +50,7 @@ function App() {
             <Route exact path="/home" component={Home} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/mystuff" component={Mystuff} />
+            {/* <Route exact path="/Operatoradmin" component={Operatoradmin} /> */}
             <Route exact path="/Operatoradmin" component={Operatoradmin} />
             <Route exact path="/terms" component={Terms} />
             <Route path="/tour/:id" component={Tour} />
