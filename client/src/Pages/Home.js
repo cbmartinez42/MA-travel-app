@@ -2,7 +2,7 @@ import React, {useContext, useEffect} from 'react';
 import Search from '../components/Search';
 import Categories from '../components/Categories'
 import { UserContext } from '../utils/UserContext';
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import ImgCarousel from '../components/ImgCarousel'
 import API from '../utils/API'
 import Grid from '@material-ui/core/Grid'

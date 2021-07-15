@@ -23,8 +23,8 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import HowToRegIcon from '@material-ui/icons/HowToReg';
 import MenuIcon from '@material-ui/icons/Menu';
 import PostAddIcon from '@material-ui/icons/PostAdd';
-import { Redirect, Link } from 'react-router-dom';
-import { typography } from '@material-ui/system';
+// import { Redirect, Link } from 'react-router-dom';
+// import { typography } from '@material-ui/system';
 
 const useStyles = makeStyles({
   list: {

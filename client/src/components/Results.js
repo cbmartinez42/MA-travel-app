@@ -1,5 +1,5 @@
-import {useState, useEffect} from 'react';
-import API from '../utils/API'
+// import {useState, useEffect} from 'react';
+// import API from '../utils/API'
 import {Box, Container} from '@material-ui/core/';
 // import Button from "../components/Button"
 // import Tour from "../pages/Tour";
