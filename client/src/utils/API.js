@@ -45,24 +45,47 @@ let API = {
 
     let keyNames = Object.keys(newTourInfo);
 
-    for (let i = 0; i < keyNames.length; i++) {
-      form.append(keyNames[i], newTourInfo[keyNames[i]]);
-      console.log(newTourInfo[keyNames[i]]);
-    }
-    return axios.post("/api/tour", newTourInfo);
-  },
-  addTourImg: function (tourId, img) {
-    const form = new FormData();
-    console.log(img);
-    form.append("image_file", img);
-    return axios.post("/photos/upload", form);
-  },
-  createNewTourOperator: function (newTourOperatorInfo) {
-    console.log(
-      "createNewTour was called from utils/API.js w/this payload:",
-      newTourOperatorInfo
-    );
+    },
+    searchAllActivities: function(){
+        const infoUrl = '/api/tour';
+        return fetch(infoUrl);
+    },
+    findOneActivity: function(id){
+        // const infoUrl = '/api/tours/' + id;
+        return axios.get('/api/tour/' + id);
 
+    },
+    signUpUser: function(newUserInfo){
+        console.log('signUpUser was called from utils/API.js w/this payload:',newUserInfo);
+        return axios.post('/api/user', newUserInfo);
+    },
+    browseAllUsers: function(){
+        return axios.get('/api/user');
+    },
+   login: function(info){
+        return axios.post('/api/user/login', info)
+    },
+    createNewTour: function(newTourInfo){
+        console.log('createNewTour was called from utils/API.js w/this payload:',newTourInfo);
+        const form = new FormData();
+
+        let keyNames = Object.keys(newTourInfo);
+       
+        for(let i = 0; i < keyNames.length; i++){
+            form.append(keyNames[i], newTourInfo[keyNames[i]])
+            console.log(newTourInfo[keyNames[i]])
+        }
+        return axios.post('/api/tour', newTourInfo);
+
+    },
+    addTourImg: function(tourId, img){
+        const form = new FormData()
+        console.log(img)
+        form.append("image_file", img)
+        return axios.put('/image/'+tourId, form)
+    },
+    createNewTourOperator: function(newTourOperatorInfo){
+        console.log('createNewTour was called from utils/API.js w/this payload:',newTourOperatorInfo);
     return axios.post("/api/operator", newTourOperatorInfo);
   },
   updateUser: function (id, role) {
