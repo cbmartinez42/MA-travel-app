@@ -6,6 +6,7 @@ router.get("/", tourController.findAll)
 router.post("/",tourController.create);
 
 // Matches with "/api/tour/:id"
+
 router
   .route("/:id")
   .get(tourController.findById)

@@ -46,7 +46,7 @@ const Results = ({searchData, setSearchData}) => {
                             </Box>
                             <Grid container spacing={1}>
                                 <Grid item xs={12} md={4}>
-                                    <img alt="Tour" className="tour-thumbnail" src={search.image}></img>
+                                    <img alt="Tour" className="tour-thumbnail" src={search.image[0]}></img>
                                 </Grid>
                                 <Grid item xs={12} md={8}>
                                     <p>Location: {search.tourLocation}</p>
