@@ -34,7 +34,12 @@ function App() {
       <Header />
         <div className="App">
         <Switch>
-            <Route exact path="/" component={Home} />
+            <Route exact path="/" >
+              <Home 
+                searchData={searchData}
+                setSearchData={setSearchData}
+              />
+            </Route>
             <Route exact path="/about" component={About} />
             <Route exact path="/admin" component={Admin} />
             <Route exact path="/book" component={Book} />
@@ -47,7 +52,12 @@ function App() {
                 />
             </Route>
             
-            <Route exact path="/home" component={Home} />
+            <Route exact path="/home" >
+              <Home 
+                searchData={searchData}
+                setSearchData={setSearchData}
+              />
+            </Route>
             <Route exact path="/login" component={Login} />
             <Route exact path="/mystuff" component={Mystuff} />
             <Route exact path="/Operatoradmin" component={Operatoradmin} />

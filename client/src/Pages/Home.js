@@ -8,7 +8,7 @@ import ImgCarousel from '../components/ImgCarousel'
 
 import Grid from '@material-ui/core/Grid'
 
-const Home = () => {
+const Home = ({searchData}) => {
   const { userInfo, setUserInfo } = useContext(UserContext);
     return (
       <>
@@ -22,7 +22,9 @@ const Home = () => {
             <h2>{userInfo.namefirst} {userInfo.namelast} your id is {userInfo._id}</h2>
             </Grid>
           </Grid>
-          <Search />
+          <Search
+            searchData={searchData}
+          />
           <h2 className="carousel-header">Do This. Because you've earned it.</h2>
           <ImgCarousel />
           </Grid>

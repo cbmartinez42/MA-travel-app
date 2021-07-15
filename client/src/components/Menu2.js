@@ -2,13 +2,14 @@ import React, {useContext, useEffect } from 'react';
 import { UserContext } from '../utils/UserContext';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import Button from '@material-ui/core/Button';
-import List from '@material-ui/core/List';
+import {Grid, Drawer, Button, List, ListItem, ListItemText, ListItemIcon, Box } from '@material-ui/core'
+// import Drawer from '@material-ui/core/Drawer';
+// import Button from '@material-ui/core/Button';
+// import List from '@material-ui/core/List';
 // import Divider from '@material-ui/core/Divider';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
+// import ListItem from '@material-ui/core/ListItem';
+// import ListItemIcon from '@material-ui/core/ListItemIcon';
+// import ListItemText from '@material-ui/core/ListItemText';
 // import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import { useHistory } from "react-router-dom";
@@ -22,6 +23,7 @@ import HowToRegIcon from '@material-ui/icons/HowToReg';
 import MenuIcon from '@material-ui/icons/Menu';
 import PostAddIcon from '@material-ui/icons/PostAdd';
 import { Redirect, Link } from 'react-router-dom';
+import { typography } from '@material-ui/system';
 
 const useStyles = makeStyles({
   list: {
@@ -142,7 +144,7 @@ const history = useHistory();
   );
 
   return (
-    <div>
+    <>
       {/* {['left', 'right', 'top', 'bottom'].map((anchor) => ( */}
       {['left'].map((anchor) => (
         <React.Fragment key={anchor}>
@@ -151,10 +153,14 @@ const history = useHistory();
           <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
             {list(anchor)}
           </Drawer>
-          
+          <Box component="span" textAlign="center" className='announcement'>Buy now! Big sale for the summer!</Box>
         </React.Fragment>
       ))}
-      <span className='announcement'>Buy now! Big sale for the summer!</span>
-    </div>
+      {/* <Grid container spacing={0} className='announcement'>
+        <Grid item xs={12} align="center">  */}
+          
+        {/* </Grid>
+      </Grid>  */}
+    </>
   );
 }
