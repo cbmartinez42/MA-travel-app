@@ -51,22 +51,25 @@ const CreateTour = () => {
     e.preventDefault();
     try{
     const response = await API.createNewTour(createTour);
-        
+        console.log(response)
+        console.log(image)
     for(let i = 0; i < image.length; i++){
-        const imgRes = await API.addTourImg( response._id, image[i])
+        const imgRes = await API.addTourImg(response.data._id, image[i])
+        console.log(imgRes);
     }
    
 
 
-    console.log(response)
-    if (response.status === 200) {
-      console.log("FILE SENT");
-      const res = response.data
-      history.push('/home');
+    // console.log(response)
+   
+    // if (response.status === 200) {
+    //   console.log("FILE SENT");
+    //   const res = response.data
+    //   history.push('/home');
 
-    } else {
-      console.log("mas problemo");
-    }
+    // } else {
+    //   console.log("mas problemo");
+    // }
 } catch(err){
     console.log('and error happened!', err)
 }
