@@ -16,6 +16,7 @@ import { useHistory } from "react-router-dom";
 import HomeIcon from '@material-ui/icons/Home';
 import BrowseIcon from '@material-ui/icons/FindInPage';
 import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
+import PeopleIcon from '@material-ui/icons/People';
 import BuildIcon from '@material-ui/icons/Build';
 // import DynamicFeedIcon from '@material-ui/icons/DynamicFeed';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
@@ -69,8 +70,8 @@ const getIcon = (page) => {
     case 'My Stuff':
         return <EmojiPeopleIcon/>
         // break;
-    case 'Operator':
-        return <MailIcon/>
+    case 'Operator Admin':
+        return <PeopleIcon/>
         // break;
     case 'Tour':
         return <MailIcon/>
@@ -103,7 +104,7 @@ const history = useHistory();
 
   const userPages = [{'text':'Home Page','menuPath':'home'},{'text':'Browse Tours','menuPath':'browse'},{'text':'My Stuff','menuPath':'mystuff'},{'text':'Log Out','menuPath':'login'}];
   
-  const adminPages = [{'text':'Home Page','menuPath':'home'},{'text':'Browse Tours','menuPath':'browse'}, {'text':'Admin Tasks','menuPath':'admin'}, {'text':'Add Tours','menuPath':'touradmin'}, {'text':'Operator Admin','menuPath':'operator'}, {'text':'Tour Page TEMP','menuPath':'tour'},{'text':'Log Out','menuPath':'login'}];
+  const adminPages = [{'text':'Home Page','menuPath':'home'},{'text':'Browse Tours','menuPath':'browse'}, {'text':'Admin Tasks','menuPath':'admin'}, {'text':'Add Tours','menuPath':'touradmin'}, {'text':'Operator Admin','menuPath':'Operatoradmin'}, {'text':'Tour Page TEMP','menuPath':'tour'},{'text':'Log Out','menuPath':'login'}];
   
   if(userInfo.role === "ADMIN") {
       var Pages = adminPages
@@ -160,8 +161,6 @@ const history = useHistory();
           </Grid> 
       </React.Fragment>
       ))}
-
-          
 
     </>
   );

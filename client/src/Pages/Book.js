@@ -2,12 +2,25 @@ import React, { useState, useEffect, useContext } from "react";
 import { InlineWidget } from "react-calendly";
 import Signup from "../components/Signup";
 import { makeStyles } from "@material-ui/core/styles";
-import { TextField, Grid, Button, Paper, TableRow, TableHead, TableContainer, TableCell, TableBody, Table, Box, Container } from "@material-ui/core";
+import {
+  TextField,
+  Grid,
+  Button,
+  Paper,
+  TableRow,
+  TableHead,
+  TableContainer,
+  TableCell,
+  TableBody,
+  Table,
+  Box,
+  Container,
+} from "@material-ui/core";
 import { useParams, useLocation } from "react-router-dom";
 import API from "../utils/API";
 import Payment from "./../components/Payment";
-import { UserContext } from '../utils/UserContext';
-
+import { UserContext } from "../utils/UserContext";
+import { blue } from "@material-ui/core/colors";
 
 // let tourData={cancellationPolicy: "72 hours full refund, under 72 hours 50% refund"
 // category: []
@@ -31,8 +44,7 @@ const Book = () => {
  1) Company A (1) Calendar  3 events A,B,C
 */
 
-const { userInfo, setUserInfo } = useContext(UserContext);
-
+  const { userInfo, setUserInfo } = useContext(UserContext);
 
   const [tourData, setTourData] = useState({});
 
@@ -55,7 +67,7 @@ const { userInfo, setUserInfo } = useContext(UserContext);
   //state to show signUp form for new booking
   const [showForm, setShowForm] = useState(false);
 
-  //how many participants did the user input in the form? 
+  //how many participants did the user input in the form?
   const [participants, setParticipants] = useState(1);
 
   // checkout info from paypal
@@ -70,6 +82,7 @@ const { userInfo, setUserInfo } = useContext(UserContext);
   const [url, setUrl] = useState();
   //capturing inputs for API call
   const [bookingDetails, setBookingDetails] = useState({});
+  const [populateForm, setPopulateForm] = useState(false);
 
   //on click, set the FORM reveal to whatever the opposite
   const revealForm = () => {
@@ -79,7 +92,7 @@ const { userInfo, setUserInfo } = useContext(UserContext);
   //whenver something is typed into an input, change the state to reflect that change
   const handleChange = (e) => {
     setBookingDetails({ ...bookingDetails, [e.name]: e.value });
-    console.log(bookingDetails)
+    console.log(bookingDetails);
   };
 
   //on SUBMIT click, call the API, hide the booking form, reveal the Payment Info
@@ -89,14 +102,10 @@ const { userInfo, setUserInfo } = useContext(UserContext);
     setshowPricing(true);
   };
 
-  const paymentAndBooking = (e) => {
+  const autoPopulateForm = (e) => {
     e.preventDefault();
-    API.createNewBooking(bookingDetails)
-      .then((response) => {
-        console.log("response >>", response);
-        // setSearchData(response.data || [])
-      })
-      .catch((error) => console.log(error));
+    console.log(userInfo)
+    setPopulateForm(!populateForm)
   };
 
   let style = {
@@ -112,11 +121,11 @@ const { userInfo, setUserInfo } = useContext(UserContext);
       minWidth: 700,
     },
     root: {
-      '& .MuiTextField-root': {
+      "& .MuiTextField-root": {
         margin: theme.spacing(1),
-        width: '55ch',
+        width: "55ch",
       },
-    }
+    },
   }));
 
   const classes = useStyles();
@@ -155,6 +164,14 @@ const { userInfo, setUserInfo } = useContext(UserContext);
   const invoiceTaxes = TAX_RATE * invoiceSubtotal;
   const invoiceTotal = invoiceTaxes + invoiceSubtotal;
 
+  // const populateBookingDetails = (e)=>{
+  //   e.preventDefault();
+  //   setBookingDetails{
+
+  //   }
+  // }
+
+
   return (
     <>
       <div>
@@ -162,10 +179,6 @@ const { userInfo, setUserInfo } = useContext(UserContext);
           <Container maxWidth="md">
             {" "}
             <div>
-              <h3 onClick={() => console.log("tourData>>>>>", tourData)}>
-                Show Tour Details HERE! (Name, Image, Location, price,
-                description)
-              </h3>
               <Container>
                 <Box key={tourData._id} className="tour-abstract">
                   <Box className="abstract-header">
@@ -255,6 +268,18 @@ const { userInfo, setUserInfo } = useContext(UserContext);
             <form>
               <Grid container direction="column" alignItems="center">
                 <div className="row">
+                  {/* <Button 
+                    onClick={(e)=>autoPopulateForm(e)}
+                    variant="contained"
+                    style={{ margin: "3%" }}
+                    color="primary"
+                  >
+                    Autopopulate?
+                  </Button> */}
+                  
+                  { !populateForm ? (
+                    //THIS BLANK FORM RENDERS IF AUTOPOPULATE BUTTON IS NOT PRESSED
+                    <div>
                   <div className="input-field col s12">
                     <Grid container spacing={1} alignItems="flex-end">
                       <Grid item>
@@ -263,6 +288,7 @@ const { userInfo, setUserInfo } = useContext(UserContext);
                       <Grid item>
                         <TextField
                           required
+                          // value={!bookingDetails ? "" : userInfo.nameFirst}
                           id="signup-full-name"
                           label="First Name"
                           name="firstName"
@@ -451,7 +477,210 @@ const { userInfo, setUserInfo } = useContext(UserContext);
                         />
                       </Grid>
                     </Grid>
+                  </div> 
+                  </div>) : (
+                    // THIS DUPLICATE RENDERS WHEN AUTOPOPULATE BUTTON IS PRESSED
+                    <div>
+                    <div className="input-field col s12">
+                    <Grid container spacing={1} alignItems="flex-end">
+                      <Grid item>
+                        <i className="material-icons prefix">person_add</i>
+                      </Grid>
+                      <Grid item>
+                        <TextField
+                          required
+                          value={userInfo.namefirst}
+                          id="signup-first-name"
+                          label="First Name"
+                          name="firstName"
+                          variant="outlined"
+                          onChange={(e) => handleChange(e.target)}
+                        />
+                      </Grid>
+                    </Grid>
                   </div>
+
+                  <div className="input-field col s12">
+                    <Grid container spacing={1} alignItems="flex-end">
+                      <Grid item>
+                        <i className="material-icons prefix">person_add</i>
+                      </Grid>
+                      <Grid item>
+                        <TextField
+                          required
+                          value={userInfo.namelast}
+                          id="signup-last-name"
+                          label="Last Name"
+                          name="lastName"
+                          variant="outlined"
+                          onChange={(e) => handleChange(e.target)}
+                        />
+                      </Grid>
+                    </Grid>
+                  </div>
+
+                  <div className="input-field col s12">
+                    <Grid container spacing={1} alignItems="flex-end">
+                      <Grid item>
+                        <i className="material-icons prefix">email</i>
+                      </Grid>
+                      <Grid item>
+                        <TextField
+                          required
+                          id="signup-email"
+                          label="Best Email"
+                          name="email"
+                          variant="outlined"
+                          onChange={(e) => handleChange(e.target)}
+                        />
+                      </Grid>
+                    </Grid>
+                  </div>
+
+                  <div className="input-field col s12">
+                    <Grid container spacing={1} alignItems="flex-end">
+                      <Grid item>
+                        <i className="material-icons prefix">phone</i>
+                      </Grid>
+                      <Grid item>
+                        <TextField
+                          required
+                          id="signup-phone"
+                          label="Phone Number"
+                          name="phone"
+                          variant="outlined"
+                          onChange={(e) => handleChange(e.target)}
+                        />
+                      </Grid>
+                    </Grid>
+                  </div>
+
+                  <div className="input-field col s12">
+                    <Grid container spacing={1} alignItems="flex-end">
+                      <Grid item>
+                        <i className="material-icons prefix">location_city</i>
+                      </Grid>
+                      <Grid item>
+                        <TextField
+                          required
+                          id="signup-address1"
+                          label="Address 1"
+                          name="addressStreet"
+                          variant="outlined"
+                          onChange={(e) => handleChange(e.target)}
+                        />
+                      </Grid>
+                    </Grid>
+                  </div>
+
+                  <div className="input-field col s12">
+                    <Grid container spacing={1} alignItems="flex-end">
+                      <Grid item>
+                        <i className="material-icons prefix">location_city</i>
+                      </Grid>
+                      <Grid item>
+                        <TextField
+                          id="signup-address2"
+                          label="Address 2"
+                          name="addressStreet2"
+                          variant="outlined"
+                          onChange={(e) => handleChange(e.target)}
+                        />
+                      </Grid>
+                    </Grid>
+                  </div>
+                  <div className="input-field col s12">
+                    <Grid container spacing={1} alignItems="flex-end">
+                      <Grid item>
+                        <i className="material-icons prefix">location_city</i>
+                      </Grid>
+                      <Grid item>
+                        <TextField
+                          required
+                          id="signup-city"
+                          label="City"
+                          name="addressCity"
+                          variant="outlined"
+                          onChange={(e) => handleChange(e.target)}
+                        />
+                      </Grid>
+                    </Grid>
+                  </div>
+                  <div className="input-field col s12">
+                    <Grid container spacing={1} alignItems="flex-end">
+                      <Grid item>
+                        <i className="material-icons prefix">location_city</i>
+                      </Grid>
+                      <Grid item>
+                        <TextField
+                          required
+                          id="signup-state"
+                          label="State"
+                          name="addressState"
+                          variant="outlined"
+                          onChange={(e) => handleChange(e.target)}
+                        />
+                      </Grid>
+                    </Grid>
+                  </div>
+
+                  <div className="input-field col s12">
+                    <Grid container spacing={1} alignItems="flex-end">
+                      <Grid item>
+                        <i className="material-icons prefix">location_city</i>
+                      </Grid>
+                      <Grid item>
+                        <TextField
+                          required
+                          id="signup-zip"
+                          label="Zip"
+                          name="addressZip"
+                          variant="outlined"
+                          onChange={(e) => handleChange(e.target)}
+                        />
+                      </Grid>
+                    </Grid>
+                  </div>
+
+                  <div className="input-field col s12">
+                    <Grid container spacing={1} alignItems="flex-end">
+                      <Grid item>
+                        <i className="material-icons prefix">accessibility</i>
+                      </Grid>
+                      <Grid item>
+                        <TextField
+                          required
+                          id="signup-specialrequirements"
+                          label="Special Requirements?"
+                          name="specialRequirements"
+                          variant="outlined"
+                          onChange={(e) => handleChange(e.target)}
+                        />
+                      </Grid>
+                    </Grid>
+                  </div>
+
+                  <div className="input-field col s12">
+                    <Grid container spacing={1} alignItems="flex-end">
+                      <Grid item>
+                        <i className="material-icons prefix">face</i>
+                      </Grid>
+                      <Grid item>
+                        <TextField
+                          required
+                          id="signup-participants"
+                          label="Participants? Ex: 2"
+                          name="participants"
+                          variant="outlined"
+                          onChange={(e) => {
+                            handleChange(e.target);
+                            addParticipants(e.target);
+                          }}
+                        />
+                      </Grid>
+                    </Grid>
+                  </div> 
+                  </div>) }
 
                   <Button
                     variant="contained"
@@ -472,7 +701,7 @@ const { userInfo, setUserInfo } = useContext(UserContext);
         {/* Pricing Container */}
         <div>
           {/*If showPricing STATE is false then display NULL*/}
-          {! showPricing ? null : (
+          {!showPricing ? null : (
             <div>
               <div>
                 <h2 style={{ textDecoration: "underline" }}>
@@ -543,12 +772,19 @@ const { userInfo, setUserInfo } = useContext(UserContext);
               </div>
               <div>
                 {checkout ? (
-                  <Payment bookingDetails={bookingDetails} tourObject= {tourData} name={tourData.tourName} price={invoiceTotal}/>
+                  <Payment
+                    bookingDetails={bookingDetails}
+                    tourObject={tourData}
+                    name={tourData.tourName}
+                    total={invoiceTotal}
+                    taxes={invoiceTaxes}
+                    initalCost={invoiceSubtotal}
+                  />
                 ) : (
                   <Button
-                  variant="contained"
-                  color="primary"
-                  style={{ margin: "2%" }}
+                    variant="contained"
+                    color="primary"
+                    style={{ margin: "2%" }}
                     onClick={() => {
                       setCheckout(true);
                     }}

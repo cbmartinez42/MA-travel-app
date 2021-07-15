@@ -5,6 +5,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import API from '../utils/API';
+import { useHistory } from "react-router-dom";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,6 +19,9 @@ const useStyles = makeStyles((theme) => ({
 
 
 const Signup = () => {
+
+    const history = useHistory();
+
     const classes = useStyles();
     // const[firstName, setFirstName] = useState('')
 
@@ -32,6 +37,7 @@ const Signup = () => {
         API.signUpUser(signup)
         .then(result => {
             console.log('SignUpUser Result: USER CREATED!!!', result)
+            history.push("/home")
         })
         .catch(err => {
             console.log('Oh my... there was an error: ',err.response)

@@ -27,6 +27,8 @@ const Login = () => {
 
     const[signin, setSignin] = useState({})
 
+    const[loginError, setLoginError] = useState("")
+
     const handleChange = (e) => {
         // setUserInfo({...userInfo,[e.name]: e.value})
         setSignin({...signin,[e.name]: e.value});
@@ -37,12 +39,13 @@ const Login = () => {
         e.preventDefault()
         API.login(signin)
         .then((response) => {
-            console.log('response >>', response);
-            console.log('config.data.role: ', response.data.user.role);
-            // setUserInfo(response.data.user.role);
-            setUserInfo({"_id": response.data.user._id, "role": response.data.user.role, "namefirst": response.data.user.name.first, "namelast": response.data.user.name.last});
-            history.push('/home');
-            console.log('userInfo: ', userInfo);
+            // console.log('response >>', response);
+            if(response.data.message === "Bummer") {
+                setLoginError("There was a problem with your user name or password.")
+                } else {
+                setUserInfo({"_id": response.data.user._id, "role": response.data.user.role, "namefirst": response.data.user.name.first, "namelast": response.data.user.name.last});
+                history.push('/home');
+                }
           })
         .catch(error => console.log(error))
     }
@@ -91,6 +94,7 @@ const Login = () => {
                                 </Grid>
                             </div>
                         </Grid>
+                        <div style={{ color: 'red' }}>{loginError}</div>
                         <form>
                             <Button
                                 variant="contained"

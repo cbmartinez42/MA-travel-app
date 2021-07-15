@@ -2,7 +2,7 @@ function Header(props) {
     return (
       <div className="header">
         <h1>Welcome to Do This!</h1>
-        <p>Because you need to get out and do something.</p>
+        <h4>Because you need to get out and do something.</h4>
       </div>
     );
   }

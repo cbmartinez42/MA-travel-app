@@ -19,6 +19,7 @@ code {
 .announcement {
   font-family: 'Yomogi', cursive;
   font-weight: 900;
+  display: flex;
   text-align: center;
   font-size: 1.5rem;
   padding-bottom: .25rem;
@@ -94,9 +95,11 @@ text-align:left !important;
 }
 
 .tour-abstract {
-  border: 1px solid black;
-  margin: 1rem;
+  /* border: 1px solid black; */
+  margin: 2rem;
   padding-bottom: 1rem;
+  background-color: whitesmoke;
+  border-radius: 5px;
 }
 
 .abstract-header {
@@ -106,6 +109,7 @@ text-align:left !important;
   padding: .25rem;
   margin-bottom: 1.5rem;
   font-family: 'Yomogi', cursive;
+  border-radius: 5px 5px 0px 0px;
 }
 
 .tour-header {
@@ -154,6 +158,11 @@ text-align:left !important;
   background-color: #c3d8f7;
   height: 100%;
   padding: 3rem;
+  font-weight: 800;
+}
+
+.categories a {
+  text-decoration: none;
 }
 
 .abstract-link {

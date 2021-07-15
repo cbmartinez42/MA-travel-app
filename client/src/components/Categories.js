@@ -7,7 +7,7 @@ const Categories = () => {
     return (
         <>
         <div className="categories">Select a category:
-            <List>
+            <List  className="categories-list">
                 <ListItem>
                     <Link to="/browse/snorkeling">
                         <ListItemText 
