@@ -25,6 +25,7 @@ function App() {
   const [userInfo, setUserInfo] = useState('NLI');
   const [userId, setUserId] = useState('');
   const [searchData, setSearchData] = useState([]);
+  const [searchBar, setSearchBar] = useState('');
 
   return (
     <>
@@ -38,6 +39,8 @@ function App() {
               <Home 
                 searchData={searchData}
                 setSearchData={setSearchData}
+                searchBar={searchBar}
+                setSearchBar={setSearchBar}
               />
             </Route>
             <Route exact path="/about" component={About} />
@@ -49,6 +52,8 @@ function App() {
               <Browse 
                 searchData={searchData}
                 setSearchData={setSearchData}
+                searchBar={searchBar}
+                setSearchBar={setSearchBar}
                 />
             </Route>
             
@@ -56,6 +61,8 @@ function App() {
               <Home 
                 searchData={searchData}
                 setSearchData={setSearchData}
+                searchBar={searchBar}
+                setSearchBar={setSearchBar}
               />
             </Route>
             <Route exact path="/login" component={Login} />

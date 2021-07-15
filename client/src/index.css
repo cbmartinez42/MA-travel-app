@@ -21,7 +21,8 @@ code {
   font-weight: 900;
   text-align: center;
   font-size: 1.5rem;
-  padding-bottom: 2rem;
+  padding-bottom: .25rem;
+  margin-top: -2.25rem;
 }
 
 /* TEST */

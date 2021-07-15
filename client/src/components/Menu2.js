@@ -153,14 +153,16 @@ const history = useHistory();
           <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
             {list(anchor)}
           </Drawer>
-          <Box component="span" textAlign="center" className='announcement'>Buy now! Big sale for the summer!</Box>
-        </React.Fragment>
+          <Grid container spacing={0} className='announcement'>
+            <Grid item xs={12} align="center"> 
+                <Box component="span" textAlign="center" className='announcement'>Buy now! Big sale for the summer!</Box>
+            </Grid>
+          </Grid> 
+      </React.Fragment>
       ))}
-      {/* <Grid container spacing={0} className='announcement'>
-        <Grid item xs={12} align="center">  */}
+
           
-        {/* </Grid>
-      </Grid>  */}
+
     </>
   );
 }
