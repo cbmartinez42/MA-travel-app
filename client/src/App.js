@@ -35,21 +35,21 @@ function App() {
       <Header />
         <div className="App">
         <Switch>
-            <Route exact path="/" >
+            <Route exact path="/">
               <Home 
-                searchData={searchData}
-                setSearchData={setSearchData}
-                searchBar={searchBar}
-                setSearchBar={setSearchBar}
+              searchData={searchData}
+              setSearchData={setSearchData}
+              searchBar={searchBar}
+              setSearchBar={setSearchBar}
               />
-            </Route>
+            </Route> 
             <Route exact path="/about" component={About} />
             <Route exact path="/admin" component={Admin} />
             <Route exact path="/book" component={Book} />
             <Route exact path="/thankyou" component={Thankyou} />
             <Route exact path="/browse">
 
-              <Browse 
+            <Browse 
                 searchData={searchData}
                 setSearchData={setSearchData}
                 searchBar={searchBar}

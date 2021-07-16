@@ -2,10 +2,10 @@ import React, {useContext, useEffect} from 'react';
 import Search from '../components/Search';
 import Categories from '../components/Categories'
 import { UserContext } from '../utils/UserContext';
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import ImgCarousel from '../components/ImgCarousel'
-import API from '../utils/API'
 import Grid from '@material-ui/core/Grid'
+import API from '../utils/API'
 
 const Home = ({searchData, setSearchData}) => {
   const { userInfo, setUserInfo } = useContext(UserContext);
@@ -28,10 +28,10 @@ const Home = ({searchData, setSearchData}) => {
       <>
         <Grid container spacing={1}>
           <Grid item xs={12} md={2} >
-          <Categories 
-            searchData={searchData} 
-            setSearchData={setSearchData}
-          />
+            <Categories 
+              searchData={searchData} 
+              setSearchData={setSearchData}
+            />
           </Grid>
           <Grid item xs={12} md={8} lg={8}>
           <Grid container spacing={1}>
@@ -39,9 +39,7 @@ const Home = ({searchData, setSearchData}) => {
             <h2>Welcome {userInfo.namefirst} {userInfo.namelast}!</h2>
             </Grid>
           </Grid>
-          <Search
-            searchData={searchData}
-          />
+          <Search />
           <h2 className="carousel-header">Do This. Because you've earned it.</h2>
           <ImgCarousel />
           </Grid>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { InlineWidget } from "react-calendly";
-// import Signup from "../components/Signup";
+import Signup from "../components/Signup";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   TextField,
@@ -16,11 +16,11 @@ import {
   Box,
   Container,
 } from "@material-ui/core";
-import { useLocation } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import API from "../utils/API";
 import Payment from "./../components/Payment";
 import { UserContext } from "../utils/UserContext";
-// import { blue } from "@material-ui/core/colors";
+import { blue } from "@material-ui/core/colors";
 
 // let tourData={cancellationPolicy: "72 hours full refund, under 72 hours 50% refund"
 // category: []
