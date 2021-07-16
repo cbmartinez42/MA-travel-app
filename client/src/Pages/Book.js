@@ -237,6 +237,18 @@ const Book = () => {
                 Snorkel and BBQ{" "}
               </button>
 
+              <button
+                style={style.btn}
+                onClick={() =>
+                  setUrl(
+                    "https://calendly.com/kaimanimarine/deep-sea-fishing-and-snorkeling"
+                  )
+                }
+              >
+                {" "}
+                Deep Sea Fishing{" "}
+              </button>
+
               {url ? (
                 <InlineWidget url={url} />
               ) : (
