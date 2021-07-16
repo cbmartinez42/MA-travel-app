@@ -2,7 +2,7 @@
 import {Link} from 'react-router-dom'
 import {List, ListItem, ListItemText} from '@material-ui/core'
 
-const Categories = () => {
+const Categories = ({searchData, setSearchData}) => {
 
     return (
         <>

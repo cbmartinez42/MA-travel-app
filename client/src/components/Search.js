@@ -14,7 +14,7 @@ import SearchIcon from '@material-ui/icons/Search';
 //     },
 //   }));
 
-const Search = ({searchData, setSearchData}) => {
+const Search = () => {
     // const classes = useStyles();
     return (
         // <form className={classes.root} noValidate autoComplete="off" justifyContent="center" alignItems="flex-center">
