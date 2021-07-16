@@ -3,10 +3,11 @@ import { UserContext } from '../utils/UserContext';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import {Grid, Drawer, Button, List, ListItem, ListItemText, ListItemIcon, Box } from '@material-ui/core'
+// import Box from '@material-ui/core/Box';
 // import Drawer from '@material-ui/core/Drawer';
 // import Button from '@material-ui/core/Button';
 // import List from '@material-ui/core/List';
-// import Divider from '@material-ui/core/Divider';
+// // import Divider from '@material-ui/core/Divider';
 // import ListItem from '@material-ui/core/ListItem';
 // import ListItemIcon from '@material-ui/core/ListItemIcon';
 // import ListItemText from '@material-ui/core/ListItemText';
@@ -23,8 +24,7 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import HowToRegIcon from '@material-ui/icons/HowToReg';
 import MenuIcon from '@material-ui/icons/Menu';
 import PostAddIcon from '@material-ui/icons/PostAdd';
-// import { Redirect, Link } from 'react-router-dom';
-// import { typography } from '@material-ui/system';
+import { Redirect, Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
   list: {
@@ -145,7 +145,7 @@ const history = useHistory();
   );
 
   return (
-    <>
+    <div>
       {/* {['left', 'right', 'top', 'bottom'].map((anchor) => ( */}
       {['left'].map((anchor) => (
         <React.Fragment key={anchor}>
@@ -160,8 +160,9 @@ const history = useHistory();
             </Grid>
           </Grid> 
       </React.Fragment>
+          
       ))}
-
-    </>
+      {/* <span className='announcement'>Buy now! Big sale for the summer!</span> */}
+    </div>
   );
 }
