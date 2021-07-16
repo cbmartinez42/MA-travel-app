@@ -62,14 +62,16 @@ const CreateTour = () => {
 
     // console.log(response)
    
-    // if (response.status === 200) {
-    //   console.log("FILE SENT");
-    //   const res = response.data
-    //   history.push('/home');
+    if (response.status === 200) {
+      console.log("FILE SENT");
+      const res = response.data
+      history.push('/home');
 
-    // } else {
-    //   console.log("mas problemo");
-    // }
+    } else {
+      console.log("mas problemo");
+    }
+
+    
 } catch(err){
     console.log('and error happened!', err)
 }
