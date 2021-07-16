@@ -1,25 +1,42 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import Search from '../components/Search';
 import Categories from '../components/Categories'
 import { UserContext } from '../utils/UserContext';
 import { Link } from "react-router-dom";
 import ImgCarousel from '../components/ImgCarousel'
-
-
 import Grid from '@material-ui/core/Grid'
+import API from '../utils/API'
 
-const Home = () => {
+const Home = ({searchData, setSearchData}) => {
   const { userInfo, setUserInfo } = useContext(UserContext);
+
+  useEffect(() => {
+    // if (!category) {
+    API.browseAllActivities()
+    .then((response) => {
+    setSearchData(response.data || [])
+    });
+//     } else {
+//         API.browseCategory(category)
+//         .then((response) => {
+//             setSearchData(response.data || [])
+//         })
+// }
+}, [])
+
     return (
       <>
         <Grid container spacing={1}>
           <Grid item xs={12} md={2} >
-            <Categories />
+            <Categories 
+              searchData={searchData} 
+              setSearchData={setSearchData}
+            />
           </Grid>
           <Grid item xs={12} md={8} lg={8}>
           <Grid container spacing={1}>
             <Grid item xs={12}  >
-            <h2>{userInfo.namefirst} {userInfo.namelast} your id is {userInfo._id}</h2>
+            <h2>Welcome {userInfo.namefirst} {userInfo.namelast}!</h2>
             </Grid>
           </Grid>
           <Search />

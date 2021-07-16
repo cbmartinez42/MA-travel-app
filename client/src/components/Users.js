@@ -22,9 +22,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
-
-
 const UserData = ({searchUsers, setSearchUsers}) => {
 
     const [users, setUsers] = useState([])
@@ -37,7 +34,6 @@ const UserData = ({searchUsers, setSearchUsers}) => {
         setRole(event.target.value);
         API.updateUser(event.target.name, event.target.value)
     };
-
 
     useEffect(() => {
         API.browseAllUsers()
@@ -63,23 +59,19 @@ const UserData = ({searchUsers, setSearchUsers}) => {
             {users.map(user => (
                 
                 <Box key={user._id} className="tour-abstract">
-                    {/* <Box>
-                        <p>{user.name.first} {user.name.last}</p>
-                    </Box> */}
                     <Grid container spacing={1}>
                         <Grid item md>
-                            <p>{user.name.first} {user.name.last}    Location: {user.address.city} {user.address.state}    Role: {role}</p>
+                            <p>{user.name.first.toUpperCase()} {user.name.last.toUpperCase()}      Location: {user.address.city} {user.address.state}</p>
                             <FormControl className={classes.formControl}>
                                 <InputLabel id="user-role">Role</InputLabel>
                                 <Select
                                 labelId="user-role"
                                 className="user-role"
+                                defaultValue={user.role}
                                 // value={role}
                                 name={user._id}
                                 onChange={handleChange}
                                 >
-                                <MenuItem value="Hello">
-                                </MenuItem>
                                 <MenuItem value={"USER"}>USER</MenuItem>
                                 <MenuItem value={"ADMIN"}>ADMIN</MenuItem>
                                 </Select>

@@ -15,19 +15,19 @@ const Results = ({searchData, setSearchData}) => {
     console.log('category', category);
     
 
-    useEffect(() => {
-        // if (!category) {
-            API.browseAllActivities()
-            .then((response) => {
-            setSearchData(response.data || [])
-            });
-    //     } else {
-    //         API.browseCategory(category)
+    // useEffect(() => {
+    //     // if (!category) {
+    //         API.browseAllActivities()
     //         .then((response) => {
-    //             setSearchData(response.data || [])
-    //         })
-    // }
-    }, [])
+    //         setSearchData(response.data || [])
+    //         });
+    // //     } else {
+    // //         API.browseCategory(category)
+    // //         .then((response) => {
+    // //             setSearchData(response.data || [])
+    // //         })
+    // // }
+    // }, [])
 
     // const renderDetail = (data) => {
 

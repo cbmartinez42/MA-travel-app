@@ -2,12 +2,12 @@
 import {Link} from 'react-router-dom'
 import {List, ListItem, ListItemText} from '@material-ui/core'
 
-const Categories = () => {
+const Categories = ({searchData, setSearchData}) => {
 
     return (
         <>
         <div className="categories">Select a category:
-            <List>
+            <List  className="categories-list">
                 <ListItem>
                     <Link to="/browse/snorkeling">
                         <ListItemText 

@@ -25,6 +25,7 @@ function App() {
   const [userInfo, setUserInfo] = useState('NLI');
   const [userId, setUserId] = useState('');
   const [searchData, setSearchData] = useState([]);
+  const [searchBar, setSearchBar] = useState('');
 
   return (
     <>
@@ -34,20 +35,36 @@ function App() {
       <Header />
         <div className="App">
         <Switch>
-            <Route exact path="/" component={Home} />
+            <Route exact path="/">
+              <Home 
+              searchData={searchData}
+              setSearchData={setSearchData}
+              searchBar={searchBar}
+              setSearchBar={setSearchBar}
+              />
+            </Route> 
             <Route exact path="/about" component={About} />
             <Route exact path="/admin" component={Admin} />
             <Route exact path="/book" component={Book} />
             <Route exact path="/thankyou" component={Thankyou} />
             <Route exact path="/browse">
 
-              <Browse 
+            <Browse 
                 searchData={searchData}
                 setSearchData={setSearchData}
+                searchBar={searchBar}
+                setSearchBar={setSearchBar}
                 />
             </Route>
             
-            <Route exact path="/home" component={Home} />
+            <Route exact path="/home" >
+              <Home 
+                searchData={searchData}
+                setSearchData={setSearchData}
+                searchBar={searchBar}
+                setSearchBar={setSearchBar}
+              />
+            </Route>
             <Route exact path="/login" component={Login} />
             <Route exact path="/mystuff" component={Mystuff} />
             <Route exact path="/Operatoradmin" component={Operatoradmin} />

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
-import {Grid, Container, Button} from '@material-ui/core'
+import {Grid, Container, Button, Box} from '@material-ui/core'
 import ImgCarousel from '../components/ImgCarousel'
 
 const Tour = () => {
@@ -39,10 +39,13 @@ const Tour = () => {
             />
         </Grid>
         <Grid item xs={12}>
-
-          
+          <Container  maxWidth="md">
+          <Box>
           <p>{tourData.tourLocation}</p>
           <p>{tourData.description}</p>
+          </Box>
+          </Container>
+          <Container maxWidth="lg">
           <Grid className="tour-details" container spacing={1}>
             <Grid item xs={12}>
               <h3>Know before you book!</h3>
@@ -60,6 +63,7 @@ const Tour = () => {
             <p>Cancellations: {tourData.cancellationPolicy}</p>
             </Grid>
           </Grid>
+          </Container>
         </Grid>
         <Grid item xs={12}>
           

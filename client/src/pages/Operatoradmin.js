@@ -117,7 +117,7 @@ const CreateTourOperator = () => {
                                         <Grid item>
                                             <TextField
                                                 id="state"
-                                                label="State"
+                                                label="State or District"
                                                 name="address.state"
                                                 variant="outlined"
                                                 onChange={(e) => handleChange(e.target)}
@@ -176,7 +176,7 @@ const CreateTourOperator = () => {
                                         </Grid>
                                     </Grid>
                                 </div>
-                                <div className="input-field col s12">
+                                {/* <div className="input-field col s12">
                                     <Grid container spacing={1} alignItems="flex-end">
                                         <Grid item>
                                             <i className="material-icons prefix">location_city</i>
@@ -210,8 +210,8 @@ const CreateTourOperator = () => {
                                                 />
                                         </Grid>
                                     </Grid>
-                                </div>
-                                <div className="input-field col s12">
+                                </div> */}
+                                {/* <div className="input-field col s12">
                                     <Grid container spacing={1} alignItems="flex-end">
                                         <Grid item>
                                             <i className="material-icons prefix">photo_library</i>
@@ -228,7 +228,7 @@ const CreateTourOperator = () => {
                                                 />
                                         </Grid>
                                     </Grid>
-                                </div>
+                                </div> */}
                               
                                 <Button
                                     variant="contained"

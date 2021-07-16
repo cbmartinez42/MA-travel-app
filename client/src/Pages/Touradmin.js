@@ -89,7 +89,7 @@ const CreateTour = () => {
            {/* Create New Tour Container */}
            <div className="container">
            <h2 className="fredoka">New Tour Form</h2>
-                        <form enctype="multipart/form-data" className={classes.root} noValidate autoComplete="off" >
+                        <form encType="multipart/form-data" className={classes.root} noValidate autoComplete="off" >
                         <Grid container direction="column" alignItems="center" > 
                             <div className="row">
                                 <div className="input-field col s12">
