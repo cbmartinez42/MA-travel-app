@@ -15,24 +15,24 @@ const Categories = ({searchData, setSearchData}) => {
                         />
                     </Link>
                 </ListItem>
-                <ListItem>
+                {/* <ListItem>
                     <Link to="/browse/cruise">
                         <ListItemText 
-                            primary="Cruise"
+                            primary="Cruises"
                         />
                     </Link>
-                </ListItem>
+                </ListItem> */}
                 <ListItem>
                     <Link to="/browse/food">
                         <ListItemText 
-                            primary="Cooking/Food"
+                            primary="Culinary"
                         />
                     </Link>
                 </ListItem>
                 <ListItem>
-                    <Link to="/browse/sustainable">
+                    <Link to="/browse/cultural">
                         <ListItemText 
-                            primary="Sustainable Tours"
+                            primary="Cultural"
                         />
                     </Link>
                 </ListItem>
@@ -40,6 +40,20 @@ const Categories = ({searchData, setSearchData}) => {
                     <Link to="/browse/fishing">
                         <ListItemText 
                             primary="Fishing"
+                        />
+                    </Link>
+                </ListItem>
+                <ListItem>
+                    <Link to="/browse/birding">
+                        <ListItemText 
+                            primary="Birding"
+                        />
+                    </Link>
+                </ListItem>
+                <ListItem>
+                    <Link to="/browse/farm">
+                        <ListItemText 
+                            primary="Farm Tour"
                         />
                     </Link>
                 </ListItem>
