@@ -15,6 +15,7 @@ const ToursSchema = new Schema({
     },
 
       departureLocation: {
+        departureName: String,
         street: String,
         street2: String,
         city: String,
@@ -75,6 +76,10 @@ const ToursSchema = new Schema({
 
     category: {
       type: Array,
+    },
+
+    calendar: {
+      type: String,
     },
   
     // TODO: correctly setup for an image file

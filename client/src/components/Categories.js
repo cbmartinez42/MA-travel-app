@@ -1,5 +1,3 @@
-// import {useEffect} from 'react'
-import {Link} from 'react-router-dom'
 import {List, ListItem, ListItemText} from '@material-ui/core'
 import { useHistory } from "react-router-dom";
 
@@ -32,7 +30,7 @@ const Categories = ({searchData, setSearchData, searchBar, setSearchBar}) => {
                 <ListItem>
                         <ListItemText 
                             className="category-link"
-                            primary="Cooking"
+                            primary="Culinary"
                             onClick={setCategory}
                         />
                 </ListItem>
@@ -53,7 +51,7 @@ const Categories = ({searchData, setSearchData, searchBar, setSearchBar}) => {
                 <ListItem>
                         <ListItemText 
                             className="category-link"
-                            primary="Culture"
+                            primary="Cultural"
                             onClick={setCategory}
                         />
                 </ListItem>
@@ -71,6 +69,27 @@ const Categories = ({searchData, setSearchData, searchBar, setSearchBar}) => {
                             onClick={setCategory}
                         />
                 </ListItem>
+                <ListItem>
+                        <ListItemText 
+                            className="category-link"
+                            primary="Birding"
+                            onClick={setCategory}
+                        />
+                </ListItem>
+                <ListItem>
+                        <ListItemText 
+                            className="category-link"
+                            primary="Adventure"
+                            onClick={setCategory}
+                        />
+                </ListItem>
+                <ListItem>
+                        <ListItemText 
+                            className="category-link"
+                            primary="Farm"
+                            onClick={setCategory}
+                        />
+                </ListItem>
             </List>
             
         </div>
@@ -79,3 +98,4 @@ const Categories = ({searchData, setSearchData, searchBar, setSearchBar}) => {
 }
 
 export default Categories
+
