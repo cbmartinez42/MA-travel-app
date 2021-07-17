@@ -104,8 +104,8 @@ const Book = () => {
 
   const autoPopulateForm = (e) => {
     e.preventDefault();
-    console.log(userInfo)
-    setPopulateForm(!populateForm)
+    console.log(userInfo);
+    setPopulateForm(!populateForm);
   };
 
   let style = {
@@ -171,7 +171,6 @@ const Book = () => {
   //   }
   // }
 
-
   return (
     <>
       <div>
@@ -210,31 +209,29 @@ const Book = () => {
               <button
                 style={style.btn}
                 onClick={() =>
-                  setUrl("https://calendly.com/kaimanimarine/30min")
-                }
-              >
-                {" "}
-                Tour 1{" "}
-              </button>
-              <button
-                style={style.btn}
-                onClick={() =>
-                  setUrl("https://calendly.com/kaimanimarine/60min")
-                }
-              >
-                {" "}
-                Tour 2{" "}
-              </button>
-              <button
-                style={style.btn}
-                onClick={() =>
                   setUrl(
-                    "https://calendly.com/kaimanimarine/snorkel-and-beach-bbq"
+                    "https://calendly.com/deepwildsouth/snorkel-and-beach-bbq"
                   )
                 }
               >
                 {" "}
                 Snorkel and BBQ{" "}
+              </button>
+
+              <button
+                style={style.btn}
+                onClick={() =>
+                  setUrl(
+                    "https://calendly.com/deepwildsouth/deep-sea-fishing-and-snorkeling")}>
+                {" "}Deep Sea Fishing{" "}
+              </button>
+
+              <button
+                style={style.btn}
+                onClick={() =>
+                  setUrl(
+                    "https://calendly.com/deepwildsouth/ital-cooking-class")}>
+                {" "}Ital Cooking Class{" "}
               </button>
 
               {url ? (
@@ -246,9 +243,14 @@ const Book = () => {
                 </h5>
               )}
             </div>{" "}
+
+
           </Container>
         </div>
 
+
+
+        
         {/* Sign Up Container */}
         <div className="container">
           <Button
@@ -276,411 +278,437 @@ const Book = () => {
                   >
                     Autopopulate?
                   </Button> */}
-                  
-                  { !populateForm ? (
+
+                  {!populateForm ? (
                     //THIS BLANK FORM RENDERS IF AUTOPOPULATE BUTTON IS NOT PRESSED
                     <div>
-                  <div className="input-field col s12">
-                    <Grid container spacing={1} alignItems="flex-end">
-                      <Grid item>
-                        <i className="material-icons prefix">person_add</i>
-                      </Grid>
-                      <Grid item>
-                        <TextField
-                          required
-                          // value={!bookingDetails ? "" : userInfo.nameFirst}
-                          id="signup-full-name"
-                          label="First Name"
-                          name="firstName"
-                          variant="outlined"
-                          onChange={(e) => handleChange(e.target)}
-                        />
-                      </Grid>
-                    </Grid>
-                  </div>
+                      <div className="input-field col s12">
+                        <Grid container spacing={1} alignItems="flex-end">
+                          <Grid item>
+                            <i className="material-icons prefix">person_add</i>
+                          </Grid>
+                          <Grid item>
+                            <TextField
+                              required
+                              // value={!bookingDetails ? "" : userInfo.nameFirst}
+                              id="signup-full-name"
+                              label="First Name"
+                              name="firstName"
+                              variant="outlined"
+                              onChange={(e) => handleChange(e.target)}
+                            />
+                          </Grid>
+                        </Grid>
+                      </div>
 
-                  <div className="input-field col s12">
-                    <Grid container spacing={1} alignItems="flex-end">
-                      <Grid item>
-                        <i className="material-icons prefix">person_add</i>
-                      </Grid>
-                      <Grid item>
-                        <TextField
-                          required
-                          id="signup-full-name"
-                          label="Last Name"
-                          name="lastName"
-                          variant="outlined"
-                          onChange={(e) => handleChange(e.target)}
-                        />
-                      </Grid>
-                    </Grid>
-                  </div>
+                      <div className="input-field col s12">
+                        <Grid container spacing={1} alignItems="flex-end">
+                          <Grid item>
+                            <i className="material-icons prefix">person_add</i>
+                          </Grid>
+                          <Grid item>
+                            <TextField
+                              required
+                              id="signup-full-name"
+                              label="Last Name"
+                              name="lastName"
+                              variant="outlined"
+                              onChange={(e) => handleChange(e.target)}
+                            />
+                          </Grid>
+                        </Grid>
+                      </div>
 
-                  <div className="input-field col s12">
-                    <Grid container spacing={1} alignItems="flex-end">
-                      <Grid item>
-                        <i className="material-icons prefix">email</i>
-                      </Grid>
-                      <Grid item>
-                        <TextField
-                          required
-                          id="signup-email"
-                          label="Best Email"
-                          name="email"
-                          variant="outlined"
-                          onChange={(e) => handleChange(e.target)}
-                        />
-                      </Grid>
-                    </Grid>
-                  </div>
+                      <div className="input-field col s12">
+                        <Grid container spacing={1} alignItems="flex-end">
+                          <Grid item>
+                            <i className="material-icons prefix">email</i>
+                          </Grid>
+                          <Grid item>
+                            <TextField
+                              required
+                              id="signup-email"
+                              label="Best Email"
+                              name="email"
+                              variant="outlined"
+                              onChange={(e) => handleChange(e.target)}
+                            />
+                          </Grid>
+                        </Grid>
+                      </div>
 
-                  <div className="input-field col s12">
-                    <Grid container spacing={1} alignItems="flex-end">
-                      <Grid item>
-                        <i className="material-icons prefix">phone</i>
-                      </Grid>
-                      <Grid item>
-                        <TextField
-                          required
-                          id="signup-phone"
-                          label="Phone Number"
-                          name="phone"
-                          variant="outlined"
-                          onChange={(e) => handleChange(e.target)}
-                        />
-                      </Grid>
-                    </Grid>
-                  </div>
+                      <div className="input-field col s12">
+                        <Grid container spacing={1} alignItems="flex-end">
+                          <Grid item>
+                            <i className="material-icons prefix">phone</i>
+                          </Grid>
+                          <Grid item>
+                            <TextField
+                              required
+                              id="signup-phone"
+                              label="Phone Number"
+                              name="phone"
+                              variant="outlined"
+                              onChange={(e) => handleChange(e.target)}
+                            />
+                          </Grid>
+                        </Grid>
+                      </div>
 
-                  <div className="input-field col s12">
-                    <Grid container spacing={1} alignItems="flex-end">
-                      <Grid item>
-                        <i className="material-icons prefix">location_city</i>
-                      </Grid>
-                      <Grid item>
-                        <TextField
-                          required
-                          id="signup-address1"
-                          label="Address 1"
-                          name="addressStreet"
-                          variant="outlined"
-                          onChange={(e) => handleChange(e.target)}
-                        />
-                      </Grid>
-                    </Grid>
-                  </div>
+                      <div className="input-field col s12">
+                        <Grid container spacing={1} alignItems="flex-end">
+                          <Grid item>
+                            <i className="material-icons prefix">
+                              location_city
+                            </i>
+                          </Grid>
+                          <Grid item>
+                            <TextField
+                              required
+                              id="signup-address1"
+                              label="Address 1"
+                              name="addressStreet"
+                              variant="outlined"
+                              onChange={(e) => handleChange(e.target)}
+                            />
+                          </Grid>
+                        </Grid>
+                      </div>
 
-                  <div className="input-field col s12">
-                    <Grid container spacing={1} alignItems="flex-end">
-                      <Grid item>
-                        <i className="material-icons prefix">location_city</i>
-                      </Grid>
-                      <Grid item>
-                        <TextField
-                          id="signup-address2"
-                          label="Address 2"
-                          name="addressStreet2"
-                          variant="outlined"
-                          onChange={(e) => handleChange(e.target)}
-                        />
-                      </Grid>
-                    </Grid>
-                  </div>
-                  <div className="input-field col s12">
-                    <Grid container spacing={1} alignItems="flex-end">
-                      <Grid item>
-                        <i className="material-icons prefix">location_city</i>
-                      </Grid>
-                      <Grid item>
-                        <TextField
-                          required
-                          id="signup-city"
-                          label="City"
-                          name="addressCity"
-                          variant="outlined"
-                          onChange={(e) => handleChange(e.target)}
-                        />
-                      </Grid>
-                    </Grid>
-                  </div>
-                  <div className="input-field col s12">
-                    <Grid container spacing={1} alignItems="flex-end">
-                      <Grid item>
-                        <i className="material-icons prefix">location_city</i>
-                      </Grid>
-                      <Grid item>
-                        <TextField
-                          required
-                          id="signup-state"
-                          label="State"
-                          name="addressState"
-                          variant="outlined"
-                          onChange={(e) => handleChange(e.target)}
-                        />
-                      </Grid>
-                    </Grid>
-                  </div>
+                      <div className="input-field col s12">
+                        <Grid container spacing={1} alignItems="flex-end">
+                          <Grid item>
+                            <i className="material-icons prefix">
+                              location_city
+                            </i>
+                          </Grid>
+                          <Grid item>
+                            <TextField
+                              id="signup-address2"
+                              label="Address 2"
+                              name="addressStreet2"
+                              variant="outlined"
+                              onChange={(e) => handleChange(e.target)}
+                            />
+                          </Grid>
+                        </Grid>
+                      </div>
+                      <div className="input-field col s12">
+                        <Grid container spacing={1} alignItems="flex-end">
+                          <Grid item>
+                            <i className="material-icons prefix">
+                              location_city
+                            </i>
+                          </Grid>
+                          <Grid item>
+                            <TextField
+                              required
+                              id="signup-city"
+                              label="City"
+                              name="addressCity"
+                              variant="outlined"
+                              onChange={(e) => handleChange(e.target)}
+                            />
+                          </Grid>
+                        </Grid>
+                      </div>
+                      <div className="input-field col s12">
+                        <Grid container spacing={1} alignItems="flex-end">
+                          <Grid item>
+                            <i className="material-icons prefix">
+                              location_city
+                            </i>
+                          </Grid>
+                          <Grid item>
+                            <TextField
+                              required
+                              id="signup-state"
+                              label="State"
+                              name="addressState"
+                              variant="outlined"
+                              onChange={(e) => handleChange(e.target)}
+                            />
+                          </Grid>
+                        </Grid>
+                      </div>
 
-                  <div className="input-field col s12">
-                    <Grid container spacing={1} alignItems="flex-end">
-                      <Grid item>
-                        <i className="material-icons prefix">location_city</i>
-                      </Grid>
-                      <Grid item>
-                        <TextField
-                          required
-                          id="signup-zip"
-                          label="Zip"
-                          name="addressZip"
-                          variant="outlined"
-                          onChange={(e) => handleChange(e.target)}
-                        />
-                      </Grid>
-                    </Grid>
-                  </div>
+                      <div className="input-field col s12">
+                        <Grid container spacing={1} alignItems="flex-end">
+                          <Grid item>
+                            <i className="material-icons prefix">
+                              location_city
+                            </i>
+                          </Grid>
+                          <Grid item>
+                            <TextField
+                              required
+                              id="signup-zip"
+                              label="Zip"
+                              name="addressZip"
+                              variant="outlined"
+                              onChange={(e) => handleChange(e.target)}
+                            />
+                          </Grid>
+                        </Grid>
+                      </div>
 
-                  <div className="input-field col s12">
-                    <Grid container spacing={1} alignItems="flex-end">
-                      <Grid item>
-                        <i className="material-icons prefix">accessibility</i>
-                      </Grid>
-                      <Grid item>
-                        <TextField
-                          required
-                          id="signup-specialrequirements"
-                          label="Special Requirements?"
-                          name="specialRequirements"
-                          variant="outlined"
-                          onChange={(e) => handleChange(e.target)}
-                        />
-                      </Grid>
-                    </Grid>
-                  </div>
+                      <div className="input-field col s12">
+                        <Grid container spacing={1} alignItems="flex-end">
+                          <Grid item>
+                            <i className="material-icons prefix">
+                              accessibility
+                            </i>
+                          </Grid>
+                          <Grid item>
+                            <TextField
+                              required
+                              id="signup-specialrequirements"
+                              label="Special Requirements?"
+                              name="specialRequirements"
+                              variant="outlined"
+                              onChange={(e) => handleChange(e.target)}
+                            />
+                          </Grid>
+                        </Grid>
+                      </div>
 
-                  <div className="input-field col s12">
-                    <Grid container spacing={1} alignItems="flex-end">
-                      <Grid item>
-                        <i className="material-icons prefix">face</i>
-                      </Grid>
-                      <Grid item>
-                        <TextField
-                          required
-                          id="signup-participants"
-                          label="Participants? Ex: 2"
-                          name="participants"
-                          variant="outlined"
-                          onChange={(e) => {
-                            handleChange(e.target);
-                            addParticipants(e.target);
-                          }}
-                        />
-                      </Grid>
-                    </Grid>
-                  </div> 
-                  </div>) : (
+                      <div className="input-field col s12">
+                        <Grid container spacing={1} alignItems="flex-end">
+                          <Grid item>
+                            <i className="material-icons prefix">face</i>
+                          </Grid>
+                          <Grid item>
+                            <TextField
+                              required
+                              id="signup-participants"
+                              label="Participants? Ex: 2"
+                              name="participants"
+                              variant="outlined"
+                              onChange={(e) => {
+                                handleChange(e.target);
+                                addParticipants(e.target);
+                              }}
+                            />
+                          </Grid>
+                        </Grid>
+                      </div>
+                    </div>
+                  ) : (
                     // THIS DUPLICATE RENDERS WHEN AUTOPOPULATE BUTTON IS PRESSED
                     <div>
-                    <div className="input-field col s12">
-                    <Grid container spacing={1} alignItems="flex-end">
-                      <Grid item>
-                        <i className="material-icons prefix">person_add</i>
-                      </Grid>
-                      <Grid item>
-                        <TextField
-                          required
-                          value={userInfo.namefirst}
-                          id="signup-first-name"
-                          label="First Name"
-                          name="firstName"
-                          variant="outlined"
-                          onChange={(e) => handleChange(e.target)}
-                        />
-                      </Grid>
-                    </Grid>
-                  </div>
+                      <div className="input-field col s12">
+                        <Grid container spacing={1} alignItems="flex-end">
+                          <Grid item>
+                            <i className="material-icons prefix">person_add</i>
+                          </Grid>
+                          <Grid item>
+                            <TextField
+                              required
+                              value={userInfo.namefirst}
+                              id="signup-first-name"
+                              label="First Name"
+                              name="firstName"
+                              variant="outlined"
+                              onChange={(e) => handleChange(e.target)}
+                            />
+                          </Grid>
+                        </Grid>
+                      </div>
 
-                  <div className="input-field col s12">
-                    <Grid container spacing={1} alignItems="flex-end">
-                      <Grid item>
-                        <i className="material-icons prefix">person_add</i>
-                      </Grid>
-                      <Grid item>
-                        <TextField
-                          required
-                          value={userInfo.namelast}
-                          id="signup-last-name"
-                          label="Last Name"
-                          name="lastName"
-                          variant="outlined"
-                          onChange={(e) => handleChange(e.target)}
-                        />
-                      </Grid>
-                    </Grid>
-                  </div>
+                      <div className="input-field col s12">
+                        <Grid container spacing={1} alignItems="flex-end">
+                          <Grid item>
+                            <i className="material-icons prefix">person_add</i>
+                          </Grid>
+                          <Grid item>
+                            <TextField
+                              required
+                              value={userInfo.namelast}
+                              id="signup-last-name"
+                              label="Last Name"
+                              name="lastName"
+                              variant="outlined"
+                              onChange={(e) => handleChange(e.target)}
+                            />
+                          </Grid>
+                        </Grid>
+                      </div>
 
-                  <div className="input-field col s12">
-                    <Grid container spacing={1} alignItems="flex-end">
-                      <Grid item>
-                        <i className="material-icons prefix">email</i>
-                      </Grid>
-                      <Grid item>
-                        <TextField
-                          required
-                          id="signup-email"
-                          label="Best Email"
-                          name="email"
-                          variant="outlined"
-                          onChange={(e) => handleChange(e.target)}
-                        />
-                      </Grid>
-                    </Grid>
-                  </div>
+                      <div className="input-field col s12">
+                        <Grid container spacing={1} alignItems="flex-end">
+                          <Grid item>
+                            <i className="material-icons prefix">email</i>
+                          </Grid>
+                          <Grid item>
+                            <TextField
+                              required
+                              id="signup-email"
+                              label="Best Email"
+                              name="email"
+                              variant="outlined"
+                              onChange={(e) => handleChange(e.target)}
+                            />
+                          </Grid>
+                        </Grid>
+                      </div>
 
-                  <div className="input-field col s12">
-                    <Grid container spacing={1} alignItems="flex-end">
-                      <Grid item>
-                        <i className="material-icons prefix">phone</i>
-                      </Grid>
-                      <Grid item>
-                        <TextField
-                          required
-                          id="signup-phone"
-                          label="Phone Number"
-                          name="phone"
-                          variant="outlined"
-                          onChange={(e) => handleChange(e.target)}
-                        />
-                      </Grid>
-                    </Grid>
-                  </div>
+                      <div className="input-field col s12">
+                        <Grid container spacing={1} alignItems="flex-end">
+                          <Grid item>
+                            <i className="material-icons prefix">phone</i>
+                          </Grid>
+                          <Grid item>
+                            <TextField
+                              required
+                              id="signup-phone"
+                              label="Phone Number"
+                              name="phone"
+                              variant="outlined"
+                              onChange={(e) => handleChange(e.target)}
+                            />
+                          </Grid>
+                        </Grid>
+                      </div>
 
-                  <div className="input-field col s12">
-                    <Grid container spacing={1} alignItems="flex-end">
-                      <Grid item>
-                        <i className="material-icons prefix">location_city</i>
-                      </Grid>
-                      <Grid item>
-                        <TextField
-                          required
-                          id="signup-address1"
-                          label="Address 1"
-                          name="addressStreet"
-                          variant="outlined"
-                          onChange={(e) => handleChange(e.target)}
-                        />
-                      </Grid>
-                    </Grid>
-                  </div>
+                      <div className="input-field col s12">
+                        <Grid container spacing={1} alignItems="flex-end">
+                          <Grid item>
+                            <i className="material-icons prefix">
+                              location_city
+                            </i>
+                          </Grid>
+                          <Grid item>
+                            <TextField
+                              required
+                              id="signup-address1"
+                              label="Address 1"
+                              name="addressStreet"
+                              variant="outlined"
+                              onChange={(e) => handleChange(e.target)}
+                            />
+                          </Grid>
+                        </Grid>
+                      </div>
 
-                  <div className="input-field col s12">
-                    <Grid container spacing={1} alignItems="flex-end">
-                      <Grid item>
-                        <i className="material-icons prefix">location_city</i>
-                      </Grid>
-                      <Grid item>
-                        <TextField
-                          id="signup-address2"
-                          label="Address 2"
-                          name="addressStreet2"
-                          variant="outlined"
-                          onChange={(e) => handleChange(e.target)}
-                        />
-                      </Grid>
-                    </Grid>
-                  </div>
-                  <div className="input-field col s12">
-                    <Grid container spacing={1} alignItems="flex-end">
-                      <Grid item>
-                        <i className="material-icons prefix">location_city</i>
-                      </Grid>
-                      <Grid item>
-                        <TextField
-                          required
-                          id="signup-city"
-                          label="City"
-                          name="addressCity"
-                          variant="outlined"
-                          onChange={(e) => handleChange(e.target)}
-                        />
-                      </Grid>
-                    </Grid>
-                  </div>
-                  <div className="input-field col s12">
-                    <Grid container spacing={1} alignItems="flex-end">
-                      <Grid item>
-                        <i className="material-icons prefix">location_city</i>
-                      </Grid>
-                      <Grid item>
-                        <TextField
-                          required
-                          id="signup-state"
-                          label="State"
-                          name="addressState"
-                          variant="outlined"
-                          onChange={(e) => handleChange(e.target)}
-                        />
-                      </Grid>
-                    </Grid>
-                  </div>
+                      <div className="input-field col s12">
+                        <Grid container spacing={1} alignItems="flex-end">
+                          <Grid item>
+                            <i className="material-icons prefix">
+                              location_city
+                            </i>
+                          </Grid>
+                          <Grid item>
+                            <TextField
+                              id="signup-address2"
+                              label="Address 2"
+                              name="addressStreet2"
+                              variant="outlined"
+                              onChange={(e) => handleChange(e.target)}
+                            />
+                          </Grid>
+                        </Grid>
+                      </div>
+                      <div className="input-field col s12">
+                        <Grid container spacing={1} alignItems="flex-end">
+                          <Grid item>
+                            <i className="material-icons prefix">
+                              location_city
+                            </i>
+                          </Grid>
+                          <Grid item>
+                            <TextField
+                              required
+                              id="signup-city"
+                              label="City"
+                              name="addressCity"
+                              variant="outlined"
+                              onChange={(e) => handleChange(e.target)}
+                            />
+                          </Grid>
+                        </Grid>
+                      </div>
+                      <div className="input-field col s12">
+                        <Grid container spacing={1} alignItems="flex-end">
+                          <Grid item>
+                            <i className="material-icons prefix">
+                              location_city
+                            </i>
+                          </Grid>
+                          <Grid item>
+                            <TextField
+                              required
+                              id="signup-state"
+                              label="State"
+                              name="addressState"
+                              variant="outlined"
+                              onChange={(e) => handleChange(e.target)}
+                            />
+                          </Grid>
+                        </Grid>
+                      </div>
 
-                  <div className="input-field col s12">
-                    <Grid container spacing={1} alignItems="flex-end">
-                      <Grid item>
-                        <i className="material-icons prefix">location_city</i>
-                      </Grid>
-                      <Grid item>
-                        <TextField
-                          required
-                          id="signup-zip"
-                          label="Zip"
-                          name="addressZip"
-                          variant="outlined"
-                          onChange={(e) => handleChange(e.target)}
-                        />
-                      </Grid>
-                    </Grid>
-                  </div>
+                      <div className="input-field col s12">
+                        <Grid container spacing={1} alignItems="flex-end">
+                          <Grid item>
+                            <i className="material-icons prefix">
+                              location_city
+                            </i>
+                          </Grid>
+                          <Grid item>
+                            <TextField
+                              required
+                              id="signup-zip"
+                              label="Zip"
+                              name="addressZip"
+                              variant="outlined"
+                              onChange={(e) => handleChange(e.target)}
+                            />
+                          </Grid>
+                        </Grid>
+                      </div>
 
-                  <div className="input-field col s12">
-                    <Grid container spacing={1} alignItems="flex-end">
-                      <Grid item>
-                        <i className="material-icons prefix">accessibility</i>
-                      </Grid>
-                      <Grid item>
-                        <TextField
-                          required
-                          id="signup-specialrequirements"
-                          label="Special Requirements?"
-                          name="specialRequirements"
-                          variant="outlined"
-                          onChange={(e) => handleChange(e.target)}
-                        />
-                      </Grid>
-                    </Grid>
-                  </div>
+                      <div className="input-field col s12">
+                        <Grid container spacing={1} alignItems="flex-end">
+                          <Grid item>
+                            <i className="material-icons prefix">
+                              accessibility
+                            </i>
+                          </Grid>
+                          <Grid item>
+                            <TextField
+                              required
+                              id="signup-specialrequirements"
+                              label="Special Requirements?"
+                              name="specialRequirements"
+                              variant="outlined"
+                              onChange={(e) => handleChange(e.target)}
+                            />
+                          </Grid>
+                        </Grid>
+                      </div>
 
-                  <div className="input-field col s12">
-                    <Grid container spacing={1} alignItems="flex-end">
-                      <Grid item>
-                        <i className="material-icons prefix">face</i>
-                      </Grid>
-                      <Grid item>
-                        <TextField
-                          required
-                          id="signup-participants"
-                          label="Participants? Ex: 2"
-                          name="participants"
-                          variant="outlined"
-                          onChange={(e) => {
-                            handleChange(e.target);
-                            addParticipants(e.target);
-                          }}
-                        />
-                      </Grid>
-                    </Grid>
-                  </div> 
-                  </div>) }
+                      <div className="input-field col s12">
+                        <Grid container spacing={1} alignItems="flex-end">
+                          <Grid item>
+                            <i className="material-icons prefix">face</i>
+                          </Grid>
+                          <Grid item>
+                            <TextField
+                              required
+                              id="signup-participants"
+                              label="Participants? Ex: 2"
+                              name="participants"
+                              variant="outlined"
+                              onChange={(e) => {
+                                handleChange(e.target);
+                                addParticipants(e.target);
+                              }}
+                            />
+                          </Grid>
+                        </Grid>
+                      </div>
+                    </div>
+                  )}
 
                   <Button
                     variant="contained"

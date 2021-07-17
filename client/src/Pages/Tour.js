@@ -54,13 +54,13 @@ const Tour = () => {
               <p>Available times: {tourData.startTimes}</p>
             </Grid>
             <Grid item xs={4}>
-              <p>Duration: {tourData.duration}</p>
+              <p>Duration: {tourData.duration} hours</p>
             </Grid>
             <Grid item xs={4}>
               <p>Cost per person: ${tourData.cost}</p>
             </Grid>
             <Grid item xs={12}>
-            <p>Cancellations: {tourData.cancellationPolicy}</p>
+            <p>Cancellation Policy: {tourData.cancellationPolicy}</p>
             </Grid>
           </Grid>
           </Container>
