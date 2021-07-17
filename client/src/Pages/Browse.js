@@ -8,7 +8,7 @@ import Categories from '../components/Categories'
 import Grid from '@material-ui/core/Grid'
 import {useParams} from 'react-router-dom'
 
-const Browse = ({ searchData, setSearchData }) => {
+const Browse = ({ searchBar, setSearchBar, searchData, setSearchData }) => {
   // const {category} = useParams();
   // console.log(category)
 
@@ -19,14 +19,23 @@ const Browse = ({ searchData, setSearchData }) => {
         <Categories 
           searchData={searchData} 
           setSearchData={setSearchData}
+          searchBar={searchBar}
+          setSearchBar={setSearchBar}
         />
       </Grid>
       <Grid item xs={12} md={8} lg={8}>
       <Search 
         searchData={searchData} 
         setSearchData={setSearchData}
+        searchBar={searchBar}
+        setSearchBar={setSearchBar}
       />
-      <Results searchData={searchData} setSearchData={setSearchData} />
+      <Results 
+        searchData={searchData} 
+        setSearchData={setSearchData} 
+        searchBar={searchBar}
+        setSearchBar={setSearchBar}
+      />
       </Grid>
       <Grid item xs={12} md={2}>
         <div>Additional content </div>

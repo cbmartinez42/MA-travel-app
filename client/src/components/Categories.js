@@ -1,47 +1,75 @@
 // import {useEffect} from 'react'
 import {Link} from 'react-router-dom'
 import {List, ListItem, ListItemText} from '@material-ui/core'
+import { useHistory } from "react-router-dom";
 
-const Categories = ({searchData, setSearchData}) => {
+const Categories = ({searchData, setSearchData, searchBar, setSearchBar}) => {
+    const history = useHistory()
+
+    function setCategory(e) {
+        setSearchBar(e.target.textContent)
+        history.push('/browse')
+    } 
 
     return (
         <>
         <div className="categories">Select a category:
             <List  className="categories-list">
                 <ListItem>
-                    <Link to="/browse/snorkeling">
                         <ListItemText 
-                            primary="Snorkeling"
+                            className="category-link"
+                            primary="Snorkel"
+                            onClick={setCategory}
                         />
-                    </Link>
                 </ListItem>
                 <ListItem>
-                    <Link to="/browse/cruise">
                         <ListItemText 
+                            className="category-link"
                             primary="Cruise"
+                            onClick={setCategory}
                         />
-                    </Link>
                 </ListItem>
                 <ListItem>
-                    <Link to="/browse/food">
                         <ListItemText 
-                            primary="Cooking/Food"
+                            className="category-link"
+                            primary="Cooking"
+                            onClick={setCategory}
                         />
-                    </Link>
                 </ListItem>
                 <ListItem>
-                    <Link to="/browse/sustainable">
                         <ListItemText 
-                            primary="Sustainable Tours"
+                            className="category-link"
+                            primary="Sustainable"
+                            onClick={setCategory}
                         />
-                    </Link>
                 </ListItem>
                 <ListItem>
-                    <Link to="/browse/fishing">
                         <ListItemText 
+                            className="category-link"
                             primary="Fishing"
+                            onClick={setCategory}
                         />
-                    </Link>
+                </ListItem>
+                <ListItem>
+                        <ListItemText 
+                            className="category-link"
+                            primary="Culture"
+                            onClick={setCategory}
+                        />
+                </ListItem>
+                <ListItem>
+                        <ListItemText 
+                            className="category-link"
+                            primary="Hiking"
+                            onClick={setCategory}
+                        />
+                </ListItem>
+                <ListItem>
+                        <ListItemText 
+                            className="category-link"
+                            primary="Caving"
+                            onClick={setCategory}
+                        />
                 </ListItem>
             </List>
             
