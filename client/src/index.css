@@ -159,10 +159,17 @@ text-align:left !important;
   height: 100%;
   padding: 3rem;
   font-weight: 800;
+  /* margin-bottom: -10rem; */
 }
 
-.categories a {
+.category-link {
+  cursor: pointer;
+
+}
+
+.category-link:hover {
   text-decoration: none;
+  color: blue
 }
 
 .abstract-link {

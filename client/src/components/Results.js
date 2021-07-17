@@ -6,7 +6,7 @@ import {Box, Container} from '@material-ui/core/';
 import {Link, useLocation} from 'react-router-dom'
 import Grid from '@material-ui/core/Grid'
 
-const Results = ({searchData, setSearchData}) => {
+const Results = ({searchData, setSearchData, searchBar, setSearchBar}) => {
 
     const params = useLocation();
     const paramsArray = params.pathname.split('/')
@@ -15,29 +15,10 @@ const Results = ({searchData, setSearchData}) => {
     console.log('category', category);
     
 
-    // useEffect(() => {
-    //     // if (!category) {
-    //         API.browseAllActivities()
-    //         .then((response) => {
-    //         setSearchData(response.data || [])
-    //         });
-    // //     } else {
-    // //         API.browseCategory(category)
-    // //         .then((response) => {
-    // //             setSearchData(response.data || [])
-    // //         })
-    // // }
-    // }, [])
-
-    // const renderDetail = (data) => {
-
-    //     console.log('data >> ', data)
-    // }
-
     return (
         <>
             <Container maxWidth="md">
-                {searchData.map(search => (
+                {searchData.filter(tours => tours?.keywords.join(' ').toUpperCase().includes(searchBar.toUpperCase())).map(search => (
                    
                     <Link className="abstract-link" to={"/tour/" + search._id}>
                         <Box key={search._id} className="tour-abstract">

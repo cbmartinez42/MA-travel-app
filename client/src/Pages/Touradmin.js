@@ -53,6 +53,7 @@ const CreateTour = () => {
       const response = await API.createNewTour(createTour);
       console.log(response);
       console.log(image);
+      // if image = null
       for (let i = 0; i < image.length; i++) {
         const imgRes = await API.addTourImg(response.data._id, image[i]);
         console.log(imgRes);
@@ -63,7 +64,9 @@ const CreateTour = () => {
       if (response.status === 200) {
         console.log("FILE SENT");
         const res = response.data;
-        history.push("/home");
+        history.push("/touradmin");
+        alert('Tour created!')
+        // window.location.refresh()
       } else {
         console.log("mas problemo");
       }
