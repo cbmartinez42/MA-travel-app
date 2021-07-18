@@ -11,19 +11,19 @@ const Home = ({searchData, setSearchData, searchBar, setSearchBar}) => {
   const { userInfo, setUserInfo } = useContext(UserContext);
 
   useEffect(() => {
-    // if (!category) {
     API.browseAllActivities()
     .then((response) => {
-      console.log(response.data)
     setSearchData(response.data || [])
     });
-//     } else {
-//         API.browseCategory(category)
-//         .then((response) => {
-//             setSearchData(response.data || [])
-//         })
-// }
 }, [])
+
+  const userWelcome = () =>{
+    if (userInfo) {
+      return <Grid item xs={12}  >
+      <h2>Welcome {userInfo.namefirst} {userInfo.namelast}!</h2>
+      </Grid>
+    }
+  }
 
     return (
       <>
@@ -38,9 +38,11 @@ const Home = ({searchData, setSearchData, searchBar, setSearchBar}) => {
           </Grid>
           <Grid item xs={12} md={8} lg={8}>
           <Grid container spacing={1}>
-            <Grid item xs={12}  >
-            <h2>Welcome {userInfo.namefirst} {userInfo.namelast}!</h2>
-            </Grid>
+            
+            {/* <Grid item xs={12}  > */}
+            {userWelcome()}
+            {/* <h2>Welcome {userInfo.namefirst} {userInfo.namelast}!</h2> */}
+            {/* </Grid> */}
           </Grid>
           <Search 
             searchData={searchData}

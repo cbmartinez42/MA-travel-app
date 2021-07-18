@@ -16,7 +16,7 @@ import {
   Box,
   Container,
 } from "@material-ui/core";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, useLocation, Link } from "react-router-dom";
 import API from "../utils/API";
 import Payment from "./../components/Payment";
 import { UserContext } from "../utils/UserContext";
@@ -185,7 +185,7 @@ const Book = () => {
               </Container>
             </div>
             <div>
-            Continuing with this booking indicates that you have read and agreed to the terms presented in the Terms and Conditions agreement.
+            Continuing with this booking indicates that you have read and agreed to the terms presented in the <Link to='/terms' target="_blank" rel="noopener noreferrer">Terms and Conditions</Link> agreement.
               {/* calendar for selected tour */}
               {url ? (
                 <InlineWidget url={tourData.calendar} />
