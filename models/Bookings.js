@@ -27,7 +27,7 @@ const BookingsSchema = new Schema({
           uppercase: true,
           // enum: statesArray
       },
-      zip: Number
+      zip: String
     },
 
       activity: [{
@@ -38,8 +38,9 @@ const BookingsSchema = new Schema({
 
       phone: {
         type: String,
-        validate: [({ length }) => length >= 6, "Description string should be more than 6 characters."],
-        required: [true, 'User phone number required']
+        // validate: [(string) => string.length >= 6, "Description string should be more than 6 characters."],
+        required: [true, 'User phone number required'],
+        minlength: 6
       },
 
   email: {
@@ -49,14 +50,14 @@ const BookingsSchema = new Schema({
 
   specialRequirements: String,
 
-  participants: Number,
+  participants: String,
 
   initialCost: {
-    type: Number,
+    type: String,
     },
 
-    otherFees: Number,
-    totalCost: Number
+    otherFees: String,
+    totalCost: String
 
     //   Other possible "types"
 //   boolean: Boolean,
