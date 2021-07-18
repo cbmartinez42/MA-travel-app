@@ -180,10 +180,10 @@ export default function TemporaryDrawer() {
         {/* <Grid item xs={12} align="center"> 
                 <Box component="span" textAlign="center" className='announcement'>Buy now! Big sale for the summer!</Box>
             </Grid> */}
-        <div class="tcontainer">
-          <div class="ticker-wrap">
-            <div class="ticker-move">
-              <div class="ticker-item">
+        <div className="tcontainer">
+          <div className="ticker-wrap">
+            <div className="ticker-move">
+              <div className="ticker-item">
                 All of our tours are certified with the Tourism Gold Standard
                 Recognition Program for ensured safety of our visitors and
                 community during Covid-19

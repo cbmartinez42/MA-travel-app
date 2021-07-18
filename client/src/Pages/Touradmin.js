@@ -127,7 +127,6 @@ const CreateTour = () => {
                 value={createTour.tourOperator || ""}
                 name="operator"
                 variant="outlined"
-                autoWidth='true'
                 onChange={handleOperatorChange}
                 // displayEmpty
                 className="operator-dropdown"

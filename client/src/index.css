@@ -112,7 +112,7 @@ ITEMS
 .App-footer {
   background-color: #61CD42;
   max-height: 20vh;
-  margin-top: 50px;
+  margin-top: 96px;
   padding: 1% 5%;
   bottom: 0;
   /* padding: 1rem; */
@@ -227,4 +227,8 @@ text-align:left !important;
 
 .user-role {
   width: 20rem;
+}
+
+.operator-dropdown {
+  width: 25rem;
 }
