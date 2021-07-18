@@ -121,6 +121,7 @@ ITEMS
   /* align-items: center; */
   /* justify-content: center; */
   color: white;
+  z-index: 4;
 }
 
 .flexboxHorizontal {
@@ -198,6 +199,7 @@ text-align:left !important;
   height: 100%;
   padding: 3rem;
   font-weight: 800;
+  z-index: 1;
   /* margin-bottom: -10rem; */
 }
 
@@ -229,6 +231,16 @@ text-align:left !important;
   width: 20rem;
 }
 
+
+.termsConditions{
+  font-size: 0.5rem;
+}
+
+.no-bullet {
+  list-style-type: none;
+}
+
 .operator-dropdown {
   width: 25rem;
+
 }

@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
+import ReactDOM from "react-dom";
+import { Link } from "react-router-dom";
 import { InlineWidget } from "react-calendly";
-import Signup from "../components/Signup";
+import Terms from "./Terms";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   TextField,
@@ -13,14 +15,17 @@ import {
   TableCell,
   TableBody,
   Table,
-  Box,
   Container,
+  Icon,
+  Box
 } from "@material-ui/core";
 import { useParams, useLocation, Link } from "react-router-dom";
 import API from "../utils/API";
 import Payment from "./../components/Payment";
 import { UserContext } from "../utils/UserContext";
 import { blue } from "@material-ui/core/colors";
+import { LooksTwo, LooksOne, Looks3 } from "@material-ui/icons";
+// import Icon from '@material-ui/core/Icon';
 
 const Book = () => {
   const { userInfo, setUserInfo } = useContext(UserContext);
@@ -69,6 +74,7 @@ const Book = () => {
   //capturing inputs for API call
   const [bookingDetails, setBookingDetails] = useState({});
   const [populateForm, setPopulateForm] = useState(false);
+  const [showCalendar, setShowCalendar] = useState(false);
 
   //on click, set the FORM reveal to whatever the opposite
   const revealForm = () => {
@@ -81,12 +87,19 @@ const Book = () => {
     console.log(bookingDetails);
   };
 
-  //on SUBMIT click, call the API, hide the booking form, reveal the Payment Info
-  const handleBooking = (e) => {
+  //on SUBMIT click, call the API, hide the booking form, reveal the Calendly Link
+  const revealCalendar = (e) => {
     e.preventDefault();
     setShowForm(!showForm);
-    setshowPricing(true);
+    setShowCalendar(true)
+
   };
+
+  //on BUTTON click, reveal payment Information. If user decides not to pay, nothing happens and they still have their booking
+  const showPayment = (e) => {
+    e.preventDefault();
+    setshowPricing(true);
+  }
 
   const autoPopulateForm = (e) => {
     e.preventDefault();
@@ -185,20 +198,29 @@ const Book = () => {
               </Container>
             </div>
             <div>
+
+              <Box>
+                <h2>How to Sign up For a Tour</h2>
+                <ul className="no-bullet">
+                  <li>
+                    <Icon color="primary" >looks_one</Icon> Enter Your Booking Information!
+                  </li>
+                  <li>
+                    <Icon color="primary" >looks_two</Icon> Enter a Date and Time into the Calendar!
+                  </li>
+                  <li>
+                    <Icon color="primary" >looks_3</Icon> Enter Payment Information to Save Your
+                    Spot!
+                  </li>
+                </ul>
+              </Box>
+            </div>
+
+
             Continuing with this booking indicates that you have read and agreed to the terms presented in the <Link to='/terms' target="_blank" rel="noopener noreferrer">Terms and Conditions</Link> agreement.
-              {/* calendar for selected tour */}
-              {url ? (
-                <InlineWidget url={tourData.calendar} />
-              ) : (
-                <h5 style={{ color: "blue" }}>
-                  {" "}
-                  Select tour type to see details
-                </h5>
-              )}
-            </div>{" "}
+
           </Container>
         </div>
-
         {/* Sign Up Container */}
         <div className="container">
           <Button
@@ -210,7 +232,7 @@ const Book = () => {
               revealForm();
             }}
           >
-Click to Enter Your Booking Information!
+            Click to Enter Your Booking Information!
           </Button>
           {/*If showForm STATE is false then display NULL*/}
           {/*the state is switched every time the button is clicked*/}
@@ -218,6 +240,7 @@ Click to Enter Your Booking Information!
             <form>
               <Grid container direction="column" alignItems="center">
                 <div className="row">
+                  {/* The button below will populate a form with the UserInfo already populated. form currently not working */}
                   {/* <Button 
                     onClick={(e)=>autoPopulateForm(e)}
                     variant="contained"
@@ -658,6 +681,7 @@ Click to Enter Your Booking Information!
                     </div>
                   )}
 
+                  {/* SUBMIT booking information  */}
                   <Button
                     variant="contained"
                     style={{ margin: "2%" }}
@@ -665,7 +689,7 @@ Click to Enter Your Booking Information!
                     id="signup-btn"
                     type="submit"
                     name="action"
-                    onClick={handleBooking}
+                    onClick={revealCalendar}
                   >
                     SUBMIT
                   </Button>
@@ -674,11 +698,52 @@ Click to Enter Your Booking Information!
             </form>
           )}
         </div>
+        {/* calendar for selected tour */}
+        {!showCalendar ? null : (
+          <>
+                   <div>
+              <Box>
+                <ul className="no-bullet">
+                  <li>
+                    <Icon color="primary" >looks_two</Icon> Enter a Date and Time into the Calendar!
+                  </li>
+                </ul>
+              </Box>
+            </div>
+        <div>
+          {url ? (
+            <InlineWidget url={tourData.calendar} />
+          ) : (
+            <h5 style={{ color: "blue" }}> Select tour type to see details</h5>
+          )}
+        </div>{" "}
+        
+        <Button
+                    variant="contained"
+                    style={{ margin: "2%" }}
+                    color="primary"
+                    id="signup-btn"
+                    type="submit"
+                    name="action"
+                    onClick={showPayment}
+                  >
+                    PAY TO SAVE YOUR SPOT
+                  </Button></>)}
+
         {/* Pricing Container */}
         <div>
           {/*If showPricing STATE is false then display NULL*/}
           {!showPricing ? null : (
             <div>
+                                 <div>
+              <Box>
+                <ul className="no-bullet">
+                  <li>
+                    <Icon color="primary" >looks_3</Icon> Pay to save your spot!
+                  </li>
+                </ul>
+              </Box>
+            </div>
               <div>
                 <h2 style={{ textDecoration: "underline" }}>
                   Payment information

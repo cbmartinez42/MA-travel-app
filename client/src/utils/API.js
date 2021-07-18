@@ -23,6 +23,9 @@ let API = {
     // const infoUrl = '/api/tours/' + id;
     return axios.get("/api/tour/" + id);
   },
+  findOneBooking: function (email) {
+    return axios.get("/api/booking/email/" + email);
+  },
   signUpUser: function (newUserInfo) {
     console.log(
       "signUpUser was called from utils/API.js w/this payload:",

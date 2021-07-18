@@ -1,42 +1,66 @@
 import React, { useState, useEffect } from "react";
 import API from "../utils/API";
 import { useParams, useLocation } from "react-router-dom";
-// import turtle from "../assets/turtle"
+import turtle from "../assets/turtle.jpg"
+import {
+  Grid,
+  Button,
+  Container,
+  Box
+} from "@material-ui/core";
 
 const Thankyou = () => {
   //states
   const [tourData, setTourData] = useState({});
-  const [orderData, setOrderData] = useState({});
+  const [bookingInfo, setBookingInfo] = useState({});
 
   //getting info from URL
   const params = useLocation();
   console.log("This is params>>>>>>", params);
+  const paramSubstring = params.search.split("?")
+  const tourId = paramSubstring[1]
+  const bookingEmail = paramSubstring[2]
+ 
+  const findActivity=()=>{    
+    // fetch(infoUrl)
+    API.findOneActivity(tourId)
+      // .then(res => res.json())
+      .then((response) => {
+        setTourData(response.data || {});
+        console.log("tourData >>>", tourData)
+      })
+  }
 
-  const tourId = params.search.substring(1);
-  console.log("this is tour id>>>>>", tourId);
+  const findBooking=()=>{    
+    API.findOneBooking(bookingEmail)
+    .then((res)=>{
+    res.data ? setBookingInfo(res.data || {}) : console.log('APIs are worthless!!')
+    console.log("bookingInfo >>>", bookingInfo);
+    })}
 
-  // const orderID = params.search2.substring(1);
-
-  // useEffect(() => {
-  //   // fetch(infoUrl)
-  //   API.findOneActivity(tourId)
-  //     // .then(res => res.json())
-  //     .then((response) => {
-  //       setTourData(response.data || {});
-  //       console.log("tourData >>>", tourData);
-  //     });
-  // }, []);
+  useEffect(async () =>  {
+    API.findOneActivity(tourId)
+    // .then(res => res.json())
+    .then((response) => {
+      setTourData(response.data || {});
+      console.log("tourData >>>", tourData)
+    }).then(findBooking)
+      
+  }, []);
 
   return (
     <div>
-      <img
-        src= "../assets/turtle"
+      <h1 onClick={()=>console.log("here is tour data>>>"+tourData+"and here is bookingInfo"+bookingInfo)}>TOUR DATA</h1>
+      <Container maxSize="sm">
+      {/* <img
+        src= {turtle}
         alt="Turtle"
-        class=" turtle-thankyou responsive-img"
-      ></img>
-      <p class="center-align">Thank you for your booking!</p>
+        className=" turtle-thankyou responsive-img"
+      ></img> */}
+      </Container>
+      <h2 className="center-align">Thank you for your booking your tour with {tourData.tourName}</h2>
       {/* <p class="center-align">Thank you for your booking, {{ first_name }}!</p> */}
-      <p class="center-align">
+      <p className="center-align">
         An email confirmation will be sent to your email address on file. Please
         contact deepwildsouth@gmail.com if you do not receive it within one hour of booking.
       </p>
