@@ -20,6 +20,7 @@ import './App.css';
 import Footer from './components/Footer';
 import './index.css';
 import Header from './components/Header'
+import Devabout from "./pages/Devabout";
 
 function App() {
   const [userInfo, setUserInfo] = useState('NLI');
@@ -47,6 +48,7 @@ function App() {
             <Route exact path="/admin" component={Admin} />
             <Route exact path="/book" component={Book} />
             <Route exact path="/thankyou" component={Thankyou} />
+            <Route exact path="/devabout" component={Devabout} />
             <Route exact path="/browse">
 
             <Browse 

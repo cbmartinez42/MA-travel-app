@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import API from "../utils/API";
 import { useParams, useLocation } from "react-router-dom";
+// import turtle from "../assets/turtle"
 
 const Thankyou = () => {
   //states
@@ -26,7 +27,21 @@ const Thankyou = () => {
   //     });
   // }, []);
 
-  return <div>this is the thank you page! it will populate the order info</div>;
+  return (
+    <div>
+      <img
+        src= "../assets/turtle"
+        alt="Turtle"
+        class=" turtle-thankyou responsive-img"
+      ></img>
+      <p class="center-align">Thank you for your booking!</p>
+      {/* <p class="center-align">Thank you for your booking, {{ first_name }}!</p> */}
+      <p class="center-align">
+        An email confirmation will be sent to your email address on file. Please
+        contact deepwildsouth@gmail.com if you do not receive it within one hour of booking.
+      </p>
+    </div>
+  );
 };
 
 export default Thankyou;

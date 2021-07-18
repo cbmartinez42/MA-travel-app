@@ -12,8 +12,15 @@ module.exports = {
   findById: function(req, res) {
     db.Tours
       .findById(req.params.id)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+      .then(dbModel => {
+       
+        db.TourOperator.findById(dbModel.tourOperator).then((operatorRes)=> {
+
+          return res.json({...dbModel._doc, operatorName: operatorRes.name})
+        }).catch((err) => console.log(err))
+        
+      })
+      .catch(err => console.log(err));
   },
   findByCategory: function(req, res) {
     db.Tours

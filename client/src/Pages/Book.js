@@ -22,32 +22,10 @@ import Payment from "./../components/Payment";
 import { UserContext } from "../utils/UserContext";
 import { blue } from "@material-ui/core/colors";
 
-// let tourData={cancellationPolicy: "72 hours full refund, under 72 hours 50% refund"
-// category: []
-// cost: 75
-// departureLocation: {street: "74 Front Street", street2: "", city: "Punta Gorda", state: "Toledo", zip: 0}
-// description: "Visit three pristine snorkel sites and then enjoy a Creole-seafood BBQ on a private beach.  In the afternoon; you can either be a beach bum, snorkel from shore, do some birding, or visit our active coconut farm where we are crazy for coconuts!"
-// email: "kaimanimarine@gmail.com"
-// image: "https://www.touropia.com/gfx/d/best-beaches-in-belize/hopkins_village_beach.jpg?v=1"
-// keywords: (8) ["snorkel", "BBQ", "sustainable tours", "Creole", "coconuts", "organic farm", "beach", "birding"]
-// maxCapacity: 36
-// minCapacity: 4
-// startTimes: ["8:00 am"]
-// tourLocation: "Snake Cayes"
-// tourName: "Snorkeling and Beach BBQ"
-// tourOperator: "Kaimani Marine Tours"
-// _id: "60e8ac0a3d9c8426bcc98373"}
-
 const Book = () => {
-  /*
- Company =>  tours  (3) Same Calendar Different times
- 1) Company A (1) Calendar  3 events A,B,C
-*/
-
   const { userInfo, setUserInfo } = useContext(UserContext);
-
   const [tourData, setTourData] = useState({});
-
+  const [tourImage, setTourImage] = useState("");
   const params = useLocation();
   const tourId = params.search.substring(1);
 
@@ -60,6 +38,14 @@ const Book = () => {
         console.log("tourData >>>", tourData);
       });
   }, []);
+
+  useEffect(() => {
+    console.log(tourData.image);
+    if (tourData.image) {
+      setTourImage(tourData.image[0]);
+    }
+    setUrl(tourData.calendar);
+  }, [tourData]);
 
   //STATES
   //State to show pricing after submit button clicked
@@ -114,7 +100,7 @@ const Book = () => {
 
   //table variable information and functions
 
-  const TAX_RATE = 0.07;
+  const TAX_RATE = 0.125;
 
   const useStyles = makeStyles((theme) => ({
     table: {
@@ -164,13 +150,6 @@ const Book = () => {
   const invoiceTaxes = TAX_RATE * invoiceSubtotal;
   const invoiceTotal = invoiceTaxes + invoiceSubtotal;
 
-  // const populateBookingDetails = (e)=>{
-  //   e.preventDefault();
-  //   setBookingDetails{
-
-  //   }
-  // }
-
   return (
     <>
       <div>
@@ -178,6 +157,7 @@ const Book = () => {
           <Container maxWidth="md">
             {" "}
             <div>
+              {/* tour info card */}
               <Container>
                 <Box key={tourData._id} className="tour-abstract">
                   <Box className="abstract-header">
@@ -185,57 +165,30 @@ const Book = () => {
                   </Box>
                   <Grid container spacing={3}>
                     <Grid item xs>
-                      <img
-                        alt="Tour"
-                        className="tour-thumbnail"
-                        src={tourData.image}
-                      ></img>
+                      {tourImage ? (
+                        <img
+                          alt="Tour"
+                          className="tour-thumbnail"
+                          src={tourImage}
+                        ></img>
+                      ) : (
+                        <></>
+                      )}
                     </Grid>
                     <Grid item md>
                       <p>Location: {tourData.tourLocation}</p>
                       <p>Cost: ${tourData.cost}</p>
-                      <p>Operated by: {tourData.tourOperator}</p>
+                      <p>Operated by: {tourData.operatorName}</p>
                     </Grid>
                   </Grid>
                 </Box>
               </Container>
             </div>
-            <h3>
-              These buttons open a calendar to the correct tour, but we should
-              populate this calendar based on the info passed from the previous
-              page
-            </h3>
             <div>
-              <button
-                style={style.btn}
-                onClick={() =>
-                  setUrl(
-                    "https://calendly.com/deepwildsouth/snorkel-and-beach-bbq"
-                  )
-                }
-              >
-                {" "}
-                Snorkel and BBQ{" "}
-              </button>
-
-              <button
-                style={style.btn}
-                onClick={() =>
-                  setUrl(
-                    "https://calendly.com/deepwildsouth/deep-sea-fishing-and-snorkeling")}>
-                {" "}Deep Sea Fishing{" "}
-              </button>
-
-              <button
-                style={style.btn}
-                onClick={() =>
-                  setUrl(
-                    "https://calendly.com/deepwildsouth/ital-cooking-class")}>
-                {" "}Ital Cooking Class{" "}
-              </button>
-
+            Continuing with this booking indicates that you have read and agreed to the terms presented in the Terms and Conditions agreement.
+              {/* calendar for selected tour */}
               {url ? (
-                <InlineWidget url={url} />
+                <InlineWidget url={tourData.calendar} />
               ) : (
                 <h5 style={{ color: "blue" }}>
                   {" "}
@@ -243,14 +196,9 @@ const Book = () => {
                 </h5>
               )}
             </div>{" "}
-
-
           </Container>
         </div>
 
-
-
-        
         {/* Sign Up Container */}
         <div className="container">
           <Button
@@ -262,7 +210,7 @@ const Book = () => {
               revealForm();
             }}
           >
-            Click to Enter Your Booking Information!
+Click to Enter Your Booking Information!
           </Button>
           {/*If showForm STATE is false then display NULL*/}
           {/*the state is switched every time the button is clicked*/}
