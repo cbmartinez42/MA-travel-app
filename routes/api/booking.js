@@ -6,6 +6,12 @@ router.route("/")
   .get(bookingController.findAll)
   .post(bookingController.create);
 
+  router
+  .route("/email/:id")
+  .get(bookingController.findOne)
+  .put(bookingController.update)
+  .delete(bookingController.remove);
+
 // Matches with "/api/booking/:id"
 router
   .route("/:id")

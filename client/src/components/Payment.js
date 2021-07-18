@@ -40,7 +40,7 @@ function Payment(props) {
           API.createNewBooking({...props.tourObject, ...order, ...props.bookingDetails, "id":userInfo._id, "initialCost": props.initialCost, "total":props.total, "taxes":props.taxes}).then(res=>console.log("this is the response from the post request>>>>>",res))
           .catch(error => console.log(error)).then(()=>{
           // render thank you page
-          history.push("/thankyou?" + props.tourObject._id +"?"+ props.bookingDetails.id);}
+          history.push("/thankyou?" + props.tourObject._id +"?"+ props.bookingDetails.email);}
           )},
         onError: (err) => {
           console.log(err);
