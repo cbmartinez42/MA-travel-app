@@ -32,7 +32,7 @@ const Results = ({searchData, setSearchData, searchBar, setSearchBar}) => {
                                 <Grid item xs={12} md={8}>
                                     <p>Location: {search.tourLocation}</p>
                                     <p>Cost: ${search.cost}</p>
-                                    <p>Operated by: {search.tourOperator}</p>
+                                    <p>Operated by: {search.tourOperator.name}</p>
                                     
                                         {/* <Button 
                                             onClick={() => renderDetail(search._id)}
