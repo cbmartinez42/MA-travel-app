@@ -7,13 +7,14 @@ import ImgCarousel from '../components/ImgCarousel'
 import Grid from '@material-ui/core/Grid'
 import API from '../utils/API'
 
-const Home = ({searchData, setSearchData}) => {
+const Home = ({searchData, setSearchData, searchBar, setSearchBar}) => {
   const { userInfo, setUserInfo } = useContext(UserContext);
 
   useEffect(() => {
     // if (!category) {
     API.browseAllActivities()
     .then((response) => {
+      console.log(response.data)
     setSearchData(response.data || [])
     });
 //     } else {
@@ -31,6 +32,8 @@ const Home = ({searchData, setSearchData}) => {
             <Categories 
               searchData={searchData} 
               setSearchData={setSearchData}
+              searchBar={searchBar}
+              setSearchBar={setSearchBar}
             />
           </Grid>
           <Grid item xs={12} md={8} lg={8}>
@@ -39,7 +42,12 @@ const Home = ({searchData, setSearchData}) => {
             <h2>Welcome {userInfo.namefirst} {userInfo.namelast}!</h2>
             </Grid>
           </Grid>
-          <Search />
+          <Search 
+            searchData={searchData}
+            setSearchData={setSearchData}
+            searchBar={searchBar}
+            setSearchBar={setSearchBar}
+          />
           <h2 className="carousel-header">Do This. Because you've earned it.</h2>
           <ImgCarousel />
           </Grid>

@@ -3,19 +3,12 @@ import Grid from '@material-ui/core/Grid';
 import {TextField, Button} from '@material-ui/core';
 // import { makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
-// import Button from '../components/Button'
+import { useHistory } from "react-router-dom";
 
-// const useStyles = makeStyles((theme) => ({
-//     root: {
-//       '& .MuiTextField-root': {
-//         margin: theme.spacing(1),
-//         width: '35ch',
-//       },
-//     },
-//   }));
 
-const Search = () => {
-    // const classes = useStyles();
+const Search = ({searchBar, setSearchBar}) => {
+    const history = useHistory();
+
     return (
         // <form className={classes.root} noValidate autoComplete="off" justifyContent="center" alignItems="flex-center">
             <Grid container spacing={3}>
@@ -26,7 +19,10 @@ const Search = () => {
                         label="Search"
                         name="search"
                         variant="outlined"
-                        // onChange={(e) => handleChange(e.target)}
+                        value={searchBar}
+                        onChange={(e) => (
+                            setSearchBar(e.target.value)
+                        )}    
                         />
                     <Button
                         // className="search-button"
@@ -34,7 +30,7 @@ const Search = () => {
                         color="primary"
                         id="search-btn"
                         style={{ margin: ".5%", padding: ".75%" }}
-                        onClick={() => console.log('search-button clicked!')}
+                        onClick={() => history.push('/browse')}
                         // text={<SearchIcon />} 
                         // color="#CCDCF5"
                         > <SearchIcon /> 

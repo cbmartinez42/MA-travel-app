@@ -27,6 +27,8 @@ const CreateTourOperator = () => {
     API.createNewTourOperator(CreateTourOperator)
       .then((result) => {
         console.log("createNewTourOperator Result: Operator added!!!", result);
+        alert('Operator Created')
+        // window.location.reload()
       })
       .catch((err) => {
         console.log("Oh my... there was an error: ", err.response);
