@@ -19,7 +19,7 @@ import {
   Icon,
   Box
 } from "@material-ui/core";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, useLocation, Link } from "react-router-dom";
 import API from "../utils/API";
 import Payment from "./../components/Payment";
 import { UserContext } from "../utils/UserContext";
@@ -198,6 +198,7 @@ const Book = () => {
               </Container>
             </div>
             <div>
+
               <Box>
                 <h2>How to Sign up For a Tour</h2>
                 <ul className="no-bullet">
@@ -214,13 +215,10 @@ const Book = () => {
                 </ul>
               </Box>
             </div>
-            <p className="termsConditions">
-              *Continuing with this booking indicates that you have read and
-              agreed to the terms presented in the{" "}
-              <Link to="/Terms">
-                <>Terms and Conditions Agreement</>
-              </Link>
-            </p>
+
+
+            Continuing with this booking indicates that you have read and agreed to the terms presented in the <Link to='/terms' target="_blank" rel="noopener noreferrer">Terms and Conditions</Link> agreement.
+
           </Container>
         </div>
         {/* Sign Up Container */}

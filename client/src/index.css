@@ -112,7 +112,7 @@ ITEMS
 .App-footer {
   background-color: #61CD42;
   max-height: 20vh;
-  margin-top: 50px;
+  margin-top: 96px;
   padding: 1% 5%;
   bottom: 0;
   /* padding: 1rem; */
@@ -231,10 +231,16 @@ text-align:left !important;
   width: 20rem;
 }
 
+
 .termsConditions{
   font-size: 0.5rem;
 }
 
 .no-bullet {
   list-style-type: none;
+}
+
+.operator-dropdown {
+  width: 25rem;
+
 }

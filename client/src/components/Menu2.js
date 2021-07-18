@@ -132,10 +132,14 @@ export default function TemporaryDrawer() {
     { text: "Log Out", menuPath: "login" },
   ];
 
-  if (userInfo.role === "ADMIN") {
-    var Pages = adminPages;
-  } else if (userInfo.role === "USER") {
-    Pages = userPages;
+  const userPages = [{'text':'Home Page','menuPath':'home'},{'text':'Browse Tours','menuPath':'browse'},{'text':'My Stuff','menuPath':'mystuff'},{'text':'Log Out','menuPath':'login'}];
+  
+  const adminPages = [{'text':'Home Page','menuPath':'home'},{'text':'Browse Tours','menuPath':'browse'}, {'text':'Admin Tasks','menuPath':'admin'}, {'text':'Add Tours','menuPath':'touradmin'}, {'text':'Operator Admin','menuPath':'Operatoradmin'}, {'text':'Log Out','menuPath':'login'}];
+  
+  if(userInfo.role === "ADMIN") {
+      var Pages = adminPages;
+  } else if(userInfo.role === "USER") {
+      Pages = userPages;
   } else Pages = nliPages;
 
   const toggleDrawer = (anchor, open) => (event) => {
@@ -180,10 +184,10 @@ export default function TemporaryDrawer() {
         {/* <Grid item xs={12} align="center"> 
                 <Box component="span" textAlign="center" className='announcement'>Buy now! Big sale for the summer!</Box>
             </Grid> */}
-        <div class="tcontainer">
-          <div class="ticker-wrap">
-            <div class="ticker-move">
-              <div class="ticker-item">
+        <div className="tcontainer">
+          <div className="ticker-wrap">
+            <div className="ticker-move">
+              <div className="ticker-item">
                 All of our tours are certified with the Tourism Gold Standard
                 Recognition Program for ensured safety of our visitors and
                 community during Covid-19
