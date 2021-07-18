@@ -47,6 +47,7 @@ const Book = () => {
   const { userInfo, setUserInfo } = useContext(UserContext);
 
   const [tourData, setTourData] = useState({});
+  const [tourImage, setTourImage] = useState("")
 
   const params = useLocation();
   const tourId = params.search.substring(1);
@@ -60,6 +61,16 @@ const Book = () => {
         console.log("tourData >>>", tourData);
       });
   }, []);
+
+  useEffect(() =>{
+    console.log(tourData.image)
+    if(tourData.image)
+    {
+      setTourImage(tourData.image[0])
+    }
+    setUrl(tourData.calendar)
+    
+  }, [tourData]);
 
   //STATES
   //State to show pricing after submit button clicked
@@ -185,64 +196,44 @@ const Book = () => {
                   </Box>
                   <Grid container spacing={3}>
                     <Grid item xs>
+                      {tourImage ?
                       <img
                         alt="Tour"
                         className="tour-thumbnail"
-                        src={tourData.image}
-                      ></img>
+                        src={tourImage}
+                      ></img> : <></>}
                     </Grid>
                     <Grid item md>
                       <p>Location: {tourData.tourLocation}</p>
                       <p>Cost: ${tourData.cost}</p>
-                      <p>Operated by: {tourData.tourOperator}</p>
+                      <p>Operated by: {tourData.operatorName}</p>
                     </Grid>
                   </Grid>
                 </Box>
               </Container>
             </div>
-            <h3>
-              These buttons open a calendar to the correct tour, but we should
-              populate this calendar based on the info passed from the previous
-              page
-            </h3>
+
             <div>
-              <button
+              {/* <button
                 style={style.btn}
                 onClick={() =>
                   setUrl(
-                    "https://calendly.com/deepwildsouth/snorkel-and-beach-bbq"
+                    tourData.calendar
                   )
                 }
               >
-                {" "}
-                Snorkel and BBQ{" "}
-              </button>
-
-              <button
-                style={style.btn}
-                onClick={() =>
-                  setUrl(
-                    "https://calendly.com/deepwildsouth/deep-sea-fishing-and-snorkeling")}>
-                {" "}Deep Sea Fishing{" "}
-              </button>
-
-              <button
-                style={style.btn}
-                onClick={() =>
-                  setUrl(
-                    "https://calendly.com/deepwildsouth/ital-cooking-class")}>
-                {" "}Ital Cooking Class{" "}
-              </button>
+                {tourData.tourName}
+              </button> */}
 
               {url ? (
-                <InlineWidget url={url} />
+                <InlineWidget url={tourData.calendar} />
               ) : (
                 <h5 style={{ color: "blue" }}>
                   {" "}
                   Select tour type to see details
                 </h5>
               )}
-            </div>{" "}
+            </div>{" "} 
 
 
           </Container>

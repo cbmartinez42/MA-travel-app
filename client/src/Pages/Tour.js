@@ -41,7 +41,8 @@ const Tour = () => {
         <Grid item xs={12}>
           <Container  maxWidth="md">
           <Box>
-          <p>{tourData.tourLocation}</p>
+            {/* tour operator here: */}
+          <p>{tourData.operatorName}</p>
           <p>{tourData.description}</p>
           </Box>
           </Container>
