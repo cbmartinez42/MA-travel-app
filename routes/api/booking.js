@@ -19,4 +19,5 @@ router
   .put(bookingController.update)
   .delete(bookingController.remove);
 
+
 module.exports = router;

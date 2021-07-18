@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
 import ReactDOM from "react-dom";
-import { Link } from "react-router-dom";
 import { InlineWidget } from "react-calendly";
 import Terms from "./Terms";
 import { makeStyles } from "@material-ui/core/styles";

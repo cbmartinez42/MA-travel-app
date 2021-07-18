@@ -3,5 +3,6 @@ module.exports = {
     TourOperator: require("./TourOperator"),
     Tours: require("./Tours"),
     User: require("./User"),
+    Calendly: require('./Calendly')
   };
   
