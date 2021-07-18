@@ -28,9 +28,9 @@ const Browse = ({ searchData, setSearchData }) => {
       />
       <Results searchData={searchData} setSearchData={setSearchData} />
       </Grid>
-      <Grid item xs={12} md={2}>
+      {/* <Grid item xs={12} md={2}>
         <div>Additional content </div>
-      </Grid>
+      </Grid> */}
     </Grid>
     </>
   );
