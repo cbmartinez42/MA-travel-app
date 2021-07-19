@@ -50,13 +50,12 @@ function App() {
             <Route exact path="/thankyou" component={Thankyou} />
             <Route exact path="/devabout" component={Devabout} />
             <Route exact path="/browse">
-
-            <Browse 
-                searchData={searchData}
-                setSearchData={setSearchData}
-                searchBar={searchBar}
-                setSearchBar={setSearchBar}
-                />
+              <Browse 
+                  searchData={searchData}
+                  setSearchData={setSearchData}
+                  searchBar={searchBar}
+                  setSearchBar={setSearchBar}
+                  />
             </Route>
             
             <Route exact path="/home" >
@@ -71,7 +70,14 @@ function App() {
             <Route exact path="/mystuff" component={Mystuff} />
             <Route exact path="/Operatoradmin" component={Operatoradmin} />
             <Route exact path="/terms" component={Terms} />
-            <Route path="/tour/:id" component={Tour} />
+            <Route path="/tour/:id" >
+              <Tour 
+                searchData={searchData}
+                setSearchData={setSearchData}
+                searchBar={searchBar}
+                setSearchBar={setSearchBar}
+              />
+            </Route>
             <Route exact path="/touradmin" component={Touradmin} />
         </Switch>
         

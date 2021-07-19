@@ -20,7 +20,14 @@ const Results = ({searchData, setSearchData, searchBar, setSearchBar}) => {
             <Container maxWidth="md">
                 {searchData.filter(tours => tours?.keywords.join(' ').toUpperCase().includes(searchBar.toUpperCase())).map(search => (
                    
-                    <Link className="abstract-link" to={"/tour/" + search._id}>
+                    <Link 
+                        className="abstract-link" 
+                        to={"/tour/" + search._id}
+                        searchData={searchData} 
+                        setSearchData={setSearchData}
+                        searchBar={searchBar}
+                        setSearchBar={setSearchBar}
+                        >
                         <Box key={search._id} className="tour-abstract">
                             <Box className="abstract-header">
                                 <h2>{search.tourName}</h2>
