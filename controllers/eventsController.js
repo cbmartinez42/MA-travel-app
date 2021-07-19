@@ -1,26 +1,27 @@
 const db = require("../models");
-// const checkBookings = require('../utils/checkBookings')
+
 const bookingController = require("./bookingController");
 
-const checkBookings = (req, res) => {
-    // try {
-    //     bookingController.findOneByEmail(req)
-    //     console.log('this is response', res)
-    //     if (res.status === 200) {
-    //         db.Calendly
-    //         .findOneAndUpdate({travelerEmail: req}, {unpaid: false})
-    //         .then(console.log('marked as paid'))
-    //         .catch(err => res.status(422).json(err))
-    //     } else {
-    //         db.Calendly
-    //         .findOneAndUpdate({travelerEmail: req}, {unpaid: true})
-    //         .then(console.log('marked as unpaid'))
-    //         .catch(err => res.status(422).json(err))
-    //     }
-    // } catch (error) {
-    //     console.log(error)
-    // }
-    return console.log('this is email', req)
+const checkBookings = async (req) => {
+  console.log('req ', req)
+    try {
+        const res = await bookingController.findOneByEmail(req)
+
+        if (res) {
+            db.Calendly
+            .findOneAndUpdate({travelerEmail: req}, {paid: true})
+            .then(console.log('marked as paid'))
+            .catch(err => res.status(422).json(err))
+        } else {
+            db.Calendly
+            .findOneAndUpdate({travelerEmail: req}, {paid: false})
+            .then(console.log('marked as unpaid'))
+            .catch(err => res.status(422).json(err))
+        }
+    } catch (error) {
+        console.log(error)
+    }
+    return 
 }
 
 module.exports = {
@@ -38,13 +39,8 @@ module.exports = {
               unpaid: null
             })
           .then(dbModel => res.json(dbModel)) 
-          .then(setTimeout(checkBookings, 6000, req.body.payload.invitee.email))
+          .then(setTimeout(checkBookings, 1800000, req.body.payload.invitee.email))
           .catch(err => res.status(422).json(err));
       }
-    // markPaid: function (req, res) {
-    //     db.Calendly
-    //     .findOneAndUpdate({email: req.params.email}, req.body)
-    //     .then(console.log('marked as paid'))
-    //     .catch(err => res.status(422).json(err))
-    // }
+
 }

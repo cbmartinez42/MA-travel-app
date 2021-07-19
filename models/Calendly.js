@@ -36,9 +36,9 @@ const CalendlySchema = new Schema({
     type: String
   },
   
-  unpaid: {
+  paid: {
     type: Boolean,
-    default: true
+    default: null
   }
 
 },
