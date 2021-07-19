@@ -18,7 +18,9 @@ const Home = ({searchData, setSearchData, searchBar, setSearchBar}) => {
 }, [])
 
   const userWelcome = () =>{
-    if (userInfo) {
+    if (userInfo === 'NLI') {
+      return
+    } else {
       return <Grid item xs={12}  >
       <h2>Welcome {userInfo.namefirst} {userInfo.namelast}!</h2>
       </Grid>

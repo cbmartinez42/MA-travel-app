@@ -25,11 +25,11 @@ const Results = ({searchData, setSearchData, searchBar, setSearchBar}) => {
                             <Box className="abstract-header">
                                 <h2>{search.tourName}</h2>
                             </Box>
-                            <Grid container spacing={1}>
-                                <Grid item xs={12} md={4}>
+                            <Grid container spacing={1} className='results-container'>
+                                <Grid item xs={12} md={4} className='thumbnail-container'>
                                     <img alt="Tour" className="tour-thumbnail" src={search.image[0]}></img>
                                 </Grid>
-                                <Grid item xs={12} md={8}>
+                                <Grid item xs={12} md={8} className='abstract-text'>
                                     <p>Location: {search.tourLocation}</p>
                                     <p>Cost: ${search.cost}</p>
                                     <p>Operated by: {search.tourOperator.name}</p>
