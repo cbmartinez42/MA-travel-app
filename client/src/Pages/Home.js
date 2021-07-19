@@ -36,7 +36,7 @@ const Home = ({searchData, setSearchData, searchBar, setSearchBar}) => {
               setSearchBar={setSearchBar}
             />
           </Grid>
-          <Grid item xs={12} md={8} lg={8}>
+          <Grid item xs={12} md={10}>
           <Grid container spacing={1}>
             
             {/* <Grid item xs={12}  > */}
@@ -53,9 +53,9 @@ const Home = ({searchData, setSearchData, searchBar, setSearchBar}) => {
           <h2 className="carousel-header">Do This. Because you've earned it.</h2>
           <ImgCarousel />
           </Grid>
-          <Grid item xs={12} md={2}>
+          {/* <Grid item xs={12} md={2}>
             <div>Additional content </div>
-          </Grid>
+          </Grid> */}
         </Grid>
       </>
     )

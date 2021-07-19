@@ -128,14 +128,15 @@ export default function TemporaryDrawer() {
     { text: "Browse Tours", menuPath: "browse" },
     { text: "Admin Tasks", menuPath: "admin" },
     { text: "Add Tours", menuPath: "touradmin" },
-    { text: "Operator Admin", menuPath: "Operatoradmin" },
+    { text: "Add Operator", menuPath: "Operatoradmin" },
     { text: "Log Out", menuPath: "login" },
   ];
 
-  if (userInfo.role === "ADMIN") {
-    var Pages = adminPages;
-  } else if (userInfo.role === "USER") {
-    Pages = userPages;
+  if(userInfo.role === "ADMIN") {
+      var Pages = adminPages;
+  } else if(userInfo.role === "USER") {
+      Pages = userPages;
+
   } else Pages = nliPages;
 
   const toggleDrawer = (anchor, open) => (event) => {

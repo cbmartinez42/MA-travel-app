@@ -23,7 +23,7 @@ const Browse = ({ searchBar, setSearchBar, searchData, setSearchData }) => {
           setSearchBar={setSearchBar}
         />
       </Grid>
-      <Grid item xs={12} md={8} lg={8}>
+      <Grid item xs={12} md={10}>
       <Search 
         searchData={searchData} 
         setSearchData={setSearchData}
