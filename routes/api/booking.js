@@ -7,7 +7,7 @@ router.route("/")
   .post(bookingController.create);
 
   router
-  .route("/email/:id")
+  .route("/email/:email")
   .get(bookingController.findOne)
   .put(bookingController.update)
   .delete(bookingController.remove);
