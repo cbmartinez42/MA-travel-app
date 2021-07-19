@@ -29,15 +29,23 @@ const CalendlySchema = new Schema({
   },
 
   operator: {
-    type: String
+    type: Array
   },
 
   start_time_pretty: {
     type: String
+  },
+  
+  unpaid: {
+    type: Boolean,
+    default: true
   }
 
 },
-{timestamps: true});
+  {
+    collection: 'calendly',
+    timestamps: true
+});
 
 const Calendly = mongoose.model("Calendly", CalendlySchema);
 
