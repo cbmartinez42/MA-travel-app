@@ -59,7 +59,7 @@ function Payment(props) {
       createOrder={(data, actions) => createOrder(data, actions)}
       onApprove={(data, actions) => onApprove(data, actions)}
     /> */}
-      <script defer src="https://www.paypal.com/sdk/js?client-id=ATxvRax9Nch26KWHgCSufUYPKEam7chfaqAjSpfpYJujcMLoedFqqQAhZMoM1-pAejEQsYyuKaavAJ2y"></script>
+      {/* <script defer src="https://www.paypal.com/sdk/js?client-id=ATxvRax9Nch26KWHgCSufUYPKEam7chfaqAjSpfpYJujcMLoedFqqQAhZMoM1-pAejEQsYyuKaavAJ2y"></script> */}
     </>
   );
 }
