@@ -1,17 +1,18 @@
-import {List, ListItem, ListItemText} from '@material-ui/core'
+import {List, ListItem, ListItemText, Select, Hidden} from '@material-ui/core'
 import { useHistory } from "react-router-dom";
 
 const Categories = ({searchData, setSearchData, searchBar, setSearchBar}) => {
     const history = useHistory()
 
     function setCategory(e) {
-        setSearchBar(e.target.textContent)
+        setSearchBar(e.target.textContent || e.target.value)
         history.push('/browse')
     } 
 
-    return (
+    return (    
         <>
         <div className="categories">Select a category:
+        <Hidden only={["sm", "xs"]}>
             <List  className="categories-list">
                 <ListItem>
                         <ListItemText 
@@ -91,7 +92,26 @@ const Categories = ({searchData, setSearchData, searchBar, setSearchBar}) => {
                         />
                 </ListItem>
             </List>
-            
+            </Hidden>
+ 
+            <Hidden only={["md", "lg", "xl"]}>
+            <Select
+                className='category-select'
+                onChange={setCategory}
+                >
+                    <option value={'Snorkel'}>Snorkel</option>
+                    <option value={'Cruise'}>Cruise</option>
+                    <option value={'Culinary'}>Culinary</option>
+                    <option value={'Sustainable'}>Sustainable</option>
+                    <option value={'Fishing'}>Fishing</option>
+                    <option value={'Hiking'}>Hiking</option>
+                    <option value={'Caving'}>Caving</option>
+                    <option value={'Birding'}>Birding</option>
+                    <option value={'Adventure'}>Adventure</option>
+                    <option value={'Farm'}>Farm</option>
+                    
+                </Select>
+                </Hidden>
         </div>
         </>
     )

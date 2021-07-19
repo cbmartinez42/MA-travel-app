@@ -1,18 +1,20 @@
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
-import { Container} from '@material-ui/core'
 // import xmasWorm from "../assets/xmasWorm"
+import booby from '../assets/booby.JPG';
+import boatsDepart from '../assets/boatsDepart.jpg';
+import daysEnd from '../assets/daysEnd.jpg';
+import garifunaDrum from '../assets/garifunaDrum.jpg';
+import livingMaya from '../assets/livingMaya.jpg';
+import palmsPier from '../assets/palmsPier.jpg';
+import turtle from '../assets/turtle.jpg';
+import toucan from '../assets/toucan.jpg';
+
+
 
 const ImgCarousel = ({tourData}) => {
 
-  const stockImages = [
-    // xmasWorm,
-    // "../assets/409317_10150457991871965_782268538_n.jpg",
-    "https://media-exp1.licdn.com/dms/image/C4D1BAQHYoIVYG2LEyg/company-background_10000/0/1531232971729?e=2159024400&v=beta&t=A5tLxCGa08ett9ebnNGOMZIMp-OfqhOSYLzZKMPXCwQ",
-    "https://www.tfhmagazine.com/-/media/Images/TFH2-NA/US/articles/211_fishing_with_the_piabeiros.jpg",
-    "https://www.planetware.com/photos-large/SEY/best-tropical-vacations-bora-bora.jpg",
-    "https://gardenvarietynews.files.wordpress.com/2014/06/kukuilia-farm0and-garden-in-kauai-hawaii.jpg"
-  ]
+  const stockImages = [booby, boatsDepart, daysEnd, garifunaDrum, livingMaya, palmsPier, turtle, toucan]
 
     return (
         <Carousel

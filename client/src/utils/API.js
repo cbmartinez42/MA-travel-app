@@ -27,19 +27,14 @@ let API = {
     console.log('this is hitting API findOneBooking')
     return axios.get("/api/booking/email/"+email);
   },
-  signUpUser: function (newUserInfo) {
-    console.log(
-      "signUpUser was called from utils/API.js w/this payload:",
-      newUserInfo
-    );
-    return axios.post("/api/user", newUserInfo);
-  },
   browseAllUsers: function () {
     return axios.get("/api/user");
   },
   login: function (info) {
     return axios.post("/api/user/login", info);
   },
+
+    // Duplicate?!?!?!?!?!?!?!?!?!?!?!
   createNewTour: function (newTourInfo) {
     console.log(
       "createNewTour was called from utils/API.js w/this payload:",
@@ -50,25 +45,13 @@ let API = {
     let keyNames = Object.keys(newTourInfo);
 
     },
-    searchAllActivities: function(){
-        const infoUrl = '/api/tour';
-        return fetch(infoUrl);
-    },
-    findOneActivity: function(id){
-        // const infoUrl = '/api/tours/' + id;
-        return axios.get('/api/tour/' + id);
 
-    },
     signUpUser: function(newUserInfo){
         console.log('signUpUser was called from utils/API.js w/this payload:',newUserInfo);
         return axios.post('/api/user', newUserInfo);
     },
-    browseAllUsers: function(){
-        return axios.get('/api/user');
-    },
-   login: function(info){
-        return axios.post('/api/user/login', info)
-    },
+
+    // Duplicate?!?!?!?!?!?!?!?!?!?!?!
     createNewTour: function(newTourInfo){
         console.log('createNewTour was called from utils/API.js w/this payload:',newTourInfo);
         const form = new FormData();

@@ -22,13 +22,8 @@ module.exports = {
     .catch(err => res.status(422).json(err));
   },
 
-  findOneByEmail: function(req, res){
-    console.log('this is req', req)
-    db.Bookings
-    .findOne({ 'email': req })
-    .then(dbModel => res.json(dbModel))
-    .then(dbModel => console.log('this is bookingcontroller response >>>', res.json(dbModel)))
-    .catch(err => res.status(422).json(err));
+  findOneByEmail: async function(req, res){
+    return await db.Bookings.findOne({ email: req })
   },
 
   create: function(req, res) {

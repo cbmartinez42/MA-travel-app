@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import ImgCarousel from '../components/ImgCarousel'
 import Grid from '@material-ui/core/Grid'
 import API from '../utils/API'
+import About from '../components/About'
 
 const Home = ({searchData, setSearchData, searchBar, setSearchBar}) => {
   const { userInfo, setUserInfo } = useContext(UserContext);
@@ -52,6 +53,7 @@ const Home = ({searchData, setSearchData, searchBar, setSearchBar}) => {
             searchBar={searchBar}
             setSearchBar={setSearchBar}
           />
+          <About />
           <h2 className="carousel-header">Do This. Because you've earned it.</h2>
           <ImgCarousel />
           </Grid>

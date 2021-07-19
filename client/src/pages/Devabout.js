@@ -36,14 +36,14 @@ const Devabout = () => {
                             of innocents
                         </p>
                         <Grid item xs={12}>
-                            <Link to={{ pathname: "https://github.com/cbmartinez42"}} target="_blank" rel="noopener noreferrer">
+                            <Link to={{ pathname: "https://github.com/cbmartinez42"}} target="_blank" rel="noopener noreferrer" title='Github'>
                                 <img src={Octocat} alt="Github Octocat" className='github'></img>
                             </Link>
                             <Link to={{pathname: "https://www.linkedin.com/in/christopher-martinez-6761ba17/"}} target="_blank" rel="noopener noreferrer">
-                                <img src={LinkedIn} alt="LinkedIn" className='linkedin'></img>
+                                <img src={LinkedIn} alt="LinkedIn" className='linkedin' title='LinkedIn'></img>
                             </Link>
                             <Link to={{pathname: "https://cbmartinez42.github.io/cbmartinez-portfolio/assets/pdf/Chris_Martinez_Resume.pdf"}} target="_blank" rel="noopener noreferrer">
-                                <img src={ChrisResume} alt="Resume" className='resume'></img>
+                                <img src={ChrisResume} alt="Resume" className='resume' title='Resume'></img>
                             </Link>
                         </Grid>
                     </Grid>
@@ -61,13 +61,13 @@ const Devabout = () => {
                         </p>
                         <Grid item xs={12}>
                             <Link to={{pathname: "https://github.com/mark-artim"}} target="_blank" rel="noopener noreferrer">
-                                <img src={Octocat} alt="Github Octocat" className='github'></img>
+                                <img src={Octocat} alt="Github Octocat" className='github' title='Github'></img>
                             </Link>
                             <Link to={{pathname: "https://www.linkedin.com/in/mark-artim/"}} target="_blank" rel="noopener noreferrer">
-                                <img src={LinkedIn} alt="LinkedIn" className='linkedin'></img>
+                                <img src={LinkedIn} alt="LinkedIn" className='linkedin' title='LinkedIn'></img>
                             </Link>
                             <Link to={{pathname: "https://cbmartinez42.github.io/cbmartinez-portfolio/assets/pdf/Chris_Martinez_Resume.pdf"}} target="_blank" rel="noopener noreferrer">
-                                <img src={MarkResume} alt="Resume" className='resume'></img>
+                                <img src={MarkResume} alt="Resume" className='resume' title='Resume'></img>
                             </Link>
                         </Grid>
 
@@ -86,13 +86,13 @@ const Devabout = () => {
                         </p>
                         <Grid item xs={12}>
                             <Link to={{ pathname: "https://github.com/jayyousef"}} target="_blank" rel="noopener noreferrer">
-                                <img src={Octocat} alt="Github Octocat" className='github'></img>
+                                <img src={Octocat} alt="Github Octocat" className='github' title='Github'></img>
                             </Link>
                             <Link to={{pathname: "https://www.linkedin.com/in/jay-yousef-4294aa41/"}} target="_blank" rel="noopener noreferrer">
-                                <img src={LinkedIn} alt="LinkedIn" className='linkedin'></img>
+                                <img src={LinkedIn} alt="LinkedIn" className='linkedin' title='LinkedIn'></img>
                             </Link>
                             <Link to={{pathname: "https://jayyousef.github.io/portfolio-June-2021/assets/images/Resume.pdf"}} target="_blank" rel="noopener noreferrer">
-                                <img src={JayResume} alt="Resume" className='resume'></img>
+                                <img src={JayResume} alt="Resume" className='resume' title='Resume'></img>
                             </Link>
                         </Grid>
                     </Grid>
@@ -100,7 +100,7 @@ const Devabout = () => {
                         <Link to={{pathname: 'https://stacy-martin.github.io/sdbm_portfolio/'}} target="_blank" rel="noopener noreferrer">
                             <h2>Stacy Martin</h2>
                         </Link>
-                        <img src={Stacy} alt='Stacy Martin' className='dev-image'></img>
+                        <img src={Stacy} alt='Stacy Martin' className='dev-image' ></img>
                         <p className='dev-text'>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec gravida augue diam, non faucibus massa 
                             vehicula eu. Morbi sed vulputate odio. Suspendisse euismod urna lectus, et aliquam purus interdum lacinia. 
@@ -110,13 +110,13 @@ const Devabout = () => {
                         </p>
                         <Grid item xs={12}>
                             <Link to={{pathname: "https://github.com/Stacy-Martin"}} target="_blank" rel="noopener noreferrer">
-                                <img src={Octocat} alt="Github Octocat" className='github'></img>
+                                <img src={Octocat} alt="Github Octocat" className='github' title='Github'></img>
                             </Link>
                             <Link to={{pathname: "https://www.linkedin.com/in/stacy-brown-martin-81b198204/"}} target="_blank" rel="noopener noreferrer">
-                                <img src={LinkedIn} alt="LinkedIn" className='linkedin'></img>
+                                <img src={LinkedIn} alt="LinkedIn" className='linkedin' title='LinkedIn'></img>
                             </Link>
                             <Link to={{pathname: "https://stacy-martin.github.io/sdbm_portfolio/resume.html"}} target="_blank" rel="noopener noreferrer">
-                                <img src={StacyResume} alt="Resume" className='resume'></img>
+                                <img src={StacyResume} alt="Resume" className='resume' title='Resume'></img>
                             </Link>
                         </Grid>
                     </Grid>     

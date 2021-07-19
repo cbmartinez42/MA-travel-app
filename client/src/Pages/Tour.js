@@ -7,7 +7,7 @@ import ImgCarousel from '../components/ImgCarousel'
 import Categories from '../components/Categories'
 import Search from '../components/Search'
 
-const Tour = () => {
+const Tour = ({searchData, setSearchData, searchBar, setSearchBar}) => {
   const [tourData, setTourData] = useState({});
   const { id } = useParams();
 
@@ -33,11 +33,21 @@ const Tour = () => {
 
       <Grid container spacing={1}>
         <Grid item xs={2}>
-          <Categories />
+          <Categories 
+            searchData={searchData} 
+            setSearchData={setSearchData}
+            searchBar={searchBar}
+            setSearchBar={setSearchBar}
+          />
         </Grid>
         <Grid item xs={8}>
           <Grid item xs={12}>
-          <Search />
+          <Search 
+            searchData={searchData} 
+            setSearchData={setSearchData}
+            searchBar={searchBar}
+            setSearchBar={setSearchBar}
+          />
           </Grid>
           <Grid item xs={12}>
           <p className='tour-header tour-name'>{tourData.tourName}</p>
