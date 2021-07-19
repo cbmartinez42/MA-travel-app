@@ -122,6 +122,7 @@ export default function TemporaryDrawer() {
     { text: "Log Out", menuPath: "login" },
   ];
 
+
   const adminPages = [
     { text: "Home Page", menuPath: "home" },
     { text: "Browse Tours", menuPath: "browse" },
@@ -135,6 +136,7 @@ export default function TemporaryDrawer() {
       var Pages = adminPages;
   } else if(userInfo.role === "USER") {
       Pages = userPages;
+
   } else Pages = nliPages;
 
   const toggleDrawer = (anchor, open) => (event) => {

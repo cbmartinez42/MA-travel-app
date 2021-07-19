@@ -20,7 +20,7 @@ import {
 } from "@material-ui/core";
 import { useParams, useLocation, Link } from "react-router-dom";
 import API from "../utils/API";
-import Payment from "./../components/Payment";
+import Payment from "../components/Payment";
 import { UserContext } from "../utils/UserContext";
 import { blue } from "@material-ui/core/colors";
 import { LooksTwo, LooksOne, Looks3 } from "@material-ui/icons";

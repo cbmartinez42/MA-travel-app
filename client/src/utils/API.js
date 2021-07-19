@@ -24,7 +24,8 @@ let API = {
     return axios.get("/api/tour/" + id);
   },
   findOneBooking: function (email) {
-    return axios.get("/api/booking/email/" + email);
+    console.log('this is hitting API findOneBooking')
+    return axios.get("/api/booking/email/"+email);
   },
   signUpUser: function (newUserInfo) {
     console.log(
@@ -114,6 +115,7 @@ let API = {
   createNewBooking: function (obj) {
     console.log("a new booking was creating with this info ->", obj);
     let street2 = obj.addressStreet2 ? obj.addressStreet2 : "";
+    let phone=obj.phone ? obj.phone : "";
     const formattedInfo = {
       travellerName: obj.firstName,
       userID: obj.id,
@@ -125,7 +127,7 @@ let API = {
         zip: obj.addressZip,
       },
       activity: obj._id,
-      phone: obj.phone,
+      phone: phone,
       email: obj.email,
       specialRequirements: obj.specialRequirements,
       participants: obj.participants,

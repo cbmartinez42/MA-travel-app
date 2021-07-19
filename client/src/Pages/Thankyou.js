@@ -33,8 +33,9 @@ const Thankyou = () => {
 
   const findBooking=()=>{    
     API.findOneBooking(bookingEmail)
-    .then((res)=>{
-    res.data ? setBookingInfo(res.data || {}) : console.log('APIs are worthless!!')
+    .then((response)=>{
+      console.log(response.data)
+      response.data ? setBookingInfo(response || {}) : console.log('APIs are worthless!!')
     console.log("bookingInfo >>>", bookingInfo);
     })}
 
@@ -42,6 +43,8 @@ const Thankyou = () => {
     API.findOneActivity(tourId)
     // .then(res => res.json())
     .then((response) => {
+      // console.log(response)
+      // console.log(response.data)
       setTourData(response.data || {});
       console.log("tourData >>>", tourData)
     }).then(findBooking)
@@ -50,7 +53,8 @@ const Thankyou = () => {
 
   return (
     <div>
-      <h1 onClick={()=>console.log("here is tour data>>>"+tourData+"and here is bookingInfo"+bookingInfo)}>TOUR DATA</h1>
+      <h1 onClick={()=>{console.log("here is tour data>>>and here is bookingInfo")
+    console.log(bookingInfo); console.log(tourData)}}>TOUR DATA</h1>
       <Container maxSize="sm">
       {/* <img
         src= {turtle}
