@@ -69,6 +69,9 @@ ITEMS
   /* margin-bottom: 2rem; */
   height: 200px;
   align-items: center;
+  font-family: swing-king, sans-serif;
+  font-style: normal;
+  font-weight: 400;
 }
 
 .header::before {
@@ -113,6 +116,16 @@ ITEMS
   display: block;
   color: white;
   z-index: 4;
+  font-family: swing-king, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.footer-thankyou {
+  font-family: atocha, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 25px;
 }
 
 .flexboxHorizontal {
@@ -130,7 +143,7 @@ ITEMS
   margin: 2rem;
   /* padding-bottom: 1rem; */
   background-color: whitesmoke;
-  border-radius: 5px;
+  border-radius: 10px;
   padding-bottom: 0 !important;
 }
 
@@ -140,23 +153,24 @@ ITEMS
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.abstract-header {
-  background-image: linear-gradient(to bottom right, #055342, #18ddb2);
-  opacity: 0.75;
-  color: white;
-  padding: 0.25rem;
-  /* margin-bottom: 1.5rem; */
-  font-family: "Yomogi", cursive;
-  border-radius: 5px 5px 0px 0px;
-}
-
 .abstract-text {
   padding-bottom: 0 !important;
   margin-bottom: 0 !important;
+  text-align: right;
+  padding: 100px;
+  color: aqua;
 }
 
 .tour-thumbnail {
-  height: 10rem;
+  height: 16rem;
+  width: 16rem;
+  border-radius: 10px;
+}
+
+.tour-results-header{
+  font-family: swing-king, sans-serif;
+  font-style: normal;
+  font-weight: 400;
 }
 
 .thumbnail-container {
@@ -220,6 +234,9 @@ ITEMS
   padding: 3rem;
   font-weight: 800;
   z-index: 1;
+  font-family: swing-king, sans-serif;
+  font-style: normal;
+  font-weight: 400;
   /* margin-bottom: -10rem; */
 }
 
@@ -270,6 +287,13 @@ ITEMS
   border: 1px solid black;
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.about-us-header {
+  font-family: swing-king, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+
 }
 
 .dev-team {
@@ -365,12 +389,7 @@ ITEMS
   }
 }
 
-.footer-thankyou {
-  font-family: kewl-script, sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 20px;
-}
+
 
 .turtle-thankyou {
   background-image: url("./assets/turtle.jpg");

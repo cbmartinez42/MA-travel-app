@@ -30,17 +30,17 @@ const Results = ({searchData, setSearchData, searchBar, setSearchBar}) => {
                         setSearchBar={setSearchBar}
                         >
                         <Box key={search._id} className="tour-abstract">
-                            <Box className="abstract-header">
-                                <h2>{search.tourName}</h2>
-                            </Box>
+                            {/* <Box className="abstract-header"></Box> */}
                             <Grid container spacing={1} className='results-container'>
                                 <Grid item xs={12} md={4} className='thumbnail-container'>
                                     <img alt="Tour" className="tour-thumbnail" src={search.image[0]}></img>
                                 </Grid>
                                 <Grid item xs={12} md={8} className='abstract-text'>
-                                    <p>Location: {search.tourLocation}</p>
-                                    <p>Cost: ${search.cost}</p>
-                                    {/* <p>Operated by: {search.tourOperator.name}</p> */}
+                                <h2 className = "tour-results-header">{search.tourName}</h2>
+
+                                    <p className = "tour-results-content">Location: {search.tourLocation}</p>
+                                    <p className = "tour-results-content">Cost: ${search.cost}</p>
+                                    <p className = "tour-results-content">{search.descriptionShort}</p>
                                     
                                         {/* <Button 
                                             onClick={() => renderDetail(search._id)}
