@@ -1,14 +1,14 @@
-import react, {useState, useEffect} from 'react';
+import {useState, useEffect} from 'react';
 import API from '../utils/API'
 import {Box, Container} from '@material-ui/core/';
-import Button from "../components/Button"
-import {Link} from 'react-router-dom'
+// import Button from "../components/Button"
+// import {Link} from 'react-router-dom'
 import Grid from '@material-ui/core/Grid'
 
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
+// import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
@@ -38,7 +38,7 @@ const UserData = ({searchUsers, setSearchUsers}) => {
     useEffect(() => {
         API.browseAllUsers()
         .then((response) => {
-            console.log('browseallusers response.data: ',response);
+            // console.log('browseallusers response.data: ',response);
             // setSearchUsers(response.data || [])
             setUsers(response.data)
         });
@@ -48,10 +48,10 @@ const UserData = ({searchUsers, setSearchUsers}) => {
         console.log(role);
     }, [role]);
 
-    const toggleRole = (data) => {
+    // const toggleRole = (data) => {
 
-        console.log('data >> ', data)
-    }
+    //     console.log('data >> ', data)
+    // }
 
     return (
         <>
@@ -68,7 +68,6 @@ const UserData = ({searchUsers, setSearchUsers}) => {
                                 labelId="user-role"
                                 className="user-role"
                                 defaultValue={user.role}
-                                // value={role}
                                 name={user._id}
                                 onChange={handleChange}
                                 >
