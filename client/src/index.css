@@ -209,6 +209,11 @@ ITEMS
   text-shadow: 1px 1px black;
 }
 
+.detail-body {
+  margin: 4rem;
+  padding-left: 3rem!important;
+}
+
 .categories {
   background-color: #c3d8f7;
   height: 100%;

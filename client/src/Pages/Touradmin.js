@@ -34,11 +34,10 @@ const CreateTour = () => {
 
   const handleChange = (e) => {
     if (e.name === "image_file") {
-      // setCreateTour({...createTour, [e.name]:e.files})
       setImage(e.files);
     } else {
       setCreateTour({ ...createTour, [e.name]: e.value });
-      console.log(e.value);
+
     }
   };
 
@@ -51,8 +50,6 @@ const CreateTour = () => {
     e.preventDefault();
     try {
       const response = await API.createNewTour(createTour);
-      console.log(response);
-      console.log(image);
       // if image = null
       for (let i = 0; i < image.length; i++) {
         const imgRes = await API.addTourImg(response.data._id, image[i]);
@@ -73,13 +70,6 @@ const CreateTour = () => {
     } catch (err) {
       console.log("and error happened!", err);
     }
-    //   API.createNewTour(createTour)
-    //   .then(result => {
-    //       console.log('createNewTour Result: TOUR CREATED!!!', result)
-    //   })
-    //   .catch(err => {
-    //       console.log('Oh my... there was an error: ',err.response)
-    //   })
   };
 
   const handleReset = () => {

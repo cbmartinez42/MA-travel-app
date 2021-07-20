@@ -1,18 +1,13 @@
 const axios = require("axios");
-// const path = require('path')
 require("dotenv").config();
 
 const openWeatherKey = process.env.WEATHER_KEY;
 
 let API = {
   browseAllActivities: function () {
-    // const infoUrl = '/api/tours';
-    // return fetch(infoUrl)
     return axios.get("/api/tour");
   },
   browseCategory: function (category) {
-    // const infoUrl = '/api/tour/:category';
-    // return fetch(infoUrl);
     return axios.get("/api/tour/:category");
   },
   searchAllActivities: function () {
@@ -20,7 +15,6 @@ let API = {
     return fetch(infoUrl);
   },
   findOneActivity: function (id) {
-    // const infoUrl = '/api/tours/' + id;
     return axios.get("/api/tour/" + id);
   },
   findOneBooking: function (email) {
@@ -34,32 +28,32 @@ let API = {
     return axios.post("/api/user/login", info);
   },
 
-    signUpUser: function(newUserInfo){
-        console.log('signUpUser was called from utils/API.js w/this payload:',newUserInfo);
-        return axios.post('/api/user', newUserInfo);
-    },
+  signUpUser: function(newUserInfo){
+      console.log('signUpUser was called from utils/API.js w/this payload:',newUserInfo);
+      return axios.post('/api/user', newUserInfo);
+  },
 
-    createNewTour: function(newTourInfo){
-        console.log('createNewTour was called from utils/API.js w/this payload:',newTourInfo);
-        const form = new FormData();
+  createNewTour: function(newTourInfo){
+    console.log('createNewTour was called from utils/API.js w/this payload:',newTourInfo);
+    const form = new FormData();
 
-        let keyNames = Object.keys(newTourInfo);
-       
-        for(let i = 0; i < keyNames.length; i++){
-            form.append(keyNames[i], newTourInfo[keyNames[i]])
-            console.log(newTourInfo[keyNames[i]])
-        }
-        return axios.post('/api/tour', newTourInfo);
+    let keyNames = Object.keys(newTourInfo);
+    
+    for(let i = 0; i < keyNames.length; i++){
+        form.append(keyNames[i], newTourInfo[keyNames[i]])
+        console.log(newTourInfo[keyNames[i]])
+    }
+    return axios.post('/api/tour', newTourInfo);
 
-    },
-    addTourImg: function(tourId, img){
-        const form = new FormData()
-        console.log(img)
-        form.append("image_file", img)
-        return axios.put('/image/'+tourId, form)
-    },
-    createNewTourOperator: function(newTourOperatorInfo){
-        console.log('createNewTour was called from utils/API.js w/this payload:',newTourOperatorInfo);
+},
+  addTourImg: function(tourId, img){
+    const form = new FormData()
+    console.log(img)
+    form.append("image_file", img)
+    return axios.put('/image/'+tourId, form)
+},
+  createNewTourOperator: function(newTourOperatorInfo){
+    console.log('createNewTour was called from utils/API.js w/this payload:',newTourOperatorInfo);
     return axios.post("/api/operator", newTourOperatorInfo);
   },
   updateUser: function (id, role) {

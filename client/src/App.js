@@ -1,8 +1,6 @@
 import React, {useState} from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Menu2 from "./components/Menu2";
-// import Menu from "./components/Menu";
-import About from "./pages/About";
 import Admin from "./pages/Admin";
 import Book from "./pages/Book";
 import Browse from "./pages/Browse";
@@ -44,7 +42,6 @@ function App() {
               setSearchBar={setSearchBar}
               />
             </Route> 
-            <Route exact path="/about" component={About} />
             <Route exact path="/admin" component={Admin} />
             <Route exact path="/book" component={Book} />
             <Route exact path="/thankyou" component={Thankyou} />

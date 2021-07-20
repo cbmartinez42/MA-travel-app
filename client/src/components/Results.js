@@ -13,6 +13,7 @@ const Results = ({searchData, setSearchData, searchBar, setSearchBar}) => {
     const category = paramsArray[paramsArray.length -1]
     // const category = params.search.substring(1);
     console.log('category', category);
+    console.log('searchdata', searchData)
     
 
     return (
@@ -39,7 +40,7 @@ const Results = ({searchData, setSearchData, searchBar, setSearchBar}) => {
                                 <Grid item xs={12} md={8} className='abstract-text'>
                                     <p>Location: {search.tourLocation}</p>
                                     <p>Cost: ${search.cost}</p>
-                                    <p>Operated by: {search.tourOperator.name}</p>
+                                    {/* <p>Operated by: {search.tourOperator.name}</p> */}
                                     
                                         {/* <Button 
                                             onClick={() => renderDetail(search._id)}
