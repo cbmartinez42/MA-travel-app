@@ -128,13 +128,6 @@ ITEMS
   font-size: 25px;
 }
 
-.footer-thankyou {
-  font-family: kewl-script, sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 20px;
-}
-
 .flexboxHorizontal {
   display: flex;
   justify-content: space-evenly;
@@ -309,7 +302,6 @@ ITEMS
   border-radius: 1%;
   background-color: #e5edf8;
   margin-top: 2rem;
-  /* box-shadow: 10px 10px 5px grey; */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   padding-bottom: 2rem;
 }
