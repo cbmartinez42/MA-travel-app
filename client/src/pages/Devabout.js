@@ -30,10 +30,18 @@ const Devabout = () => {
                         </Link>
                         <img src={Chris} alt='Chris Martinez' className='dev-image'></img>
                         <p className='dev-text'>
-                            Chris is a master of the universe, a puppy owner, and a cat herder. He takes all things in stride and just
+                            Chris is the Project Manager and worked on both front-and back-end code. Bridging the gap between ideas and deployment, 
+                            he worked to impliment code and design to provide a intuitive, user-friendly experience, while developing critical back-end
+                            methods to maintain a robust server-side environment. As well as providing his own code, he also provided feedback, suggestions, 
+                            and acted as a sounding board for teammembers.
+                        </p>
+                        <p className='dev-text'>
+                            He has over 20 years experience working with computers and technology in various capacities, as well as herding cats and 
+                            his five children, both of which prepared him for the unique challenges of leading mimsArmy. 
+                            {/* Chris is a master of the universe, a puppy owner, and a cat herder. He takes all things in stride and just
                             types whatever comes to mind. There is no rhyme or reason to this text but only to fill space. Lorem Ipsum has 
                             nothing on me, for I am the wordsmith of wordsmiths, bringer of doom, powered by Dragon Tears and the blood
-                            of innocents
+                            of innocents */}
                         </p>
                         <Grid item xs={12}>
                             <Link to={{ pathname: "https://github.com/cbmartinez42"}} target="_blank" rel="noopener noreferrer" title='Github'>
@@ -66,7 +74,7 @@ const Devabout = () => {
                             <Link to={{pathname: "https://www.linkedin.com/in/mark-artim/"}} target="_blank" rel="noopener noreferrer">
                                 <img src={LinkedIn} alt="LinkedIn" className='linkedin' title='LinkedIn'></img>
                             </Link>
-                            <Link to={{pathname: "https://cbmartinez42.github.io/cbmartinez-portfolio/assets/pdf/Chris_Martinez_Resume.pdf"}} target="_blank" rel="noopener noreferrer">
+                            <Link to={{pathname: "https://mark-artim.github.io/portfolio2/assets/images/Resume2.pdf"}} target="_blank" rel="noopener noreferrer">
                                 <img src={MarkResume} alt="Resume" className='resume' title='Resume'></img>
                             </Link>
                         </Grid>

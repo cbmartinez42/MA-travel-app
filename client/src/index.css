@@ -198,6 +198,11 @@ text-align:left !important;
   margin: 2rem!important;
 }
 
+.detail-body {
+  margin: 4rem;
+  padding-left: 3rem!important;
+}
+
 .categories {
   background-color: #c3d8f7;
   height: 100%;

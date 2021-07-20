@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
-import {Grid, Container, Button, Box} from '@material-ui/core'
+import {Grid, Button, Box, Container} from '@material-ui/core'
 import ImgCarousel from '../components/ImgCarousel'
 import Categories from '../components/Categories'
 import Search from '../components/Search'
@@ -32,7 +32,7 @@ const Tour = ({searchData, setSearchData, searchBar, setSearchBar}) => {
   return (
 
       <Grid container spacing={1}>
-        <Grid item xs={2}>
+        <Grid item xs={12} md={2}>
           <Categories 
             searchData={searchData} 
             setSearchData={setSearchData}
@@ -40,8 +40,8 @@ const Tour = ({searchData, setSearchData, searchBar, setSearchBar}) => {
             setSearchBar={setSearchBar}
           />
         </Grid>
-        <Grid item xs={8}>
-          <Grid item xs={12}>
+        <Grid item xs={12} md={10} className="detail-body">
+          <Grid item xs={12} >
           <Search 
             searchData={searchData} 
             setSearchData={setSearchData}
@@ -55,7 +55,7 @@ const Tour = ({searchData, setSearchData, searchBar, setSearchBar}) => {
                 tourData={tourData}
               />
           </Grid>
-          <Grid item xs={12}>
+          <Grid item xs={11} align='center'>
             {/* <Container  maxWidth="md"> */}
             <Box>
               {/* tour operator here: */}
@@ -63,7 +63,7 @@ const Tour = ({searchData, setSearchData, searchBar, setSearchBar}) => {
             <p>{tourData.description}</p>
             </Box>
             {/* </Container> */}
-            {/* <Container maxWidth="lg"> */}
+            <Container maxWidth="lg">
             <Grid className="tour-details" container spacing={1}>
               <Grid item xs={12}>
                 <h3>Know before you book!</h3>
@@ -81,7 +81,7 @@ const Tour = ({searchData, setSearchData, searchBar, setSearchBar}) => {
               <p>Cancellation Policy: {tourData.cancellationPolicy}</p>
               </Grid>
             </Grid>
-            {/* </Container> */}
+            </Container>
           </Grid>
           <Grid item xs={12}>
             
