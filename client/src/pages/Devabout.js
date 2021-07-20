@@ -20,6 +20,7 @@ const Devabout = () => {
       <h2>Do This® development team</h2>
       <h3>mimsArmy</h3>
 
+
       {/* <Link to="/home">Go Home!</Link> */}
       <Grid container spacing={1} alignContent="center">
         <Grid container spacing={1} className="dev-container">
@@ -97,16 +98,12 @@ const Devabout = () => {
               <h2>Mark Artim</h2>
             </Link>
             <img src={Mark} alt="Mark Artim" className="dev-image"></img>
-            <p className="dev-text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-              gravida augue diam, non faucibus massa vehicula eu. Morbi sed
-              vulputate odio. Suspendisse euismod urna lectus, et aliquam purus
-              interdum lacinia. Nulla sed magna erat. Vestibulum ullamcorper
-              ante luctus arcu mollis tempor. Nam suscipit ex luctus tellus
-              rhoncus ullamcorper. Nulla eget placerat mi. Sed bibendum
-              tincidunt velit non placerat. Proin nec feugiat nulla. Ut id nisl
-              urna.
-            </p>
+              <p className='dev-text'>
+              I am looking forward to utilizing the knowledge gained over 30 years and creating software that is deep enough in 
+                functionality to solve the complex needs of running a business yet is easy to understand. Software that is transparent 
+                in configuration and what it designed to do. Balancing a tailored solution that fits your business with the abiltiy to 
+                extend it when you need to solve new probelms or old problems in a new way. 
+              </p>
             <Grid item xs={12}>
               <Link
                 to={{ pathname: "https://github.com/mark-artim" }}
