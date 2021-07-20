@@ -53,16 +53,18 @@ const Thankyou = () => {
 
   return (
     <div>
-      <h1 onClick={()=>{console.log("here is tour data>>>and here is bookingInfo")
-    console.log(bookingInfo); console.log(tourData)}}>TOUR DATA</h1>
+      {/* <h1 onClick={()=>{console.log("here is tour data>>>and here is bookingInfo")
+    console.log(bookingInfo); console.log(tourData)}}>TOUR DATA</h1> */}
       <Container maxSize="sm">
+        <figure className= "turtle-thankyou"> Thank you
       {/* <img
         src= {turtle}
         alt="Turtle"
         className=" turtle-thankyou responsive-img"
       ></img> */}
+      </figure>
       </Container>
-      <h2 className="center-align">Thank you for your booking your tour with {tourData.tourName}</h2>
+      <h2 className="center-align thankyou-booking">Thank you for your booking your tour with {tourData.tourName}</h2>
       {/* <p class="center-align">Thank you for your booking, {{ first_name }}!</p> */}
       <p className="center-align">
         An email confirmation will be sent to your email address on file. Please

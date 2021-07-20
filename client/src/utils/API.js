@@ -34,24 +34,11 @@ let API = {
     return axios.post("/api/user/login", info);
   },
 
-    // Duplicate?!?!?!?!?!?!?!?!?!?!?!
-  createNewTour: function (newTourInfo) {
-    console.log(
-      "createNewTour was called from utils/API.js w/this payload:",
-      newTourInfo
-    );
-    const form = new FormData();
-
-    let keyNames = Object.keys(newTourInfo);
-
-    },
-
     signUpUser: function(newUserInfo){
         console.log('signUpUser was called from utils/API.js w/this payload:',newUserInfo);
         return axios.post('/api/user', newUserInfo);
     },
 
-    // Duplicate?!?!?!?!?!?!?!?!?!?!?!
     createNewTour: function(newTourInfo){
         console.log('createNewTour was called from utils/API.js w/this payload:',newTourInfo);
         const form = new FormData();

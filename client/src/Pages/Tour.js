@@ -65,19 +65,28 @@ const Tour = ({searchData, setSearchData, searchBar, setSearchBar}) => {
             {/* </Container> */}
             {/* <Container maxWidth="lg"> */}
             <Grid className="tour-details" container spacing={1}>
-              <Grid item xs={12}>
-                <h3>Know before you book!</h3>
+              <Grid item xs={12} className="tour-details-items">
+                <h3>Know before you book:</h3>
               </Grid>
-              <Grid item xs={4}>
+              <Grid item xs={4} className="tour-details-items">
                 <p>Available times: {tourData.startTimes}</p>
               </Grid>
-              <Grid item xs={4}>
+              <Grid item xs={4} className="tour-details-items">
                 <p>Duration: {tourData.duration} hours</p>
               </Grid>
-              <Grid item xs={4}>
-                <p>Cost per person: ${tourData.cost}</p>
+              <Grid item xs={4} className="tour-details-items">
+                <p>Tour Location: {tourData.tourLocation}</p>
               </Grid>
-              <Grid item xs={12}>
+              <Grid item xs={4} className="tour-details-items">
+              <p>Cost per person: ${tourData.cost}</p>
+              </Grid>
+              <Grid item xs={4} className="tour-details-items">
+              <p>Min Capacity: {tourData.minCapacity}</p>
+              </Grid>
+              <Grid item xs={4} className="tour-details-items">
+                <p>Max Capacity: {tourData.maxCapacity}</p>
+              </Grid>
+              <Grid item xs={12} className="tour-details-items">
               <p>Cancellation Policy: {tourData.cancellationPolicy}</p>
               </Grid>
             </Grid>
