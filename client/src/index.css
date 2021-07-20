@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&family=Yomogi&family=Yatra+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Yatra+One&family=Yomogi&display=swap");
 @import url("https://use.typekit.net/aod5izm.css");
 
 body {
@@ -113,6 +113,13 @@ ITEMS
   display: block;
   color: white;
   z-index: 4;
+}
+
+.footer-thankyou {
+  font-family: kewl-script, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
 }
 
 .flexboxHorizontal {
@@ -365,12 +372,7 @@ ITEMS
   }
 }
 
-.footer-thankyou {
-  font-family: kewl-script, sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 20px;
-}
+
 
 .turtle-thankyou {
   background-image: url("./assets/turtle.jpg");

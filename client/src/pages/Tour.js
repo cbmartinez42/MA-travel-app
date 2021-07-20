@@ -46,7 +46,7 @@ const Tour = ({searchData, setSearchData, searchBar, setSearchBar}) => {
             setSearchBar={setSearchBar}
           />
         </Grid>
-        <Grid item xs={12} md={10} className="detail-body">
+        <Grid item xs={12} md={8} className="detail-body">
           <Grid item xs={12} >
           <Search 
             searchData={searchData} 

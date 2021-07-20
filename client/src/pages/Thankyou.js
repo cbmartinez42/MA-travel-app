@@ -76,7 +76,8 @@ const containerStyle={
       "left": "50%",
       "font-weight": "bold",
       "font-size": "1.5rem",
-      "transform": "translate(-50%, -400%)"
+      "transform": "translate(-50%, -400%)",
+      "font-family: kewl-script, sans-serif"
   }
 }
 
