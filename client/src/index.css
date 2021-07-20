@@ -335,6 +335,14 @@ ITEMS
   transition: 1s ease;
 }
 
+.thankyou-message {
+  font-family: kewl-script, sans-serif;
+}
+
+.thankyou-message-image {
+  margin-top: 3rem!important;
+}
+
 @media only screen and (max-width: 992px) {
   /* .MuiListItem-root {
   display: inline!important;

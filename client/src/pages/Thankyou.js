@@ -72,12 +72,12 @@ const containerStyle={
   text: {
 
       "position": "absolute",
-      "top": "50%",
+      "top": "80%",
       "left": "50%",
       "font-weight": "bold",
       "font-size": "1.5rem",
-      "transform": "translate(-50%, -400%)",
-      "font-family: kewl-script, sans-serif"
+      "transform": "translate(-50%, -400%)"
+      
   }
 }
 
@@ -85,16 +85,16 @@ const containerStyle={
 
     <div style={myStyle.bgColor}>
     <Grid container spacing={1}>
-      <Grid item xs={12}>
+      <Grid item xs={12} className="thankyou-message-image">
         {/* <h1 style={containerStyle.container} onClick={()=>{console.log(tourData)}}>THANK YOU!</h1> */}
-        <Grid item xs={12}>
+        <Grid item xs={12} >
           <div style={containerStyle.container}>
           <img style={imageStyle}
             src={turtle}
             alt="Turtle"
             className=" turtle-thankyou responsive-img"
           ></img>
-          <div style={containerStyle.text}>THANK YOU!</div>
+          <div style={containerStyle.text} className="thankyou-message">THANK YOU!</div>
           </div>
         </Grid>
         <Grid item xs={12}>
