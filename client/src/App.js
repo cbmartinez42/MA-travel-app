@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Menu2 from "./components/Menu2";
-import Admin from "./pages/Admin";
 import Book from "./pages/Book";
 import Browse from "./pages/Browse";
 import Home from "./pages/Home";
@@ -12,6 +11,7 @@ import Terms from "./pages/Terms";
 import Tour from "./pages/Tour";
 import Touradmin from "./pages/Touradmin";
 import Thankyou from "./pages/Thankyou.js";
+import Admin from "./pages/Admin";
 
 import { UserContext } from "./utils/UserContext";
 import './App.css';
