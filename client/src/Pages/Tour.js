@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import API from "../utils/API";
+
 import { Link } from "react-router-dom";
 import {Grid, Button, Box, Container} from '@material-ui/core'
+
 import ImgCarousel from '../components/ImgCarousel'
 import Categories from '../components/Categories'
 import Search from '../components/Search'
@@ -59,15 +61,14 @@ const Tour = ({searchData, setSearchData, searchBar, setSearchBar}) => {
                 tourData={tourData}
               />
           </Grid>
-          <Grid item xs={11} align='center'>
-            {/* <Container  maxWidth="md"> */}
+
+          <Grid item xs={12}>
+
             <Box>
-              {/* tour operator here: */}
             <p>{tourData.operatorName}</p>
             <p>{tourData.description}</p>
             </Box>
-            {/* </Container> */}
-            <Container maxWidth="lg">
+
             <Grid className="tour-details" container spacing={1}>
               <Grid item xs={12} className="tour-details-items">
                 <h3>Know before you book:</h3>
@@ -94,27 +95,15 @@ const Tour = ({searchData, setSearchData, searchBar, setSearchBar}) => {
               <p>Cancellation Policy: {tourData.cancellationPolicy}</p>
               </Grid>
             </Grid>
-            </Container>
+
           </Grid>
           <Grid item xs={12}>
-            
-          {/* <Link to={"/book?" + tourId}> */}
-
-
             <Button
                 variant="contained"
                 style={{ margin: "2%" }}
                 color="primary"
                 id="book-btn"
                 name="action"
-                // disabled={() => {
-                //   if(userInfo.role === "USER" || userInfo.role === "ADMIN") {
-                //     return "false";
-                //   } else {
-                //     return "true";
-                //   }
-                    
-                // }}
                 onClick={() => {
                   if(userInfo==="NLI") {
                     gotoLogin();
@@ -124,12 +113,8 @@ const Tour = ({searchData, setSearchData, searchBar, setSearchBar}) => {
                 }}
             >Book This
             </Button>
-          {/* </Link> */}
           </Grid>
         </Grid>
-        {/* <Grid item xs={12} md={2}>
-          <div>Additional content </div>
-        </Grid> */}
       </Grid>
 
   );
