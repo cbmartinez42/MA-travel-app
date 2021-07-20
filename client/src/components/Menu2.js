@@ -92,7 +92,6 @@ export default function TemporaryDrawer() {
   const setPage = (page) => {
     console.log("I'm in setPage", page);
     console.log("userinfo: ", userInfo);
-    //   history.push("/about");
     history.push(`/${page}`);
     return;
   };
@@ -166,22 +165,7 @@ export default function TemporaryDrawer() {
   return (
     <div>
       <Grid container spacing={0} className="announcement">
-        {/* <Grid item xs={12} align="center"> 
-                <Box component="span" textAlign="center" className='announcement'>Buy now! Big sale for the summer!</Box>
-            </Grid> */}
-        <div className="tcontainer">
-          <div className="ticker-wrap">
-            <div className="ticker-move">
-              <div className="ticker-item">
-                All of our tours are certified with the Tourism Gold Standard
-                Recognition Program for ensured safety of our visitors and
-                community during Covid-19
-              </div>
-            </div>
-          </div>
-        </div>
       </Grid>
-      {/* {['left', 'right', 'top', 'bottom'].map((anchor) => ( */}
       {["left"].map((anchor) => (
         <React.Fragment key={anchor}>
           <Button onClick={toggleDrawer(anchor, true)}>
@@ -197,7 +181,6 @@ export default function TemporaryDrawer() {
           </Drawer>
         </React.Fragment>
       ))}
-      {/* <span className='announcement'>Buy now! Big sale for the summer!</span> */}
     </div>
   );
 }

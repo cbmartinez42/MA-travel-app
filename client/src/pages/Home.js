@@ -2,11 +2,10 @@ import React, {useContext, useEffect} from 'react';
 import Search from '../components/Search';
 import Categories from '../components/Categories'
 import { UserContext } from '../utils/UserContext';
-import { Link } from "react-router-dom";
-import ImgCarousel from '../components/ImgCarousel'
-import Grid from '@material-ui/core/Grid'
-import API from '../utils/API'
-import About from '../components/About'
+import ImgCarousel from '../components/ImgCarousel';
+import Grid from '@material-ui/core/Grid';
+import API from '../utils/API';
+import About from '../components/About';
 
 const Home = ({searchData, setSearchData, searchBar, setSearchBar}) => {
   const { userInfo, setUserInfo } = useContext(UserContext);

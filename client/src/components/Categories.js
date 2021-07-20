@@ -13,8 +13,8 @@ const Categories = ({searchData, setSearchData, searchBar, setSearchBar}) => {
         <>
         <div className="categories">Select a category:
         <Hidden only={["sm", "xs"]}>
-            <List  className="categories-list">
-                <ListItem>
+            <List className="categories-list">
+                <ListItem alignItems='center'>
                         <ListItemText 
                             className="category-link"
                             primary="Snorkel"
