@@ -28,7 +28,7 @@ const Thankyou = () => {
 
   const findBooking = () => {
     API.findOneBooking(bookingEmail).then((response) => {
-      console.log(response.data);
+      console.log('this is response >>', response.data);
       response.data
         ? setBookingInfo(response || {})
         : console.log("APIs are worthless!!");
@@ -36,7 +36,7 @@ const Thankyou = () => {
     });
   };
 
-  useEffect(async () => {
+  useEffect( () => {
     API.findOneActivity(tourId)
       // .then(res => res.json())
       .then((response) => {
@@ -47,6 +47,10 @@ const Thankyou = () => {
       })
       .then(findBooking);
   }, []);
+
+  useEffect(() => {
+    console.log('tourdata part deux ', tourData)
+  }, [tourData])
 
   const myStyle = {
     bold: {"font-weight": "bold"},
@@ -113,8 +117,8 @@ const containerStyle={
           <p>
             <span style={myStyle.bold}>Tour Location:</span> {tourData.tourLocation}
           </p>
-          {!bookingInfo.data.totalCost ? null :
-          (<p><span style={myStyle.bold}>Total Cost:</span> ${bookingInfo.data.totalCost}</p>)}
+          {/* {!bookingInfo.data.totalCost ? null :
+          (<p><span style={myStyle.bold}>Total Cost:</span> ${bookingInfo.data.totalCost}</p>)} */}
           <p>
             <span style={myStyle.bold}>Tour Email Address:</span> {tourData.email}
           </p>
