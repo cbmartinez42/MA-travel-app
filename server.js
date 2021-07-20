@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
 const cors = require('cors')
+const path = require('path')
 
 const PORT = process.env.PORT || 3001;
 // const {createProxyMiddleware} = require('http-proxy-middleware');
@@ -20,6 +21,10 @@ if (process.env.NODE_ENV === "production") {
 // Add routes, both API and view
 app.use(routes);
 // app.use("/", createProxyMiddleware({target: process.env.PORT || "http://localhost:"+PORT}))
+
+app.get("/", function(req, res) {
+  res.json(path.join(__dirname, "public/index.html"));
+});
 
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/dothisdb", { 
