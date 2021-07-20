@@ -1,9 +1,10 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&family=Yomogi&family=Yatra+One&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&family=Yomogi&family=Yatra+One&display=swap");
+@import url("https://use.typekit.net/aod5izm.css");
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -12,7 +13,7 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
@@ -21,7 +22,7 @@ code {
   width: 100%;
   overflow: hidden; /* Hide scroll bar */
 }
- 
+
 /* MIDDLE CONTAINER */
 .ticker-wrap {
   width: 100%;
@@ -31,8 +32,12 @@ code {
 
 /* INNER CONTAINER */
 @keyframes ticker {
-  0% { transform: translate3d(0, 0, 0); }
-  100% { transform: translate3d(-100%, 0, 0); }
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-100%, 0, 0);
+  }
 }
 .ticker-move {
   /* Basically move items from right side of screen to left in infinite loop */
@@ -44,14 +49,14 @@ code {
   animation-name: ticker;
   animation-duration: 20s;
 }
-.ticker-move:hover{
+.ticker-move:hover {
   animation-play-state: paused; /* Pause scroll on mouse hover */
 }
 /* 
 ITEMS
 .ticker-item{
   display: inline-block; /* Lay items in a horizontal line */
-  /* padding: 0 2rem; */
+/* padding: 0 2rem; */
 /* } */
 
 /* TEST */
@@ -66,9 +71,9 @@ ITEMS
   align-items: center;
 }
 
-.header::before {    
+.header::before {
   content: "";
-  background-image: url("./assets/poolpano2.jpeg");
+  background-image: url("./assets/negra.jpg");
   background-size: cover;
   position: absolute;
   top: 0px;
@@ -83,7 +88,7 @@ ITEMS
 }
 
 .search-field {
-  margin: 1rem!important;
+  margin: 1rem !important;
 }
 
 .btn {
@@ -91,16 +96,17 @@ ITEMS
 }
 
 .search-button {
-  margin: 1rem!important;
+  margin: 1rem !important;
 }
 
 .carousel-header {
-  font-family: 'Yatra One', cursive;
+  font-family: "Yatra One", cursive;
+  align-items: center;
 }
 
 .App-footer {
   background-color: #84b2f7;
-  max-height: 20vh;
+  /* max-height: 20vh; */
   margin-top: 96px;
   padding: 1% 5%;
   bottom: 0;
@@ -116,7 +122,7 @@ ITEMS
 }
 
 .terms-container {
-text-align:left !important;
+  text-align: left !important;
 }
 
 .tour-abstract {
@@ -125,29 +131,28 @@ text-align:left !important;
   /* padding-bottom: 1rem; */
   background-color: whitesmoke;
   border-radius: 5px;
-  padding-bottom: 0!important;
+  padding-bottom: 0 !important;
 }
 
 .tour-abstract:hover {
   transition: 0.25s ease-in-out;
   /* box-shadow: 5px 5px 5px rgb(176, 176, 247) */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  
 }
 
 .abstract-header {
   background-image: linear-gradient(to bottom right, #055342, #18ddb2);
   opacity: 0.75;
   color: white;
-  padding: .25rem;
+  padding: 0.25rem;
   /* margin-bottom: 1.5rem; */
-  font-family: 'Yomogi', cursive;
+  font-family: "Yomogi", cursive;
   border-radius: 5px 5px 0px 0px;
 }
 
 .abstract-text {
-  padding-bottom: 0!important;
-  margin-bottom: 0!important;
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
 }
 
 .tour-thumbnail {
@@ -155,8 +160,8 @@ text-align:left !important;
 }
 
 .thumbnail-container {
-  padding-bottom: 0!important;
-  margin-bottom: 0!important;
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
 }
 .abstract-link {
   text-decoration: none;
@@ -167,19 +172,18 @@ text-align:left !important;
 }
 
 .tour-header {
-  padding: .25rem;
+  padding: 0.25rem;
   font-size: 2rem;
   margin-bottom: 1.5rem;
-  font-family: 'Yatra One', cursive;
+  font-family: "Yatra One", cursive;
 }
 
 .carousel {
-  padding: none!important;
+  padding: none !important;
 }
 
 .carousel-container {
   align-content: center;
-
 }
 
 .carousel-root {
@@ -188,14 +192,21 @@ text-align:left !important;
   margin: auto;
 }
 
-.tour-name{
+.tour-name {
   margin: none;
 }
 
 .tour-details {
-  background-color: rgb(193, 214, 255);
-  border: 1px solid black;
-  margin: 2rem!important;
+  /* background-color: rgb(193, 214, 255); */
+  background-image: url("./assets/sandybottom.jpg");
+  opacity: 0.9;
+  background-size: cover;
+  /* border: 1px solid black; */
+  margin: 2rem !important;
+  border-radius: 10px;
+  font-weight: bolder;
+  color: bisque;
+  text-shadow: 1px 1px black;
 }
 
 .detail-body {
@@ -218,7 +229,7 @@ text-align:left !important;
 
 .category-link:hover {
   text-decoration: none;
-  color: blue
+  color: blue;
 }
 
 .category-select {
@@ -229,8 +240,7 @@ text-align:left !important;
   width: 20rem;
 }
 
-
-.termsConditions{
+.termsConditions {
   font-size: 0.5rem;
 }
 
@@ -240,7 +250,6 @@ text-align:left !important;
 
 .operator-dropdown {
   width: 25rem;
-
 }
 
 .logo {
@@ -249,15 +258,14 @@ text-align:left !important;
 
 .about-container {
   padding: 0 10rem 0 10rem;
-  margin-bottom: 1rem!important;
+  margin-bottom: 1rem !important;
 }
 
 .tour-image-full {
   border-radius: 10px;
-
 }
 .about-section {
-  padding: 2rem!important;
+  padding: 2rem !important;
   /* background-color: #e5edf8; */
   border: 1px solid black;
   border-radius: 10px;
@@ -265,7 +273,7 @@ text-align:left !important;
 }
 
 .dev-team {
-  font-family: 'Yatra One', cursive;
+  font-family: "Yatra One", cursive;
   border: 1px solid black;
   border-radius: 1%;
   background-color: #e5edf8;
@@ -278,21 +286,21 @@ text-align:left !important;
 .dev-container {
   background-color: #c3d8f7;
   border-radius: 2%;
-  margin: 0 2rem 1rem 2rem!important;
+  margin: 0 2rem 1rem 2rem !important;
 }
 
 .dev-about {
   /* background-color: #c3d8f7; */
   /* margin: 5px!important; */
-  padding: 4rem!important;
+  padding: 4rem !important;
   /* border: 1px solid black; */
   /* border-radius: 2%; */
 }
 
 .dev-text {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-  sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
 }
 
 .dev-image {
@@ -308,7 +316,6 @@ text-align:left !important;
   height: 30px;
   position: relative;
   padding: 0 7% 7% 7%;
-
 }
 
 .resume {
@@ -322,39 +329,64 @@ text-align:left !important;
 }
 
 @media only screen and (max-width: 992px) {
-/* .MuiListItem-root {
+  /* .MuiListItem-root {
   display: inline!important;
 } */
 
-.category-list {
-  display: inline;
-}
+  .category-list {
+    display: inline;
+  }
 
-.category-select {
-  display: none;
-}
+  .category-select {
+    display: none;
+  }
 
-.category-link {
-  display: inline!important;
-}
-
+  .category-link {
+    display: inline !important;
+  }
 }
 
 @media only screen and (max-width: 500px) {
   .MuiListItem-root {
-  display: none!important;
+    display: none !important;
+  }
+
+  .category-list {
+    display: none !important;
+  }
+
+  .category-select {
+    display: block;
+    width: 20rem;
+  }
+
+  .category-link {
+    display: inline !important;
+  }
 }
 
-.category-list {
-  display: none!important;
+.footer-thankyou {
+  font-family: kewl-script, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
 }
 
-.category-select {
+.turtle-thankyou {
+  background-image: url("./assets/turtle.jpg");
+  background-size: cover;
+  /* position: absolute; */
+  opacity: 90;
+  height: 300px;
+  width: 400px;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
   display: block;
-  width: 20rem;
-}
-
-.category-link {
-  display: inline!important;
-}
+  font-family: kewl-script, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 50px;
+  color: aliceblue;
+  border-radius: 10px;
 }

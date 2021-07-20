@@ -1,15 +1,18 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect, useContext } from "react";
+import { useParams, useHistory } from "react-router-dom";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 import {Grid, Button, Box, Container} from '@material-ui/core'
 import ImgCarousel from '../components/ImgCarousel'
 import Categories from '../components/Categories'
 import Search from '../components/Search'
+import { UserContext } from "../utils/UserContext";
 
 const Tour = ({searchData, setSearchData, searchBar, setSearchBar}) => {
   const [tourData, setTourData] = useState({});
   const { id } = useParams();
+  const { userInfo, setUserInfo } = useContext(UserContext);
+  const history = useHistory();
 
   useEffect(() => {
     API.findOneActivity(id)
@@ -23,11 +26,12 @@ const Tour = ({searchData, setSearchData, searchBar, setSearchBar}) => {
     console.log('tourdata part deux ', tourData)
   }, [tourData])
 
-  const renderDetail = (data) => {
-    console.log("data >> ", data);
+  const renderDetail = (tourId) => {
+    history.push("/book?" + tourId)
   };
 
   const tourId = tourData._id;
+  const gotoLogin = () => history.push("/login");
 
   return (
 
@@ -65,19 +69,28 @@ const Tour = ({searchData, setSearchData, searchBar, setSearchBar}) => {
             {/* </Container> */}
             <Container maxWidth="lg">
             <Grid className="tour-details" container spacing={1}>
-              <Grid item xs={12}>
-                <h3>Know before you book!</h3>
+              <Grid item xs={12} className="tour-details-items">
+                <h3>Know before you book:</h3>
               </Grid>
-              <Grid item xs={4}>
+              <Grid item xs={4} className="tour-details-items">
                 <p>Available times: {tourData.startTimes}</p>
               </Grid>
-              <Grid item xs={4}>
+              <Grid item xs={4} className="tour-details-items">
                 <p>Duration: {tourData.duration} hours</p>
               </Grid>
-              <Grid item xs={4}>
-                <p>Cost per person: ${tourData.cost}</p>
+              <Grid item xs={4} className="tour-details-items">
+                <p>Tour Location: {tourData.tourLocation}</p>
               </Grid>
-              <Grid item xs={12}>
+              <Grid item xs={4} className="tour-details-items">
+              <p>Cost per person: ${tourData.cost}</p>
+              </Grid>
+              <Grid item xs={4} className="tour-details-items">
+              <p>Min Capacity: {tourData.minCapacity}</p>
+              </Grid>
+              <Grid item xs={4} className="tour-details-items">
+                <p>Max Capacity: {tourData.maxCapacity}</p>
+              </Grid>
+              <Grid item xs={12} className="tour-details-items">
               <p>Cancellation Policy: {tourData.cancellationPolicy}</p>
               </Grid>
             </Grid>
@@ -85,7 +98,7 @@ const Tour = ({searchData, setSearchData, searchBar, setSearchBar}) => {
           </Grid>
           <Grid item xs={12}>
             
-          <Link to={"/book?" + tourId}>
+          {/* <Link to={"/book?" + tourId}> */}
 
 
             <Button
@@ -94,10 +107,24 @@ const Tour = ({searchData, setSearchData, searchBar, setSearchBar}) => {
                 color="primary"
                 id="book-btn"
                 name="action"
-                onClick={() => renderDetail(tourId)}
+                // disabled={() => {
+                //   if(userInfo.role === "USER" || userInfo.role === "ADMIN") {
+                //     return "false";
+                //   } else {
+                //     return "true";
+                //   }
+                    
+                // }}
+                onClick={() => {
+                  if(userInfo==="NLI") {
+                    gotoLogin();
+                  } else {
+                    renderDetail(tourId);
+                  }
+                }}
             >Book This
             </Button>
-          </Link>
+          {/* </Link> */}
           </Grid>
         </Grid>
         {/* <Grid item xs={12} md={2}>

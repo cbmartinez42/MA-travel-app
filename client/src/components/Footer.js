@@ -6,7 +6,7 @@ function Footer(props) {
   
   return (
     <footer className="App-footer">
-      <h5>Thank you for visiting Deep Wild South - Southern Belize adventures!</h5>
+      <h5 className="footer-thankyou">Thank you for visiting Deep Wild South - Southern Belize adventures!</h5>
         <div className="flexboxHorizontal">
           <Link to="/about" className="App-link">About Us</Link>
           <Link to="/terms" className="App-link">Terms & Conditions</Link>
