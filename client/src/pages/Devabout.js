@@ -231,14 +231,15 @@ const Devabout = () => {
             </Link>
             <img src={Stacy} alt="Stacy Martin" className="dev-image"></img>
             <p className="dev-text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-              gravida augue diam, non faucibus massa vehicula eu. Morbi sed
-              vulputate odio. Suspendisse euismod urna lectus, et aliquam purus
-              interdum lacinia. Nulla sed magna erat. Vestibulum ullamcorper
-              ante luctus arcu mollis tempor. Nam suscipit ex luctus tellus
-              rhoncus ullamcorper. Nulla eget placerat mi. Sed bibendum
-              tincidunt velit non placerat. Proin nec feugiat nulla. Ut id nisl
-              urna.
+              For me work is not simply a job, it must be gratifying. That means
+              I always seek out opportunities that are meaningful and
+              challenging. I came from a diverse background before pursuing
+              software development, from a degree in marine biology to small
+              business owner. With an entrepreneurial mindset I can provide
+              comprehensive support to streamline the web presence of small
+              business from both the front and back end. As a developer I use my
+              project management skills and innovative craftiness to deliver
+              comprehensive, stylish products.
             </p>
             <Grid item xs={12}>
               <Link
