@@ -161,14 +161,19 @@ const Devabout = () => {
             </Link>
             <img src={Jay} alt="Jay Yousef" className="dev-image"></img>
             <p className="dev-text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-              gravida augue diam, non faucibus massa vehicula eu. Morbi sed
-              vulputate odio. Suspendisse euismod urna lectus, et aliquam purus
-              interdum lacinia. Nulla sed magna erat. Vestibulum ullamcorper
-              ante luctus arcu mollis tempor. Nam suscipit ex luctus tellus
-              rhoncus ullamcorper. Nulla eget placerat mi. Sed bibendum
-              tincidunt velit non placerat. Proin nec feugiat nulla. Ut id nisl
-              urna.
+              Whether I am developing a new branch on an already well
+              established program, creating an fresh, intuitive way to access
+              old information, creating a series of social media videos that
+              help tell a brand story, or even just writing music, I HAVE to be
+              creating and growing or I'll literally feel the color fade from my
+              life and fade into black and white. I like solving complex
+              problems with creative solutions; that feeling of breaking through
+              a problem after days or weeks of struggle; I love helping to
+              create innovative technology through collaboration and teamwork,
+              as well as story-telling through building an online presence,
+              video production and post-production, photography, writing and
+              playing music, and (maybe most of all) spending time with my wife
+              and two boys.
             </p>
             <Grid item xs={12}>
               <Link
@@ -217,7 +222,7 @@ const Devabout = () => {
           <Grid item xs={12} md={6} className="dev-about">
             <Link
               to={{
-                pathname: "https://stacy-martin.github.io/react_portfolio",
+                pathname: "https://stacy-martin.github.io/sdbm_portfolio/",
               }}
               target="_blank"
               rel="noopener noreferrer"
