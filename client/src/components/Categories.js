@@ -1,4 +1,4 @@
-import {List, ListItem, ListItemText, Select, Hidden} from '@material-ui/core'
+import {List, ListItem, ListItemText, Select, Hidden, Grid} from '@material-ui/core'
 import { useHistory } from "react-router-dom";
 
 const Categories = ({searchData, setSearchData, searchBar, setSearchBar}) => {
@@ -95,6 +95,7 @@ const Categories = ({searchData, setSearchData, searchBar, setSearchBar}) => {
             </Hidden>
  
             <Hidden only={["md", "lg", "xl"]}>
+            <Grid item xs={12}>
             <Select
                 className='category-select'
                 onChange={setCategory}
@@ -111,6 +112,7 @@ const Categories = ({searchData, setSearchData, searchBar, setSearchBar}) => {
                     <option value={'Farm'}>Farm</option>
                     
                 </Select>
+                </Grid>
                 </Hidden>
         </div>
         </>

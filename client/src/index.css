@@ -396,8 +396,6 @@ ITEMS
   }
 }
 
-
-
 .turtle-thankyou {
   background-image: url("./assets/turtle.jpg");
   background-size: cover;
@@ -416,3 +414,14 @@ ITEMS
   color: aliceblue;
   border-radius: 10px;
 }
+
+.category-select {
+  display: block;
+  width: 20rem;
+}
+
+.about-container {
+  margin-top: 2rem!important;
+  /* padding: 0 3rem 0 3rem; */
+}
+
