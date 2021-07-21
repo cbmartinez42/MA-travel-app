@@ -41,7 +41,7 @@ body {
   height: 100%;
 }
 
-.MuiSvgIcon-root {
+#hamburger {
   color: white;
   font-size: 2.5rem!important;
 }
