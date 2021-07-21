@@ -1,17 +1,19 @@
+
 import {List, ListItem, ListItemText, Select, Hidden, Grid} from '@material-ui/core'
 import { useHistory } from "react-router-dom";
 
-const Categories = ({searchData, setSearchData, searchBar, setSearchBar}) => {
-    const history = useHistory()
+const Categories = ({ searchData, setSearchData, searchBar, setSearchBar }) => {
+  const history = useHistory();
 
-    function setCategory(e) {
-        setSearchBar(e.target.textContent || e.target.value)
-        history.push('/browse')
-    } 
+  function setCategory(e) {
+    setSearchBar(e.target.textContent || e.target.value);
+    history.push("/browse");
+  }
 
-    return (    
-        <>
-        <div className="categories">Select a category:
+  return (
+    <>
+      <div className="categories">
+        Tour types:
         <Hidden only={["sm", "xs"]}>
             <List className="categories-list">
                 <ListItem alignItems='center'>
@@ -119,5 +121,4 @@ const Categories = ({searchData, setSearchData, searchBar, setSearchBar}) => {
     )
 }
 
-export default Categories
-
+export default Categories;

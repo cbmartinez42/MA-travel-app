@@ -37,10 +37,9 @@ const Results = ({searchData, setSearchData, searchBar, setSearchBar}) => {
                                 </Grid>
                                 <Grid item xs={12} md={8} className='abstract-text'>
                                 <h2 className = "tour-results-header">{search.tourName}</h2>
-
-                                    <p className = "tour-results-content">Location: {search.tourLocation}</p>
-                                    <p className = "tour-results-content">Cost: ${search.cost}</p>
-                                    <p className = "tour-results-content">{search.descriptionShort}</p>
+                                    <p className = "tour-results-content">${search.cost}</p>
+                                    <p className = "tour-results-content">Located at {search.tourLocation}</p>
+                                    <p className = "tour-results-content description-short">{search.descriptionShort}</p>
                                     
                                         {/* <Button 
                                             onClick={() => renderDetail(search._id)}

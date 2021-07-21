@@ -54,7 +54,7 @@ const Login = () => {
             <div>
                 {/* Log in container */}
                 <div className="container">
-                <h2 className="fredoka" >Log in here!</h2>
+                <h2 className="fredoka log-in-create-account" >Log in here!</h2>
                     <div className="row">
                         <Grid container direction="column" alignItems="center" >
                             <div className="input">
@@ -105,7 +105,7 @@ const Login = () => {
                                 onClick={handleLogin}
                             >Log In
                             </Button>
-                            <div>or</div>
+                            <div className="log-in-create-account">or</div>
                             <Button
                                 variant="contained"
                                 style={{ margin: "2%" }}

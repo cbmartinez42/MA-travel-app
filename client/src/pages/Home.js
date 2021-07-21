@@ -7,55 +7,70 @@ import Grid from '@material-ui/core/Grid';
 import API from '../utils/API';
 import About from '../components/About';
 
-const Home = ({searchData, setSearchData, searchBar, setSearchBar}) => {
+
+const Home = ({ searchData, setSearchData, searchBar, setSearchBar }) => {
   const { userInfo, setUserInfo } = useContext(UserContext);
 
   useEffect(() => {
-    API.browseAllActivities()
-    .then((response) => {
-    setSearchData(response.data || [])
+    API.browseAllActivities().then((response) => {
+      setSearchData(response.data || []);
     });
-}, [])
+  }, []);
 
-  const userWelcome = () =>{
-    if (userInfo === 'NLI') {
-      return
+  const userWelcome = () => {
+    if (userInfo === "NLI") {
+      return;
     } else {
-      return <Grid item xs={12}  >
-      <h2>Welcome {userInfo.namefirst} {userInfo.namelast}!</h2>
-      </Grid>
+      return (
+        <Grid item xs={12}>
+          <h2 className = "log-in-create-account">
+            Welcome {userInfo.namefirst} {userInfo.namelast}!
+          </h2>
+        </Grid>
+      );
     }
-  }
+  };
 
-    return (
-      <>
-        <Grid container spacing={1}>
-          <Grid item xs={12} md={2} >
-            <Categories 
-              searchData={searchData} 
-              setSearchData={setSearchData}
-              searchBar={searchBar}
-              setSearchBar={setSearchBar}
-            />
+  return (
+    <>
+      <Grid container spacing={1}>
+        <Grid item xs={12} md={2}>
+          <Categories
+            searchData={searchData}
+            setSearchData={setSearchData}
+            searchBar={searchBar}
+            setSearchBar={setSearchBar}
+          />
+        </Grid>
+        <Grid item xs={12} md={10}>
+          <Grid container spacing={1}>
+            {userWelcome()}
           </Grid>
-          <Grid item xs={12} md={10}>
-            <Grid container spacing={1}>
-              {userWelcome()}
+
+          <Grid className="searchHeaderContainer" container>
+            <Grid xs={12} md={12} item>
+              {/* <h2 className="lead-question">How will you adventure?</h2> */}
             </Grid>
-            <Search 
-              searchData={searchData}
-              setSearchData={setSearchData}
-              searchBar={searchBar}
-              setSearchBar={setSearchBar}
-            />
-            <About />
-            <h2 className="carousel-header">Do This. Because you've earned it.</h2>
+            <Grid xs={12} md={12}>
+              <Search
+                container
+                item
+                searchData={searchData}
+                setSearchData={setSearchData}
+                searchBar={searchBar}
+                setSearchBar={setSearchBar}
+              />
+            </Grid>
+          </Grid>
+          <h2 className="lead-question">How will you adventure?</h2>
+          <Grid container justifyContent="center">
             <ImgCarousel />
+            <About />
           </Grid>
         </Grid>
-      </>
-    )
-}
+      </Grid>
+    </>
+  );
+};
 
-
-export default Home
+export default Home;

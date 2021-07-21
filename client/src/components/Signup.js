@@ -48,7 +48,7 @@ const Signup = () => {
         <div>
            {/* Sign Up Container */}
            <div className="container">
-           <h2 className="fredoka">Sign Up for an Account</h2>
+           <h2 className="fredoka log-in-create-account">Sign Up for an Account</h2>
                         <form className={classes.root} noValidate autoComplete="off" >
                         <Grid container direction="column" alignItems="center" > 
                             <div className="row">
