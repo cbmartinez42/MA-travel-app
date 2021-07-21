@@ -118,6 +118,7 @@ code {
   font-family: swing-king, sans-serif;
   font-style: normal;
   font-weight: 400;
+  height: 150px;
 }
 
 .footer-thankyou {
@@ -151,6 +152,7 @@ code {
   background-color: whitesmoke;
   border-radius: 10px;
   padding-bottom: 0 !important;
+  padding-right: 15px !important;
 }
 
 .tour-abstract:hover {
@@ -163,8 +165,8 @@ code {
   padding-bottom: 0 !important;
   margin-bottom: 0 !important;
   text-align: right;
-  padding: 100px;
-  color: #c3d7f1;
+  /* padding: 100px; */
+  color: #2f8d66;
 }
 
 .tour-thumbnail {
@@ -173,6 +175,12 @@ code {
   border-radius: 10px;
 }
 
+.description-short{
+  font-style: italic;
+  margin-top: 50px;
+  margin-left: 50px;
+}
+/* TODO:  add left margin on short tour description in results card */
 .tour-results-header{
   font-family: swing-king, sans-serif;
   font-style: normal;
@@ -195,7 +203,13 @@ code {
   padding: 0.25rem;
   font-size: 2rem;
   margin-bottom: 1.5rem;
-  font-family: "Yatra One", cursive;
+}
+
+.tour-name{
+  font-family: swing-king, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size:20px
 }
 
 .carousel {
@@ -246,16 +260,9 @@ code {
   /* margin-bottom: -10rem; */
   font-size: 16px;
   padding-top: 2rem;
+  width: 140px;
 }
 
-/* .categories-list { */
-  /* font-family: hero-new-hairline, sans-serif;
-  font-weight: 100;
-  font-style: normal;
-  font-size: 400px; */
-  /* justify-content: left; */
-  /* align-content: left; */
-/* } */
 
 /* TODO:  figure out categories list class and improve the padding and font  */
 
@@ -284,6 +291,12 @@ code {
 
 .termsConditions {
   font-size: 0.5rem;
+}
+
+.log-in-create-account {
+  font-family: swing-king, sans-serif;
+  font-style: normal;
+  font-weight: 400;
 }
 
 .no-bullet {

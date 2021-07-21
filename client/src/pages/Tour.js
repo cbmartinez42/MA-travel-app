@@ -64,8 +64,8 @@ const Tour = ({searchData, setSearchData, searchBar, setSearchBar}) => {
 
           <Grid item xs={12}>
 
-            <Box>
-            <p>{tourData.operatorName}</p>
+            <Box className='tour-name'>
+            <p>Hosted by {tourData.operatorName}</p>
             <p>{tourData.description}</p>
             </Box>
 

@@ -23,7 +23,7 @@ const Home = ({ searchData, setSearchData, searchBar, setSearchBar }) => {
     } else {
       return (
         <Grid item xs={12}>
-          <h2>
+          <h2 className = "log-in-create-account">
             Welcome {userInfo.namefirst} {userInfo.namelast}!
           </h2>
         </Grid>
