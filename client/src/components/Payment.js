@@ -1,9 +1,9 @@
-import React, { useState, useRef, useEffect, useContext } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import React, { useRef, useEffect, useContext } from "react"; //useState
+// import { makeStyles } from "@material-ui/core/styles";
 import API from "../utils/API";
 import { useHistory } from "react-router-dom";
-import ReactDOM from "react-dom";
-import paypal from "paypal-checkout";
+// import ReactDOM from "react-dom";
+// import paypal from "paypal-checkout";
 import { UserContext } from '../utils/UserContext';
 
 
@@ -35,8 +35,8 @@ function Payment(props) {
         onApprove: async (data, actions) => {
           const order = await actions.order.capture();
           console.log(userInfo)
-          if (userInfo=="NLI" || !userInfo || userInfo==undefined ) setUserInfo({"_id":"ERR: No user"});
-          console.log("this is the order>>>>>>>>", order);
+          if (userInfo==="NLI" || !userInfo || userInfo===undefined ) setUserInfo({"_id":"ERR: No user"});
+
           API.createNewBooking({...props.tourObject, ...order, ...props.bookingDetails, "id":userInfo._id, "initialCost": props.initialCost, "total":props.total, "taxes":props.taxes}).then(res=>console.log("this is the response from the post request>>>>>",res))
           .catch(error => console.log(error)).then(()=>{
           // render thank you page
@@ -55,11 +55,6 @@ function Payment(props) {
       <div>
         <div ref={paypal}></div>
       </div>
-      {/* <PayPalButton
-      createOrder={(data, actions) => createOrder(data, actions)}
-      onApprove={(data, actions) => onApprove(data, actions)}
-    /> */}
-      {/* <script defer src="https://www.paypal.com/sdk/js?client-id=ATxvRax9Nch26KWHgCSufUYPKEam7chfaqAjSpfpYJujcMLoedFqqQAhZMoM1-pAejEQsYyuKaavAJ2y"></script> */}
     </>
   );
 }

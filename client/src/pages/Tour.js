@@ -2,8 +2,8 @@ import React, { useState, useEffect, useContext } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import API from "../utils/API";
 
-import { Link } from "react-router-dom";
-import {Grid, Button, Box, Container} from '@material-ui/core'
+// import { Link } from "react-router-dom";
+import {Grid, Button, Box } from '@material-ui/core'
 
 import ImgCarousel from '../components/ImgCarousel'
 import Categories from '../components/Categories'

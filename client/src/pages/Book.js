@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
-import ReactDOM from "react-dom";
+// import ReactDOM from "react-dom";
 import { InlineWidget } from "react-calendly";
-import Terms from "./Terms";
+// import Terms from "./Terms";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   TextField,
@@ -18,12 +18,12 @@ import {
   Icon,
   Box
 } from "@material-ui/core";
-import { useParams, useLocation, Link } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import API from "../utils/API";
 import Payment from "../components/Payment";
 import { UserContext } from "../utils/UserContext";
-import { blue } from "@material-ui/core/colors";
-import { LooksTwo, LooksOne, Looks3 } from "@material-ui/icons";
+// import { blue } from "@material-ui/core/colors";
+// import { LooksTwo, LooksOne, Looks3 } from "@material-ui/icons";
 // import Icon from '@material-ui/core/Icon';
 
 const Book = () => {

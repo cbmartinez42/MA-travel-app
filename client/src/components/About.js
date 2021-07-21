@@ -1,6 +1,4 @@
-import React, { useContext } from "react";
-import { UserContext } from "../utils/UserContext";
-// import { Link } from "react-router-dom";
+
 import Grid from "@material-ui/core/Grid";
 import Logo from "../assets/logo-page001.jpeg";
 import jungle from "../assets/jungleBackground.jpg";
@@ -8,8 +6,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Card from "@material-ui/core/Card";
 
 const About = () => {
-  const { value, setValue } = useContext(UserContext);
-
+ 
   return (
       <Grid className="about-container" container spacing={1}>
         {/* <Grid item xs={12}> */}
@@ -20,6 +17,7 @@ const About = () => {
                 traditional lifestyles of our local indigenous communities,
                 environmental conservation, and uplifting women and children.</h3>
               </Grid>
+
         </Grid>
   );
 };

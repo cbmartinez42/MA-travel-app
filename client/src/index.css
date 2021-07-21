@@ -528,8 +528,19 @@ header font
   margin-left: auto;
   margin-right: auto;
   width: 40vw;
-
 }
 .card-image-about{
 
 }
+
+.category-select {
+  display: block;
+  width: 20rem;
+}
+
+.about-container {
+  margin-top: 2rem!important;
+  /* padding: 0 3rem 0 3rem; */
+}
+
+

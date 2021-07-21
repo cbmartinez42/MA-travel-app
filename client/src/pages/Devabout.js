@@ -1,5 +1,3 @@
-import React, { useContext } from "react";
-import { UserContext } from "../utils/UserContext";
 import { Link } from "react-router-dom";
 import { Grid, Container } from "@material-ui/core";
 import LinkedIn from "../assets/devs/LI-Logo.png";
@@ -14,14 +12,11 @@ import Stacy from "../assets/devs/stacy.png";
 import StacyResume from "../assets/devs/stacy-resume.PNG";
 
 const Devabout = () => {
-  const { value, setValue } = useContext(UserContext);
+
   return (
     <Container className="dev-team">
       <h2>Do This® development team</h2>
       <h3>mimsArmy</h3>
-
-
-      {/* <Link to="/home">Go Home!</Link> */}
       <Grid container spacing={1} alignContent="center">
         <Grid container spacing={1} className="dev-container">
           <Grid item xs={12} md={6} className="dev-about">
@@ -45,10 +40,6 @@ const Devabout = () => {
             <p className='dev-text'>
                 He has over 20 years experience working with computers and technology in various capacities, as well as herding cats and 
                 his five children, both of which prepared him for the unique challenges of leading mimsArmy. 
-                {/* Chris is a master of the universe, a puppy owner, and a cat herder. He takes all things in stride and just
-                types whatever comes to mind. There is no rhyme or reason to this text but only to fill space. Lorem Ipsum has 
-                nothing on me, for I am the wordsmith of wordsmiths, bringer of doom, powered by Dragon Tears and the blood
-                of innocents */}
             </p>
             <Grid item xs={12}>
               <Link

@@ -22,7 +22,7 @@ import Devabout from "./pages/Devabout";
 
 function App() {
   const [userInfo, setUserInfo] = useState('NLI');
-  const [userId, setUserId] = useState('');
+  // const [userId, setUserId] = useState('');
   const [searchData, setSearchData] = useState([]);
   const [searchBar, setSearchBar] = useState('');
 

@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React from "react"; //useState
 import Users from '../components/Users';
-import { Container } from "@material-ui/core/";
-import API from "../utils/API";
+// import { Container } from "@material-ui/core/";
+// import API from "../utils/API";
 
 
 const Admin = () => {
     return (
         <div>
-            <h1>Amin Page</h1>
+            <h1>Admin Page</h1>
             <Users />   
         </div>
     )
