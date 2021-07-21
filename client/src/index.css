@@ -470,42 +470,6 @@ header font
   font-style: normal;
   font-weight: 400;
 */
-
-
-@media only screen and (max-width: 992px) {
-  /* .MuiListItem-root {
-  display: inline!important;
-} */
-
-  .category-list {
-    display: inline;
-  }
-
-  .category-select {
-    display: none;
-  }
-
-  .category-link {
-    display: inline !important;
-  }
-}
-
-@media only screen and (max-width: 500px) {
-
-
-  .category-select {
-    display: block;
-    width: 20rem;
-  }
-
-  #search {
-    width: 15rem;
-  }
-  .category-link {
-    display: inline !important;
-  }
-}
-
 .about-us-home {
   position:relative;
   background-size: cover;
@@ -543,9 +507,7 @@ header font
   color:white;
 }
 
-.categories {
-  background-color: white;
-}
+
 
 .card-about{
   position: relative;
@@ -567,4 +529,50 @@ header font
   /* padding: 0 3rem 0 3rem; */
 }
 
+
+
+
+@media only screen and (max-width: 992px) {
+  /* .MuiListItem-root {
+  display: inline!important;
+} */
+
+  .category-list {
+    display: inline;
+  }
+
+  .category-select {
+    display: none;
+  }
+
+  .category-link {
+    display: inline !important;
+  }
+
+  .categories {
+    background-color: white;
+  }
+  
+}
+
+@media only screen and (max-width: 500px) {
+
+
+  .category-select {
+    display: block;
+    width: 20rem;
+  }
+
+  #search {
+    width: 15rem;
+  }
+  .category-link {
+    display: inline !important;
+  }
+
+  .categories {
+    background-color: white;
+  }
+
+}
 
