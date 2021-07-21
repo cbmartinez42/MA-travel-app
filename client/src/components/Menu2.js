@@ -22,7 +22,7 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import HowToRegIcon from "@material-ui/icons/HowToReg";
 import MenuIcon from "@material-ui/icons/Menu";
 import PostAddIcon from "@material-ui/icons/PostAdd";
-import {withStyles} from "@material-ui/core/styles"
+// import {withStyles} from "@material-ui/core/styles"
 
 const useStyles = makeStyles({
   list: {
@@ -33,7 +33,7 @@ const useStyles = makeStyles({
   },
   drawerPaper:{
     marginTop: 40,
-    marginLeft:50
+    marginLeft:50,
   }
 });
 

@@ -63,9 +63,10 @@ const Home = ({ searchData, setSearchData, searchBar, setSearchBar }) => {
             </Grid>
           </Grid>
           <h2 className="lead-question">How will you adventure?</h2>
+          <About />
           <Grid container justifyContent="center">
             <ImgCarousel />
-            <About />
+            
           </Grid>
         </Grid>
       </Grid>

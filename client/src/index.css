@@ -37,6 +37,11 @@ body {
   height: 100%;
 }
 
+.MuiSvgIcon-root {
+  color: white;
+  font-size: 2.5rem!important;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
@@ -44,7 +49,9 @@ code {
 
 .header {
   position: relative;
-  background-image: url("./assets/negra.jpg");
+  /* background-image: url("./assets/negra.jpg"); */
+  background-image: url('./assets/poolpano2.jpeg'); 
+  /* background-repeat: no-repeat; */
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -267,8 +274,14 @@ code {
   font-weight: 400;
   font-size: 16px;
   padding-top: 2rem;
-  width: 140px;
+  width: 80%;
+  color: white;
+  padding-left: 3rem;
 }
+
+/* .category-list {
+  padding-left: 2rem!important;
+} */
 
 .category-link {
   cursor: pointer;
@@ -329,21 +342,29 @@ code {
   font-weight: 400;
 }
 
-.about-us-body {
-  background-image: url("./assets/jungleBackground.jpg");
-  opacity: 0.8;
-  background-size: cover;
-  border-radius: 15px;
-}
-
 .about-us-text {
   font-family: swing-king, sans-serif;
-  font-weight: 400;
-  font-size: 22px;
-  color: black;
+  font-weight: 100!important;
+  font-size: 24px;
+  color: white;
+  /* background-color: black; */
   font-weight: bold;
   opacity: 1;
   /* text-shadow: 2px 2px white; */
+}
+
+.about-us-body {
+  background-image: linear-gradient(to bottom, rgba(47, 141, 102, 0.6) 0%,rgba(55, 165, 119, 0.582) 100%), url("./assets/jungleBackground.jpg");
+  /* opacity: 0.8; */
+  background-size: cover;
+  background-repeat: no repeat;
+  border-radius: 15px;
+  padding: 2rem!important;
+  /* position: absolute; */
+  /* top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px; */
 }
 
 .containerStyle {
