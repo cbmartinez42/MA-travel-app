@@ -541,10 +541,6 @@ header font
     display: inline;
   }
 
-  .category-select {
-    display: none;
-  }
-
   .category-link {
     display: inline !important;
   }
