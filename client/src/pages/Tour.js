@@ -70,7 +70,7 @@ const Tour = ({searchData, setSearchData, searchBar, setSearchBar}) => {
             </Box>
 
             <Grid className="tour-details" container spacing={1}>
-              <Grid item xs={12} className="tour-details-items">
+              <Grid item xs={12} className="tour-details-items tour-name">
                 <h3>Know before you book:</h3>
               </Grid>
               <Grid item xs={4} className="tour-details-items">

@@ -11,38 +11,16 @@ const About = () => {
   const { value, setValue } = useContext(UserContext);
 
   return (
-    <div>
-      <Grid container spacing={1}>
-        <Grid item xs={12}>
-          <Grid item md={3} />
-          <Grid
-            alignItems="center"
-            spacing={0}
-            justify="center"
-            direction="column"
-            item
-            md={9}
-            xs={12}
-          >
-            <Card className="card-about">
-              <CardMedia
-                className="card-image-about"
-                component="img"
-                height="auto"
-                image={jungle}
-              />
-              <div className="aboutus-message">
-                Deep Wild South is a boutique tour agency for Southern Belize.
-                We promote sustainable and cultural immersions that are not only
-                exceptional experiences for our guests, but also support the
+      <Grid className="about-container" container spacing={1}>
+        {/* <Grid item xs={12}> */}
+          {/* <Grid item md={3} /> */}
+          <Grid item xs={12}  className="about-us-body">
+                <h3 className="about-us-text">Deep Wild South is a boutique tour agency for Southern Belize.
+                We promote sustainable and cultural immersions that are not only exceptional experiences for our guests, but also support the
                 traditional lifestyles of our local indigenous communities,
-                environmental conservation, and uplifting women and children.{" "}
-              </div>
-            </Card>
-          </Grid>
+                environmental conservation, and uplifting women and children.</h3>
+              </Grid>
         </Grid>
-      </Grid>
-    </div>
   );
 };
 

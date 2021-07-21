@@ -118,7 +118,7 @@ code {
   font-family: swing-king, sans-serif;
   font-style: normal;
   font-weight: 400;
-  height: 150px;
+  height: 180px;
 }
 
 .footer-thankyou {
@@ -212,6 +212,15 @@ code {
   font-size:20px
 }
 
+.tour-details{
+  font-family: swing-king, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size:20px;
+  padding-right: 5px;
+  margin-right: 0;
+}
+
 .carousel {
   padding: none !important;
 }
@@ -243,6 +252,7 @@ code {
   text-shadow: 1px 1px black;
 }
 
+
 .detail-body {
   margin: 4rem;
   padding-left: 3rem!important;
@@ -251,20 +261,14 @@ code {
 .categories {
   background-color: #2f8d66;
   height: 100%;
-  /* padding: 3rem; */
-  /* font-weight: 800; */
   z-index: 1;
   font-family: swing-king, sans-serif;
   font-style: normal;
   font-weight: 400;
-  /* margin-bottom: -10rem; */
   font-size: 16px;
   padding-top: 2rem;
   width: 140px;
 }
-
-
-/* TODO:  figure out categories list class and improve the padding and font  */
 
 .category-link {
   cursor: pointer;
@@ -281,7 +285,6 @@ code {
   font-family: swing-king, sans-serif;
   font-style: normal;
   font-weight: 400;
-  /* margin-bottom: -10rem; */
   font-size: 16px;
 }
 
@@ -303,6 +306,10 @@ code {
   list-style-type: none;
 }
 
+.booking-instruction{
+  font-weight: bold;
+}
+
 .operator-dropdown {
   width: 25rem;
 }
@@ -312,16 +319,31 @@ code {
 }
 
 .about-container {
-  padding: 0 10rem 0 10rem;
-  margin-bottom: 1rem !important;
+  padding: 1rem;
+  margin: 1rem !important;
 }
 
-.aboutus-message {
-  font-family: hero-new, sans-serif;
-  font-weight: 100;
+.about-us-header {
+  font-family: swing-king, sans-serif;
   font-style: normal;
-  color: white;
-  /* font-size: 12px; */
+  font-weight: 400;
+}
+
+.about-us-body {
+  background-image: url("./assets/jungleBackground.jpg");
+  opacity: 0.8;
+  background-size: cover;
+  border-radius: 15px;
+}
+
+.about-us-text {
+  font-family: swing-king, sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  color: black;
+  font-weight: bold;
+  opacity: 1;
+  /* text-shadow: 2px 2px white; */
 }
 
 .containerStyle {
@@ -334,25 +356,6 @@ code {
 
 .tour-image-full {
   border-radius: 10px;
-}
-.about-section {
-  padding: 2rem !important;
-  /* background-color: #e5edf8; */
-  border: 1px solid black;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.about-us-header {
-  font-family: swing-king, sans-serif;
-  font-style: normal;
-  font-weight: 400;
-}
-
-.about-us-body {
-  font-family: hero-new-hairline, sans-serif;
-  font-weight: 100;
-  font-style: normal;
 }
 
 .dev-team {
