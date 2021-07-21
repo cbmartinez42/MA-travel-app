@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+// import React, { useState, useEffect } from "react";
 import Results from "../components/Results";
 import Search from '../components/Search'
 // import { Container } from "@material-ui/core/";
@@ -6,7 +6,7 @@ import Search from '../components/Search'
 // import Button from "../components/Button";
 import Categories from '../components/Categories'
 import Grid from '@material-ui/core/Grid'
-import {useParams} from 'react-router-dom'
+// import {useParams} from 'react-router-dom'
 
 const Browse = ({ searchBar, setSearchBar, searchData, setSearchData }) => {
   // const {category} = useParams();

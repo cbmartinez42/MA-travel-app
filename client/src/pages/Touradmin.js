@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useContext } from "react";
-import { UserContext } from "../utils/UserContext";
+import React, { useState, useEffect } from "react";
+// import { UserContext } from "../utils/UserContext";
 import {
   Grid,
   makeStyles,
@@ -60,7 +60,7 @@ const CreateTour = () => {
 
       if (response.status === 200) {
         console.log("FILE SENT");
-        const res = response.data;
+        // const res = response.data;
         history.push("/touradmin");
         alert('Tour created!')
         // window.location.refresh()
@@ -110,10 +110,7 @@ const CreateTour = () => {
                 </Grid>
               </div>
 
-              <Select
-                // labelId="demo-simple-select-label"
-                // id="demo-simple-select"
-                
+              <Select              
                 value={createTour.tourOperator || ""}
                 name="operator"
                 variant="outlined"
