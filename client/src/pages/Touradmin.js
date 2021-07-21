@@ -62,7 +62,6 @@ const CreateTour = () => {
         console.log("FILE SENT");
         // const res = response.data;
         history.push("/touradmin");
-        alert('Tour created!')
         // window.location.refresh()
       } else {
         console.log("mas problemo");
