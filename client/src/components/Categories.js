@@ -12,10 +12,11 @@ const Categories = ({ searchData, setSearchData, searchBar, setSearchBar }) => {
 
   return (
     <>
-      <div className="categories">
-        Tour types:
+      <Grid className="categories">
+        Tour Types:
         <Hidden only={["sm", "xs"]}>
             <List className="categories-list">
+            {/* Tour Types: */}
                 <ListItem alignItems='center'>
                         <ListItemText 
                             className="category-link"
@@ -116,7 +117,7 @@ const Categories = ({ searchData, setSearchData, searchBar, setSearchBar }) => {
                 </Select>
                 </Grid>
                 </Hidden>
-        </div>
+        </Grid>
         </>
     )
 }
