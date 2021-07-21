@@ -1,3 +1,28 @@
+/* 
+body font
+  font-family: hero-new-hairline, sans-serif;
+  font-weight: 100;
+  font-style: normal;
+
+header font
+  font-family: swing-king, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+
+cursive 
+  font-family: atocha, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+
+COLORS:
+green: #28aba5
+light blue: #c3d7f1
+bright blue: #5bb7ed
+ocean gray: #696d87
+whitesmoke
+*/
+
+
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Yatra+One&family=Yomogi&display=swap");
 @import url("https://use.typekit.net/aod5izm.css");
 
@@ -17,73 +42,45 @@ code {
     monospace;
 }
 
-/* OUTER CONTAINER */
-.tcontainer {
-  width: 100%;
-  overflow: hidden; /* Hide scroll bar */
-}
-
-/* MIDDLE CONTAINER */
-.ticker-wrap {
-  width: 100%;
-  padding-left: 100%; /* Push contents to right side of screen */
-  background-color: rgb(245, 238, 238);
-}
-
-/* INNER CONTAINER */
-@keyframes ticker {
-  0% {
-    transform: translate3d(0, 0, 0);
-  }
-  100% {
-    transform: translate3d(-100%, 0, 0);
-  }
-}
-.ticker-move {
-  /* Basically move items from right side of screen to left in infinite loop */
-  display: inline-block;
-  white-space: nowrap;
-  padding-right: 100%;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-  animation-name: ticker;
-  animation-duration: 20s;
-}
-.ticker-move:hover {
-  animation-play-state: paused; /* Pause scroll on mouse hover */
-}
-/* 
-ITEMS
-.ticker-item{
-  display: inline-block; /* Lay items in a horizontal line */
-/* padding: 0 2rem; */
-/* } */
-
-/* TEST */
 .header {
   position: relative;
+  background-image: url("./assets/negra.jpg");
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  /* margin-bottom: 2rem; */
-  height: 200px;
-  align-items: center;
+  height: 250px;
+  /* align-items: center; */
   font-family: swing-king, sans-serif;
   font-style: normal;
   font-weight: 400;
 }
 
-.header::before {
+#root{
   content: "";
-  background-image: url("./assets/negra.jpg");
   background-size: cover;
-  position: absolute;
   top: 0px;
   right: 0px;
   bottom: 0px;
   left: 0px;
-  opacity: 0.45;
+}
+
+.header-text{
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  color: white;
+  text-shadow: 2px 2px black;
+}
+
+.header-h1 {
+  font-size: 40px;
+  margin: 0
+}
+
+.header-h4 {
+  font-size: 24px;
+  margin: 0;
+
 }
 
 #search {
@@ -102,19 +99,21 @@ ITEMS
   margin: 1rem !important;
 }
 
-.carousel-header {
-  font-family: "Yatra One", cursive;
-  align-items: center;
+.lead-question {
+  font-family: swing-king, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  margin: 0 
+  /* align-items: left; */
 }
 
 .App-footer {
-  background-color: #84b2f7;
-  /* max-height: 20vh; */
-  margin-top: 96px;
+  background-color: #2f8d66;
   padding: 1% 5%;
   bottom: 0;
   display: block;
-  color: white;
+  color: whitesmoke;
   z-index: 4;
   font-family: swing-king, sans-serif;
   font-style: normal;
@@ -132,6 +131,13 @@ ITEMS
   display: flex;
   justify-content: space-evenly;
   margin-bottom: 3%;
+}
+
+.myDrawer{
+  clear:0;
+  /* justify-content: left;
+  align-items: flex-start; */
+
 }
 
 .terms-container {
@@ -158,7 +164,7 @@ ITEMS
   margin-bottom: 0 !important;
   text-align: right;
   padding: 100px;
-  color: aqua;
+  color: #c3d7f1;
 }
 
 .tour-thumbnail {
@@ -229,19 +235,33 @@ ITEMS
 }
 
 .categories {
-  background-color: #c3d8f7;
+  background-color: #2f8d66;
   height: 100%;
-  padding: 3rem;
-  font-weight: 800;
+  /* padding: 3rem; */
+  /* font-weight: 800; */
   z-index: 1;
   font-family: swing-king, sans-serif;
   font-style: normal;
   font-weight: 400;
   /* margin-bottom: -10rem; */
+  font-size: 16px;
+  padding-top: 2rem;
 }
+
+/* .categories-list { */
+  /* font-family: hero-new-hairline, sans-serif;
+  font-weight: 100;
+  font-style: normal;
+  font-size: 400px; */
+  /* justify-content: left; */
+  /* align-content: left; */
+/* } */
+
+/* TODO:  figure out categories list class and improve the padding and font  */
 
 .category-link {
   cursor: pointer;
+  align-content: center;
 }
 
 .category-link:hover {
@@ -251,6 +271,11 @@ ITEMS
 
 .category-select {
   display: none;
+  font-family: swing-king, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  /* margin-bottom: -10rem; */
+  font-size: 16px;
 }
 
 .user-role {
@@ -278,6 +303,22 @@ ITEMS
   margin-bottom: 1rem !important;
 }
 
+.aboutus-message {
+  font-family: hero-new, sans-serif;
+  font-weight: 100;
+  font-style: normal;
+  color: white;
+  /* font-size: 12px; */
+}
+
+.containerStyle {
+    position: relative;
+    text-align: center;
+    color: blue;
+    height: 250px;
+    width: 350px;
+  }
+
 .tour-image-full {
   border-radius: 10px;
 }
@@ -293,7 +334,12 @@ ITEMS
   font-family: swing-king, sans-serif;
   font-style: normal;
   font-weight: 400;
+}
 
+.about-us-body {
+  font-family: hero-new-hairline, sans-serif;
+  font-weight: 100;
+  font-style: normal;
 }
 
 .dev-team {
@@ -352,12 +398,38 @@ ITEMS
 }
 
 .thankyou-message {
-  font-family: kewl-script, sans-serif;
+  font-family: atocha, sans-serif;
+  font-style: normal;
+  font-weight: 400;
 }
 
 .thankyou-message-image {
   margin-top: 3rem!important;
 }
+
+.thank-you-header {
+  font-family: swing-king, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.thank-you-body {
+  font-family: swing-king, sans-serif;
+  font-style: normal;
+  font-weight: 100;
+}
+/*  
+body font
+  font-family: iskra, sans-serif;
+  font-style: normal;
+  font-weight: 100;
+
+header font
+  font-family: swing-king, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+*/
+
 
 @media only screen and (max-width: 992px) {
   /* .MuiListItem-root {
@@ -396,7 +468,22 @@ ITEMS
   }
 }
 
-
+.about-us-home {
+  position:relative;
+  background-size: cover;
+  /* position: absolute; */
+  opacity: 90;
+  width: 60vw;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  color: aliceblue;
+  border-radius: 10px;
+}
+.searchHeaderContainer{
+  display:block;
+}
 
 .turtle-thankyou {
   background-image: url("./assets/turtle.jpg");
@@ -409,10 +496,24 @@ ITEMS
   margin-left: auto;
   margin-right: auto;
   display: block;
-  font-family: kewl-script, sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 50px;
   color: aliceblue;
   border-radius: 10px;
+}
+
+.aboutus-message{
+  position: absolute;
+  color:white;
+}
+
+.card-about{
+  position: relative;
+  margin-bottom: 5vh;
+  margin-top: 5vh;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40vw;
+
+}
+.card-image-about{
+
 }

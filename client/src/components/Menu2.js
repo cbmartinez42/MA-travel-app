@@ -34,7 +34,7 @@ import HowToRegIcon from "@material-ui/icons/HowToReg";
 import MenuIcon from "@material-ui/icons/Menu";
 import PostAddIcon from "@material-ui/icons/PostAdd";
 import { Redirect, Link } from "react-router-dom";
-
+import {withStyles} from "@material-ui/core/styles"
 const useStyles = makeStyles({
   list: {
     width: 250,
@@ -42,6 +42,10 @@ const useStyles = makeStyles({
   fullList: {
     width: "auto",
   },
+  drawerPaper:{
+    marginTop: 40,
+    marginLeft:50
+  }
 });
 
 export default function TemporaryDrawer() {
@@ -187,10 +191,13 @@ export default function TemporaryDrawer() {
       {["left"].map((anchor) => (
         <React.Fragment key={anchor}>
           <Button onClick={toggleDrawer(anchor, true)}>
-            <MenuIcon />
+            <MenuIcon           classes={{
+            paper: classes.drawerPaper
+          }}/>
           </Button>
 
           <Drawer
+
             anchor={anchor}
             open={state[anchor]}
             onClose={toggleDrawer(anchor, false)}

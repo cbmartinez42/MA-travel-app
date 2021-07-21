@@ -85,8 +85,8 @@ const containerStyle={
 
     <div style={myStyle.bgColor}>
     <Grid container spacing={1}>
+      
       <Grid item xs={12} className="thankyou-message-image">
-        {/* <h1 style={containerStyle.container} onClick={()=>{console.log(tourData)}}>THANK YOU!</h1> */}
         <Grid item xs={12} >
           <div style={containerStyle.container}>
           <img style={imageStyle}
@@ -94,24 +94,25 @@ const containerStyle={
             alt="Turtle"
             className=" turtle-thankyou responsive-img"
           ></img>
-          <div style={containerStyle.text} className="thankyou-message">THANK YOU!</div>
+          <div style={containerStyle.text} className="thankyou-message">Thank You!</div>
           </div>
         </Grid>
+
+
+
         <Grid item xs={12}>
-          <h2 className="center-align">
+          <h2 className="center-align thank-you-header">
             Thank you for your booking your tour with {tourData.tourName}
           </h2>
-          {/* <p class="center-align">Thank you for your booking, {{ first_name }}!</p> */}
-          <p className="center-align">
+          <p className="center-align thank-you-body">
             An email confirmation will be sent to your email address on file.
+          </p>
+          <p className="center-align thank-you-body">
             Please contact deepwildsouth@gmail.com if you do not receive it
             within one hour of booking.
           </p>
         </Grid>
-        <Grid item xs={12} >
-
-
-
+        <Grid item xs={12} className="center-align thank-you-body">
           <p>
             <span style={myStyle.bold}>Tour Name:</span> {tourData.tourName}
           </p>

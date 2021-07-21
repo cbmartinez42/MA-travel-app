@@ -30,8 +30,9 @@ function App() {
     <>
     <Router>
       <UserContext.Provider value={{userInfo, setUserInfo}}>
-      <Menu2 />
+    
       <Header />
+      
         <div className="App">
         <Switch>
             <Route exact path="/">
