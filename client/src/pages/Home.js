@@ -39,18 +39,18 @@ const Home = ({searchData, setSearchData, searchBar, setSearchBar}) => {
             />
           </Grid>
           <Grid item xs={12} md={10}>
-          <Grid container spacing={1}>
-            {userWelcome()}
-          </Grid>
-          <Search 
-            searchData={searchData}
-            setSearchData={setSearchData}
-            searchBar={searchBar}
-            setSearchBar={setSearchBar}
-          />
-          <About />
-          <h2 className="carousel-header">Do This. Because you've earned it.</h2>
-          <ImgCarousel />
+            <Grid container spacing={1}>
+              {userWelcome()}
+            </Grid>
+            <Search 
+              searchData={searchData}
+              setSearchData={setSearchData}
+              searchBar={searchBar}
+              setSearchBar={setSearchBar}
+            />
+            <About />
+            <h2 className="carousel-header">Do This. Because you've earned it.</h2>
+            <ImgCarousel />
           </Grid>
         </Grid>
       </>
