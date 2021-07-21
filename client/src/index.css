@@ -548,6 +548,11 @@ header font
   .categories {
     background-color: white;
   }
+
+  .category-select {
+    display: block;
+    width: 20rem;
+  }
   
 }
 
