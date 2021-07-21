@@ -1,3 +1,28 @@
+/* 
+body font
+  font-family: hero-new-hairline, sans-serif;
+  font-weight: 100;
+  font-style: normal;
+
+header font
+  font-family: swing-king, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+
+cursive 
+  font-family: atocha, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+
+COLORS:
+green: #28aba5
+light blue: #c3d7f1
+bright blue: #5bb7ed
+ocean gray: #696d87
+whitesmoke
+*/
+
+
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Yatra+One&family=Yomogi&display=swap");
 @import url("https://use.typekit.net/aod5izm.css");
 
@@ -17,73 +42,45 @@ code {
     monospace;
 }
 
-/* OUTER CONTAINER */
-.tcontainer {
-  width: 100%;
-  overflow: hidden; /* Hide scroll bar */
-}
-
-/* MIDDLE CONTAINER */
-.ticker-wrap {
-  width: 100%;
-  padding-left: 100%; /* Push contents to right side of screen */
-  background-color: rgb(245, 238, 238);
-}
-
-/* INNER CONTAINER */
-@keyframes ticker {
-  0% {
-    transform: translate3d(0, 0, 0);
-  }
-  100% {
-    transform: translate3d(-100%, 0, 0);
-  }
-}
-.ticker-move {
-  /* Basically move items from right side of screen to left in infinite loop */
-  display: inline-block;
-  white-space: nowrap;
-  padding-right: 100%;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-  animation-name: ticker;
-  animation-duration: 20s;
-}
-.ticker-move:hover {
-  animation-play-state: paused; /* Pause scroll on mouse hover */
-}
-/* 
-ITEMS
-.ticker-item{
-  display: inline-block; /* Lay items in a horizontal line */
-/* padding: 0 2rem; */
-/* } */
-
-/* TEST */
 .header {
   position: relative;
+  background-image: url("./assets/negra.jpg");
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  /* margin-bottom: 2rem; */
-  height: 200px;
-  align-items: center;
+  height: 250px;
+  /* align-items: center; */
   font-family: swing-king, sans-serif;
   font-style: normal;
   font-weight: 400;
 }
 
-.header::before {
+#root{
   content: "";
-  background-image: url("./assets/negra.jpg");
   background-size: cover;
-  position: absolute;
   top: 0px;
   right: 0px;
   bottom: 0px;
   left: 0px;
-  opacity: 0.45;
+}
+
+.header-text{
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  color: white;
+  text-shadow: 2px 2px black;
+}
+
+.header-h1 {
+  font-size: 40px;
+  margin: 0
+}
+
+.header-h4 {
+  font-size: 24px;
+  margin: 0;
+
 }
 
 #search {
@@ -102,23 +99,26 @@ ITEMS
   margin: 1rem !important;
 }
 
-.carousel-header {
-  font-family: "Yatra One", cursive;
-  align-items: center;
+.lead-question {
+  font-family: swing-king, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  margin: 0 
+  /* align-items: left; */
 }
 
 .App-footer {
-  background-color: #84b2f7;
-  /* max-height: 20vh; */
-  margin-top: 96px;
+  background-color: #2f8d66;
   padding: 1% 5%;
   bottom: 0;
   display: block;
-  color: white;
+  color: whitesmoke;
   z-index: 4;
   font-family: swing-king, sans-serif;
   font-style: normal;
   font-weight: 400;
+  height: 180px;
 }
 
 .footer-thankyou {
@@ -134,6 +134,13 @@ ITEMS
   margin-bottom: 3%;
 }
 
+.myDrawer{
+  clear:0;
+  /* justify-content: left;
+  align-items: flex-start; */
+
+}
+
 .terms-container {
   text-align: left !important;
 }
@@ -145,6 +152,7 @@ ITEMS
   background-color: whitesmoke;
   border-radius: 10px;
   padding-bottom: 0 !important;
+  padding-right: 15px !important;
 }
 
 .tour-abstract:hover {
@@ -157,8 +165,8 @@ ITEMS
   padding-bottom: 0 !important;
   margin-bottom: 0 !important;
   text-align: right;
-  padding: 100px;
-  color: aqua;
+  /* padding: 100px; */
+  color: #2f8d66;
 }
 
 .tour-thumbnail {
@@ -167,6 +175,12 @@ ITEMS
   border-radius: 10px;
 }
 
+.description-short{
+  font-style: italic;
+  margin-top: 50px;
+  margin-left: 50px;
+}
+/* TODO:  add left margin on short tour description in results card */
 .tour-results-header{
   font-family: swing-king, sans-serif;
   font-style: normal;
@@ -189,7 +203,22 @@ ITEMS
   padding: 0.25rem;
   font-size: 2rem;
   margin-bottom: 1.5rem;
-  font-family: "Yatra One", cursive;
+}
+
+.tour-name{
+  font-family: swing-king, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size:20px
+}
+
+.tour-details{
+  font-family: swing-king, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size:20px;
+  padding-right: 5px;
+  margin-right: 0;
 }
 
 .carousel {
@@ -223,25 +252,27 @@ ITEMS
   text-shadow: 1px 1px black;
 }
 
+
 .detail-body {
   margin: 4rem;
   padding-left: 3rem!important;
 }
 
 .categories {
-  background-color: #c3d8f7;
+  background-color: #2f8d66;
   height: 100%;
-  padding: 3rem;
-  font-weight: 800;
   z-index: 1;
   font-family: swing-king, sans-serif;
   font-style: normal;
   font-weight: 400;
-  /* margin-bottom: -10rem; */
+  font-size: 16px;
+  padding-top: 2rem;
+  width: 140px;
 }
 
 .category-link {
   cursor: pointer;
+  align-content: center;
 }
 
 .category-link:hover {
@@ -251,6 +282,10 @@ ITEMS
 
 .category-select {
   display: none;
+  font-family: swing-king, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
 }
 
 .user-role {
@@ -261,8 +296,18 @@ ITEMS
   font-size: 0.5rem;
 }
 
+.log-in-create-account {
+  font-family: swing-king, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
 .no-bullet {
   list-style-type: none;
+}
+
+.booking-instruction{
+  font-weight: bold;
 }
 
 .operator-dropdown {
@@ -274,26 +319,43 @@ ITEMS
 }
 
 .about-container {
-  padding: 0 10rem 0 10rem;
-  margin-bottom: 1rem !important;
-}
-
-.tour-image-full {
-  border-radius: 10px;
-}
-.about-section {
-  padding: 2rem !important;
-  /* background-color: #e5edf8; */
-  border: 1px solid black;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 1rem;
+  margin: 1rem !important;
 }
 
 .about-us-header {
   font-family: swing-king, sans-serif;
   font-style: normal;
   font-weight: 400;
+}
 
+.about-us-body {
+  background-image: url("./assets/jungleBackground.jpg");
+  opacity: 0.8;
+  background-size: cover;
+  border-radius: 15px;
+}
+
+.about-us-text {
+  font-family: swing-king, sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  color: black;
+  font-weight: bold;
+  opacity: 1;
+  /* text-shadow: 2px 2px white; */
+}
+
+.containerStyle {
+    position: relative;
+    text-align: center;
+    color: blue;
+    height: 250px;
+    width: 350px;
+  }
+
+.tour-image-full {
+  border-radius: 10px;
 }
 
 .dev-team {
@@ -352,12 +414,38 @@ ITEMS
 }
 
 .thankyou-message {
-  font-family: kewl-script, sans-serif;
+  font-family: atocha, sans-serif;
+  font-style: normal;
+  font-weight: 400;
 }
 
 .thankyou-message-image {
   margin-top: 3rem!important;
 }
+
+.thank-you-header {
+  font-family: swing-king, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.thank-you-body {
+  font-family: swing-king, sans-serif;
+  font-style: normal;
+  font-weight: 100;
+}
+/*  
+body font
+  font-family: iskra, sans-serif;
+  font-style: normal;
+  font-weight: 100;
+
+header font
+  font-family: swing-king, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+*/
+
 
 @media only screen and (max-width: 992px) {
   /* .MuiListItem-root {
@@ -396,6 +484,23 @@ ITEMS
   }
 }
 
+.about-us-home {
+  position:relative;
+  background-size: cover;
+  /* position: absolute; */
+  opacity: 90;
+  width: 60vw;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  color: aliceblue;
+  border-radius: 10px;
+}
+.searchHeaderContainer{
+  display:block;
+}
+
 .turtle-thankyou {
   background-image: url("./assets/turtle.jpg");
   background-size: cover;
@@ -407,12 +512,25 @@ ITEMS
   margin-left: auto;
   margin-right: auto;
   display: block;
-  font-family: kewl-script, sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 50px;
   color: aliceblue;
   border-radius: 10px;
+}
+
+.aboutus-message{
+  position: absolute;
+  color:white;
+}
+
+.card-about{
+  position: relative;
+  margin-bottom: 5vh;
+  margin-top: 5vh;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40vw;
+}
+.card-image-about{
+
 }
 
 .category-select {
@@ -424,4 +542,5 @@ ITEMS
   margin-top: 2rem!important;
   /* padding: 0 3rem 0 3rem; */
 }
+
 

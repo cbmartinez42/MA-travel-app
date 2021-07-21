@@ -170,8 +170,8 @@ const Book = () => {
             {" "}
             <div>
               {/* tour info card */}
-              <Container>
-                <Box key={tourData._id} className="tour-abstract">
+              <Container className="tour-name">
+                <Box key={tourData._id} className="tour-abstract tour-name">
                   <Box className="abstract-header">
                     <h2>{tourData.tourName}</h2>
                   </Box>
@@ -199,8 +199,8 @@ const Book = () => {
             <div>
 
               <Box>
-                <h2>How to Sign up For a Tour</h2>
-                <ul className="no-bullet">
+                <h2 className="tour-name">How to Sign up For a Tour</h2>
+                <ul className="no-bullet booking-instruction">
                   <li>
                     <Icon color="primary" >looks_one</Icon> Enter Your Booking Information!
                   </li>
