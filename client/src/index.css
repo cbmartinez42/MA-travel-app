@@ -123,6 +123,7 @@ code {
   background-color: #2f8d66;
   padding: 1% 5%;
   bottom: 0;
+  left: 0;
   display: block;
   color: whitesmoke;
   z-index: 4;
@@ -130,6 +131,8 @@ code {
   font-style: normal;
   font-weight: 400;
   height: 180px;
+  width: 100%;
+  /* position: sticky; */
 }
 
 .footer-thankyou {
