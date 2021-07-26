@@ -431,7 +431,6 @@ const Book = () => {
                           </Grid>
                           <Grid item>
                             <TextField
-                              required
                               id="signup-specialrequirements"
                               label="Special Requirements?"
                               name="specialRequirements"
