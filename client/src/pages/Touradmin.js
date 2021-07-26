@@ -61,7 +61,8 @@ const CreateTour = () => {
       if (response.status === 200) {
         console.log("FILE SENT");
         // const res = response.data;
-        history.push("/touradmin");
+        alert('Tour created successfully');
+        history.push(`/tour/${response.data._id}`);
         // window.location.refresh()
       } else {
         console.log("mas problemo");
