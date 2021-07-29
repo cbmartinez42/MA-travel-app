@@ -99,7 +99,7 @@ const containerStyle={
 
         <Grid item xs={12}>
           <h2 className="center-align thank-you-header">
-            Thank you for your booking your tour with {tourData.tourName}
+            Thank you for booking your tour with {tourData.tourName}
           </h2>
           <p className="center-align thank-you-body">
             An email confirmation will be sent to your email address on file.

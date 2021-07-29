@@ -14,14 +14,12 @@ const UserSchema = new Schema({
 
   name: {
       first: {
-        type: String, 
-        lowercase: true, 
+        type: String,
         required: [true, "can't be blank"], 
         // match: [/^[a-zA-Z0-9]$/, 'is invalid'], 
         index: true},
       last: {
         type: String, 
-        lowercase: true, 
         required: [true, "can't be blank"], 
         // match: [/^[a-zA-Z0-9]$/, 'is invalid'], 
         index: true},

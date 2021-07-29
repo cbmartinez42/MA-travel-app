@@ -1,10 +1,10 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useRef} from 'react';
 import API from '../utils/API'
 import {Box, Container} from '@material-ui/core/';
 // import Button from "../components/Button"
 // import {Link} from 'react-router-dom'
 import Grid from '@material-ui/core/Grid'
-
+import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -29,11 +29,18 @@ const UserData = ({searchUsers, setSearchUsers}) => {
     const classes = useStyles();
     const [role, setRole] = useState('');
 
-    const handleChange = (event) => {
-        console.log(event);
-        setRole(event.target.value);
-        API.updateUser(event.target.name, event.target.value)
-    };
+    // const inputEl = useRef(null);
+
+    const handleChange = async (event) => {
+        console.log("EVENT= ",event);
+        // setRole(event.target.value);
+        if(event.target.value === "ADMIN" || event.target.value === "USER") {
+            console.log("etv: ",event.target.value);
+            event.target.id = "role"
+        }
+        console.log("SENDING this to API.updateUser: ",event.target.name,event.target.id,event.target.value);
+        const result = await API.updateUser(event.target.name, event.target.id, event.target.value)
+     }
 
     useEffect(() => {
         API.browseAllUsers()
@@ -45,7 +52,7 @@ const UserData = ({searchUsers, setSearchUsers}) => {
       }, [])
 
     useEffect(() => {
-        console.log(role);
+        console.log("ROLE: ",role);
     }, [role]);
 
     // const toggleRole = (data) => {
@@ -63,8 +70,47 @@ const UserData = ({searchUsers, setSearchUsers}) => {
                         <Grid item md>
                             <p>{user.name.first.toUpperCase()} {user.name.last.toUpperCase()}      Location: {user.address.city} {user.address.state}</p>
                             <FormControl className={classes.formControl}>
+                                <InputLabel id="user-first"></InputLabel>
+                                <TextField
+                                id="name.first"
+                                label="First Name"
+                                defaultValue={user.name.first}
+                                name={user._id}
+                                onChange={handleChange}
+                                helperText="Edit name if necessary"
+                                variant="outlined"
+                                />
+                            </FormControl>
+                            <FormControl className={classes.formControl}>
+                                <InputLabel id="user-last"></InputLabel>
+                                <TextField
+                                id="name.last"
+                                label="Last Name"
+                                defaultValue={user.name.last}
+                                name={user._id}
+                                onChange={handleChange}
+                                helperText="Your Last Name is Funny"
+                                variant="outlined"
+                                />
+                            </FormControl>
+                            <FormControl className={classes.formControl}>
+                                <InputLabel id="user-email"></InputLabel>
+                                <TextField
+                                id="email"
+                                label="Email Address"
+                                style = {{width: 500}}
+                                defaultValue={user.email}
+                                name={user._id}
+                                onChange={handleChange}
+                                helperText="Your email is wrong. Fix it!"
+                                variant="outlined"
+                                />
+                            </FormControl>
+                            <FormControl className={classes.formControl}>
                                 <InputLabel id="user-role">Role</InputLabel>
                                 <Select
+                                data-id="role"
+                                id="role"
                                 labelId="user-role"
                                 className="user-role"
                                 defaultValue={user.role}
