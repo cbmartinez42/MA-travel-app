@@ -1,5 +1,6 @@
-import React, { useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { UserContext } from "../utils/UserContext";
+// import API from '../utils/API'
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import {
@@ -37,10 +38,10 @@ const useStyles = makeStyles({
   }
 });
 
-export default function TemporaryDrawer() {
+export default function TemporaryDrawer({searchBar, setSearchBar}) {
   const { userInfo, setUserInfo } = useContext(UserContext);
   const classes = useStyles();
-  const [state, setState] = React.useState({
+  const [state, setState] = useState({
     top: false,
     left: false,
     bottom: false,
@@ -49,6 +50,11 @@ export default function TemporaryDrawer() {
   useEffect(() => {
     console.log("Value: ", userInfo);
   }, [userInfo]);
+
+  // const resetActivities = () => {
+
+
+  // }
 
   //ADD STUFF
   const getIcon = (page) => {
@@ -158,6 +164,7 @@ export default function TemporaryDrawer() {
             <ListItemText
               primary={text}
               onClick={() => {
+                setSearchBar('');
                 setPage(menuPath);
               }}
             />

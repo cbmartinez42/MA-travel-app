@@ -31,7 +31,12 @@ function App() {
     <Router>
       <UserContext.Provider value={{userInfo, setUserInfo}}>
     
-      <Header />
+      <Header 
+        // searchData={searchData}
+        // setSearchData={setSearchData}
+        searchBar={setSearchBar}
+        setSearchBar={setSearchBar}  
+      />
       
         <div className="App">
         <Switch>

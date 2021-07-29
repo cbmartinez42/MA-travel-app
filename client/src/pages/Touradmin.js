@@ -61,7 +61,8 @@ const CreateTour = () => {
       if (response.status === 200) {
         console.log("FILE SENT");
         // const res = response.data;
-        history.push("/touradmin");
+        alert('Tour created successfully');
+        history.push(`/tour/${response.data._id}`);
         // window.location.refresh()
       } else {
         console.log("mas problemo");
@@ -79,9 +80,8 @@ const CreateTour = () => {
   };
 
   return (
-    <div>
-      {/* Create New Tour Container */}
-      <div className="container">
+
+      <Grid container direction='column' spacing={1} alignItems="center">
         <h2 className="fredoka">New Tour Form</h2>
         <form
           encType="multipart/form-data"
@@ -90,8 +90,6 @@ const CreateTour = () => {
           autoComplete="off"
         >
           <Grid container direction="column" alignItems="center">
-            <div className="row">
-              <div className="input-field col s12">
                 <Grid container spacing={1} alignItems="flex-end">
                   <Grid item>
                     <i className="material-icons prefix">local_activity</i>
@@ -107,8 +105,6 @@ const CreateTour = () => {
                     />
                   </Grid>
                 </Grid>
-              </div>
-
               <Select              
                 value={createTour.tourOperator || ""}
                 name="operator"
@@ -126,9 +122,6 @@ const CreateTour = () => {
                   );
                 })}
               </Select>
-
-
-              <div className="input-field col s12">
                 <Grid container spacing={1} alignItems="flex-end">
                   <Grid item>
                     <i className="material-icons prefix">location_on</i>
@@ -144,8 +137,6 @@ const CreateTour = () => {
                     />
                   </Grid>
                 </Grid>
-              </div>
-              <div className="input-field col s12">
                 <Grid container spacing={1} alignItems="flex-end">
                   <Grid item>
                     <i className="material-icons prefix">location_on</i>
@@ -161,8 +152,6 @@ const CreateTour = () => {
                     />
                   </Grid>
                 </Grid>
-              </div>
-              <div className="input-field col s12">
                 <Grid container spacing={1} alignItems="flex-end">
                   <Grid item>
                     <i className="material-icons prefix">location_on</i>
@@ -178,8 +167,6 @@ const CreateTour = () => {
                     />
                   </Grid>
                 </Grid>
-              </div>
-              <div className="input-field col s12">
                 <Grid container spacing={1} alignItems="flex-end">
                   <Grid item>
                     <i className="material-icons prefix">location_city</i>
@@ -195,8 +182,6 @@ const CreateTour = () => {
                     />
                   </Grid>
                 </Grid>
-              </div>
-              <div className="input-field col s12">
                 <Grid container spacing={1} alignItems="flex-end">
                   <Grid item>
                     <i className="material-icons prefix">location_searching</i>
@@ -211,8 +196,6 @@ const CreateTour = () => {
                     />
                   </Grid>
                 </Grid>
-              </div>
-              <div className="input-field col s12">
                 <Grid container spacing={1} alignItems="flex-end">
                   <Grid item>
                     <i className="material-icons prefix">location_searching</i>
@@ -228,8 +211,6 @@ const CreateTour = () => {
                     />
                   </Grid>
                 </Grid>
-              </div>
-              <div className="input-field col s12">
                 <Grid container spacing={1} alignItems="flex-end">
                   <Grid item>
                     <i className="material-icons prefix">email</i>
@@ -245,8 +226,6 @@ const CreateTour = () => {
                     />
                   </Grid>
                 </Grid>
-              </div>
-              <div className="input-field col s12">
                 <Grid container spacing={1} alignItems="flex-end">
                   <Grid item>
                     <i className="material-icons prefix">toc</i>
@@ -264,8 +243,23 @@ const CreateTour = () => {
                     />
                   </Grid>
                 </Grid>
-              </div>
-              <div className="input-field col s12">
+                <Grid container spacing={1} alignItems="flex-end">
+                  <Grid item>
+                    <i className="material-icons prefix">toc</i>
+                  </Grid>
+                  <Grid item>
+                    <TextField
+                      required
+                      id="short-tour-description"
+                      label="Short Description (1-2 sentences)"
+                      name="descriptionShort"
+                      variant="outlined"
+                      multiline
+                      rows={2}
+                      onChange={(e) => handleChange(e.target)}
+                    />
+                  </Grid>
+                </Grid>
                 <Grid container spacing={1} alignItems="flex-end">
                   <Grid item>
                     <i className="material-icons prefix">add_location</i>
@@ -281,8 +275,6 @@ const CreateTour = () => {
                     />
                   </Grid>
                 </Grid>
-              </div>
-              <div className="input-field col s12">
                 <Grid container spacing={1} alignItems="flex-end">
                   <Grid item>
                     <i className="material-icons prefix">cancel</i>
@@ -298,8 +290,6 @@ const CreateTour = () => {
                     />
                   </Grid>
                 </Grid>
-              </div>
-              <div className="input-field col s12">
                 <Grid container spacing={1} alignItems="flex-end">
                   <Grid item>
                     <i className="material-icons prefix">access_alarms</i>
@@ -315,8 +305,6 @@ const CreateTour = () => {
                     />
                   </Grid>
                 </Grid>
-              </div>
-              <div className="input-field col s12">
                 <Grid container spacing={1} alignItems="flex-end">
                   <Grid item>
                     <i className="material-icons prefix">av_timer</i>
@@ -332,8 +320,6 @@ const CreateTour = () => {
                     />
                   </Grid>
                 </Grid>
-              </div>
-              <div className="input-field col s12">
                 <Grid container spacing={1} alignItems="flex-end">
                   <Grid item>
                     <i className="material-icons prefix">attach_money</i>
@@ -349,9 +335,7 @@ const CreateTour = () => {
                     />
                   </Grid>
                 </Grid>
-              </div>
-              {/* <div className="input-field col s12">
-                <Grid container spacing={1} alignItems="flex-end">
+              {/* <Grid container spacing={1} alignItems="flex-end">
                   <Grid item>
                     <i className="material-icons prefix">attach_money</i>
                   </Grid>
@@ -364,9 +348,7 @@ const CreateTour = () => {
                       onChange={(e) => handleChange(e.target)}
                     />
                   </Grid>
-                </Grid>
-              </div> */}
-              <div className="input-field col s12">
+                </Grid>*/}
                 <Grid container spacing={1} alignItems="flex-end">
                   <Grid item>
                     <i className="material-icons prefix">person_pin</i>
@@ -382,8 +364,6 @@ const CreateTour = () => {
                     />
                   </Grid>
                 </Grid>
-              </div>
-              <div className="input-field col s12">
                 <Grid container spacing={1} alignItems="flex-end">
                   <Grid item>
                     <i className="material-icons prefix">person_pin</i>
@@ -399,8 +379,6 @@ const CreateTour = () => {
                     />
                   </Grid>
                 </Grid>
-              </div>
-              <div className="input-field col s12">
                 <Grid container spacing={1} alignItems="flex-end">
                   <Grid item>
                     <i className="material-icons prefix">vpn_key</i>
@@ -416,8 +394,6 @@ const CreateTour = () => {
                     />
                   </Grid>
                 </Grid>
-              </div>
-              <div className="input-field col s12">
                 <Grid container spacing={1} alignItems="flex-end">
                   <Grid item>
                     <i className="material-icons prefix">beach_access</i>
@@ -433,9 +409,6 @@ const CreateTour = () => {
                     />
                   </Grid>
                 </Grid>
-              </div>
-
-              <div className="input-field col s12">
                 <Grid container spacing={1} alignItems="flex-end">
                   <Grid item>
                     <i className="material-icons prefix">event_available</i>
@@ -451,9 +424,6 @@ const CreateTour = () => {
                     />
                   </Grid>
                 </Grid>
-              </div>
-
-              <div className="input-field col s12">
                 <Grid container spacing={1} alignItems="flex-end">
                   <Grid item>
                     <i className="material-icons prefix">photo_library</i>
@@ -469,7 +439,6 @@ const CreateTour = () => {
                     />
                   </Grid>
                 </Grid>
-              </div>
 
               <Button
                 variant="contained"
@@ -493,11 +462,10 @@ const CreateTour = () => {
               >
                 Reset
               </Button>
-            </div>
           </Grid>
         </form>
-      </div>
-    </div>
+    
+    </Grid>
   );
 };
 
