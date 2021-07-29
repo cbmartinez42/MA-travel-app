@@ -56,8 +56,9 @@ let API = {
     console.log('createNewTour was called from utils/API.js w/this payload:',newTourOperatorInfo);
     return axios.post("/api/operator", newTourOperatorInfo);
   },
-  updateUser: function (id, role) {
-    return axios.put("/api/user/" + id, { role: role });
+  updateUser: function (id, key, value) {
+    console.log('Hello from updateUser API: ', id, key, value);
+    return axios.put("/api/user/" + id, { [key]: value });
   },
   //TODO: need to add this external API to our back end before the Browse->Results data is pushed back to the front end
   //maybe implement a loading feature on browse in case it takes more than one or two seconds to finish all the calls
